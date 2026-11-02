@@ -1,0 +1,113 @@
+{
+  "id": "T1",
+  "description": "Sum of tangent and cotangent",
+  "input": {
+    "id": "T1",
+    "lhs": "tan(A)+cot(A)",
+    "rhs": "sec(A)*csc(A)",
+    "description": "Sum of tangent and cotangent"
+  },
+  "llm_api_calls": 0,
+  "llm_api_tokens": 0,
+  "counted_in_production_metrics": false,
+  "status": "SOLVED_AND_TRACE_CHECKED",
+  "trace": [
+    {
+      "input": "tan(A) + cot(A)",
+      "output": "sin(A)/cos(A) + cos(A)/sin(A)",
+      "rule_id": "reciprocal_quotient",
+      "supporting_premises": [
+        "original expression"
+      ],
+      "relation": "equality",
+      "required_assumptions": [
+        "C != 0",
+        "S != 0"
+      ],
+      "verification": {
+        "passed": true,
+        "checker": "exact_sympy_rule_replay"
+      },
+      "origin": "code_search",
+      "reason": "Use the reciprocal and quotient identities.",
+      "input_latex": "\\tan{\\left(A \\right)} + \\cot{\\left(A \\right)}",
+      "output_latex": "\\frac{\\sin{\\left(A \\right)}}{\\cos{\\left(A \\right)}} + \\frac{\\cos{\\left(A \\right)}}{\\sin{\\left(A \\right)}}"
+    },
+    {
+      "input": "sin(A)/cos(A) + cos(A)/sin(A)",
+      "output": "(sin(A)**2 + cos(A)**2)/(sin(A)*cos(A))",
+      "rule_id": "algebra_factor",
+      "supporting_premises": [
+        "original expression"
+      ],
+      "relation": "equality",
+      "required_assumptions": [
+        "C != 0",
+        "S != 0"
+      ],
+      "verification": {
+        "passed": true,
+        "checker": "exact_sympy_rule_replay"
+      },
+      "origin": "code_search",
+      "reason": "Combine and factor the algebraic expression.",
+      "input_latex": "\\frac{\\sin{\\left(A \\right)}}{\\cos{\\left(A \\right)}} + \\frac{\\cos{\\left(A \\right)}}{\\sin{\\left(A \\right)}}",
+      "output_latex": "\\frac{\\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}}{\\sin{\\left(A \\right)} \\cos{\\left(A \\right)}}"
+    },
+    {
+      "input": "(sin(A)**2 + cos(A)**2)/(sin(A)*cos(A))",
+      "output": "1/(sin(A)*cos(A))",
+      "rule_id": "pythagorean_sum",
+      "supporting_premises": [
+        "trig identity"
+      ],
+      "relation": "equality",
+      "required_assumptions": [
+        "C != 0",
+        "S != 0"
+      ],
+      "verification": {
+        "passed": true,
+        "checker": "exact_sympy_rule_replay"
+      },
+      "origin": "code_search",
+      "reason": "Use sin² A + cos² A = 1.",
+      "input_latex": "\\frac{\\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}}{\\sin{\\left(A \\right)} \\cos{\\left(A \\right)}}",
+      "output_latex": "\\frac{1}{\\sin{\\left(A \\right)} \\cos{\\left(A \\right)}}"
+    },
+    {
+      "input": "1/(sin(A)*cos(A))",
+      "output": "csc(A)*sec(A)",
+      "rule_id": "reciprocal_quotient_finish",
+      "supporting_premises": [
+        "original expression"
+      ],
+      "relation": "equality",
+      "required_assumptions": [
+        "C != 0",
+        "S != 0"
+      ],
+      "verification": {
+        "passed": true,
+        "checker": "exact_sympy_rule_replay"
+      },
+      "origin": "code_search",
+      "reason": "Use reciprocal/quotient identities and simplify to obtain the other side.",
+      "input_latex": "\\frac{1}{\\sin{\\left(A \\right)} \\cos{\\left(A \\right)}}",
+      "output_latex": "\\csc{\\left(A \\right)} \\sec{\\left(A \\right)}"
+    }
+  ],
+  "diagnostics": {
+    "starting_side": "LHS",
+    "states_explored": 6,
+    "elapsed_seconds": 0.141,
+    "trace_replayed": true
+  },
+  "domain_conditions": [
+    "C",
+    "S"
+  ],
+  "independently_checked": true,
+  "rendered_answer": "## T1\n\ntan(A)+cot(A) = sec(A)*csc(A)\n\n**Solution**\n\nStarting with the LHS:\n\n$$\\tan{\\left(A \\right)} + \\cot{\\left(A \\right)}$$\n\n$$= \\frac{\\sin{\\left(A \\right)}}{\\cos{\\left(A \\right)}} + \\frac{\\cos{\\left(A \\right)}}{\\sin{\\left(A \\right)}}$$\n\nUse the reciprocal and quotient identities.\n\n$$= \\frac{\\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}}{\\sin{\\left(A \\right)} \\cos{\\left(A \\right)}}$$\n\nCombine and factor the algebraic expression.\n\n$$= \\frac{1}{\\sin{\\left(A \\right)} \\cos{\\left(A \\right)}}$$\n\nUse sin² A + cos² A = 1.\n\n$$= \\csc{\\left(A \\right)} \\sec{\\left(A \\right)}$$\n\nUse reciprocal/quotient identities and simplify to obtain the other side.\n\nHence the identity holds wherever both original sides are defined.\n",
+  "seconds": 2.129
+}

@@ -1,0 +1,80 @@
+{
+  "id": "T3",
+  "description": "Difference of fourth powers",
+  "input": {
+    "id": "T3",
+    "lhs": "sin(A)**4-cos(A)**4",
+    "rhs": "sin(A)**2-cos(A)**2",
+    "description": "Difference of fourth powers"
+  },
+  "llm_api_calls": 0,
+  "llm_api_tokens": 0,
+  "counted_in_production_metrics": false,
+  "status": "SOLVED_AND_TRACE_CHECKED",
+  "trace": [
+    {
+      "input": "sin(A)**4 - cos(A)**4",
+      "output": "(sin(A) - cos(A))*(sin(A) + cos(A))*(sin(A)**2 + cos(A)**2)",
+      "rule_id": "algebra_factor",
+      "supporting_premises": [
+        "original expression"
+      ],
+      "relation": "equality",
+      "required_assumptions": [],
+      "verification": {
+        "passed": true,
+        "checker": "exact_sympy_rule_replay"
+      },
+      "origin": "code_search",
+      "reason": "Combine and factor the algebraic expression.",
+      "input_latex": "\\sin^{4}{\\left(A \\right)} - \\cos^{4}{\\left(A \\right)}",
+      "output_latex": "\\left(\\sin{\\left(A \\right)} - \\cos{\\left(A \\right)}\\right) \\left(\\sin{\\left(A \\right)} + \\cos{\\left(A \\right)}\\right) \\left(\\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}\\right)"
+    },
+    {
+      "input": "(sin(A) - cos(A))*(sin(A) + cos(A))*(sin(A)**2 + cos(A)**2)",
+      "output": "(sin(A) - cos(A))*(sin(A) + cos(A))",
+      "rule_id": "pythagorean_sum",
+      "supporting_premises": [
+        "trig identity"
+      ],
+      "relation": "equality",
+      "required_assumptions": [],
+      "verification": {
+        "passed": true,
+        "checker": "exact_sympy_rule_replay"
+      },
+      "origin": "code_search",
+      "reason": "Use sin² A + cos² A = 1.",
+      "input_latex": "\\left(\\sin{\\left(A \\right)} - \\cos{\\left(A \\right)}\\right) \\left(\\sin{\\left(A \\right)} + \\cos{\\left(A \\right)}\\right) \\left(\\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}\\right)",
+      "output_latex": "\\left(\\sin{\\left(A \\right)} - \\cos{\\left(A \\right)}\\right) \\left(\\sin{\\left(A \\right)} + \\cos{\\left(A \\right)}\\right)"
+    },
+    {
+      "input": "(sin(A) - cos(A))*(sin(A) + cos(A))",
+      "output": "sin(A)**2 - cos(A)**2",
+      "rule_id": "algebra_finish",
+      "supporting_premises": [
+        "original expression"
+      ],
+      "relation": "equality",
+      "required_assumptions": [],
+      "verification": {
+        "passed": true,
+        "checker": "exact_sympy_rule_replay"
+      },
+      "origin": "code_search",
+      "reason": "Simplify algebraically to obtain the other side.",
+      "input_latex": "\\left(\\sin{\\left(A \\right)} - \\cos{\\left(A \\right)}\\right) \\left(\\sin{\\left(A \\right)} + \\cos{\\left(A \\right)}\\right)",
+      "output_latex": "\\sin^{2}{\\left(A \\right)} - \\cos^{2}{\\left(A \\right)}"
+    }
+  ],
+  "diagnostics": {
+    "starting_side": "LHS",
+    "states_explored": 11,
+    "elapsed_seconds": 0.25,
+    "trace_replayed": true
+  },
+  "domain_conditions": [],
+  "independently_checked": true,
+  "rendered_answer": "## T3\n\nsin(A)**4-cos(A)**4 = sin(A)**2-cos(A)**2\n\n**Solution**\n\nStarting with the LHS:\n\n$$\\sin^{4}{\\left(A \\right)} - \\cos^{4}{\\left(A \\right)}$$\n\n$$= \\left(\\sin{\\left(A \\right)} - \\cos{\\left(A \\right)}\\right) \\left(\\sin{\\left(A \\right)} + \\cos{\\left(A \\right)}\\right) \\left(\\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}\\right)$$\n\nCombine and factor the algebraic expression.\n\n$$= \\left(\\sin{\\left(A \\right)} - \\cos{\\left(A \\right)}\\right) \\left(\\sin{\\left(A \\right)} + \\cos{\\left(A \\right)}\\right)$$\n\nUse sin² A + cos² A = 1.\n\n$$= \\sin^{2}{\\left(A \\right)} - \\cos^{2}{\\left(A \\right)}$$\n\nSimplify algebraically to obtain the other side.\n\nHence the identity holds wherever both original sides are defined.\n",
+  "seconds": 1.601
+}

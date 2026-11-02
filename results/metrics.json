@@ -1,0 +1,29 @@
+{
+  "bank_sha256": "93e91d9beec905d355aeddcf221aabd26f2af8ba0593d0b671ef626c8e5bdac2",
+  "bank_question_count": 135,
+  "questions_attempted": 135,
+  "status_counts": {
+    "UNSUPPORTED": 124,
+    "SOLVED_AND_TRACE_CHECKED": 9,
+    "SOURCE_NEEDS_CORRECTION": 2
+  },
+  "automatically_solved": 9,
+  "trace_verification_success": 9,
+  "domain_or_source_issues": [
+    "PD-MATH-XII-030",
+    "PD-MATH-XII-036"
+  ],
+  "method_approved": 0,
+  "presentation_human_reviewed": 0,
+  "complete_answer_accuracy_observed": null,
+  "accuracy_uncertainty": "Not estimable: no independent marking or expert-reviewed random sample.",
+  "figure_required_questions": 15,
+  "llm_calls": 0,
+  "llm_tokens": 0,
+  "runtime_seconds": 10.687,
+  "sympy_version": "1.13.3",
+  "newclid_available": true,
+  "newclid_available_meaning": "Python module found only; solver execution is checked separately.",
+  "newclid_geometry_solved": 1,
+  "failure_count": 0
+}

@@ -1,0 +1,68 @@
+{
+  "id": "T2",
+  "description": "Product of conjugate expressions",
+  "input": {
+    "id": "T2",
+    "lhs": "(sec(A)+tan(A))*(sec(A)-tan(A))",
+    "rhs": "1",
+    "description": "Product of conjugate expressions"
+  },
+  "llm_api_calls": 0,
+  "llm_api_tokens": 0,
+  "counted_in_production_metrics": false,
+  "status": "SOLVED_AND_TRACE_CHECKED",
+  "trace": [
+    {
+      "input": "(-tan(A) + sec(A))*(tan(A) + sec(A))",
+      "output": "-tan(A)**2 + sec(A)**2",
+      "rule_id": "algebra_expand",
+      "supporting_premises": [
+        "original expression"
+      ],
+      "relation": "equality",
+      "required_assumptions": [
+        "C != 0"
+      ],
+      "verification": {
+        "passed": true,
+        "checker": "exact_sympy_rule_replay"
+      },
+      "origin": "code_search",
+      "reason": "Expand algebraically.",
+      "input_latex": "\\left(- \\tan{\\left(A \\right)} + \\sec{\\left(A \\right)}\\right) \\left(\\tan{\\left(A \\right)} + \\sec{\\left(A \\right)}\\right)",
+      "output_latex": "- \\tan^{2}{\\left(A \\right)} + \\sec^{2}{\\left(A \\right)}"
+    },
+    {
+      "input": "-tan(A)**2 + sec(A)**2",
+      "output": "1",
+      "rule_id": "secant_identity",
+      "supporting_premises": [
+        "original expression"
+      ],
+      "relation": "equality",
+      "required_assumptions": [
+        "C != 0"
+      ],
+      "verification": {
+        "passed": true,
+        "checker": "exact_sympy_rule_replay"
+      },
+      "origin": "code_search",
+      "reason": "Use sec² A = 1 + tan² A.",
+      "input_latex": "- \\tan^{2}{\\left(A \\right)} + \\sec^{2}{\\left(A \\right)}",
+      "output_latex": "1"
+    }
+  ],
+  "diagnostics": {
+    "starting_side": "LHS",
+    "states_explored": 4,
+    "elapsed_seconds": 0.11,
+    "trace_replayed": true
+  },
+  "domain_conditions": [
+    "C"
+  ],
+  "independently_checked": true,
+  "rendered_answer": "## T2\n\n(sec(A)+tan(A))*(sec(A)-tan(A)) = 1\n\n**Solution**\n\nStarting with the LHS:\n\n$$\\left(- \\tan{\\left(A \\right)} + \\sec{\\left(A \\right)}\\right) \\left(\\tan{\\left(A \\right)} + \\sec{\\left(A \\right)}\\right)$$\n\n$$= - \\tan^{2}{\\left(A \\right)} + \\sec^{2}{\\left(A \\right)}$$\n\nExpand algebraically.\n\n$$= 1$$\n\nUse sec² A = 1 + tan² A.\n\nHence the identity holds wherever both original sides are defined.\n",
+  "seconds": 2.438
+}

@@ -1,0 +1,4 @@
+{
+  "default": {"status": "draft_unverified", "board": null, "syllabus_year": null, "allowed_methods": ["rational_trig_identity", "factor_theorem", "completing_square_no_real_root", "ap_term_relation", "ap_sum_relation"]},
+  "class_10_demo": {"status": "draft_unverified", "board": null, "syllabus_year": null, "class": 10, "notes": "A school-style demonstration only. No board approval is inferred from the bank."}
+}

@@ -1,0 +1,710 @@
+{
+  "solver_code_unchanged": true,
+  "outcomes": [
+    {
+      "id": "T1",
+      "description": "Sum of tangent and cotangent",
+      "input": {
+        "id": "T1",
+        "lhs": "tan(A)+cot(A)",
+        "rhs": "sec(A)*csc(A)",
+        "description": "Sum of tangent and cotangent"
+      },
+      "llm_api_calls": 0,
+      "llm_api_tokens": 0,
+      "counted_in_production_metrics": false,
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "trace": [
+        {
+          "input": "tan(A) + cot(A)",
+          "output": "sin(A)/cos(A) + cos(A)/sin(A)",
+          "rule_id": "reciprocal_quotient",
+          "supporting_premises": [
+            "original expression"
+          ],
+          "relation": "equality",
+          "required_assumptions": [
+            "C != 0",
+            "S != 0"
+          ],
+          "verification": {
+            "passed": true,
+            "checker": "exact_sympy_rule_replay"
+          },
+          "origin": "code_search",
+          "reason": "Use the reciprocal and quotient identities.",
+          "input_latex": "\\tan{\\left(A \\right)} + \\cot{\\left(A \\right)}",
+          "output_latex": "\\frac{\\sin{\\left(A \\right)}}{\\cos{\\left(A \\right)}} + \\frac{\\cos{\\left(A \\right)}}{\\sin{\\left(A \\right)}}"
+        },
+        {
+          "input": "sin(A)/cos(A) + cos(A)/sin(A)",
+          "output": "(sin(A)**2 + cos(A)**2)/(sin(A)*cos(A))",
+          "rule_id": "algebra_factor",
+          "supporting_premises": [
+            "original expression"
+          ],
+          "relation": "equality",
+          "required_assumptions": [
+            "C != 0",
+            "S != 0"
+          ],
+          "verification": {
+            "passed": true,
+            "checker": "exact_sympy_rule_replay"
+          },
+          "origin": "code_search",
+          "reason": "Combine and factor the algebraic expression.",
+          "input_latex": "\\frac{\\sin{\\left(A \\right)}}{\\cos{\\left(A \\right)}} + \\frac{\\cos{\\left(A \\right)}}{\\sin{\\left(A \\right)}}",
+          "output_latex": "\\frac{\\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}}{\\sin{\\left(A \\right)} \\cos{\\left(A \\right)}}"
+        },
+        {
+          "input": "(sin(A)**2 + cos(A)**2)/(sin(A)*cos(A))",
+          "output": "1/(sin(A)*cos(A))",
+          "rule_id": "pythagorean_sum",
+          "supporting_premises": [
+            "trig identity"
+          ],
+          "relation": "equality",
+          "required_assumptions": [
+            "C != 0",
+            "S != 0"
+          ],
+          "verification": {
+            "passed": true,
+            "checker": "exact_sympy_rule_replay"
+          },
+          "origin": "code_search",
+          "reason": "Use sin² A + cos² A = 1.",
+          "input_latex": "\\frac{\\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}}{\\sin{\\left(A \\right)} \\cos{\\left(A \\right)}}",
+          "output_latex": "\\frac{1}{\\sin{\\left(A \\right)} \\cos{\\left(A \\right)}}"
+        },
+        {
+          "input": "1/(sin(A)*cos(A))",
+          "output": "csc(A)*sec(A)",
+          "rule_id": "reciprocal_quotient_finish",
+          "supporting_premises": [
+            "original expression"
+          ],
+          "relation": "equality",
+          "required_assumptions": [
+            "C != 0",
+            "S != 0"
+          ],
+          "verification": {
+            "passed": true,
+            "checker": "exact_sympy_rule_replay"
+          },
+          "origin": "code_search",
+          "reason": "Use reciprocal/quotient identities and simplify to obtain the other side.",
+          "input_latex": "\\frac{1}{\\sin{\\left(A \\right)} \\cos{\\left(A \\right)}}",
+          "output_latex": "\\csc{\\left(A \\right)} \\sec{\\left(A \\right)}"
+        }
+      ],
+      "diagnostics": {
+        "starting_side": "LHS",
+        "states_explored": 6,
+        "elapsed_seconds": 0.141,
+        "trace_replayed": true
+      },
+      "domain_conditions": [
+        "C",
+        "S"
+      ],
+      "independently_checked": true,
+      "rendered_answer": "## T1\n\ntan(A)+cot(A) = sec(A)*csc(A)\n\n**Solution**\n\nStarting with the LHS:\n\n$$\\tan{\\left(A \\right)} + \\cot{\\left(A \\right)}$$\n\n$$= \\frac{\\sin{\\left(A \\right)}}{\\cos{\\left(A \\right)}} + \\frac{\\cos{\\left(A \\right)}}{\\sin{\\left(A \\right)}}$$\n\nUse the reciprocal and quotient identities.\n\n$$= \\frac{\\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}}{\\sin{\\left(A \\right)} \\cos{\\left(A \\right)}}$$\n\nCombine and factor the algebraic expression.\n\n$$= \\frac{1}{\\sin{\\left(A \\right)} \\cos{\\left(A \\right)}}$$\n\nUse sin² A + cos² A = 1.\n\n$$= \\csc{\\left(A \\right)} \\sec{\\left(A \\right)}$$\n\nUse reciprocal/quotient identities and simplify to obtain the other side.\n\nHence the identity holds wherever both original sides are defined.\n",
+      "seconds": 2.129
+    },
+    {
+      "id": "T2",
+      "description": "Product of conjugate expressions",
+      "input": {
+        "id": "T2",
+        "lhs": "(sec(A)+tan(A))*(sec(A)-tan(A))",
+        "rhs": "1",
+        "description": "Product of conjugate expressions"
+      },
+      "llm_api_calls": 0,
+      "llm_api_tokens": 0,
+      "counted_in_production_metrics": false,
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "trace": [
+        {
+          "input": "(-tan(A) + sec(A))*(tan(A) + sec(A))",
+          "output": "-tan(A)**2 + sec(A)**2",
+          "rule_id": "algebra_expand",
+          "supporting_premises": [
+            "original expression"
+          ],
+          "relation": "equality",
+          "required_assumptions": [
+            "C != 0"
+          ],
+          "verification": {
+            "passed": true,
+            "checker": "exact_sympy_rule_replay"
+          },
+          "origin": "code_search",
+          "reason": "Expand algebraically.",
+          "input_latex": "\\left(- \\tan{\\left(A \\right)} + \\sec{\\left(A \\right)}\\right) \\left(\\tan{\\left(A \\right)} + \\sec{\\left(A \\right)}\\right)",
+          "output_latex": "- \\tan^{2}{\\left(A \\right)} + \\sec^{2}{\\left(A \\right)}"
+        },
+        {
+          "input": "-tan(A)**2 + sec(A)**2",
+          "output": "1",
+          "rule_id": "secant_identity",
+          "supporting_premises": [
+            "original expression"
+          ],
+          "relation": "equality",
+          "required_assumptions": [
+            "C != 0"
+          ],
+          "verification": {
+            "passed": true,
+            "checker": "exact_sympy_rule_replay"
+          },
+          "origin": "code_search",
+          "reason": "Use sec² A = 1 + tan² A.",
+          "input_latex": "- \\tan^{2}{\\left(A \\right)} + \\sec^{2}{\\left(A \\right)}",
+          "output_latex": "1"
+        }
+      ],
+      "diagnostics": {
+        "starting_side": "LHS",
+        "states_explored": 4,
+        "elapsed_seconds": 0.11,
+        "trace_replayed": true
+      },
+      "domain_conditions": [
+        "C"
+      ],
+      "independently_checked": true,
+      "rendered_answer": "## T2\n\n(sec(A)+tan(A))*(sec(A)-tan(A)) = 1\n\n**Solution**\n\nStarting with the LHS:\n\n$$\\left(- \\tan{\\left(A \\right)} + \\sec{\\left(A \\right)}\\right) \\left(\\tan{\\left(A \\right)} + \\sec{\\left(A \\right)}\\right)$$\n\n$$= - \\tan^{2}{\\left(A \\right)} + \\sec^{2}{\\left(A \\right)}$$\n\nExpand algebraically.\n\n$$= 1$$\n\nUse sec² A = 1 + tan² A.\n\nHence the identity holds wherever both original sides are defined.\n",
+      "seconds": 2.438
+    },
+    {
+      "id": "T3",
+      "description": "Difference of fourth powers",
+      "input": {
+        "id": "T3",
+        "lhs": "sin(A)**4-cos(A)**4",
+        "rhs": "sin(A)**2-cos(A)**2",
+        "description": "Difference of fourth powers"
+      },
+      "llm_api_calls": 0,
+      "llm_api_tokens": 0,
+      "counted_in_production_metrics": false,
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "trace": [
+        {
+          "input": "sin(A)**4 - cos(A)**4",
+          "output": "(sin(A) - cos(A))*(sin(A) + cos(A))*(sin(A)**2 + cos(A)**2)",
+          "rule_id": "algebra_factor",
+          "supporting_premises": [
+            "original expression"
+          ],
+          "relation": "equality",
+          "required_assumptions": [],
+          "verification": {
+            "passed": true,
+            "checker": "exact_sympy_rule_replay"
+          },
+          "origin": "code_search",
+          "reason": "Combine and factor the algebraic expression.",
+          "input_latex": "\\sin^{4}{\\left(A \\right)} - \\cos^{4}{\\left(A \\right)}",
+          "output_latex": "\\left(\\sin{\\left(A \\right)} - \\cos{\\left(A \\right)}\\right) \\left(\\sin{\\left(A \\right)} + \\cos{\\left(A \\right)}\\right) \\left(\\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}\\right)"
+        },
+        {
+          "input": "(sin(A) - cos(A))*(sin(A) + cos(A))*(sin(A)**2 + cos(A)**2)",
+          "output": "(sin(A) - cos(A))*(sin(A) + cos(A))",
+          "rule_id": "pythagorean_sum",
+          "supporting_premises": [
+            "trig identity"
+          ],
+          "relation": "equality",
+          "required_assumptions": [],
+          "verification": {
+            "passed": true,
+            "checker": "exact_sympy_rule_replay"
+          },
+          "origin": "code_search",
+          "reason": "Use sin² A + cos² A = 1.",
+          "input_latex": "\\left(\\sin{\\left(A \\right)} - \\cos{\\left(A \\right)}\\right) \\left(\\sin{\\left(A \\right)} + \\cos{\\left(A \\right)}\\right) \\left(\\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}\\right)",
+          "output_latex": "\\left(\\sin{\\left(A \\right)} - \\cos{\\left(A \\right)}\\right) \\left(\\sin{\\left(A \\right)} + \\cos{\\left(A \\right)}\\right)"
+        },
+        {
+          "input": "(sin(A) - cos(A))*(sin(A) + cos(A))",
+          "output": "sin(A)**2 - cos(A)**2",
+          "rule_id": "algebra_finish",
+          "supporting_premises": [
+            "original expression"
+          ],
+          "relation": "equality",
+          "required_assumptions": [],
+          "verification": {
+            "passed": true,
+            "checker": "exact_sympy_rule_replay"
+          },
+          "origin": "code_search",
+          "reason": "Simplify algebraically to obtain the other side.",
+          "input_latex": "\\left(\\sin{\\left(A \\right)} - \\cos{\\left(A \\right)}\\right) \\left(\\sin{\\left(A \\right)} + \\cos{\\left(A \\right)}\\right)",
+          "output_latex": "\\sin^{2}{\\left(A \\right)} - \\cos^{2}{\\left(A \\right)}"
+        }
+      ],
+      "diagnostics": {
+        "starting_side": "LHS",
+        "states_explored": 11,
+        "elapsed_seconds": 0.25,
+        "trace_replayed": true
+      },
+      "domain_conditions": [],
+      "independently_checked": true,
+      "rendered_answer": "## T3\n\nsin(A)**4-cos(A)**4 = sin(A)**2-cos(A)**2\n\n**Solution**\n\nStarting with the LHS:\n\n$$\\sin^{4}{\\left(A \\right)} - \\cos^{4}{\\left(A \\right)}$$\n\n$$= \\left(\\sin{\\left(A \\right)} - \\cos{\\left(A \\right)}\\right) \\left(\\sin{\\left(A \\right)} + \\cos{\\left(A \\right)}\\right) \\left(\\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}\\right)$$\n\nCombine and factor the algebraic expression.\n\n$$= \\left(\\sin{\\left(A \\right)} - \\cos{\\left(A \\right)}\\right) \\left(\\sin{\\left(A \\right)} + \\cos{\\left(A \\right)}\\right)$$\n\nUse sin² A + cos² A = 1.\n\n$$= \\sin^{2}{\\left(A \\right)} - \\cos^{2}{\\left(A \\right)}$$\n\nSimplify algebraically to obtain the other side.\n\nHence the identity holds wherever both original sides are defined.\n",
+      "seconds": 1.601
+    },
+    {
+      "id": "T4",
+      "description": "Rational identity with original domain restrictions",
+      "input": {
+        "id": "T4",
+        "lhs": "(1-cos(A))/(1+cos(A))",
+        "rhs": "(csc(A)-cot(A))**2",
+        "description": "Rational identity with original domain restrictions"
+      },
+      "llm_api_calls": 0,
+      "llm_api_tokens": 0,
+      "counted_in_production_metrics": false,
+      "status": "INCONCLUSIVE",
+      "trace": [],
+      "diagnostics": {
+        "states_explored": 21,
+        "reason": "Search budget exhausted; no approved derivation found.",
+        "elapsed_seconds": 0.797
+      },
+      "domain_conditions": [],
+      "independently_checked": false,
+      "seconds": 2.601
+    },
+    {
+      "id": "T5",
+      "description": "Double-angle identity outside the documented single-angle grammar",
+      "input": {
+        "id": "T5",
+        "lhs": "sin(2*A)",
+        "rhs": "2*sin(A)*cos(A)",
+        "description": "Double-angle identity outside the documented single-angle grammar"
+      },
+      "llm_api_calls": 0,
+      "llm_api_tokens": 0,
+      "counted_in_production_metrics": false,
+      "status": "UNSUPPORTED",
+      "trace": [],
+      "diagnostics": {
+        "reason": "Only rational trig expressions of one angle are supported."
+      },
+      "domain_conditions": [],
+      "independently_checked": false,
+      "seconds": 2.019
+    },
+    {
+      "id": "G1",
+      "description": "Perpendicular diagonals bisecting each other imply a rhombus",
+      "input": {
+        "id": "G1",
+        "bank_id": "PD-MATH-IX-001",
+        "description": "Perpendicular diagonals bisecting each other imply a rhombus",
+        "points": {
+          "a": [
+            3.7,
+            0
+          ],
+          "b": [
+            0,
+            2.3
+          ],
+          "c": [
+            -3.7,
+            0
+          ],
+          "d": [
+            0,
+            -2.3
+          ],
+          "o": [
+            0,
+            0
+          ]
+        },
+        "assumptions": [
+          "midp o a c",
+          "midp o b d",
+          "perp a c b d"
+        ],
+        "goals": [
+          "cong a b b c",
+          "cong b c c d",
+          "cong c d d a"
+        ],
+        "translation": "Rhombus conclusion expanded to four equal sides; coordinates are a matching diagram, not proof premises."
+      },
+      "llm_api_calls": 0,
+      "llm_api_tokens": 0,
+      "counted_in_production_metrics": false,
+      "stage": "write_proof",
+      "status": "ENGINE_PROVED_PENDING_INDEPENDENT_CHECK",
+      "solver_goal_checked": true,
+      "run_infos": {
+        "runtime": 0.39464831352233887,
+        "success": true,
+        "steps": 35,
+        "success_per_goal": {
+          "BC = AB succeeded": true,
+          "CD = AD succeeded": true,
+          "CD = BC succeeded": true
+        },
+        "agent_stats": {
+          "agent_type": "follow_deductions",
+          "n_deductions_stored": 34,
+          "n_deductions_followed": 34
+        }
+      },
+      "independently_checked": false,
+      "independent_checker": "Existing checker only supports PD-MATH-VII-002; it cannot check these cases.",
+      "production_adapter": "UNSUPPORTED: no saved formalization, route, general checker or renderer for this bank question.",
+      "proof_text": "# Problem setup:\n\n## Points\n\n- A(3.7000, 0.0000)\n- B(0.0000, 2.3000)\n- C(-3.7000, 0.0000)\n- D(0.0000, -2.3000)\n- O(0.0000, 0.0000)\n\n## Assumptions:\n\n[C0] : O is the midpoint of AC\n[C1] : O is the midpoint of BD\n[C2] : AC ⟂ BD\n\n## Numerical checks\n\n[N0] : ▲ABO has the same orientation as ▲BCO\n[N1] : A ≠ C\n[N2] : A ≠ O\n[N3] : C ≠ O\n[N4] : B ≠ D\n[N5] : B ≠ O\n[N6] : D ≠ O\n[N7] : ▲ABO has the same orientation as ▲AOD\n[N8] : ▲ABO has the same orientation as ▲CDO\n\n\n# Goals\n\nBC = AB : Proved [11]\nCD = AD : Proved [23]\nCD = BC : Proved [24]\n\n\n# Proof:\n\n000. | O is the midpoint of AC [C0] =(r56 Properties of midpoint (coll))> A, C, O are collinear [0]\n001. | A, C, O are collinear [0], A ≠ C [N1], A ≠ O [N2], C ≠ O [N3] =(r82 Parallel from collinear)> AO ∥ AC [1]\n002. | A, C, O are collinear [0], A ≠ C [N1], A ≠ O [N2], C ≠ O [N3] =(r82 Parallel from collinear)> AO ∥ CO [2]\n003. | O is the midpoint of BD [C1] =(r56 Properties of midpoint (coll))> B, D, O are collinear [3]\n004. | B, D, O are collinear [3], B ≠ D [N4], B ≠ O [N5], D ≠ O [N6] =(r82 Parallel from collinear)> BO ∥ BD [4]\n005. | AO ∥ AC [1], AO ∥ CO [2], BO ∥ BD [4], AC ⟂ BD [C2] =(AR Deduction)> ∠(AO,BO) = ∠(BO,CO) [5]\n006. | O is the midpoint of AC [C0] =(r51 Midpoint splits in two)> AC:AO = 2/1 [6]\n007. | O is the midpoint of AC [C0] =(r51 Midpoint splits in two)> AC:CO = 2/1 [7]\n008. | AC:AO = 2/1 [6], AC:CO = 2/1 [7] =(AR Deduction)> AO:BO = CO:BO [8]\n009. | ∠(AO,BO) = ∠(BO,CO) [5], AO:BO = CO:BO [8], ▲ABO has the same orientation as ▲BCO [N0] =(r63 SAS Similarity of triangles (Reverse))> ▲ABO ≅ ▲CBO [9]\n010. | ▲ABO has the same orientation as ▲BCO [N0], ▲ABO ≅ ▲CBO [9] =(r53 Properties of similar triangles (Reverse))> AB:BC = BO:BO [10]\n011. | AB:BC = BO:BO [10] =(AR Deduction)> BC = AB [11]\n012. | B, D, O are collinear [3], B ≠ D [N4], B ≠ O [N5], D ≠ O [N6] =(r82 Parallel from collinear)> DO ∥ BO [12]\n013. | AO ∥ AC [1], BO ∥ BD [4], DO ∥ BO [12], AC ⟂ BD [C2] =(AR Deduction)> ∠(AO,BO) = ∠(DO,AO) [13]\n014. | O is the midpoint of BD [C1] =(r51 Midpoint splits in two)> BD:BO = 2/1 [14]\n015. | O is the midpoint of BD [C1] =(r51 Midpoint splits in two)> BD:DO = 2/1 [15]\n016. | BD:BO = 2/1 [14], BD:DO = 2/1 [15] =(AR Deduction)> AO:AO = BO:DO [16]\n017. | ∠(AO,BO) = ∠(DO,AO) [13], AO:AO = BO:DO [16], ▲ABO has the same orientation as ▲AOD [N7] =(r63 SAS Similarity of triangles (Reverse))> ▲ABO ≅ ▲ADO [17]\n018. | ▲ABO has the same orientation as ▲AOD [N7], ▲ABO ≅ ▲ADO [17] =(r53 Properties of similar triangles (Reverse))> AB:AD = BO:DO [18]\n019. | AO ∥ CO [2], DO ∥ BO [12] =(AR Deduction)> ∠(AO,BO) = ∠(CO,DO) [19]\n020. | AC:AO = 2/1 [6], AC:CO = 2/1 [7], BD:BO = 2/1 [14], BD:DO = 2/1 [15] =(AR Deduction)> AO:BO = CO:DO [20]\n021. | ∠(AO,BO) = ∠(CO,DO) [19], AO:BO = CO:DO [20], ▲ABO has the same orientation as ▲CDO [N8] =(r62 SAS Similarity of triangles (Direct))> ▲ABO ≅ ▲CDO [21]\n022. | ▲ABO has the same orientation as ▲CDO [N8], ▲ABO ≅ ▲CDO [21] =(r52 Properties of similar triangles (Direct))> AB:BO = CD:DO [22]\n023. | AB:AD = BO:DO [18], AB:BO = CD:DO [22] =(AR Deduction)> CD = AD [23]\n024. | AB:BC = BO:BO [10], AB:BO = CD:DO [22], BD:BO = 2/1 [14], BD:DO = 2/1 [15] =(AR Deduction)> CD = BC [24]\n\n\n# Appendix: AR deductions:\n\n\n\n005. | Angle Chasing to prove ∠(AO,BO) = ∠(BO,CO):\n| Premise AO ∥ AC gives a linear equation with coefficients {Âˆ AC: 1, Âˆ AO: -1}\n| Premise AO ∥ CO gives a linear equation with coefficients {Âˆ AO: 1, Âˆ CO: -1}\n| Then {Âˆ AC: 2, Âˆ AO: -2} + 1 x {Âˆ AO: 1, Âˆ CO: -1}\n|    = {Âˆ AC: 2, Âˆ AO: -1, Âˆ CO: -1}\n| Premise BO ∥ BD gives a linear equation with coefficients {Âˆ BD: 1, Âˆ BO: -1}\n| Then {Âˆ AC: 2, Âˆ AO: -1, Âˆ CO: -1} + -2 x {Âˆ BD: 1, Âˆ BO: -1}\n|    = {Âˆ AC: 2, Âˆ AO: -1, Âˆ CO: -1, Âˆ BD: -2, Âˆ BO: 2}\n| Premise AC ⟂ BD gives a linear equation with coefficients {Âˆ AC: 1, Âˆ BD: -1}\n| Then {Âˆ AC: 2, Âˆ AO: -1, Âˆ CO: -1, Âˆ BD: -2, Âˆ BO: 2} + -2 x {Âˆ AC: 1, Âˆ BD: -1}\n|    = {Âˆ AO: -1, Âˆ CO: -1, Âˆ BO: 2}\nWe are left with a linear equation with coefficients {Âˆ AO: -1, Âˆ CO: -1, Âˆ BO: 2} that gives ∠(AO,BO) = ∠(BO,CO)\n\n\n\n008. | Ratio Chasing to prove AO:BO = CO:BO:\n| Premise AC:AO = 2/1 gives a linear equation with coefficients {AC²: 1, AO²: -1}\n| Premise AC:CO = 2/1 gives a linear equation with coefficients {AC²: 1, CO²: -1}\n| Then {AC²: -1, AO²: 1} + 1 x {AC²: 1, CO²: -1}\n|    = {AO²: 1, CO²: -1}\nWe are left with a linear equation with coefficients {AO²: 1, CO²: -1} that gives AO:BO = CO:BO\n\n\n\n011. | Ratio Chasing to prove BC = AB:\n| Premise AB:BC = BO:BO gives a linear equation with coefficients {AB²: 1, BC²: -1}\nWe are left with a linear equation with coefficients {AB²: 1, BC²: -1} that gives BC = AB\n\n\n\n013. | Angle Chasing to prove ∠(AO,BO) = ∠(DO,AO):\n| Premise AO ∥ AC gives a linear equation with coefficients {Âˆ AC: 1, Âˆ AO: -1}\n| Premise BO ∥ BD gives a linear equation with coefficients {Âˆ BD: 1, Âˆ BO: -1}\n| Then {Âˆ AC: 2, Âˆ AO: -2} + -2 x {Âˆ BD: 1, Âˆ BO: -1}\n|    = {Âˆ AC: 2, Âˆ AO: -2, Âˆ BD: -2, Âˆ BO: 2}\n| Premise DO ∥ BO gives a linear equation with coefficients {Âˆ BO: 1, Âˆ DO: -1}\n| Then {Âˆ AC: 2, Âˆ AO: -2, Âˆ BD: -2, Âˆ BO: 2} + -1 x {Âˆ BO: 1, Âˆ DO: -1}\n|    = {Âˆ AC: 2, Âˆ AO: -2, Âˆ BD: -2, Âˆ BO: 1, Âˆ DO: 1}\n| Premise AC ⟂ BD gives a linear equation with coefficients {Âˆ AC: 1, Âˆ BD: -1}\n| Then {Âˆ AC: 2, Âˆ AO: -2, Âˆ BD: -2, Âˆ BO: 1, Âˆ DO: 1} + -2 x {Âˆ AC: 1, Âˆ BD: -1}\n|    = {Âˆ AO: -2, Âˆ BO: 1, Âˆ DO: 1}\nWe are left with a linear equation with coefficients {Âˆ AO: -2, Âˆ BO: 1, Âˆ DO: 1} that gives ∠(AO,BO) = ∠(DO,AO)\n\n\n\n016. | Ratio Chasing to prove AO:AO = BO:DO:\n| Premise BD:BO = 2/1 gives a linear equation with coefficients {BD²: 1, BO²: -1}\n| Premise BD:DO = 2/1 gives a linear equation with coefficients {BD²: 1, DO²: -1}\n| Then {BD²: 1, BO²: -1} + -1 x {BD²: 1, DO²: -1}\n|    = {BO²: -1, DO²: 1}\nWe are left with a linear equation with coefficients {BO²: -1, DO²: 1} that gives AO:AO = BO:DO\n\n\n\n019. | Angle Chasing to prove ∠(AO,BO) = ∠(CO,DO):\n| Premise AO ∥ CO gives a linear equation with coefficients {Âˆ AO: 1, Âˆ CO: -1}\n| Premise DO ∥ BO gives a linear equation with coefficients {Âˆ BO: 1, Âˆ DO: -1}\n| Then {Âˆ AO: -1, Âˆ CO: 1} + 1 x {Âˆ BO: 1, Âˆ DO: -1}\n|    = {Âˆ AO: -1, Âˆ CO: 1, Âˆ BO: 1, Âˆ DO: -1}\nWe are left with a linear equation with coefficients {Âˆ AO: -1, Âˆ CO: 1, Âˆ BO: 1, Âˆ DO: -1} that gives ∠(AO,BO) = ∠(CO,DO)\n\n\n\n020. | Ratio Chasing to prove AO:BO = CO:DO:\n| Premise AC:AO = 2/1 gives a linear equation with coefficients {AC²: 1, AO²: -1}\n| Premise AC:CO = 2/1 gives a linear equation with coefficients {AC²: 1, CO²: -1}\n| Then {AC²: -1, AO²: 1} + 1 x {AC²: 1, CO²: -1}\n|    = {AO²: 1, CO²: -1}\n| Premise BD:BO = 2/1 gives a linear equation with coefficients {BD²: 1, BO²: -1}\n| Then {AO²: 1, CO²: -1} + 1 x {BD²: 1, BO²: -1}\n|    = {AO²: 1, CO²: -1, BD²: 1, BO²: -1}\n| Premise BD:DO = 2/1 gives a linear equation with coefficients {BD²: 1, DO²: -1}\n| Then {AO²: 1, CO²: -1, BD²: 1, BO²: -1} + -1 x {BD²: 1, DO²: -1}\n|    = {AO²: 1, CO²: -1, BO²: -1, DO²: 1}\nWe are left with a linear equation with coefficients {AO²: 1, CO²: -1, BO²: -1, DO²: 1} that gives AO:BO = CO:DO\n\n\n\n023. | Ratio Chasing to prove CD = AD:\n| Premise AB:AD = BO:DO gives a linear equation with coefficients {AB²: 1, AD²: -1, BO²: -1, DO²: 1}\n| Premise AB:BO = CD:DO gives a linear equation with coefficients {AB²: 1, BO²: -1, CD²: -1, DO²: 1}\n| Then {AB²: -1, AD²: 1, BO²: 1, DO²: -1} + 1 x {AB²: 1, BO²: -1, CD²: -1, DO²: 1}\n|    = {AD²: 1, CD²: -1}\nWe are left with a linear equation with coefficients {AD²: 1, CD²: -1} that gives CD = AD\n\n\n\n024. | Ratio Chasing to prove CD = BC:\n| Premise AB:BC = BO:BO gives a linear equation with coefficients {AB²: 1, BC²: -1}\n| Premise AB:BO = CD:DO gives a linear equation with coefficients {AB²: 1, BO²: -1, CD²: -1, DO²: 1}\n| Then {AB²: -1, BC²: 1} + 1 x {AB²: 1, BO²: -1, CD²: -1, DO²: 1}\n|    = {BC²: 1, BO²: -1, CD²: -1, DO²: 1}\n| Premise BD:BO = 2/1 gives a linear equation with coefficients {BD²: 1, BO²: -1}\n| Then {BC²: 1, BO²: -1, CD²: -1, DO²: 1} + -1 x {BD²: 1, BO²: -1}\n|    = {BC²: 1, CD²: -1, DO²: 1, BD²: -1}\n| Premise BD:DO = 2/1 gives a linear equation with coefficients {BD²: 1, DO²: -1}\n| Then {BC²: 1, CD²: -1, DO²: 1, BD²: -1} + 1 x {BD²: 1, DO²: -1}\n|    = {BC²: 1, CD²: -1}\nWe are left with a linear equation with coefficients {BC²: 1, CD²: -1} that gives CD = BC\n\nEnd of proof.",
+      "seconds": 12.871,
+      "production_status": "UNSUPPORTED",
+      "production_reason": "No audited formalization and reusable derivation route is implemented for this question."
+    },
+    {
+      "id": "G2",
+      "description": "Circle on an isosceles triangle's equal side as diameter bisects the base",
+      "input": {
+        "id": "G2",
+        "bank_id": "PD-MATH-IX-002",
+        "description": "Circle on an isosceles triangle's equal side as diameter bisects the base",
+        "points": {
+          "a": [
+            0,
+            4.3
+          ],
+          "b": [
+            -2.7,
+            0
+          ],
+          "c": [
+            2.7,
+            0
+          ],
+          "d": [
+            0,
+            0
+          ]
+        },
+        "assumptions": [
+          "cong a b a c",
+          "coll b d c",
+          "perp d a d b",
+          "diff b d",
+          "ncoll a b c"
+        ],
+        "goals": [
+          "midp d b c"
+        ],
+        "translation": "D denotes the second intersection with BC. Thales' theorem translates the diameter condition to AD perpendicular BD. This preprocessing was supplied manually."
+      },
+      "llm_api_calls": 0,
+      "llm_api_tokens": 0,
+      "counted_in_production_metrics": false,
+      "stage": "write_proof",
+      "status": "ENGINE_PROVED_PENDING_INDEPENDENT_CHECK",
+      "solver_goal_checked": true,
+      "run_infos": {
+        "runtime": 0.14658546447753906,
+        "success": true,
+        "steps": 15,
+        "success_per_goal": {
+          "D is the midpoint of BC succeeded": true
+        },
+        "agent_stats": {
+          "agent_type": "follow_deductions",
+          "n_deductions_stored": 14,
+          "n_deductions_followed": 14
+        }
+      },
+      "independently_checked": false,
+      "independent_checker": "Existing checker only supports PD-MATH-VII-002; it cannot check these cases.",
+      "production_adapter": "UNSUPPORTED: no saved formalization, route, general checker or renderer for this bank question.",
+      "proof_text": "# Problem setup:\n\n## Points\n\n- A(0.0000, 4.3000)\n- B(-2.7000, 0.0000)\n- C(2.7000, 0.0000)\n- D(0.0000, 0.0000)\n\n## Assumptions:\n\n[C0] : B, C, D are collinear\n[C1] : AC = AB\n[C2] : AD ⟂ BD\n\n## Numerical checks\n\n[N0] : ▲ABC has the same orientation as ▲ABC\n[N1] : B ≠ C\n[N2] : B ≠ D\n[N3] : C ≠ D\n[N4] : A, B, C are not collinear\n\n\n# Goals\n\nD is the midpoint of BC : Proved [7]\n\n\n# Proof:\n\n000. | AC = AB [C1] =(AR Deduction)> AB:AC = AC:AB [0]\n001. | ∠(AB,AC) = ∠(AB,AC) [T0], AB:AC = AC:AB [0], ▲ABC has the same orientation as ▲ABC [N0] =(r63 SAS Similarity of triangles (Reverse))> ▲ABC ≅ ▲ACB [1]\n002. | ▲ABC has the same orientation as ▲ABC [N0], ▲ABC ≅ ▲ACB [1] =(r53 Properties of similar triangles (Reverse))> ∠(AB,BC) = ∠(BC,AC) [2]\n003. | B, C, D are collinear [C0], B ≠ C [N1], B ≠ D [N2], C ≠ D [N3] =(r82 Parallel from collinear)> BC ∥ BD [3]\n004. | ∠(AB,BC) = ∠(BC,AC) [2], BC ∥ BD [3], AD ⟂ BD [C2] =(AR Deduction)> ∠(AB,AD) = ∠(AD,AC) [4]\n005. | B, C, D are collinear [C0], ∠(AB,AD) = ∠(AD,AC) [4], A, B, C are not collinear [N4] =(r12 Bisector theorem II)> AB:AC = BD:CD [5]\n006. | AC = AB [C1], AB:AC = BD:CD [5] =(AR Deduction)> CD = BD [6]\n007. | B, C, D are collinear [C0], CD = BD [6] =(r54 Definition of midpoint)> D is the midpoint of BC [7]\n\n\n# Appendix: AR deductions:\n\n\n\n000. | Ratio Chasing to prove AB:AC = AC:AB:\n| Premise AC = AB gives a linear equation with coefficients {AB²: 1, AC²: -1}\nWe are left with a linear equation with coefficients {AB²: 2, AC²: -2} that gives AB:AC = AC:AB\n\n\n\n004. | Angle Chasing to prove ∠(AB,AD) = ∠(AD,AC):\n| Premise ∠(AB,BC) = ∠(BC,AC) gives a linear equation with coefficients {Âˆ AB: -1, Âˆ AC: -1, Âˆ BC: 2}\n| Premise BC ∥ BD gives a linear equation with coefficients {Âˆ BC: 1, Âˆ BD: -1}\n| Then {Âˆ AB: -1, Âˆ AC: -1, Âˆ BC: 2} + -2 x {Âˆ BC: 1, Âˆ BD: -1}\n|    = {Âˆ AB: -1, Âˆ AC: -1, Âˆ BD: 2}\n| Premise AD ⟂ BD gives a linear equation with coefficients {Âˆ AD: 1, Âˆ BD: -1}\n| Then {Âˆ AB: -1, Âˆ AC: -1, Âˆ BD: 2} + 2 x {Âˆ AD: 1, Âˆ BD: -1}\n|    = {Âˆ AB: -1, Âˆ AC: -1, Âˆ AD: 2}\nWe are left with a linear equation with coefficients {Âˆ AB: -1, Âˆ AC: -1, Âˆ AD: 2} that gives ∠(AB,AD) = ∠(AD,AC)\n\n\n\n006. | Ratio Chasing to prove CD = BD:\n| Premise AC = AB gives a linear equation with coefficients {AB²: 1, AC²: -1}\n| Premise AB:AC = BD:CD gives a linear equation with coefficients {AB²: 1, AC²: -1, BD²: -1, CD²: 1}\n| Then {AB²: 1, AC²: -1} + -1 x {AB²: 1, AC²: -1, BD²: -1, CD²: 1}\n|    = {BD²: 1, CD²: -1}\nWe are left with a linear equation with coefficients {BD²: 1, CD²: -1} that gives CD = BD\n\nEnd of proof.",
+      "seconds": 9.223,
+      "production_status": "UNSUPPORTED",
+      "production_reason": "No audited formalization and reusable derivation route is implemented for this question."
+    },
+    {
+      "id": "G3",
+      "description": "Midpoints of square sides form another square",
+      "input": {
+        "id": "G3",
+        "bank_id": "PD-MATH-IX-004",
+        "description": "Midpoints of square sides form another square",
+        "points": {
+          "a": [
+            0,
+            0
+          ],
+          "b": [
+            4.1,
+            0
+          ],
+          "c": [
+            4.1,
+            4.1
+          ],
+          "d": [
+            0,
+            4.1
+          ],
+          "p": [
+            2.05,
+            0
+          ],
+          "q": [
+            4.1,
+            2.05
+          ],
+          "r": [
+            2.05,
+            4.1
+          ],
+          "s": [
+            0,
+            2.05
+          ]
+        },
+        "assumptions": [
+          "para a b c d",
+          "para a d b c",
+          "perp a b b c",
+          "cong a b b c",
+          "midp p a b",
+          "midp q b c",
+          "midp r c d",
+          "midp s d a"
+        ],
+        "goals": [
+          "para p q r s",
+          "para q r s p",
+          "perp p q q r",
+          "cong p q q r",
+          "cong q r r s",
+          "cong r s s p"
+        ],
+        "translation": "Square premise and conclusion expanded to parallel/perpendicular/equal-length predicates."
+      },
+      "llm_api_calls": 0,
+      "llm_api_tokens": 0,
+      "counted_in_production_metrics": false,
+      "stage": "write_proof",
+      "status": "ENGINE_PROVED_PENDING_INDEPENDENT_CHECK",
+      "solver_goal_checked": true,
+      "run_infos": {
+        "runtime": 1.45389986038208,
+        "success": true,
+        "steps": 67,
+        "success_per_goal": {
+          "PQ = QR succeeded": true,
+          "PS = RS succeeded": true,
+          "QR = RS succeeded": true,
+          "PQ ∥ RS succeeded": true,
+          "QR ∥ PS succeeded": true,
+          "PQ ⟂ QR succeeded": true
+        },
+        "agent_stats": {
+          "agent_type": "follow_deductions",
+          "n_deductions_stored": 66,
+          "n_deductions_followed": 66
+        }
+      },
+      "independently_checked": false,
+      "independent_checker": "Existing checker only supports PD-MATH-VII-002; it cannot check these cases.",
+      "production_adapter": "UNSUPPORTED: no saved formalization, route, general checker or renderer for this bank question.",
+      "proof_text": "# Problem setup:\n\n## Points\n\n- A(0.0000, 0.0000)\n- B(4.1000, 0.0000)\n- C(4.1000, 4.1000)\n- D(0.0000, 4.1000)\n- P(2.0500, 0.0000)\n- Q(4.1000, 2.0500)\n- R(2.0500, 4.1000)\n- S(0.0000, 2.0500)\n\n## Assumptions:\n\n[C0] : AB = BC\n[C1] : P is the midpoint of AB\n[C2] : Q is the midpoint of BC\n[C3] : AB ∥ CD\n[C4] : AD ∥ BC\n[C5] : R is the midpoint of CD\n[C6] : AB ⟂ BC\n[C7] : S is the midpoint of AD\n\n## Numerical checks\n\n[N0] : ▲ABD has the same orientation as ▲BCD\n[N1] : A ≠ B\n[N2] : A ≠ P\n[N3] : B ≠ P\n[N4] : B ≠ C\n[N5] : B ≠ Q\n[N6] : C ≠ Q\n[N7] : C ≠ D\n[N8] : C ≠ R\n[N9] : D ≠ R\n[N10] : P is to the same side of A->B as R is to C->D\n[N11] : P, Q, R are not collinear\n[N12] : A ≠ D\n[N13] : A ≠ S\n[N14] : D ≠ S\n[N15] : Q is to the same side of B->C as S is to A->D\n[N16] : P, Q, S are not collinear\n[N17] : Q, R, S are not collinear\n\n\n# Goals\n\nPQ = QR : Proved [26]\nPS = RS : Proved [43]\nQR = RS : Proved [42]\nPQ ∥ RS : Proved [44]\nQR ∥ PS : Proved [45]\nPQ ⟂ QR : Proved [46]\n\n\n# Proof:\n\n000. | P is the midpoint of AB [C1] =(r51 Midpoint splits in two)> AB:BP = 2/1 [0]\n001. | Q is the midpoint of BC [C2] =(r51 Midpoint splits in two)> BC:BQ = 2/1 [1]\n002. | AB = BC [C0], AB:BP = 2/1 [0], BC:BQ = 2/1 [1] =(AR Deduction)> BP = BQ [2]\n003. | BP = BQ [2] =(r13 Isosceles triangle equal angles)> ∠(BP,PQ) = ∠(PQ,BQ) [3]\n004. | AB ∥ CD [C3], AD ∥ BC [C4] =(AR Deduction)> ∠(AB,AD) = ∠(CD,BC) [4]\n005. | AD ∥ BC [C4] =(AR Deduction)> ∠(AD,BD) = ∠(BC,BD) [5]\n006. | ∠(AB,AD) = ∠(CD,BC) [4], ∠(AD,BD) = ∠(BC,BD) [5], ▲ABD has the same orientation as ▲BCD [N0] =(r34 AA Similarity of triangles (Direct))> ▲ABD ≅ ▲CDB [6]\n007. | ▲ABD has the same orientation as ▲BCD [N0], ▲ABD ≅ ▲CDB [6] =(r52 Properties of similar triangles (Direct))> AB:AD = CD:BC [7]\n008. | ▲ABD has the same orientation as ▲BCD [N0], ▲ABD ≅ ▲CDB [6] =(r52 Properties of similar triangles (Direct))> AD:BC = BD:BD [8]\n009. | Q is the midpoint of BC [C2] =(r51 Midpoint splits in two)> BC:CQ = 2/1 [9]\n010. | R is the midpoint of CD [C5] =(r51 Midpoint splits in two)> CD:CR = 2/1 [10]\n011. | AB = BC [C0], AB:AD = CD:BC [7], AD:BC = BD:BD [8], BC:CQ = 2/1 [9], CD:CR = 2/1 [10] =(AR Deduction)> CQ = CR [11]\n012. | CQ = CR [11] =(r13 Isosceles triangle equal angles)> ∠(CQ,QR) = ∠(QR,CR) [12]\n013. | P is the midpoint of AB [C1] =(r56 Properties of midpoint (coll))> A, B, P are collinear [13]\n014. | A, B, P are collinear [13], A ≠ B [N1], A ≠ P [N2], B ≠ P [N3] =(r82 Parallel from collinear)> AP ∥ AB [14]\n015. | A, B, P are collinear [13], A ≠ B [N1], A ≠ P [N2], B ≠ P [N3] =(r82 Parallel from collinear)> BP ∥ AP [15]\n016. | Q is the midpoint of BC [C2] =(r56 Properties of midpoint (coll))> B, C, Q are collinear [16]\n017. | B, C, Q are collinear [16], B ≠ C [N4], B ≠ Q [N5], C ≠ Q [N6] =(r82 Parallel from collinear)> BQ ∥ BC [17]\n018. | B, C, Q are collinear [16], B ≠ C [N4], B ≠ Q [N5], C ≠ Q [N6] =(r82 Parallel from collinear)> CQ ∥ BQ [18]\n019. | R is the midpoint of CD [C5] =(r56 Properties of midpoint (coll))> C, D, R are collinear [19]\n020. | C, D, R are collinear [19], C ≠ D [N7], C ≠ R [N8], D ≠ R [N9] =(r82 Parallel from collinear)> CR ∥ CD [20]\n021. | P is the midpoint of AB [C1] =(r51 Midpoint splits in two)> AB:AP = 2/1 [21]\n022. | R is the midpoint of CD [C5] =(r51 Midpoint splits in two)> CD:DR = 2/1 [22]\n023. | AB:AP = 2/1 [21], AB:BP = 2/1 [0], CD:CR = 2/1 [10], CD:DR = 2/1 [22] =(AR Deduction)> AP:BP = DR:CR [23]\n024. | A, B, P are collinear [13], C, D, R are collinear [19], AP:BP = DR:CR [23], AD ∥ BC [C4], P is to the same side of A->B as R is to C->D [N10] =(r41 Thales theorem III)> PR ∥ BC [24]\n025. | ∠(BP,PQ) = ∠(PQ,BQ) [3], ∠(CQ,QR) = ∠(QR,CR) [12], AB ∥ CD [C3], AP ∥ AB [14], BP ∥ AP [15], BQ ∥ BC [17], CQ ∥ BQ [18], CR ∥ CD [20], PR ∥ BC [24], AB ⟂ BC [C6] =(AR Deduction)> ∠(PQ,PR) = ∠(PR,QR) [25]\n026. | ∠(PQ,PR) = ∠(PR,QR) [25], P, Q, R are not collinear [N11] =(r14 Equal base angles imply isosceles)> PQ = QR [26]\n027. | S is the midpoint of AD [C7] =(r51 Midpoint splits in two)> AD:AS = 2/1 [27]\n028. | AB = BC [C0], AD:BC = BD:BD [8], AB:AP = 2/1 [21], AD:AS = 2/1 [27] =(AR Deduction)> AS = AP [28]\n029. | AS = AP [28] =(r13 Isosceles triangle equal angles)> ∠(AP,PS) = ∠(PS,AS) [29]\n030. | S is the midpoint of AD [C7] =(r56 Properties of midpoint (coll))> A, D, S are collinear [30]\n031. | A, D, S are collinear [30], A ≠ D [N12], A ≠ S [N13], D ≠ S [N14] =(r82 Parallel from collinear)> AS ∥ AD [31]\n032. | S is the midpoint of AD [C7] =(r51 Midpoint splits in two)> AD:DS = 2/1 [32]\n033. | AD:AS = 2/1 [27], AD:DS = 2/1 [32], BC:BQ = 2/1 [1], BC:CQ = 2/1 [9] =(AR Deduction)> AS:BQ = DS:CQ [33]\n034. | A, D, S are collinear [30], B, C, Q are collinear [16], AS:BQ = DS:CQ [33], AB ∥ CD [C3], Q is to the same side of B->C as S is to A->D [N15] =(r41 Thales theorem III)> QS ∥ CD [34]\n035. | ∠(AP,PS) = ∠(PS,AS) [29], ∠(BP,PQ) = ∠(PQ,BQ) [3], AB ∥ CD [C3], AD ∥ BC [C4], AP ∥ AB [14], AS ∥ AD [31], BP ∥ AP [15], BQ ∥ BC [17], QS ∥ CD [34], AB ⟂ BC [C6] =(AR Deduction)> ∠(PQ,QS) = ∠(QS,PS) [35]\n036. | ∠(PQ,QS) = ∠(QS,PS) [35], P, Q, S are not collinear [N16] =(r14 Equal base angles imply isosceles)> PQ = PS [36]\n037. | AB = BC [C0], AB:AD = CD:BC [7], AD:BC = BD:BD [8], AD:DS = 2/1 [32], CD:DR = 2/1 [22] =(AR Deduction)> DS = DR [37]\n038. | DS = DR [37] =(r13 Isosceles triangle equal angles)> ∠(DR,RS) = ∠(RS,DS) [38]\n039. | A, D, S are collinear [30], A ≠ D [N12], A ≠ S [N13], D ≠ S [N14] =(r82 Parallel from collinear)> AS ∥ DS [39]\n040. | C, D, R are collinear [19], C ≠ D [N7], C ≠ R [N8], D ≠ R [N9] =(r82 Parallel from collinear)> DR ∥ CR [40]\n041. | ∠(CQ,QR) = ∠(QR,CR) [12], ∠(DR,RS) = ∠(RS,DS) [38], AB ∥ CD [C3], AD ∥ BC [C4], AS ∥ AD [31], AS ∥ DS [39], BQ ∥ BC [17], CQ ∥ BQ [18], CR ∥ CD [20], DR ∥ CR [40], QS ∥ CD [34], AB ⟂ BC [C6] =(AR Deduction)> ∠(QR,QS) = ∠(QS,RS) [41]\n042. | ∠(QR,QS) = ∠(QS,RS) [41], Q, R, S are not collinear [N17] =(r14 Equal base angles imply isosceles)> QR = RS [42]\n043. | PQ = PS [36], PQ = QR [26], QR = RS [42] =(AR Deduction)> PS = RS [43]\n044. | ∠(BP,PQ) = ∠(PQ,BQ) [3], ∠(DR,RS) = ∠(RS,DS) [38], AB ∥ CD [C3], AD ∥ BC [C4], AP ∥ AB [14], AS ∥ AD [31], AS ∥ DS [39], BP ∥ AP [15], BQ ∥ BC [17], CR ∥ CD [20], DR ∥ CR [40] =(AR Deduction)> PQ ∥ RS [44]\n045. | ∠(AP,PS) = ∠(PS,AS) [29], ∠(CQ,QR) = ∠(QR,CR) [12], AB ∥ CD [C3], AD ∥ BC [C4], AP ∥ AB [14], AS ∥ AD [31], BQ ∥ BC [17], CQ ∥ BQ [18], CR ∥ CD [20] =(AR Deduction)> QR ∥ PS [45]\n046. | ∠(BP,PQ) = ∠(PQ,BQ) [3], ∠(CQ,QR) = ∠(QR,CR) [12], AB ∥ CD [C3], AP ∥ AB [14], BP ∥ AP [15], CQ ∥ BQ [18], CR ∥ CD [20] =(AR Deduction)> PQ ⟂ QR [46]\n\n\n# Appendix: AR deductions:\n\n\n\n002. | Ratio Chasing to prove BP = BQ:\n| Premise AB = BC gives a linear equation with coefficients {AB²: 1, BC²: -1}\n| Premise AB:BP = 2/1 gives a linear equation with coefficients {AB²: 1, BP²: -1}\n| Then {AB²: 1, BC²: -1} + -1 x {AB²: 1, BP²: -1}\n|    = {BC²: -1, BP²: 1}\n| Premise BC:BQ = 2/1 gives a linear equation with coefficients {BC²: 1, BQ²: -1}\n| Then {BC²: -1, BP²: 1} + 1 x {BC²: 1, BQ²: -1}\n|    = {BP²: 1, BQ²: -1}\nWe are left with a linear equation with coefficients {BP²: 1, BQ²: -1} that gives BP = BQ\n\n\n\n004. | Angle Chasing to prove ∠(AB,AD) = ∠(CD,BC):\n| Premise AB ∥ CD gives a linear equation with coefficients {Âˆ AB: 1, Âˆ CD: -1}\n| Premise AD ∥ BC gives a linear equation with coefficients {Âˆ AD: 1, Âˆ BC: -1}\n| Then {Âˆ AB: -1, Âˆ CD: 1} + 1 x {Âˆ AD: 1, Âˆ BC: -1}\n|    = {Âˆ AB: -1, Âˆ CD: 1, Âˆ AD: 1, Âˆ BC: -1}\nWe are left with a linear equation with coefficients {Âˆ AB: -1, Âˆ CD: 1, Âˆ AD: 1, Âˆ BC: -1} that gives ∠(AB,AD) = ∠(CD,BC)\n\n\n\n005. | Angle Chasing to prove ∠(AD,BD) = ∠(BC,BD):\n| Premise AD ∥ BC gives a linear equation with coefficients {Âˆ AD: 1, Âˆ BC: -1}\nWe are left with a linear equation with coefficients {Âˆ AD: -1, Âˆ BC: 1} that gives ∠(AD,BD) = ∠(BC,BD)\n\n\n\n011. | Ratio Chasing to prove CQ = CR:\n| Premise AB = BC gives a linear equation with coefficients {AB²: 1, BC²: -1}\n| Premise AB:AD = CD:BC gives a linear equation with coefficients {AB²: 1, AD²: -1, BC²: 1, CD²: -1}\n| Then {AB²: -1, BC²: 1} + 1 x {AB²: 1, AD²: -1, BC²: 1, CD²: -1}\n|    = {BC²: 2, AD²: -1, CD²: -1}\n| Premise AD:BC = BD:BD gives a linear equation with coefficients {AD²: 1, BC²: -1}\n| Then {BC²: 2, AD²: -1, CD²: -1} + 1 x {AD²: 1, BC²: -1}\n|    = {BC²: 1, CD²: -1}\n| Premise BC:CQ = 2/1 gives a linear equation with coefficients {BC²: 1, CQ²: -1}\n| Then {BC²: 1, CD²: -1} + -1 x {BC²: 1, CQ²: -1}\n|    = {CD²: -1, CQ²: 1}\n| Premise CD:CR = 2/1 gives a linear equation with coefficients {CD²: 1, CR²: -1}\n| Then {CD²: -1, CQ²: 1} + 1 x {CD²: 1, CR²: -1}\n|    = {CQ²: 1, CR²: -1}\nWe are left with a linear equation with coefficients {CQ²: 1, CR²: -1} that gives CQ = CR\n\n\n\n023. | Ratio Chasing to prove AP:BP = DR:CR:\n| Premise AB:AP = 2/1 gives a linear equation with coefficients {AB²: 1, AP²: -1}\n| Premise AB:BP = 2/1 gives a linear equation with coefficients {AB²: 1, BP²: -1}\n| Then {AB²: -1, AP²: 1} + 1 x {AB²: 1, BP²: -1}\n|    = {AP²: 1, BP²: -1}\n| Premise CD:CR = 2/1 gives a linear equation with coefficients {CD²: 1, CR²: -1}\n| Then {AP²: 1, BP²: -1} + -1 x {CD²: 1, CR²: -1}\n|    = {AP²: 1, BP²: -1, CD²: -1, CR²: 1}\n| Premise CD:DR = 2/1 gives a linear equation with coefficients {CD²: 1, DR²: -1}\n| Then {AP²: 1, BP²: -1, CD²: -1, CR²: 1} + 1 x {CD²: 1, DR²: -1}\n|    = {AP²: 1, BP²: -1, CR²: 1, DR²: -1}\nWe are left with a linear equation with coefficients {AP²: 1, BP²: -1, CR²: 1, DR²: -1} that gives AP:BP = DR:CR\n\n\n\n025. | Angle Chasing to prove ∠(PQ,PR) = ∠(PR,QR):\n| Premise ∠(BP,PQ) = ∠(PQ,BQ) gives a linear equation with coefficients {Âˆ BP: -1, Âˆ BQ: -1, Âˆ PQ: 2}\n| Premise ∠(CQ,QR) = ∠(QR,CR) gives a linear equation with coefficients {Âˆ CQ: -1, Âˆ CR: -1, Âˆ QR: 2}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1} + 1/2 x {Âˆ CQ: -1, Âˆ CR: -1, Âˆ QR: 2}\n|    = {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1}\n| Premise AB ∥ CD gives a linear equation with coefficients {Âˆ AB: 1, Âˆ CD: -1}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1} + -1/2 x {Âˆ AB: 1, Âˆ CD: -1}\n|    = {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ AB: -1/2, Âˆ CD: 1/2}\n| Premise AP ∥ AB gives a linear equation with coefficients {Âˆ AB: 1, Âˆ AP: -1}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ AB: -1/2, Âˆ CD: 1/2} + -1/2 x {Âˆ AB: 1, Âˆ AP: -1}\n|    = {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ AB: -1, Âˆ CD: 1/2, Âˆ AP: 1/2}\n| Premise BP ∥ AP gives a linear equation with coefficients {Âˆ AP: 1, Âˆ BP: -1}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ AB: -1, Âˆ CD: 1/2, Âˆ AP: 1/2} + -1/2 x {Âˆ AP: 1, Âˆ BP: -1}\n|    = {Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ AB: -1, Âˆ CD: 1/2}\n| Premise BQ ∥ BC gives a linear equation with coefficients {Âˆ BC: 1, Âˆ BQ: -1}\n| Then {Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ AB: -1, Âˆ CD: 1/2} + -1 x {Âˆ BC: 1, Âˆ BQ: -1}\n|    = {Âˆ BQ: 1/2, Âˆ PQ: 1, Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ AB: -1, Âˆ CD: 1/2, Âˆ BC: -1}\n| Premise CQ ∥ BQ gives a linear equation with coefficients {Âˆ BQ: 1, Âˆ CQ: -1}\n| Then {Âˆ BQ: 1/2, Âˆ PQ: 1, Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ AB: -1, Âˆ CD: 1/2, Âˆ BC: -1} + -1/2 x {Âˆ BQ: 1, Âˆ CQ: -1}\n|    = {Âˆ PQ: 1, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ AB: -1, Âˆ CD: 1/2, Âˆ BC: -1}\n| Premise CR ∥ CD gives a linear equation with coefficients {Âˆ CD: 1, Âˆ CR: -1}\n| Then {Âˆ PQ: 1, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ AB: -1, Âˆ CD: 1/2, Âˆ BC: -1} + -1/2 x {Âˆ CD: 1, Âˆ CR: -1}\n|    = {Âˆ PQ: 1, Âˆ QR: 1, Âˆ AB: -1, Âˆ BC: -1}\n| Premise PR ∥ BC gives a linear equation with coefficients {Âˆ BC: 1, Âˆ PR: -1}\n| Then {Âˆ PQ: 1, Âˆ QR: 1, Âˆ AB: -1, Âˆ BC: -1} + 2 x {Âˆ BC: 1, Âˆ PR: -1}\n|    = {Âˆ PQ: 1, Âˆ QR: 1, Âˆ AB: -1, Âˆ BC: 1, Âˆ PR: -2}\n| Premise AB ⟂ BC gives a linear equation with coefficients {Âˆ AB: 1, Âˆ BC: -1}\n| Then {Âˆ PQ: 1, Âˆ QR: 1, Âˆ AB: -1, Âˆ BC: 1, Âˆ PR: -2} + 1 x {Âˆ AB: 1, Âˆ BC: -1}\n|    = {Âˆ PQ: 1, Âˆ QR: 1, Âˆ PR: -2}\nWe are left with a linear equation with coefficients {Âˆ PQ: 1, Âˆ QR: 1, Âˆ PR: -2} that gives ∠(PQ,PR) = ∠(PR,QR)\n\n\n\n028. | Ratio Chasing to prove AS = AP:\n| Premise AB = BC gives a linear equation with coefficients {AB²: 1, BC²: -1}\n| Premise AD:BC = BD:BD gives a linear equation with coefficients {AD²: 1, BC²: -1}\n| Then {AB²: 1, BC²: -1} + -1 x {AD²: 1, BC²: -1}\n|    = {AB²: 1, AD²: -1}\n| Premise AB:AP = 2/1 gives a linear equation with coefficients {AB²: 1, AP²: -1}\n| Then {AB²: 1, AD²: -1} + -1 x {AB²: 1, AP²: -1}\n|    = {AD²: -1, AP²: 1}\n| Premise AD:AS = 2/1 gives a linear equation with coefficients {AD²: 1, AS²: -1}\n| Then {AD²: -1, AP²: 1} + 1 x {AD²: 1, AS²: -1}\n|    = {AP²: 1, AS²: -1}\nWe are left with a linear equation with coefficients {AP²: 1, AS²: -1} that gives AS = AP\n\n\n\n033. | Ratio Chasing to prove AS:BQ = DS:CQ:\n| Premise AD:AS = 2/1 gives a linear equation with coefficients {AD²: 1, AS²: -1}\n| Premise AD:DS = 2/1 gives a linear equation with coefficients {AD²: 1, DS²: -1}\n| Then {AD²: -1, AS²: 1} + 1 x {AD²: 1, DS²: -1}\n|    = {AS²: 1, DS²: -1}\n| Premise BC:BQ = 2/1 gives a linear equation with coefficients {BC²: 1, BQ²: -1}\n| Then {AS²: 1, DS²: -1} + 1 x {BC²: 1, BQ²: -1}\n|    = {AS²: 1, DS²: -1, BC²: 1, BQ²: -1}\n| Premise BC:CQ = 2/1 gives a linear equation with coefficients {BC²: 1, CQ²: -1}\n| Then {AS²: 1, DS²: -1, BC²: 1, BQ²: -1} + -1 x {BC²: 1, CQ²: -1}\n|    = {AS²: 1, DS²: -1, BQ²: -1, CQ²: 1}\nWe are left with a linear equation with coefficients {AS²: 1, DS²: -1, BQ²: -1, CQ²: 1} that gives AS:BQ = DS:CQ\n\n\n\n035. | Angle Chasing to prove ∠(PQ,QS) = ∠(QS,PS):\n| Premise ∠(AP,PS) = ∠(PS,AS) gives a linear equation with coefficients {Âˆ AP: -1, Âˆ AS: -1, Âˆ PS: 2}\n| Premise ∠(BP,PQ) = ∠(PQ,BQ) gives a linear equation with coefficients {Âˆ BP: -1, Âˆ BQ: -1, Âˆ PQ: 2}\n| Then {Âˆ AP: 1/2, Âˆ AS: 1/2, Âˆ PS: -1} + -1/2 x {Âˆ BP: -1, Âˆ BQ: -1, Âˆ PQ: 2}\n|    = {Âˆ AP: 1/2, Âˆ AS: 1/2, Âˆ PS: -1, Âˆ BP: 1/2, Âˆ BQ: 1/2, Âˆ PQ: -1}\n| Premise AB ∥ CD gives a linear equation with coefficients {Âˆ AB: 1, Âˆ CD: -1}\n| Then {Âˆ AP: 1/2, Âˆ AS: 1/2, Âˆ PS: -1, Âˆ BP: 1/2, Âˆ BQ: 1/2, Âˆ PQ: -1} + -2 x {Âˆ AB: 1, Âˆ CD: -1}\n|    = {Âˆ AP: 1/2, Âˆ AS: 1/2, Âˆ PS: -1, Âˆ BP: 1/2, Âˆ BQ: 1/2, Âˆ PQ: -1, Âˆ AB: -2, Âˆ CD: 2}\n| Premise AD ∥ BC gives a linear equation with coefficients {Âˆ AD: 1, Âˆ BC: -1}\n| Then {Âˆ AP: 1/2, Âˆ AS: 1/2, Âˆ PS: -1, Âˆ BP: 1/2, Âˆ BQ: 1/2, Âˆ PQ: -1, Âˆ AB: -2, Âˆ CD: 2} + -1/2 x {Âˆ AD: 1, Âˆ BC: -1}\n|    = {Âˆ AP: 1/2, Âˆ AS: 1/2, Âˆ PS: -1, Âˆ BP: 1/2, Âˆ BQ: 1/2, Âˆ PQ: -1, Âˆ AB: -2, Âˆ CD: 2, Âˆ AD: -1/2, Âˆ BC: 1/2}\n| Premise AP ∥ AB gives a linear equation with coefficients {Âˆ AB: 1, Âˆ AP: -1}\n| Then {Âˆ AP: 1/2, Âˆ AS: 1/2, Âˆ PS: -1, Âˆ BP: 1/2, Âˆ BQ: 1/2, Âˆ PQ: -1, Âˆ AB: -2, Âˆ CD: 2, Âˆ AD: -1/2, Âˆ BC: 1/2} + 1 x {Âˆ AB: 1, Âˆ AP: -1}\n|    = {Âˆ AP: -1/2, Âˆ AS: 1/2, Âˆ PS: -1, Âˆ BP: 1/2, Âˆ BQ: 1/2, Âˆ PQ: -1, Âˆ AB: -1, Âˆ CD: 2, Âˆ AD: -1/2, Âˆ BC: 1/2}\n| Premise AS ∥ AD gives a linear equation with coefficients {Âˆ AD: 1, Âˆ AS: -1}\n| Then {Âˆ AP: -1/2, Âˆ AS: 1/2, Âˆ PS: -1, Âˆ BP: 1/2, Âˆ BQ: 1/2, Âˆ PQ: -1, Âˆ AB: -1, Âˆ CD: 2, Âˆ AD: -1/2, Âˆ BC: 1/2} + 1/2 x {Âˆ AD: 1, Âˆ AS: -1}\n|    = {Âˆ AP: -1/2, Âˆ PS: -1, Âˆ BP: 1/2, Âˆ BQ: 1/2, Âˆ PQ: -1, Âˆ AB: -1, Âˆ CD: 2, Âˆ BC: 1/2}\n| Premise BP ∥ AP gives a linear equation with coefficients {Âˆ AP: 1, Âˆ BP: -1}\n| Then {Âˆ AP: -1/2, Âˆ PS: -1, Âˆ BP: 1/2, Âˆ BQ: 1/2, Âˆ PQ: -1, Âˆ AB: -1, Âˆ CD: 2, Âˆ BC: 1/2} + 1/2 x {Âˆ AP: 1, Âˆ BP: -1}\n|    = {Âˆ PS: -1, Âˆ BQ: 1/2, Âˆ PQ: -1, Âˆ AB: -1, Âˆ CD: 2, Âˆ BC: 1/2}\n| Premise BQ ∥ BC gives a linear equation with coefficients {Âˆ BC: 1, Âˆ BQ: -1}\n| Then {Âˆ PS: -1, Âˆ BQ: 1/2, Âˆ PQ: -1, Âˆ AB: -1, Âˆ CD: 2, Âˆ BC: 1/2} + 1/2 x {Âˆ BC: 1, Âˆ BQ: -1}\n|    = {Âˆ PS: -1, Âˆ PQ: -1, Âˆ AB: -1, Âˆ CD: 2, Âˆ BC: 1}\n| Premise QS ∥ CD gives a linear equation with coefficients {Âˆ CD: 1, Âˆ QS: -1}\n| Then {Âˆ PS: -1, Âˆ PQ: -1, Âˆ AB: -1, Âˆ CD: 2, Âˆ BC: 1} + -2 x {Âˆ CD: 1, Âˆ QS: -1}\n|    = {Âˆ PS: -1, Âˆ PQ: -1, Âˆ AB: -1, Âˆ BC: 1, Âˆ QS: 2}\n| Premise AB ⟂ BC gives a linear equation with coefficients {Âˆ AB: 1, Âˆ BC: -1}\n| Then {Âˆ PS: -1, Âˆ PQ: -1, Âˆ AB: -1, Âˆ BC: 1, Âˆ QS: 2} + 1 x {Âˆ AB: 1, Âˆ BC: -1}\n|    = {Âˆ PS: -1, Âˆ PQ: -1, Âˆ QS: 2}\nWe are left with a linear equation with coefficients {Âˆ PS: -1, Âˆ PQ: -1, Âˆ QS: 2} that gives ∠(PQ,QS) = ∠(QS,PS)\n\n\n\n037. | Ratio Chasing to prove DS = DR:\n| Premise AB = BC gives a linear equation with coefficients {AB²: 1, BC²: -1}\n| Premise AB:AD = CD:BC gives a linear equation with coefficients {AB²: 1, AD²: -1, BC²: 1, CD²: -1}\n| Then {AB²: 1, BC²: -1} + -1 x {AB²: 1, AD²: -1, BC²: 1, CD²: -1}\n|    = {BC²: -2, AD²: 1, CD²: 1}\n| Premise AD:BC = BD:BD gives a linear equation with coefficients {AD²: 1, BC²: -1}\n| Then {BC²: -2, AD²: 1, CD²: 1} + -2 x {AD²: 1, BC²: -1}\n|    = {AD²: -1, CD²: 1}\n| Premise AD:DS = 2/1 gives a linear equation with coefficients {AD²: 1, DS²: -1}\n| Then {AD²: -1, CD²: 1} + 1 x {AD²: 1, DS²: -1}\n|    = {CD²: 1, DS²: -1}\n| Premise CD:DR = 2/1 gives a linear equation with coefficients {CD²: 1, DR²: -1}\n| Then {CD²: 1, DS²: -1} + -1 x {CD²: 1, DR²: -1}\n|    = {DS²: -1, DR²: 1}\nWe are left with a linear equation with coefficients {DS²: -1, DR²: 1} that gives DS = DR\n\n\n\n041. | Angle Chasing to prove ∠(QR,QS) = ∠(QS,RS):\n| Premise ∠(CQ,QR) = ∠(QR,CR) gives a linear equation with coefficients {Âˆ CQ: -1, Âˆ CR: -1, Âˆ QR: 2}\n| Premise ∠(DR,RS) = ∠(RS,DS) gives a linear equation with coefficients {Âˆ DR: -1, Âˆ DS: -1, Âˆ RS: 2}\n| Then {Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1} + 1/2 x {Âˆ DR: -1, Âˆ DS: -1, Âˆ RS: 2}\n|    = {Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ DS: -1/2, Âˆ RS: 1}\n| Premise AB ∥ CD gives a linear equation with coefficients {Âˆ AB: 1, Âˆ CD: -1}\n| Then {Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ DS: -1/2, Âˆ RS: 1} + 1 x {Âˆ AB: 1, Âˆ CD: -1}\n|    = {Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ DS: -1/2, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -1}\n| Premise AD ∥ BC gives a linear equation with coefficients {Âˆ AD: 1, Âˆ BC: -1}\n| Then {Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ DS: -1/2, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -1} + 1/2 x {Âˆ AD: 1, Âˆ BC: -1}\n|    = {Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ DS: -1/2, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -1, Âˆ AD: 1/2, Âˆ BC: -1/2}\n| Premise AS ∥ AD gives a linear equation with coefficients {Âˆ AD: 1, Âˆ AS: -1}\n| Then {Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ DS: -1/2, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -1, Âˆ AD: 1/2, Âˆ BC: -1/2} + -1/2 x {Âˆ AD: 1, Âˆ AS: -1}\n|    = {Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ DS: -1/2, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -1, Âˆ BC: -1/2, Âˆ AS: 1/2}\n| Premise AS ∥ DS gives a linear equation with coefficients {Âˆ AS: 1, Âˆ DS: -1}\n| Then {Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ DS: -1/2, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -1, Âˆ BC: -1/2, Âˆ AS: 1/2} + -1/2 x {Âˆ AS: 1, Âˆ DS: -1}\n|    = {Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -1, Âˆ BC: -1/2}\n| Premise BQ ∥ BC gives a linear equation with coefficients {Âˆ BC: 1, Âˆ BQ: -1}\n| Then {Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -1, Âˆ BC: -1/2} + -1/2 x {Âˆ BC: 1, Âˆ BQ: -1}\n|    = {Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -1, Âˆ BC: -1, Âˆ BQ: 1/2}\n| Premise CQ ∥ BQ gives a linear equation with coefficients {Âˆ BQ: 1, Âˆ CQ: -1}\n| Then {Âˆ CQ: -1/2, Âˆ CR: -1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -1, Âˆ BC: -1, Âˆ BQ: 1/2} + -1/2 x {Âˆ BQ: 1, Âˆ CQ: -1}\n|    = {Âˆ CR: -1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -1, Âˆ BC: -1}\n| Premise CR ∥ CD gives a linear equation with coefficients {Âˆ CD: 1, Âˆ CR: -1}\n| Then {Âˆ CR: -1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -1, Âˆ BC: -1} + -1 x {Âˆ CD: 1, Âˆ CR: -1}\n|    = {Âˆ CR: 1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -2, Âˆ BC: -1}\n| Premise DR ∥ CR gives a linear equation with coefficients {Âˆ CR: 1, Âˆ DR: -1}\n| Then {Âˆ CR: 1/2, Âˆ QR: 1, Âˆ DR: -1/2, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -2, Âˆ BC: -1} + -1/2 x {Âˆ CR: 1, Âˆ DR: -1}\n|    = {Âˆ QR: 1, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -2, Âˆ BC: -1}\n| Premise QS ∥ CD gives a linear equation with coefficients {Âˆ CD: 1, Âˆ QS: -1}\n| Then {Âˆ QR: 1, Âˆ RS: 1, Âˆ AB: 1, Âˆ CD: -2, Âˆ BC: -1} + 2 x {Âˆ CD: 1, Âˆ QS: -1}\n|    = {Âˆ QR: 1, Âˆ RS: 1, Âˆ AB: 1, Âˆ BC: -1, Âˆ QS: -2}\n| Premise AB ⟂ BC gives a linear equation with coefficients {Âˆ AB: 1, Âˆ BC: -1}\n| Then {Âˆ QR: 1, Âˆ RS: 1, Âˆ AB: 1, Âˆ BC: -1, Âˆ QS: -2} + -1 x {Âˆ AB: 1, Âˆ BC: -1}\n|    = {Âˆ QR: 1, Âˆ RS: 1, Âˆ QS: -2}\nWe are left with a linear equation with coefficients {Âˆ QR: 1, Âˆ RS: 1, Âˆ QS: -2} that gives ∠(QR,QS) = ∠(QS,RS)\n\n\n\n043. | Ratio Chasing to prove PS = RS:\n| Premise PQ = PS gives a linear equation with coefficients {PQ²: 1, PS²: -1}\n| Premise PQ = QR gives a linear equation with coefficients {PQ²: 1, QR²: -1}\n| Then {PQ²: -1, PS²: 1} + 1 x {PQ²: 1, QR²: -1}\n|    = {PS²: 1, QR²: -1}\n| Premise QR = RS gives a linear equation with coefficients {QR²: 1, RS²: -1}\n| Then {PS²: 1, QR²: -1} + 1 x {QR²: 1, RS²: -1}\n|    = {PS²: 1, RS²: -1}\nWe are left with a linear equation with coefficients {PS²: 1, RS²: -1} that gives PS = RS\n\n\n\n044. | Angle Chasing to prove PQ ∥ RS:\n| Premise ∠(BP,PQ) = ∠(PQ,BQ) gives a linear equation with coefficients {Âˆ BP: -1, Âˆ BQ: -1, Âˆ PQ: 2}\n| Premise ∠(DR,RS) = ∠(RS,DS) gives a linear equation with coefficients {Âˆ DR: -1, Âˆ DS: -1, Âˆ RS: 2}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1} + -1/2 x {Âˆ DR: -1, Âˆ DS: -1, Âˆ RS: 2}\n|    = {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ DS: 1/2, Âˆ RS: -1}\n| Premise AB ∥ CD gives a linear equation with coefficients {Âˆ AB: 1, Âˆ CD: -1}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ DS: 1/2, Âˆ RS: -1} + 1/2 x {Âˆ AB: 1, Âˆ CD: -1}\n|    = {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ DS: 1/2, Âˆ RS: -1, Âˆ AB: 1/2, Âˆ CD: -1/2}\n| Premise AD ∥ BC gives a linear equation with coefficients {Âˆ AD: 1, Âˆ BC: -1}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ DS: 1/2, Âˆ RS: -1, Âˆ AB: 1/2, Âˆ CD: -1/2} + -1/2 x {Âˆ AD: 1, Âˆ BC: -1}\n|    = {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ DS: 1/2, Âˆ RS: -1, Âˆ AB: 1/2, Âˆ CD: -1/2, Âˆ AD: -1/2, Âˆ BC: 1/2}\n| Premise AP ∥ AB gives a linear equation with coefficients {Âˆ AB: 1, Âˆ AP: -1}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ DS: 1/2, Âˆ RS: -1, Âˆ AB: 1/2, Âˆ CD: -1/2, Âˆ AD: -1/2, Âˆ BC: 1/2} + -1/2 x {Âˆ AB: 1, Âˆ AP: -1}\n|    = {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ DS: 1/2, Âˆ RS: -1, Âˆ CD: -1/2, Âˆ AD: -1/2, Âˆ BC: 1/2, Âˆ AP: 1/2}\n| Premise AS ∥ AD gives a linear equation with coefficients {Âˆ AD: 1, Âˆ AS: -1}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ DS: 1/2, Âˆ RS: -1, Âˆ CD: -1/2, Âˆ AD: -1/2, Âˆ BC: 1/2, Âˆ AP: 1/2} + 1/2 x {Âˆ AD: 1, Âˆ AS: -1}\n|    = {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ DS: 1/2, Âˆ RS: -1, Âˆ CD: -1/2, Âˆ BC: 1/2, Âˆ AP: 1/2, Âˆ AS: -1/2}\n| Premise AS ∥ DS gives a linear equation with coefficients {Âˆ AS: 1, Âˆ DS: -1}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ DS: 1/2, Âˆ RS: -1, Âˆ CD: -1/2, Âˆ BC: 1/2, Âˆ AP: 1/2, Âˆ AS: -1/2} + 1/2 x {Âˆ AS: 1, Âˆ DS: -1}\n|    = {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ RS: -1, Âˆ CD: -1/2, Âˆ BC: 1/2, Âˆ AP: 1/2}\n| Premise BP ∥ AP gives a linear equation with coefficients {Âˆ AP: 1, Âˆ BP: -1}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ RS: -1, Âˆ CD: -1/2, Âˆ BC: 1/2, Âˆ AP: 1/2} + -1/2 x {Âˆ AP: 1, Âˆ BP: -1}\n|    = {Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ RS: -1, Âˆ CD: -1/2, Âˆ BC: 1/2}\n| Premise BQ ∥ BC gives a linear equation with coefficients {Âˆ BC: 1, Âˆ BQ: -1}\n| Then {Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ RS: -1, Âˆ CD: -1/2, Âˆ BC: 1/2} + -1/2 x {Âˆ BC: 1, Âˆ BQ: -1}\n|    = {Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ RS: -1, Âˆ CD: -1/2}\n| Premise CR ∥ CD gives a linear equation with coefficients {Âˆ CD: 1, Âˆ CR: -1}\n| Then {Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ RS: -1, Âˆ CD: -1/2} + 1/2 x {Âˆ CD: 1, Âˆ CR: -1}\n|    = {Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ RS: -1, Âˆ CR: -1/2}\n| Premise DR ∥ CR gives a linear equation with coefficients {Âˆ CR: 1, Âˆ DR: -1}\n| Then {Âˆ PQ: 1, Âˆ DR: 1/2, Âˆ RS: -1, Âˆ CR: -1/2} + 1/2 x {Âˆ CR: 1, Âˆ DR: -1}\n|    = {Âˆ PQ: 1, Âˆ RS: -1}\nWe are left with a linear equation with coefficients {Âˆ PQ: 1, Âˆ RS: -1} that gives PQ ∥ RS\n\n\n\n045. | Angle Chasing to prove QR ∥ PS:\n| Premise ∠(AP,PS) = ∠(PS,AS) gives a linear equation with coefficients {Âˆ AP: -1, Âˆ AS: -1, Âˆ PS: 2}\n| Premise ∠(CQ,QR) = ∠(QR,CR) gives a linear equation with coefficients {Âˆ CQ: -1, Âˆ CR: -1, Âˆ QR: 2}\n| Then {Âˆ AP: -1/2, Âˆ AS: -1/2, Âˆ PS: 1} + -1/2 x {Âˆ CQ: -1, Âˆ CR: -1, Âˆ QR: 2}\n|    = {Âˆ AP: -1/2, Âˆ AS: -1/2, Âˆ PS: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1}\n| Premise AB ∥ CD gives a linear equation with coefficients {Âˆ AB: 1, Âˆ CD: -1}\n| Then {Âˆ AP: -1/2, Âˆ AS: -1/2, Âˆ PS: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1} + 1/2 x {Âˆ AB: 1, Âˆ CD: -1}\n|    = {Âˆ AP: -1/2, Âˆ AS: -1/2, Âˆ PS: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ AB: 1/2, Âˆ CD: -1/2}\n| Premise AD ∥ BC gives a linear equation with coefficients {Âˆ AD: 1, Âˆ BC: -1}\n| Then {Âˆ AP: -1/2, Âˆ AS: -1/2, Âˆ PS: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ AB: 1/2, Âˆ CD: -1/2} + 1/2 x {Âˆ AD: 1, Âˆ BC: -1}\n|    = {Âˆ AP: -1/2, Âˆ AS: -1/2, Âˆ PS: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ AB: 1/2, Âˆ CD: -1/2, Âˆ AD: 1/2, Âˆ BC: -1/2}\n| Premise AP ∥ AB gives a linear equation with coefficients {Âˆ AB: 1, Âˆ AP: -1}\n| Then {Âˆ AP: -1/2, Âˆ AS: -1/2, Âˆ PS: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ AB: 1/2, Âˆ CD: -1/2, Âˆ AD: 1/2, Âˆ BC: -1/2} + -1/2 x {Âˆ AB: 1, Âˆ AP: -1}\n|    = {Âˆ AS: -1/2, Âˆ PS: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ CD: -1/2, Âˆ AD: 1/2, Âˆ BC: -1/2}\n| Premise AS ∥ AD gives a linear equation with coefficients {Âˆ AD: 1, Âˆ AS: -1}\n| Then {Âˆ AS: -1/2, Âˆ PS: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ CD: -1/2, Âˆ AD: 1/2, Âˆ BC: -1/2} + -1/2 x {Âˆ AD: 1, Âˆ AS: -1}\n|    = {Âˆ PS: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ CD: -1/2, Âˆ BC: -1/2}\n| Premise BQ ∥ BC gives a linear equation with coefficients {Âˆ BC: 1, Âˆ BQ: -1}\n| Then {Âˆ PS: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ CD: -1/2, Âˆ BC: -1/2} + 1/2 x {Âˆ BC: 1, Âˆ BQ: -1}\n|    = {Âˆ PS: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ CD: -1/2, Âˆ BQ: -1/2}\n| Premise CQ ∥ BQ gives a linear equation with coefficients {Âˆ BQ: 1, Âˆ CQ: -1}\n| Then {Âˆ PS: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ CD: -1/2, Âˆ BQ: -1/2} + 1/2 x {Âˆ BQ: 1, Âˆ CQ: -1}\n|    = {Âˆ PS: 1, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ CD: -1/2}\n| Premise CR ∥ CD gives a linear equation with coefficients {Âˆ CD: 1, Âˆ CR: -1}\n| Then {Âˆ PS: 1, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ CD: -1/2} + 1/2 x {Âˆ CD: 1, Âˆ CR: -1}\n|    = {Âˆ PS: 1, Âˆ QR: -1}\nWe are left with a linear equation with coefficients {Âˆ PS: 1, Âˆ QR: -1} that gives QR ∥ PS\n\n\n\n046. | Angle Chasing to prove PQ ⟂ QR:\n| Premise ∠(BP,PQ) = ∠(PQ,BQ) gives a linear equation with coefficients {Âˆ BP: -1, Âˆ BQ: -1, Âˆ PQ: 2}\n| Premise ∠(CQ,QR) = ∠(QR,CR) gives a linear equation with coefficients {Âˆ CQ: -1, Âˆ CR: -1, Âˆ QR: 2}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1} + -1/2 x {Âˆ CQ: -1, Âˆ CR: -1, Âˆ QR: 2}\n|    = {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1}\n| Premise AB ∥ CD gives a linear equation with coefficients {Âˆ AB: 1, Âˆ CD: -1}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1} + 1/2 x {Âˆ AB: 1, Âˆ CD: -1}\n|    = {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ AB: 1/2, Âˆ CD: -1/2}\n| Premise AP ∥ AB gives a linear equation with coefficients {Âˆ AB: 1, Âˆ AP: -1}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ AB: 1/2, Âˆ CD: -1/2} + -1/2 x {Âˆ AB: 1, Âˆ AP: -1}\n|    = {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ CD: -1/2, Âˆ AP: 1/2}\n| Premise BP ∥ AP gives a linear equation with coefficients {Âˆ AP: 1, Âˆ BP: -1}\n| Then {Âˆ BP: -1/2, Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ CD: -1/2, Âˆ AP: 1/2} + -1/2 x {Âˆ AP: 1, Âˆ BP: -1}\n|    = {Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ CD: -1/2}\n| Premise CQ ∥ BQ gives a linear equation with coefficients {Âˆ BQ: 1, Âˆ CQ: -1}\n| Then {Âˆ BQ: -1/2, Âˆ PQ: 1, Âˆ CQ: 1/2, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ CD: -1/2} + 1/2 x {Âˆ BQ: 1, Âˆ CQ: -1}\n|    = {Âˆ PQ: 1, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ CD: -1/2}\n| Premise CR ∥ CD gives a linear equation with coefficients {Âˆ CD: 1, Âˆ CR: -1}\n| Then {Âˆ PQ: 1, Âˆ CR: 1/2, Âˆ QR: -1, Âˆ CD: -1/2} + 1/2 x {Âˆ CD: 1, Âˆ CR: -1}\n|    = {Âˆ PQ: 1, Âˆ QR: -1}\nWe are left with a linear equation with coefficients {Âˆ PQ: 1, Âˆ QR: -1} that gives PQ ⟂ QR\n\nEnd of proof.",
+      "seconds": 11.999,
+      "production_status": "UNSUPPORTED",
+      "production_reason": "No audited formalization and reusable derivation route is implemented for this question."
+    },
+    {
+      "id": "G4",
+      "description": "Right triangle midpoint squared-length sum",
+      "input": {
+        "id": "G4",
+        "bank_id": "PD-MATH-IX-007",
+        "description": "Right triangle midpoint squared-length sum",
+        "points": {
+          "a": [
+            0,
+            3.9
+          ],
+          "b": [
+            0,
+            0
+          ],
+          "c": [
+            5.3,
+            0
+          ],
+          "d": [
+            2.65,
+            0
+          ],
+          "e": [
+            0,
+            1.95
+          ]
+        },
+        "assumptions": [
+          "perp a b b c",
+          "midp d b c",
+          "midp e a b"
+        ],
+        "goals": [
+          "lequation 1 a d * a d 1 c e * c e -5 d e * d e 0"
+        ],
+        "translation": "AD^2+CE^2-5DE^2=0 is represented with Newclid's length-equation predicate."
+      },
+      "llm_api_calls": 0,
+      "llm_api_tokens": 0,
+      "counted_in_production_metrics": false,
+      "stage": "build_solver",
+      "status": "ERROR",
+      "error_type": "NotImplementedError",
+      "error": "LengthEquationPredicate is not implemented",
+      "independently_checked": false,
+      "seconds": 10.169,
+      "production_status": "UNSUPPORTED",
+      "production_reason": "No audited formalization and reusable derivation route is implemented for this question."
+    },
+    {
+      "id": "G5",
+      "description": "Rectangle interior point: opposite squared-distance sums",
+      "input": {
+        "id": "G5",
+        "bank_id": "PD-MATH-IX-024",
+        "description": "Rectangle interior point: opposite squared-distance sums",
+        "points": {
+          "a": [
+            0,
+            0
+          ],
+          "b": [
+            5.9,
+            0
+          ],
+          "c": [
+            5.9,
+            3.2
+          ],
+          "d": [
+            0,
+            3.2
+          ],
+          "o": [
+            1.7,
+            1.1
+          ]
+        },
+        "assumptions": [
+          "para a b c d",
+          "para a d b c",
+          "perp a b b c"
+        ],
+        "goals": [
+          "lequation 1 o a * o a 1 o c * o c -1 o b * o b -1 o d * o d 0"
+        ],
+        "translation": "Rectangle expanded into parallelism and a right angle. O is inside the sample diagram; the equality also holds outside, so no stronger location premise is needed."
+      },
+      "llm_api_calls": 0,
+      "llm_api_tokens": 0,
+      "counted_in_production_metrics": false,
+      "stage": "build_solver",
+      "status": "ERROR",
+      "error_type": "NotImplementedError",
+      "error": "LengthEquationPredicate is not implemented",
+      "independently_checked": false,
+      "seconds": 9.05,
+      "production_status": "UNSUPPORTED",
+      "production_reason": "No audited formalization and reusable derivation route is implemented for this question."
+    },
+    {
+      "id": "N1",
+      "description": "False trigonometric claim; must not solve",
+      "input": {
+        "id": "N1",
+        "lhs": "sec(A)**2-tan(A)**2",
+        "rhs": "2",
+        "description": "False trigonometric claim; must not solve"
+      },
+      "llm_api_calls": 0,
+      "llm_api_tokens": 0,
+      "counted_in_production_metrics": false,
+      "status": "COUNTEREXAMPLE",
+      "trace": [],
+      "diagnostics": {
+        "counterexample": {
+          "angle": "pi/6",
+          "lhs": "1",
+          "rhs": "2"
+        }
+      },
+      "domain_conditions": [],
+      "independently_checked": false,
+      "seconds": 1.643
+    },
+    {
+      "id": "N2",
+      "description": "Generic triangle falsely claimed to have equal sides",
+      "input": {
+        "id": "N2",
+        "bank_id": null,
+        "description": "Generic triangle falsely claimed to have equal sides",
+        "points": {
+          "a": [
+            0,
+            0
+          ],
+          "b": [
+            4.7,
+            0
+          ],
+          "c": [
+            1.2,
+            3.1
+          ]
+        },
+        "assumptions": [
+          "ncoll a b c"
+        ],
+        "goals": [
+          "cong a b a c"
+        ],
+        "translation": "Negative control: no equal-side assumption."
+      },
+      "llm_api_calls": 0,
+      "llm_api_tokens": 0,
+      "counted_in_production_metrics": false,
+      "stage": "build_solver",
+      "status": "ERROR",
+      "error_type": "ProofBuildError",
+      "error": "Goal cong a b a c is numerically false.",
+      "independently_checked": false,
+      "seconds": 11.067
+    }
+  ],
+  "trig_checked_out_of_5": 3,
+  "geometry_engine_proved_out_of_5": 3,
+  "geometry_independently_checked_out_of_5": 0,
+  "production_geometry_new_questions_supported_out_of_5": 0,
+  "runtime_llm_calls": 0,
+  "runtime_llm_tokens": 0,
+  "earlier_chat_work_excluded": "Test selection and mathematical transcription were prepared in this chat. Those model tokens are not available to this script."
+}

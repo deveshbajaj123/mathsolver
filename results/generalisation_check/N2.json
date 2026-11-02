@@ -1,0 +1,39 @@
+{
+  "id": "N2",
+  "description": "Generic triangle falsely claimed to have equal sides",
+  "input": {
+    "id": "N2",
+    "bank_id": null,
+    "description": "Generic triangle falsely claimed to have equal sides",
+    "points": {
+      "a": [
+        0,
+        0
+      ],
+      "b": [
+        4.7,
+        0
+      ],
+      "c": [
+        1.2,
+        3.1
+      ]
+    },
+    "assumptions": [
+      "ncoll a b c"
+    ],
+    "goals": [
+      "cong a b a c"
+    ],
+    "translation": "Negative control: no equal-side assumption."
+  },
+  "llm_api_calls": 0,
+  "llm_api_tokens": 0,
+  "counted_in_production_metrics": false,
+  "stage": "build_solver",
+  "status": "ERROR",
+  "error_type": "ProofBuildError",
+  "error": "Goal cong a b a c is numerically false.",
+  "independently_checked": false,
+  "seconds": 11.067
+}

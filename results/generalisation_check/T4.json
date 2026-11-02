@@ -1,0 +1,23 @@
+{
+  "id": "T4",
+  "description": "Rational identity with original domain restrictions",
+  "input": {
+    "id": "T4",
+    "lhs": "(1-cos(A))/(1+cos(A))",
+    "rhs": "(csc(A)-cot(A))**2",
+    "description": "Rational identity with original domain restrictions"
+  },
+  "llm_api_calls": 0,
+  "llm_api_tokens": 0,
+  "counted_in_production_metrics": false,
+  "status": "INCONCLUSIVE",
+  "trace": [],
+  "diagnostics": {
+    "states_explored": 21,
+    "reason": "Search budget exhausted; no approved derivation found.",
+    "elapsed_seconds": 0.797
+  },
+  "domain_conditions": [],
+  "independently_checked": false,
+  "seconds": 2.601
+}

@@ -1,0 +1,64 @@
+{
+  "id": "G2",
+  "description": "Circle on an isosceles triangle's equal side as diameter bisects the base",
+  "input": {
+    "id": "G2",
+    "bank_id": "PD-MATH-IX-002",
+    "description": "Circle on an isosceles triangle's equal side as diameter bisects the base",
+    "points": {
+      "a": [
+        0,
+        4.3
+      ],
+      "b": [
+        -2.7,
+        0
+      ],
+      "c": [
+        2.7,
+        0
+      ],
+      "d": [
+        0,
+        0
+      ]
+    },
+    "assumptions": [
+      "cong a b a c",
+      "coll b d c",
+      "perp d a d b",
+      "diff b d",
+      "ncoll a b c"
+    ],
+    "goals": [
+      "midp d b c"
+    ],
+    "translation": "D denotes the second intersection with BC. Thales' theorem translates the diameter condition to AD perpendicular BD. This preprocessing was supplied manually."
+  },
+  "llm_api_calls": 0,
+  "llm_api_tokens": 0,
+  "counted_in_production_metrics": false,
+  "stage": "write_proof",
+  "status": "ENGINE_PROVED_PENDING_INDEPENDENT_CHECK",
+  "solver_goal_checked": true,
+  "run_infos": {
+    "runtime": 0.14658546447753906,
+    "success": true,
+    "steps": 15,
+    "success_per_goal": {
+      "D is the midpoint of BC succeeded": true
+    },
+    "agent_stats": {
+      "agent_type": "follow_deductions",
+      "n_deductions_stored": 14,
+      "n_deductions_followed": 14
+    }
+  },
+  "independently_checked": false,
+  "independent_checker": "Existing checker only supports PD-MATH-VII-002; it cannot check these cases.",
+  "production_adapter": "UNSUPPORTED: no saved formalization, route, general checker or renderer for this bank question.",
+  "proof_text": "# Problem setup:\n\n## Points\n\n- A(0.0000, 4.3000)\n- B(-2.7000, 0.0000)\n- C(2.7000, 0.0000)\n- D(0.0000, 0.0000)\n\n## Assumptions:\n\n[C0] : B, C, D are collinear\n[C1] : AC = AB\n[C2] : AD ⟂ BD\n\n## Numerical checks\n\n[N0] : ▲ABC has the same orientation as ▲ABC\n[N1] : B ≠ C\n[N2] : B ≠ D\n[N3] : C ≠ D\n[N4] : A, B, C are not collinear\n\n\n# Goals\n\nD is the midpoint of BC : Proved [7]\n\n\n# Proof:\n\n000. | AC = AB [C1] =(AR Deduction)> AB:AC = AC:AB [0]\n001. | ∠(AB,AC) = ∠(AB,AC) [T0], AB:AC = AC:AB [0], ▲ABC has the same orientation as ▲ABC [N0] =(r63 SAS Similarity of triangles (Reverse))> ▲ABC ≅ ▲ACB [1]\n002. | ▲ABC has the same orientation as ▲ABC [N0], ▲ABC ≅ ▲ACB [1] =(r53 Properties of similar triangles (Reverse))> ∠(AB,BC) = ∠(BC,AC) [2]\n003. | B, C, D are collinear [C0], B ≠ C [N1], B ≠ D [N2], C ≠ D [N3] =(r82 Parallel from collinear)> BC ∥ BD [3]\n004. | ∠(AB,BC) = ∠(BC,AC) [2], BC ∥ BD [3], AD ⟂ BD [C2] =(AR Deduction)> ∠(AB,AD) = ∠(AD,AC) [4]\n005. | B, C, D are collinear [C0], ∠(AB,AD) = ∠(AD,AC) [4], A, B, C are not collinear [N4] =(r12 Bisector theorem II)> AB:AC = BD:CD [5]\n006. | AC = AB [C1], AB:AC = BD:CD [5] =(AR Deduction)> CD = BD [6]\n007. | B, C, D are collinear [C0], CD = BD [6] =(r54 Definition of midpoint)> D is the midpoint of BC [7]\n\n\n# Appendix: AR deductions:\n\n\n\n000. | Ratio Chasing to prove AB:AC = AC:AB:\n| Premise AC = AB gives a linear equation with coefficients {AB²: 1, AC²: -1}\nWe are left with a linear equation with coefficients {AB²: 2, AC²: -2} that gives AB:AC = AC:AB\n\n\n\n004. | Angle Chasing to prove ∠(AB,AD) = ∠(AD,AC):\n| Premise ∠(AB,BC) = ∠(BC,AC) gives a linear equation with coefficients {Âˆ AB: -1, Âˆ AC: -1, Âˆ BC: 2}\n| Premise BC ∥ BD gives a linear equation with coefficients {Âˆ BC: 1, Âˆ BD: -1}\n| Then {Âˆ AB: -1, Âˆ AC: -1, Âˆ BC: 2} + -2 x {Âˆ BC: 1, Âˆ BD: -1}\n|    = {Âˆ AB: -1, Âˆ AC: -1, Âˆ BD: 2}\n| Premise AD ⟂ BD gives a linear equation with coefficients {Âˆ AD: 1, Âˆ BD: -1}\n| Then {Âˆ AB: -1, Âˆ AC: -1, Âˆ BD: 2} + 2 x {Âˆ AD: 1, Âˆ BD: -1}\n|    = {Âˆ AB: -1, Âˆ AC: -1, Âˆ AD: 2}\nWe are left with a linear equation with coefficients {Âˆ AB: -1, Âˆ AC: -1, Âˆ AD: 2} that gives ∠(AB,AD) = ∠(AD,AC)\n\n\n\n006. | Ratio Chasing to prove CD = BD:\n| Premise AC = AB gives a linear equation with coefficients {AB²: 1, AC²: -1}\n| Premise AB:AC = BD:CD gives a linear equation with coefficients {AB²: 1, AC²: -1, BD²: -1, CD²: 1}\n| Then {AB²: 1, AC²: -1} + -1 x {AB²: 1, AC²: -1, BD²: -1, CD²: 1}\n|    = {BD²: 1, CD²: -1}\nWe are left with a linear equation with coefficients {BD²: 1, CD²: -1} that gives CD = BD\n\nEnd of proof.",
+  "seconds": 9.223,
+  "production_status": "UNSUPPORTED",
+  "production_reason": "No audited formalization and reusable derivation route is implemented for this question."
+}

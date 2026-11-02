@@ -1,0 +1,51 @@
+{
+  "id": "G5",
+  "description": "Rectangle interior point: opposite squared-distance sums",
+  "input": {
+    "id": "G5",
+    "bank_id": "PD-MATH-IX-024",
+    "description": "Rectangle interior point: opposite squared-distance sums",
+    "points": {
+      "a": [
+        0,
+        0
+      ],
+      "b": [
+        5.9,
+        0
+      ],
+      "c": [
+        5.9,
+        3.2
+      ],
+      "d": [
+        0,
+        3.2
+      ],
+      "o": [
+        1.7,
+        1.1
+      ]
+    },
+    "assumptions": [
+      "para a b c d",
+      "para a d b c",
+      "perp a b b c"
+    ],
+    "goals": [
+      "lequation 1 o a * o a 1 o c * o c -1 o b * o b -1 o d * o d 0"
+    ],
+    "translation": "Rectangle expanded into parallelism and a right angle. O is inside the sample diagram; the equality also holds outside, so no stronger location premise is needed."
+  },
+  "llm_api_calls": 0,
+  "llm_api_tokens": 0,
+  "counted_in_production_metrics": false,
+  "stage": "build_solver",
+  "status": "ERROR",
+  "error_type": "NotImplementedError",
+  "error": "LengthEquationPredicate is not implemented",
+  "independently_checked": false,
+  "seconds": 9.05,
+  "production_status": "UNSUPPORTED",
+  "production_reason": "No audited formalization and reusable derivation route is implemented for this question."
+}

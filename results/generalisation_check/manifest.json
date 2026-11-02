@@ -1,0 +1,275 @@
+{
+  "cases": [
+    {
+      "id": "T1",
+      "lhs": "tan(A)+cot(A)",
+      "rhs": "sec(A)*csc(A)",
+      "description": "Sum of tangent and cotangent"
+    },
+    {
+      "id": "T2",
+      "lhs": "(sec(A)+tan(A))*(sec(A)-tan(A))",
+      "rhs": "1",
+      "description": "Product of conjugate expressions"
+    },
+    {
+      "id": "T3",
+      "lhs": "sin(A)**4-cos(A)**4",
+      "rhs": "sin(A)**2-cos(A)**2",
+      "description": "Difference of fourth powers"
+    },
+    {
+      "id": "T4",
+      "lhs": "(1-cos(A))/(1+cos(A))",
+      "rhs": "(csc(A)-cot(A))**2",
+      "description": "Rational identity with original domain restrictions"
+    },
+    {
+      "id": "T5",
+      "lhs": "sin(2*A)",
+      "rhs": "2*sin(A)*cos(A)",
+      "description": "Double-angle identity outside the documented single-angle grammar"
+    },
+    {
+      "id": "G1",
+      "bank_id": "PD-MATH-IX-001",
+      "description": "Perpendicular diagonals bisecting each other imply a rhombus",
+      "points": {
+        "a": [
+          3.7,
+          0
+        ],
+        "b": [
+          0,
+          2.3
+        ],
+        "c": [
+          -3.7,
+          0
+        ],
+        "d": [
+          0,
+          -2.3
+        ],
+        "o": [
+          0,
+          0
+        ]
+      },
+      "assumptions": [
+        "midp o a c",
+        "midp o b d",
+        "perp a c b d"
+      ],
+      "goals": [
+        "cong a b b c",
+        "cong b c c d",
+        "cong c d d a"
+      ],
+      "translation": "Rhombus conclusion expanded to four equal sides; coordinates are a matching diagram, not proof premises."
+    },
+    {
+      "id": "G2",
+      "bank_id": "PD-MATH-IX-002",
+      "description": "Circle on an isosceles triangle's equal side as diameter bisects the base",
+      "points": {
+        "a": [
+          0,
+          4.3
+        ],
+        "b": [
+          -2.7,
+          0
+        ],
+        "c": [
+          2.7,
+          0
+        ],
+        "d": [
+          0,
+          0
+        ]
+      },
+      "assumptions": [
+        "cong a b a c",
+        "coll b d c",
+        "perp d a d b",
+        "diff b d",
+        "ncoll a b c"
+      ],
+      "goals": [
+        "midp d b c"
+      ],
+      "translation": "D denotes the second intersection with BC. Thales' theorem translates the diameter condition to AD perpendicular BD. This preprocessing was supplied manually."
+    },
+    {
+      "id": "G3",
+      "bank_id": "PD-MATH-IX-004",
+      "description": "Midpoints of square sides form another square",
+      "points": {
+        "a": [
+          0,
+          0
+        ],
+        "b": [
+          4.1,
+          0
+        ],
+        "c": [
+          4.1,
+          4.1
+        ],
+        "d": [
+          0,
+          4.1
+        ],
+        "p": [
+          2.05,
+          0
+        ],
+        "q": [
+          4.1,
+          2.05
+        ],
+        "r": [
+          2.05,
+          4.1
+        ],
+        "s": [
+          0,
+          2.05
+        ]
+      },
+      "assumptions": [
+        "para a b c d",
+        "para a d b c",
+        "perp a b b c",
+        "cong a b b c",
+        "midp p a b",
+        "midp q b c",
+        "midp r c d",
+        "midp s d a"
+      ],
+      "goals": [
+        "para p q r s",
+        "para q r s p",
+        "perp p q q r",
+        "cong p q q r",
+        "cong q r r s",
+        "cong r s s p"
+      ],
+      "translation": "Square premise and conclusion expanded to parallel/perpendicular/equal-length predicates."
+    },
+    {
+      "id": "G4",
+      "bank_id": "PD-MATH-IX-007",
+      "description": "Right triangle midpoint squared-length sum",
+      "points": {
+        "a": [
+          0,
+          3.9
+        ],
+        "b": [
+          0,
+          0
+        ],
+        "c": [
+          5.3,
+          0
+        ],
+        "d": [
+          2.65,
+          0
+        ],
+        "e": [
+          0,
+          1.95
+        ]
+      },
+      "assumptions": [
+        "perp a b b c",
+        "midp d b c",
+        "midp e a b"
+      ],
+      "goals": [
+        "lequation 1 a d * a d 1 c e * c e -5 d e * d e 0"
+      ],
+      "translation": "AD^2+CE^2-5DE^2=0 is represented with Newclid's length-equation predicate."
+    },
+    {
+      "id": "G5",
+      "bank_id": "PD-MATH-IX-024",
+      "description": "Rectangle interior point: opposite squared-distance sums",
+      "points": {
+        "a": [
+          0,
+          0
+        ],
+        "b": [
+          5.9,
+          0
+        ],
+        "c": [
+          5.9,
+          3.2
+        ],
+        "d": [
+          0,
+          3.2
+        ],
+        "o": [
+          1.7,
+          1.1
+        ]
+      },
+      "assumptions": [
+        "para a b c d",
+        "para a d b c",
+        "perp a b b c"
+      ],
+      "goals": [
+        "lequation 1 o a * o a 1 o c * o c -1 o b * o b -1 o d * o d 0"
+      ],
+      "translation": "Rectangle expanded into parallelism and a right angle. O is inside the sample diagram; the equality also holds outside, so no stronger location premise is needed."
+    },
+    {
+      "id": "N1",
+      "lhs": "sec(A)**2-tan(A)**2",
+      "rhs": "2",
+      "description": "False trigonometric claim; must not solve"
+    },
+    {
+      "id": "N2",
+      "bank_id": null,
+      "description": "Generic triangle falsely claimed to have equal sides",
+      "points": {
+        "a": [
+          0,
+          0
+        ],
+        "b": [
+          4.7,
+          0
+        ],
+        "c": [
+          1.2,
+          3.1
+        ]
+      },
+      "assumptions": [
+        "ncoll a b c"
+      ],
+      "goals": [
+        "cong a b a c"
+      ],
+      "translation": "Negative control: no equal-side assumption."
+    }
+  ],
+  "solver_sha256": {
+    "pipeline.py": "0f4e332c6ea8f54b9fd49e3cbc8f3a78169c284544e9bd8a59c4e8e270da0cf1",
+    "automatic_trig_solver.py": "e8f35806f5e8866e0489ad51da5a795ce73d81468a2f174108cdf3924293b1ec",
+    "newclid_probe.py": "148beb745c575cf7cb5f5023a27bf44a1055854c5dc021619bd340a9117c713c",
+    "formalizations.json": "9de872259c31f95f968bb8ed1e65821f261d76a201d80beeaeab1a58a344ec0f"
+  },
+  "selection": "Purposive small transfer test; five new true trig identities and five previously unsupported geometry bank questions, plus two false controls. Not random and not a population accuracy estimate."
+}

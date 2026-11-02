@@ -1,0 +1,70 @@
+{
+  "id": "G1",
+  "description": "Perpendicular diagonals bisecting each other imply a rhombus",
+  "input": {
+    "id": "G1",
+    "bank_id": "PD-MATH-IX-001",
+    "description": "Perpendicular diagonals bisecting each other imply a rhombus",
+    "points": {
+      "a": [
+        3.7,
+        0
+      ],
+      "b": [
+        0,
+        2.3
+      ],
+      "c": [
+        -3.7,
+        0
+      ],
+      "d": [
+        0,
+        -2.3
+      ],
+      "o": [
+        0,
+        0
+      ]
+    },
+    "assumptions": [
+      "midp o a c",
+      "midp o b d",
+      "perp a c b d"
+    ],
+    "goals": [
+      "cong a b b c",
+      "cong b c c d",
+      "cong c d d a"
+    ],
+    "translation": "Rhombus conclusion expanded to four equal sides; coordinates are a matching diagram, not proof premises."
+  },
+  "llm_api_calls": 0,
+  "llm_api_tokens": 0,
+  "counted_in_production_metrics": false,
+  "stage": "write_proof",
+  "status": "ENGINE_PROVED_PENDING_INDEPENDENT_CHECK",
+  "solver_goal_checked": true,
+  "run_infos": {
+    "runtime": 0.39464831352233887,
+    "success": true,
+    "steps": 35,
+    "success_per_goal": {
+      "BC = AB succeeded": true,
+      "CD = AD succeeded": true,
+      "CD = BC succeeded": true
+    },
+    "agent_stats": {
+      "agent_type": "follow_deductions",
+      "n_deductions_stored": 34,
+      "n_deductions_followed": 34
+    }
+  },
+  "independently_checked": false,
+  "independent_checker": "Existing checker only supports PD-MATH-VII-002; it cannot check these cases.",
+  "production_adapter": "UNSUPPORTED: no saved formalization, route, general checker or renderer for this bank question.",
+  "proof_text": "# Problem setup:\n\n## Points\n\n- A(3.7000, 0.0000)\n- B(0.0000, 2.3000)\n- C(-3.7000, 0.0000)\n- D(0.0000, -2.3000)\n- O(0.0000, 0.0000)\n\n## Assumptions:\n\n[C0] : O is the midpoint of AC\n[C1] : O is the midpoint of BD\n[C2] : AC ⟂ BD\n\n## Numerical checks\n\n[N0] : ▲ABO has the same orientation as ▲BCO\n[N1] : A ≠ C\n[N2] : A ≠ O\n[N3] : C ≠ O\n[N4] : B ≠ D\n[N5] : B ≠ O\n[N6] : D ≠ O\n[N7] : ▲ABO has the same orientation as ▲AOD\n[N8] : ▲ABO has the same orientation as ▲CDO\n\n\n# Goals\n\nBC = AB : Proved [11]\nCD = AD : Proved [23]\nCD = BC : Proved [24]\n\n\n# Proof:\n\n000. | O is the midpoint of AC [C0] =(r56 Properties of midpoint (coll))> A, C, O are collinear [0]\n001. | A, C, O are collinear [0], A ≠ C [N1], A ≠ O [N2], C ≠ O [N3] =(r82 Parallel from collinear)> AO ∥ AC [1]\n002. | A, C, O are collinear [0], A ≠ C [N1], A ≠ O [N2], C ≠ O [N3] =(r82 Parallel from collinear)> AO ∥ CO [2]\n003. | O is the midpoint of BD [C1] =(r56 Properties of midpoint (coll))> B, D, O are collinear [3]\n004. | B, D, O are collinear [3], B ≠ D [N4], B ≠ O [N5], D ≠ O [N6] =(r82 Parallel from collinear)> BO ∥ BD [4]\n005. | AO ∥ AC [1], AO ∥ CO [2], BO ∥ BD [4], AC ⟂ BD [C2] =(AR Deduction)> ∠(AO,BO) = ∠(BO,CO) [5]\n006. | O is the midpoint of AC [C0] =(r51 Midpoint splits in two)> AC:AO = 2/1 [6]\n007. | O is the midpoint of AC [C0] =(r51 Midpoint splits in two)> AC:CO = 2/1 [7]\n008. | AC:AO = 2/1 [6], AC:CO = 2/1 [7] =(AR Deduction)> AO:BO = CO:BO [8]\n009. | ∠(AO,BO) = ∠(BO,CO) [5], AO:BO = CO:BO [8], ▲ABO has the same orientation as ▲BCO [N0] =(r63 SAS Similarity of triangles (Reverse))> ▲ABO ≅ ▲CBO [9]\n010. | ▲ABO has the same orientation as ▲BCO [N0], ▲ABO ≅ ▲CBO [9] =(r53 Properties of similar triangles (Reverse))> AB:BC = BO:BO [10]\n011. | AB:BC = BO:BO [10] =(AR Deduction)> BC = AB [11]\n012. | B, D, O are collinear [3], B ≠ D [N4], B ≠ O [N5], D ≠ O [N6] =(r82 Parallel from collinear)> DO ∥ BO [12]\n013. | AO ∥ AC [1], BO ∥ BD [4], DO ∥ BO [12], AC ⟂ BD [C2] =(AR Deduction)> ∠(AO,BO) = ∠(DO,AO) [13]\n014. | O is the midpoint of BD [C1] =(r51 Midpoint splits in two)> BD:BO = 2/1 [14]\n015. | O is the midpoint of BD [C1] =(r51 Midpoint splits in two)> BD:DO = 2/1 [15]\n016. | BD:BO = 2/1 [14], BD:DO = 2/1 [15] =(AR Deduction)> AO:AO = BO:DO [16]\n017. | ∠(AO,BO) = ∠(DO,AO) [13], AO:AO = BO:DO [16], ▲ABO has the same orientation as ▲AOD [N7] =(r63 SAS Similarity of triangles (Reverse))> ▲ABO ≅ ▲ADO [17]\n018. | ▲ABO has the same orientation as ▲AOD [N7], ▲ABO ≅ ▲ADO [17] =(r53 Properties of similar triangles (Reverse))> AB:AD = BO:DO [18]\n019. | AO ∥ CO [2], DO ∥ BO [12] =(AR Deduction)> ∠(AO,BO) = ∠(CO,DO) [19]\n020. | AC:AO = 2/1 [6], AC:CO = 2/1 [7], BD:BO = 2/1 [14], BD:DO = 2/1 [15] =(AR Deduction)> AO:BO = CO:DO [20]\n021. | ∠(AO,BO) = ∠(CO,DO) [19], AO:BO = CO:DO [20], ▲ABO has the same orientation as ▲CDO [N8] =(r62 SAS Similarity of triangles (Direct))> ▲ABO ≅ ▲CDO [21]\n022. | ▲ABO has the same orientation as ▲CDO [N8], ▲ABO ≅ ▲CDO [21] =(r52 Properties of similar triangles (Direct))> AB:BO = CD:DO [22]\n023. | AB:AD = BO:DO [18], AB:BO = CD:DO [22] =(AR Deduction)> CD = AD [23]\n024. | AB:BC = BO:BO [10], AB:BO = CD:DO [22], BD:BO = 2/1 [14], BD:DO = 2/1 [15] =(AR Deduction)> CD = BC [24]\n\n\n# Appendix: AR deductions:\n\n\n\n005. | Angle Chasing to prove ∠(AO,BO) = ∠(BO,CO):\n| Premise AO ∥ AC gives a linear equation with coefficients {Âˆ AC: 1, Âˆ AO: -1}\n| Premise AO ∥ CO gives a linear equation with coefficients {Âˆ AO: 1, Âˆ CO: -1}\n| Then {Âˆ AC: 2, Âˆ AO: -2} + 1 x {Âˆ AO: 1, Âˆ CO: -1}\n|    = {Âˆ AC: 2, Âˆ AO: -1, Âˆ CO: -1}\n| Premise BO ∥ BD gives a linear equation with coefficients {Âˆ BD: 1, Âˆ BO: -1}\n| Then {Âˆ AC: 2, Âˆ AO: -1, Âˆ CO: -1} + -2 x {Âˆ BD: 1, Âˆ BO: -1}\n|    = {Âˆ AC: 2, Âˆ AO: -1, Âˆ CO: -1, Âˆ BD: -2, Âˆ BO: 2}\n| Premise AC ⟂ BD gives a linear equation with coefficients {Âˆ AC: 1, Âˆ BD: -1}\n| Then {Âˆ AC: 2, Âˆ AO: -1, Âˆ CO: -1, Âˆ BD: -2, Âˆ BO: 2} + -2 x {Âˆ AC: 1, Âˆ BD: -1}\n|    = {Âˆ AO: -1, Âˆ CO: -1, Âˆ BO: 2}\nWe are left with a linear equation with coefficients {Âˆ AO: -1, Âˆ CO: -1, Âˆ BO: 2} that gives ∠(AO,BO) = ∠(BO,CO)\n\n\n\n008. | Ratio Chasing to prove AO:BO = CO:BO:\n| Premise AC:AO = 2/1 gives a linear equation with coefficients {AC²: 1, AO²: -1}\n| Premise AC:CO = 2/1 gives a linear equation with coefficients {AC²: 1, CO²: -1}\n| Then {AC²: -1, AO²: 1} + 1 x {AC²: 1, CO²: -1}\n|    = {AO²: 1, CO²: -1}\nWe are left with a linear equation with coefficients {AO²: 1, CO²: -1} that gives AO:BO = CO:BO\n\n\n\n011. | Ratio Chasing to prove BC = AB:\n| Premise AB:BC = BO:BO gives a linear equation with coefficients {AB²: 1, BC²: -1}\nWe are left with a linear equation with coefficients {AB²: 1, BC²: -1} that gives BC = AB\n\n\n\n013. | Angle Chasing to prove ∠(AO,BO) = ∠(DO,AO):\n| Premise AO ∥ AC gives a linear equation with coefficients {Âˆ AC: 1, Âˆ AO: -1}\n| Premise BO ∥ BD gives a linear equation with coefficients {Âˆ BD: 1, Âˆ BO: -1}\n| Then {Âˆ AC: 2, Âˆ AO: -2} + -2 x {Âˆ BD: 1, Âˆ BO: -1}\n|    = {Âˆ AC: 2, Âˆ AO: -2, Âˆ BD: -2, Âˆ BO: 2}\n| Premise DO ∥ BO gives a linear equation with coefficients {Âˆ BO: 1, Âˆ DO: -1}\n| Then {Âˆ AC: 2, Âˆ AO: -2, Âˆ BD: -2, Âˆ BO: 2} + -1 x {Âˆ BO: 1, Âˆ DO: -1}\n|    = {Âˆ AC: 2, Âˆ AO: -2, Âˆ BD: -2, Âˆ BO: 1, Âˆ DO: 1}\n| Premise AC ⟂ BD gives a linear equation with coefficients {Âˆ AC: 1, Âˆ BD: -1}\n| Then {Âˆ AC: 2, Âˆ AO: -2, Âˆ BD: -2, Âˆ BO: 1, Âˆ DO: 1} + -2 x {Âˆ AC: 1, Âˆ BD: -1}\n|    = {Âˆ AO: -2, Âˆ BO: 1, Âˆ DO: 1}\nWe are left with a linear equation with coefficients {Âˆ AO: -2, Âˆ BO: 1, Âˆ DO: 1} that gives ∠(AO,BO) = ∠(DO,AO)\n\n\n\n016. | Ratio Chasing to prove AO:AO = BO:DO:\n| Premise BD:BO = 2/1 gives a linear equation with coefficients {BD²: 1, BO²: -1}\n| Premise BD:DO = 2/1 gives a linear equation with coefficients {BD²: 1, DO²: -1}\n| Then {BD²: 1, BO²: -1} + -1 x {BD²: 1, DO²: -1}\n|    = {BO²: -1, DO²: 1}\nWe are left with a linear equation with coefficients {BO²: -1, DO²: 1} that gives AO:AO = BO:DO\n\n\n\n019. | Angle Chasing to prove ∠(AO,BO) = ∠(CO,DO):\n| Premise AO ∥ CO gives a linear equation with coefficients {Âˆ AO: 1, Âˆ CO: -1}\n| Premise DO ∥ BO gives a linear equation with coefficients {Âˆ BO: 1, Âˆ DO: -1}\n| Then {Âˆ AO: -1, Âˆ CO: 1} + 1 x {Âˆ BO: 1, Âˆ DO: -1}\n|    = {Âˆ AO: -1, Âˆ CO: 1, Âˆ BO: 1, Âˆ DO: -1}\nWe are left with a linear equation with coefficients {Âˆ AO: -1, Âˆ CO: 1, Âˆ BO: 1, Âˆ DO: -1} that gives ∠(AO,BO) = ∠(CO,DO)\n\n\n\n020. | Ratio Chasing to prove AO:BO = CO:DO:\n| Premise AC:AO = 2/1 gives a linear equation with coefficients {AC²: 1, AO²: -1}\n| Premise AC:CO = 2/1 gives a linear equation with coefficients {AC²: 1, CO²: -1}\n| Then {AC²: -1, AO²: 1} + 1 x {AC²: 1, CO²: -1}\n|    = {AO²: 1, CO²: -1}\n| Premise BD:BO = 2/1 gives a linear equation with coefficients {BD²: 1, BO²: -1}\n| Then {AO²: 1, CO²: -1} + 1 x {BD²: 1, BO²: -1}\n|    = {AO²: 1, CO²: -1, BD²: 1, BO²: -1}\n| Premise BD:DO = 2/1 gives a linear equation with coefficients {BD²: 1, DO²: -1}\n| Then {AO²: 1, CO²: -1, BD²: 1, BO²: -1} + -1 x {BD²: 1, DO²: -1}\n|    = {AO²: 1, CO²: -1, BO²: -1, DO²: 1}\nWe are left with a linear equation with coefficients {AO²: 1, CO²: -1, BO²: -1, DO²: 1} that gives AO:BO = CO:DO\n\n\n\n023. | Ratio Chasing to prove CD = AD:\n| Premise AB:AD = BO:DO gives a linear equation with coefficients {AB²: 1, AD²: -1, BO²: -1, DO²: 1}\n| Premise AB:BO = CD:DO gives a linear equation with coefficients {AB²: 1, BO²: -1, CD²: -1, DO²: 1}\n| Then {AB²: -1, AD²: 1, BO²: 1, DO²: -1} + 1 x {AB²: 1, BO²: -1, CD²: -1, DO²: 1}\n|    = {AD²: 1, CD²: -1}\nWe are left with a linear equation with coefficients {AD²: 1, CD²: -1} that gives CD = AD\n\n\n\n024. | Ratio Chasing to prove CD = BC:\n| Premise AB:BC = BO:BO gives a linear equation with coefficients {AB²: 1, BC²: -1}\n| Premise AB:BO = CD:DO gives a linear equation with coefficients {AB²: 1, BO²: -1, CD²: -1, DO²: 1}\n| Then {AB²: -1, BC²: 1} + 1 x {AB²: 1, BO²: -1, CD²: -1, DO²: 1}\n|    = {BC²: 1, BO²: -1, CD²: -1, DO²: 1}\n| Premise BD:BO = 2/1 gives a linear equation with coefficients {BD²: 1, BO²: -1}\n| Then {BC²: 1, BO²: -1, CD²: -1, DO²: 1} + -1 x {BD²: 1, BO²: -1}\n|    = {BC²: 1, CD²: -1, DO²: 1, BD²: -1}\n| Premise BD:DO = 2/1 gives a linear equation with coefficients {BD²: 1, DO²: -1}\n| Then {BC²: 1, CD²: -1, DO²: 1, BD²: -1} + 1 x {BD²: 1, DO²: -1}\n|    = {BC²: 1, CD²: -1}\nWe are left with a linear equation with coefficients {BC²: 1, CD²: -1} that gives CD = BC\n\nEnd of proof.",
+  "seconds": 12.871,
+  "production_status": "UNSUPPORTED",
+  "production_reason": "No audited formalization and reusable derivation route is implemented for this question."
+}

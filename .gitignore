@@ -1,0 +1,8 @@
+.venv/
+.tmp/
+.mplconfig/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+README.github-draft.md

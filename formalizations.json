@@ -1,0 +1,11 @@
+{
+  "PD-MATH-X-001": {"method": "rational_trig_identity", "lhs": "(sin(A)+csc(A))**2+(cos(A)+sec(A))**2", "rhs": "5+sec(A)**2*csc(A)**2", "input_note": "Transcribed from the displayed identity; cosec normalized to csc."},
+  "PD-MATH-X-002": {"method": "rational_trig_identity", "lhs": "sec(A)**4*(1-sin(A)**4)-2*tan(A)**2", "rhs": "1", "input_note": "Unicode superscripts normalized to powers."},
+  "PD-MATH-X-004": {"method": "rational_trig_identity", "lhs": "sec(A)**2*csc(A)**2", "rhs": "tan(A)**2+cot(A)**2+2", "input_note": "Cosec normalized to csc."},
+  "PD-MATH-X-005": {"method": "rational_trig_identity", "lhs": "(1+sin(A))/(1-sin(A))-(1-sin(A))/(1+sin(A))", "rhs": "4*tan(A)*sec(A)", "input_note": "Theta renamed A consistently."},
+  "PD-MATH-X-007": {"method": "factor_theorem", "polynomial": "3*x**3+2*x**2-3*x-2", "factor": "3*x+2", "variable": "x", "input_note": "Polynomial and proposed factor transcribed from source."},
+  "PD-MATH-X-021": {"method": "ap_term_relation", "zero_term_index": 4, "target_term_index": 25, "comparison_term_index": 11, "multiplier": 3, "input_note": "Term indices and multiplier transcribed from bilingual source."},
+  "PD-MATH-X-022": {"method": "ap_sum_relation", "first_term": 1, "common_differences": [1, 2, 3], "claim_coefficients": [1, -2, 1], "input_note": "Three common differences and sum relation transcribed from bilingual source."},
+  "PD-MATH-X-030": {"method": "completing_square_no_real_root", "polynomial": "x**2-8*x+18", "variable": "x", "input_note": "Polynomial transcribed from source; method prescribed by source."},
+  "PD-MATH-VII-002": {"method": "isosceles_midpoint_geometry", "figure_asset_id": "IMG-1c994300cc53caa15324", "jgex_input": "p q r = iso_triangle0 p q r; s = midpoint s p q; t = midpoint t p r ? cong r s q t", "input_note": "Original statement and figure checked; only givens and goal encoded."}
+}

@@ -1,0 +1,577 @@
+{
+  "bank_sha256": "93e91d9beec905d355aeddcf221aabd26f2af8ba0593d0b671ef626c8e5bdac2",
+  "examples": [
+    {
+      "topic": "trigonometry",
+      "question_id": "PD-MATH-X-001",
+      "fresh_route_seconds": 0.694,
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "stages": [
+        {
+          "stage": "1. Read the source",
+          "engine": "Python JSON reader",
+          "input": {
+            "question_id": "PD-MATH-X-001"
+          },
+          "output": {
+            "question_text_original": "3. a) Prove the following Identity:\n\n$$(\\sin A + \\text{cosec } A)^2 + (\\cos A + \\text{sec } A)^2 = 5 + \\text{sec}^2 A \\text{ cosec}^2 A \\tag{3}$$",
+            "figure_required": false
+          },
+          "explanation": "Reads the existing extracted bank; OCR/extraction and any earlier chat assistance are outside this run.",
+          "llm_call_executed": false
+        },
+        {
+          "stage": "2. Load the saved formalization",
+          "engine": "Python parser",
+          "input": {
+            "method": "rational_trig_identity",
+            "lhs": "(sin(A)+csc(A))**2+(cos(A)+sec(A))**2",
+            "rhs": "5+sec(A)**2*csc(A)**2",
+            "input_note": "Transcribed from the displayed identity; cosec normalized to csc."
+          },
+          "output": {
+            "lhs": "(sin(A) + csc(A))**2 + (cos(A) + sec(A))**2",
+            "rhs": "csc(A)**2*sec(A)**2 + 5",
+            "domain": [
+              "C != 0",
+              "S != 0"
+            ],
+            "notation": "S=sin(A), C=cos(A)"
+          },
+          "explanation": "The saved input was transcribed and reviewed beforehand. This stage does not automatically understand new prose or figures.",
+          "llm_call_executed": false
+        },
+        {
+          "stage": "3. Discover the proof",
+          "engine": "Bounded Python rule search using SymPy",
+          "input": {
+            "lhs": "(sin(A) + csc(A))**2 + (cos(A) + sec(A))**2",
+            "rhs": "csc(A)**2*sec(A)**2 + 5",
+            "domain": [
+              "C != 0",
+              "S != 0"
+            ],
+            "notation": "S=sin(A), C=cos(A)"
+          },
+          "output": {
+            "diagnostics": {
+              "starting_side": "LHS",
+              "states_explored": 26,
+              "elapsed_seconds": 0.688,
+              "trace_replayed": true
+            },
+            "derivation": [
+              {
+                "input": "(sin(A) + csc(A))**2 + (cos(A) + sec(A))**2",
+                "output": "(sin(A) + 1/sin(A))**2 + (cos(A) + 1/cos(A))**2",
+                "rule_id": "reciprocal_quotient",
+                "reason": "Use the reciprocal and quotient identities."
+              },
+              {
+                "input": "(sin(A) + 1/sin(A))**2 + (cos(A) + 1/cos(A))**2",
+                "output": "sin(A)**2 + cos(A)**2 + 4 + cos(A)**(-2) + sin(A)**(-2)",
+                "rule_id": "algebra_expand",
+                "reason": "Expand algebraically."
+              },
+              {
+                "input": "sin(A)**2 + cos(A)**2 + 4 + cos(A)**(-2) + sin(A)**(-2)",
+                "output": "5 + cos(A)**(-2) + sin(A)**(-2)",
+                "rule_id": "pythagorean_sum",
+                "reason": "Use sin² A + cos² A = 1."
+              },
+              {
+                "input": "5 + cos(A)**(-2) + sin(A)**(-2)",
+                "output": "(5*sin(A)**2*cos(A)**2 + sin(A)**2 + cos(A)**2)/(sin(A)**2*cos(A)**2)",
+                "rule_id": "algebra_factor",
+                "reason": "Combine and factor the algebraic expression."
+              },
+              {
+                "input": "(5*sin(A)**2*cos(A)**2 + sin(A)**2 + cos(A)**2)/(sin(A)**2*cos(A)**2)",
+                "output": "(5*sin(A)**2*cos(A)**2 + 1)/(sin(A)**2*cos(A)**2)",
+                "rule_id": "pythagorean_sum",
+                "reason": "Use sin² A + cos² A = 1."
+              },
+              {
+                "input": "(5*sin(A)**2*cos(A)**2 + 1)/(sin(A)**2*cos(A)**2)",
+                "output": "csc(A)**2*sec(A)**2 + 5",
+                "rule_id": "reciprocal_quotient_finish",
+                "reason": "Use reciprocal/quotient identities and simplify to obtain the other side."
+              }
+            ]
+          },
+          "explanation": "A fresh local solver run produces these outputs. No LLM selects the steps during execution.",
+          "llm_call_executed": false
+        },
+        {
+          "stage": "4. Check the mathematics",
+          "engine": "SymPy and pipeline checks",
+          "input": {
+            "lhs": "(sin(A) + csc(A))**2 + (cos(A) + sec(A))**2",
+            "rhs": "csc(A)**2*sec(A)**2 + 5",
+            "domain": [
+              "C != 0",
+              "S != 0"
+            ],
+            "notation": "S=sin(A), C=cos(A)"
+          },
+          "output": {
+            "scope": "Search replays its permitted rules; the serialized trace is also checked for exact equality and domain safety.",
+            "steps": [
+              {
+                "rule": "reciprocal_quotient",
+                "exact_equality": true,
+                "domain_safe": true,
+                "pipeline_verification": {
+                  "passed": true,
+                  "checker": "exact_sympy_rule_replay"
+                }
+              },
+              {
+                "rule": "algebra_expand",
+                "exact_equality": true,
+                "domain_safe": true,
+                "pipeline_verification": {
+                  "passed": true,
+                  "checker": "exact_sympy_rule_replay"
+                }
+              },
+              {
+                "rule": "pythagorean_sum",
+                "exact_equality": true,
+                "domain_safe": true,
+                "pipeline_verification": {
+                  "passed": true,
+                  "checker": "exact_sympy_rule_replay"
+                }
+              },
+              {
+                "rule": "algebra_factor",
+                "exact_equality": true,
+                "domain_safe": true,
+                "pipeline_verification": {
+                  "passed": true,
+                  "checker": "exact_sympy_rule_replay"
+                }
+              },
+              {
+                "rule": "pythagorean_sum",
+                "exact_equality": true,
+                "domain_safe": true,
+                "pipeline_verification": {
+                  "passed": true,
+                  "checker": "exact_sympy_rule_replay"
+                }
+              },
+              {
+                "rule": "reciprocal_quotient_finish",
+                "exact_equality": true,
+                "domain_safe": true,
+                "pipeline_verification": {
+                  "passed": true,
+                  "checker": "exact_sympy_rule_replay"
+                }
+              }
+            ]
+          },
+          "explanation": "Acceptance is limited to the checks listed here; formalization and school presentation have separate review status.",
+          "llm_call_executed": false
+        },
+        {
+          "stage": "5. Render the student answer",
+          "engine": "Python render_answer template",
+          "input": [
+            {
+              "input": "(sin(A) + csc(A))**2 + (cos(A) + sec(A))**2",
+              "output": "(sin(A) + 1/sin(A))**2 + (cos(A) + 1/cos(A))**2",
+              "rule_id": "reciprocal_quotient",
+              "supporting_premises": [
+                "original expression"
+              ],
+              "relation": "equality",
+              "required_assumptions": [
+                "C != 0",
+                "S != 0"
+              ],
+              "verification": {
+                "passed": true,
+                "checker": "exact_sympy_rule_replay"
+              },
+              "origin": "code_search",
+              "reason": "Use the reciprocal and quotient identities.",
+              "input_latex": "\\left(\\sin{\\left(A \\right)} + \\csc{\\left(A \\right)}\\right)^{2} + \\left(\\cos{\\left(A \\right)} + \\sec{\\left(A \\right)}\\right)^{2}",
+              "output_latex": "\\left(\\sin{\\left(A \\right)} + \\frac{1}{\\sin{\\left(A \\right)}}\\right)^{2} + \\left(\\cos{\\left(A \\right)} + \\frac{1}{\\cos{\\left(A \\right)}}\\right)^{2}"
+            },
+            {
+              "input": "(sin(A) + 1/sin(A))**2 + (cos(A) + 1/cos(A))**2",
+              "output": "sin(A)**2 + cos(A)**2 + 4 + cos(A)**(-2) + sin(A)**(-2)",
+              "rule_id": "algebra_expand",
+              "supporting_premises": [
+                "original expression"
+              ],
+              "relation": "equality",
+              "required_assumptions": [
+                "C != 0",
+                "S != 0"
+              ],
+              "verification": {
+                "passed": true,
+                "checker": "exact_sympy_rule_replay"
+              },
+              "origin": "code_search",
+              "reason": "Expand algebraically.",
+              "input_latex": "\\left(\\sin{\\left(A \\right)} + \\frac{1}{\\sin{\\left(A \\right)}}\\right)^{2} + \\left(\\cos{\\left(A \\right)} + \\frac{1}{\\cos{\\left(A \\right)}}\\right)^{2}",
+              "output_latex": "\\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)} + 4 + \\frac{1}{\\cos^{2}{\\left(A \\right)}} + \\frac{1}{\\sin^{2}{\\left(A \\right)}}"
+            },
+            {
+              "input": "sin(A)**2 + cos(A)**2 + 4 + cos(A)**(-2) + sin(A)**(-2)",
+              "output": "5 + cos(A)**(-2) + sin(A)**(-2)",
+              "rule_id": "pythagorean_sum",
+              "supporting_premises": [
+                "trig identity"
+              ],
+              "relation": "equality",
+              "required_assumptions": [
+                "C != 0",
+                "S != 0"
+              ],
+              "verification": {
+                "passed": true,
+                "checker": "exact_sympy_rule_replay"
+              },
+              "origin": "code_search",
+              "reason": "Use sin² A + cos² A = 1.",
+              "input_latex": "\\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)} + 4 + \\frac{1}{\\cos^{2}{\\left(A \\right)}} + \\frac{1}{\\sin^{2}{\\left(A \\right)}}",
+              "output_latex": "5 + \\frac{1}{\\cos^{2}{\\left(A \\right)}} + \\frac{1}{\\sin^{2}{\\left(A \\right)}}"
+            },
+            {
+              "input": "5 + cos(A)**(-2) + sin(A)**(-2)",
+              "output": "(5*sin(A)**2*cos(A)**2 + sin(A)**2 + cos(A)**2)/(sin(A)**2*cos(A)**2)",
+              "rule_id": "algebra_factor",
+              "supporting_premises": [
+                "original expression"
+              ],
+              "relation": "equality",
+              "required_assumptions": [
+                "C != 0",
+                "S != 0"
+              ],
+              "verification": {
+                "passed": true,
+                "checker": "exact_sympy_rule_replay"
+              },
+              "origin": "code_search",
+              "reason": "Combine and factor the algebraic expression.",
+              "input_latex": "5 + \\frac{1}{\\cos^{2}{\\left(A \\right)}} + \\frac{1}{\\sin^{2}{\\left(A \\right)}}",
+              "output_latex": "\\frac{5 \\sin^{2}{\\left(A \\right)} \\cos^{2}{\\left(A \\right)} + \\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}}{\\sin^{2}{\\left(A \\right)} \\cos^{2}{\\left(A \\right)}}"
+            },
+            {
+              "input": "(5*sin(A)**2*cos(A)**2 + sin(A)**2 + cos(A)**2)/(sin(A)**2*cos(A)**2)",
+              "output": "(5*sin(A)**2*cos(A)**2 + 1)/(sin(A)**2*cos(A)**2)",
+              "rule_id": "pythagorean_sum",
+              "supporting_premises": [
+                "trig identity"
+              ],
+              "relation": "equality",
+              "required_assumptions": [
+                "C != 0",
+                "S != 0"
+              ],
+              "verification": {
+                "passed": true,
+                "checker": "exact_sympy_rule_replay"
+              },
+              "origin": "code_search",
+              "reason": "Use sin² A + cos² A = 1.",
+              "input_latex": "\\frac{5 \\sin^{2}{\\left(A \\right)} \\cos^{2}{\\left(A \\right)} + \\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}}{\\sin^{2}{\\left(A \\right)} \\cos^{2}{\\left(A \\right)}}",
+              "output_latex": "\\frac{5 \\sin^{2}{\\left(A \\right)} \\cos^{2}{\\left(A \\right)} + 1}{\\sin^{2}{\\left(A \\right)} \\cos^{2}{\\left(A \\right)}}"
+            },
+            {
+              "input": "(5*sin(A)**2*cos(A)**2 + 1)/(sin(A)**2*cos(A)**2)",
+              "output": "csc(A)**2*sec(A)**2 + 5",
+              "rule_id": "reciprocal_quotient_finish",
+              "supporting_premises": [
+                "original expression"
+              ],
+              "relation": "equality",
+              "required_assumptions": [
+                "C != 0",
+                "S != 0"
+              ],
+              "verification": {
+                "passed": true,
+                "checker": "exact_sympy_rule_replay"
+              },
+              "origin": "code_search",
+              "reason": "Use reciprocal/quotient identities and simplify to obtain the other side.",
+              "input_latex": "\\frac{5 \\sin^{2}{\\left(A \\right)} \\cos^{2}{\\left(A \\right)} + 1}{\\sin^{2}{\\left(A \\right)} \\cos^{2}{\\left(A \\right)}}",
+              "output_latex": "\\csc^{2}{\\left(A \\right)} \\sec^{2}{\\left(A \\right)} + 5"
+            }
+          ],
+          "output": {
+            "answer_markdown": "## PD-MATH-X-001\n\n3. a) Prove the following Identity:\n\n$$(\\sin A + \\text{cosec } A)^2 + (\\cos A + \\text{sec } A)^2 = 5 + \\text{sec}^2 A \\text{ cosec}^2 A \\tag{3}$$\n\n**Solution**\n\nStarting with the LHS:\n\n$$\\left(\\sin{\\left(A \\right)} + \\csc{\\left(A \\right)}\\right)^{2} + \\left(\\cos{\\left(A \\right)} + \\sec{\\left(A \\right)}\\right)^{2}$$\n\n$$= \\left(\\sin{\\left(A \\right)} + \\frac{1}{\\sin{\\left(A \\right)}}\\right)^{2} + \\left(\\cos{\\left(A \\right)} + \\frac{1}{\\cos{\\left(A \\right)}}\\right)^{2}$$\n\nUse the reciprocal and quotient identities.\n\n$$= \\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)} + 4 + \\frac{1}{\\cos^{2}{\\left(A \\right)}} + \\frac{1}{\\sin^{2}{\\left(A \\right)}}$$\n\nExpand algebraically.\n\n$$= 5 + \\frac{1}{\\cos^{2}{\\left(A \\right)}} + \\frac{1}{\\sin^{2}{\\left(A \\right)}}$$\n\nUse sin² A + cos² A = 1.\n\n$$= \\frac{5 \\sin^{2}{\\left(A \\right)} \\cos^{2}{\\left(A \\right)} + \\sin^{2}{\\left(A \\right)} + \\cos^{2}{\\left(A \\right)}}{\\sin^{2}{\\left(A \\right)} \\cos^{2}{\\left(A \\right)}}$$\n\nCombine and factor the algebraic expression.\n\n$$= \\frac{5 \\sin^{2}{\\left(A \\right)} \\cos^{2}{\\left(A \\right)} + 1}{\\sin^{2}{\\left(A \\right)} \\cos^{2}{\\left(A \\right)}}$$\n\nUse sin² A + cos² A = 1.\n\n$$= \\csc^{2}{\\left(A \\right)} \\sec^{2}{\\left(A \\right)} + 5$$\n\nUse reciprocal/quotient identities and simplify to obtain the other side.\n\nHence the identity holds wherever both original sides are defined.\n",
+            "presentation_review": "needs_review_for_algebraic_jumps"
+          },
+          "explanation": "This prose is assembled by code. In geometry the SAS explanation is a separate handwritten template, not a translation or automatic verification of the raw Newclid trace.",
+          "llm_call_executed": false
+        },
+        {
+          "stage": "6. Show the LLM boundary",
+          "engine": "No LLM call",
+          "input": {
+            "answer_available": true
+          },
+          "output": {
+            "before_llm_call": {
+              "available_input": "The checked proof and rendered answer above",
+              "request_sent": null
+            },
+            "call": {
+              "executed": false,
+              "reason": "No LLM client or invocation exists on this route"
+            },
+            "after_llm_call": {
+              "response": null,
+              "answer_changed_by_llm": false
+            },
+            "runtime_api_usage": {
+              "calls": 0,
+              "input_tokens": 0,
+              "output_tokens": 0
+            },
+            "baseline_llm_usage": null,
+            "tokens_saved_vs_baseline": null
+          },
+          "explanation": "There is no actual before/after model response in this pipeline. Zero runtime API use excludes the AI used to build code, prepare inputs, or explain this walkthrough in chat.",
+          "llm_call_executed": false
+        }
+      ]
+    },
+    {
+      "topic": "geometry",
+      "question_id": "PD-MATH-VII-002",
+      "fresh_route_seconds": 5.177,
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "stages": [
+        {
+          "stage": "1. Read the source",
+          "engine": "Python JSON reader",
+          "input": {
+            "question_id": "PD-MATH-VII-002"
+          },
+          "output": {
+            "question_text_original": "20.\n\nIn the given diagram, $\\triangle PQR$ is an isosceles triangle. S and T are the midpoints of PQ and PR respectively. Prove that $RS = QT$.",
+            "figure_required": true
+          },
+          "explanation": "Reads the existing extracted bank; OCR/extraction and any earlier chat assistance are outside this run.",
+          "llm_call_executed": false
+        },
+        {
+          "stage": "2. Load the saved formalization",
+          "engine": "Python parser",
+          "input": {
+            "method": "isosceles_midpoint_geometry",
+            "figure_asset_id": "IMG-1c994300cc53caa15324",
+            "jgex_input": "p q r = iso_triangle0 p q r; s = midpoint s p q; t = midpoint t p r ? cong r s q t",
+            "input_note": "Original statement and figure checked; only givens and goal encoded."
+          },
+          "output": {
+            "jgex_input": "p q r = iso_triangle0 p q r; s = midpoint s p q; t = midpoint t p r ? cong r s q t",
+            "figure_asset_id": "IMG-1c994300cc53caa15324",
+            "givens": [
+              "PQ = PR",
+              "S is midpoint of PQ",
+              "T is midpoint of PR"
+            ],
+            "goal": "RS = QT"
+          },
+          "explanation": "The saved input was transcribed and reviewed beforehand. This stage does not automatically understand new prose or figures.",
+          "llm_call_executed": false
+        },
+        {
+          "stage": "3. Discover the proof",
+          "engine": "Newclid Python interface + Yuclid C++ proof engine",
+          "input": {
+            "jgex_input": "p q r = iso_triangle0 p q r; s = midpoint s p q; t = midpoint t p r ? cong r s q t",
+            "figure_asset_id": "IMG-1c994300cc53caa15324",
+            "givens": [
+              "PQ = PR",
+              "S is midpoint of PQ",
+              "T is midpoint of PR"
+            ],
+            "goal": "RS = QT"
+          },
+          "output": {
+            "status": "NEWCLID_PROVED_INDEPENDENTLY_CHECKED",
+            "raw_proof_text": "# Problem setup:\n\n## Points\n\n- P(-1.8396, 0.9941)\n- Q(-0.2450, -1.4926)\n- R(0.9556, 0.0385)\n- S(-1.0423, -0.2493)\n- T(-0.4420, 0.5163)\n\n## Assumptions:\n\n[C0] : PQ = PR\n[C1] : S is the midpoint of PQ\n[C2] : T is the midpoint of PR\n\n## Numerical checks\n\n[N0] : ▲QST has the same orientation as ▲RST\n[N1] : P ≠ Q\n[N2] : P ≠ S\n[N3] : Q ≠ S\n[N4] : P ≠ R\n[N5] : P ≠ T\n[N6] : R ≠ T\n\n\n# Goals\n\nQT = RS : Proved [14]\n\n\n# Proof:\n\n000. | S is the midpoint of PQ [C1] =(r51 Midpoint splits in two)> PQ:PS = 2/1 [0]\n001. | T is the midpoint of PR [C2] =(r51 Midpoint splits in two)> PR:PT = 2/1 [1]\n002. | PQ = PR [C0], PQ:PS = 2/1 [0], PR:PT = 2/1 [1] =(AR Deduction)> PT = PS [2]\n003. | PT = PS [2] =(r13 Isosceles triangle equal angles)> ∠(PS,ST) = ∠(ST,PT) [3]\n004. | S is the midpoint of PQ [C1] =(r56 Properties of midpoint (coll))> P, Q, S are collinear [4]\n005. | P, Q, S are collinear [4], P ≠ Q [N1], P ≠ S [N2], Q ≠ S [N3] =(r82 Parallel from collinear)> QS ∥ PS [5]\n006. | T is the midpoint of PR [C2] =(r56 Properties of midpoint (coll))> P, R, T are collinear [6]\n007. | P, R, T are collinear [6], P ≠ R [N4], P ≠ T [N5], R ≠ T [N6] =(r82 Parallel from collinear)> RT ∥ PT [7]\n008. | ∠(PS,ST) = ∠(ST,PT) [3], QS ∥ PS [5], RT ∥ PT [7] =(AR Deduction)> ∠(QS,ST) = ∠(ST,RT) [8]\n009. | S is the midpoint of PQ [C1] =(r51 Midpoint splits in two)> PQ:QS = 2/1 [9]\n010. | T is the midpoint of PR [C2] =(r51 Midpoint splits in two)> PR:RT = 2/1 [10]\n011. | PQ = PR [C0], PQ:QS = 2/1 [9], PR:RT = 2/1 [10] =(AR Deduction)> QS:RT = ST:ST [11]\n012. | ∠(QS,ST) = ∠(ST,RT) [8], QS:RT = ST:ST [11], ▲QST has the same orientation as ▲RST [N0] =(r63 SAS Similarity of triangles (Reverse))> ▲QST ≅ ▲RTS [12]\n013. | ▲QST has the same orientation as ▲RST [N0], ▲QST ≅ ▲RTS [12] =(r53 Properties of similar triangles (Reverse))> QT:RS = ST:ST [13]\n014. | QT:RS = ST:ST [13] =(AR Deduction)> QT = RS [14]\n\n\n# Appendix: AR deductions:\n\n\n\n002. | Ratio Chasing to prove PT = PS:\n| Premise PQ = PR gives a linear equation with coefficients {PQ²: 1, PR²: -1}\n| Premise PQ:PS = 2/1 gives a linear equation with coefficients {PQ²: 1, PS²: -1}\n| Then {PQ²: 1, PR²: -1} + -1 x {PQ²: 1, PS²: -1}\n|    = {PR²: -1, PS²: 1}\n| Premise PR:PT = 2/1 gives a linear equation with coefficients {PR²: 1, PT²: -1}\n| Then {PR²: -1, PS²: 1} + 1 x {PR²: 1, PT²: -1}\n|    = {PS²: 1, PT²: -1}\nWe are left with a linear equation with coefficients {PS²: 1, PT²: -1} that gives PT = PS\n\n\n\n008. | Angle Chasing to prove ∠(QS,ST) = ∠(ST,RT):\n| Premise ∠(PS,ST) = ∠(ST,PT) gives a linear equation with coefficients {Âˆ PS: -1, Âˆ PT: -1, Âˆ ST: 2}\n| Premise QS ∥ PS gives a linear equation with coefficients {Âˆ PS: 1, Âˆ QS: -1}\n| Then {Âˆ PS: -1, Âˆ PT: -1, Âˆ ST: 2} + 1 x {Âˆ PS: 1, Âˆ QS: -1}\n|    = {Âˆ PT: -1, Âˆ ST: 2, Âˆ QS: -1}\n| Premise RT ∥ PT gives a linear equation with coefficients {Âˆ PT: 1, Âˆ RT: -1}\n| Then {Âˆ PT: -1, Âˆ ST: 2, Âˆ QS: -1} + 1 x {Âˆ PT: 1, Âˆ RT: -1}\n|    = {Âˆ ST: 2, Âˆ QS: -1, Âˆ RT: -1}\nWe are left with a linear equation with coefficients {Âˆ ST: 2, Âˆ QS: -1, Âˆ RT: -1} that gives ∠(QS,ST) = ∠(ST,RT)\n\n\n\n011. | Ratio Chasing to prove QS:RT = ST:ST:\n| Premise PQ = PR gives a linear equation with coefficients {PQ²: 1, PR²: -1}\n| Premise PQ:QS = 2/1 gives a linear equation with coefficients {PQ²: 1, QS²: -1}\n| Then {PQ²: 1, PR²: -1} + -1 x {PQ²: 1, QS²: -1}\n|    = {PR²: -1, QS²: 1}\n| Premise PR:RT = 2/1 gives a linear equation with coefficients {PR²: 1, RT²: -1}\n| Then {PR²: -1, QS²: 1} + 1 x {PR²: 1, RT²: -1}\n|    = {QS²: 1, RT²: -1}\nWe are left with a linear equation with coefficients {QS²: 1, RT²: -1} that gives QS:RT = ST:ST\n\n\n\n014. | Ratio Chasing to prove QT = RS:\n| Premise QT:RS = ST:ST gives a linear equation with coefficients {QT²: 1, RS²: -1}\nWe are left with a linear equation with coefficients {QT²: 1, RS²: -1} that gives QT = RS\n\nEnd of proof.",
+            "solver_goal_checked": true
+          },
+          "explanation": "A fresh local solver run produces these outputs. No LLM selects the steps during execution.",
+          "llm_call_executed": false
+        },
+        {
+          "stage": "4. Check the mathematics",
+          "engine": "SymPy and pipeline checks",
+          "input": {
+            "jgex_input": "p q r = iso_triangle0 p q r; s = midpoint s p q; t = midpoint t p r ? cong r s q t",
+            "figure_asset_id": "IMG-1c994300cc53caa15324",
+            "givens": [
+              "PQ = PR",
+              "S is midpoint of PQ",
+              "T is midpoint of PR"
+            ],
+            "goal": "RS = QT"
+          },
+          "output": {
+            "figure_sha256_verified": true,
+            "figure_review": "visually_checked_against_bank_figure",
+            "proof_inputs_and_goal_checked": true,
+            "independent_replay": {
+              "passed": true,
+              "checks": {
+                "PS_squared_is_PQ_squared_over_4": true,
+                "PT_squared_is_PR_squared_over_4": true,
+                "RS_QT_squared_difference_follows_equal_sides": true
+              },
+              "reason": "For midpoints S=Q/2 and T=R/2, RS²−QT²=3(PR²−PQ²)/4=0; segment lengths are nonnegative."
+            },
+            "symbolic_working": {
+              "coordinate_input": {
+                "P": "(0,0)",
+                "Q": "(qx,qy)",
+                "R": "(rx,ry)",
+                "S": "(qx/2,qy/2)",
+                "T": "(rx/2,ry/2)"
+              },
+              "RS_squared": "qx**2/4 - qx*rx + qy**2/4 - qy*ry + rx**2 + ry**2",
+              "QT_squared": "qx**2 - qx*rx + qy**2 - qy*ry + rx**2/4 + ry**2/4",
+              "difference": "-3*qx**2/4 - 3*qy**2/4 + 3*rx**2/4 + 3*ry**2/4",
+              "identity_residual": "0",
+              "given": "PR = PQ, hence PR^2 - PQ^2 = 0",
+              "conclusion": "RS^2 = QT^2; nonnegative lengths imply RS = QT",
+              "scope": "Checks this encoded conclusion independently; does not replay Yuclid's individual deductions or validate rendered SAS prose."
+            }
+          },
+          "explanation": "Acceptance is limited to the checks listed here; formalization and school presentation have separate review status.",
+          "llm_call_executed": false
+        },
+        {
+          "stage": "5. Render the student answer",
+          "engine": "Python render_answer template",
+          "input": [
+            {
+              "input": "S is midpoint of PQ",
+              "output": "PS² = PQ²/4",
+              "rule_id": "midpoint_S",
+              "supporting_premises": [
+                "S is midpoint of PQ"
+              ],
+              "relation": "equality",
+              "required_assumptions": [],
+              "verification": {
+                "passed": true,
+                "checker": "exact_symbolic_coordinate_replay"
+              },
+              "origin": "newclid_proof_plus_independent_replay",
+              "reason": "S lies halfway from P to Q.",
+              "input_latex": null,
+              "output_latex": null
+            },
+            {
+              "input": "T is midpoint of PR",
+              "output": "PT² = PR²/4",
+              "rule_id": "midpoint_T",
+              "supporting_premises": [
+                "T is midpoint of PR"
+              ],
+              "relation": "equality",
+              "required_assumptions": [],
+              "verification": {
+                "passed": true,
+                "checker": "exact_symbolic_coordinate_replay"
+              },
+              "origin": "newclid_proof_plus_independent_replay",
+              "reason": "T lies halfway from P to R.",
+              "input_latex": null,
+              "output_latex": null
+            },
+            {
+              "input": "RS² - QT²",
+              "output": "3(PR² - PQ²)/4",
+              "rule_id": "midpoint_distance_identity",
+              "supporting_premises": [
+                "S is midpoint of PQ",
+                "T is midpoint of PR"
+              ],
+              "relation": "equality",
+              "required_assumptions": [],
+              "verification": {
+                "passed": true,
+                "checker": "exact_symbolic_coordinate_replay"
+              },
+              "origin": "newclid_proof_plus_independent_replay",
+              "reason": "Expand both squared distances using the midpoint coordinates.",
+              "input_latex": null,
+              "output_latex": null
+            },
+            {
+              "input": "PR = PQ",
+              "output": "RS = QT",
+              "rule_id": "equal_sides_nonnegative_lengths",
+              "supporting_premises": [
+                "PR = PQ",
+                "RS² - QT² = 3(PR² - PQ²)/4"
+              ],
+              "relation": "equality",
+              "required_assumptions": [],
+              "verification": {
+                "passed": true,
+                "checker": "exact_symbolic_coordinate_replay"
+              },
+              "origin": "newclid_proof_plus_independent_replay",
+              "reason": "Equal original sides make the squared-distance difference zero; both lengths are nonnegative.",
+              "input_latex": null,
+              "output_latex": null
+            }
+          ],
+          "output": {
+            "answer_markdown": "## PD-MATH-VII-002\n\n20.\n\nIn the given diagram, $\\triangle PQR$ is an isosceles triangle. S and T are the midpoints of PQ and PR respectively. Prove that $RS = QT$.\n\n**Solution**\n\nSince $S$ and $T$ are midpoints, $PS=\\tfrac12 PQ$ and $PT=\\tfrac12 PR$. The isosceles condition $PQ=PR$ therefore gives $PS=PT$.\n\nAlso, $\\angle RPS=\\angle QPT$: both are the angle at $P$ between $PQ$ and $PR$.\n\nThus $\\triangle PRS\\cong\\triangle PQT$ by SAS, with $PR=PQ$, $PS=PT$, and equal included angles. Corresponding sides give $RS=QT$.\n",
+            "presentation_review": "needs_teacher_review"
+          },
+          "explanation": "This prose is assembled by code. In geometry the SAS explanation is a separate handwritten template, not a translation or automatic verification of the raw Newclid trace.",
+          "llm_call_executed": false
+        },
+        {
+          "stage": "6. Show the LLM boundary",
+          "engine": "No LLM call",
+          "input": {
+            "answer_available": true
+          },
+          "output": {
+            "before_llm_call": {
+              "available_input": "The checked proof and rendered answer above",
+              "request_sent": null
+            },
+            "call": {
+              "executed": false,
+              "reason": "No LLM client or invocation exists on this route"
+            },
+            "after_llm_call": {
+              "response": null,
+              "answer_changed_by_llm": false
+            },
+            "runtime_api_usage": {
+              "calls": 0,
+              "input_tokens": 0,
+              "output_tokens": 0
+            },
+            "baseline_llm_usage": null,
+            "tokens_saved_vs_baseline": null
+          },
+          "explanation": "There is no actual before/after model response in this pipeline. Zero runtime API use excludes the AI used to build code, prepare inputs, or explain this walkthrough in chat.",
+          "llm_call_executed": false
+        }
+      ]
+    }
+  ],
+  "interpretation": "These two supported, already formalized examples run without LLM API calls. No LLM-only baseline was run, so a savings percentage, cost, or general coverage claim cannot be inferred. Original pipeline llm_calls/llm_tokens fields are literal zero values, not provider-reported telemetry."
+}
