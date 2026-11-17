@@ -6,6 +6,8 @@ import sympy as s
 from ..problem import Problem
 from .calculus import definite_integral, derivative_relation, evaluate, extremum, first_principles, monotonic
 from .equations import solve_equation
+from .general import general_solution
+from .algebra_methods import componendo_dividendo, one_real_roots, only_solution
 from .geometry import newclid
 from .identity import conditional, difference, identity, take_logs
 from .polynomial import factor_theorem, no_real_roots
@@ -13,18 +15,22 @@ from .values import find_value
 
 ROUTES = {
     "prove_identity": [identity, difference, take_logs],
-    "prove_from_hypotheses": [conditional, difference, take_logs],
+    "prove_from_hypotheses": [conditional, difference, take_logs, componendo_dividendo],
     "factor_theorem": [factor_theorem],
     "show_no_real_roots": [no_real_roots],
     "find_value": [find_value],
     "solve_equation": [solve_equation],
+    "general_solution": [general_solution],
+    "one_real_roots": [one_real_roots],
+    "only_solution": [only_solution],
     "evaluate": [evaluate],
     "monotonic": [monotonic],
     "extremum": [extremum],
     "first_principles": [first_principles],
     "geometry_jgex": [newclid],
 }
-PRESCRIBED = {"factor_theorem": factor_theorem, "completing_square": no_real_roots}
+PRESCRIBED = {"factor_theorem": factor_theorem, "completing_square": no_real_roots,
+              "componendo_dividendo": componendo_dividendo}
 
 
 def select(problem: Problem) -> list:

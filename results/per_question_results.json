@@ -176,6 +176,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "PQR is an isosceles triangle. S and T are the midpoints of PQ and PR respectively. Prove that RS = QT."
@@ -373,6 +377,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "a³ + b³ + c³ - 3abc = -25"
@@ -838,6 +846,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "x² + 1/x² = x³ + 1/x³ = x⁴ + 1/x⁴"
@@ -886,7 +898,7 @@
           "status": "SOLVED",
           "reason": null,
           "states_explored": 4,
-          "elapsed_seconds": 0.109
+          "elapsed_seconds": 0.032
         }
       ]
     ],
@@ -1121,6 +1133,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "(x^{a+b})^{a-b} × (x^{b+c})^{b-c} × (x^{c+a})^{c-a} = 1"
@@ -1146,7 +1162,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 5,
-        "elapsed_seconds": 0.11
+        "elapsed_seconds": 0.109
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -1197,12 +1213,317 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "geo_dist2(A, B)",
+        "output": "p**2 + q**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "AB^{2}",
+        "output_latex": "p^{2} + q^{2}",
+        "goal_part": 1
+      },
+      {
+        "input": "p**2 + q**2",
+        "output": "geo_dist2(B, C)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "p^{2} + q^{2}",
+        "output_latex": "BC^{2}",
+        "goal_part": 1
+      },
+      {
+        "input": "geo_dist2(B, C)",
+        "output": "p**2 + q**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "BC^{2}",
+        "output_latex": "p^{2} + q^{2}",
+        "goal_part": 2
+      },
+      {
+        "input": "p**2 + q**2",
+        "output": "geo_dist2(C, D)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "p^{2} + q^{2}",
+        "output_latex": "CD^{2}",
+        "goal_part": 2
+      },
+      {
+        "input": "geo_dist2(C, D)",
+        "output": "p**2 + q**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "CD^{2}",
+        "output_latex": "p^{2} + q^{2}",
+        "goal_part": 3
+      },
+      {
+        "input": "p**2 + q**2",
+        "output": "geo_dist2(D, A)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "p^{2} + q^{2}",
+        "output_latex": "DA^{2}",
+        "goal_part": 3
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-IX-001",
+      "goal": {
+        "kind": "prove_identity",
+        "parts": [
+          {
+            "lhs": "dist2(A,B)",
+            "rhs": "dist2(B,C)"
+          },
+          {
+            "lhs": "dist2(B,C)",
+            "rhs": "dist2(C,D)"
+          },
+          {
+            "lhs": "dist2(C,D)",
+            "rhs": "dist2(D,A)"
+          }
+        ]
+      },
+      "variables": {
+        "p": [
+          "positive"
+        ],
+        "q": [
+          "positive"
+        ]
+      },
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {
+        "O": [
+          "0",
+          "0"
+        ],
+        "A": [
+          "p",
+          "0"
+        ],
+        "C": [
+          "-p",
+          "0"
+        ],
+        "B": [
+          "0",
+          "q"
+        ],
+        "D": [
+          "0",
+          "-q"
+        ]
+      },
+      "nondegenerate": [],
+      "figure": [
+        [
+          "midpoint",
+          "O",
+          "A",
+          "C"
+        ],
+        [
+          "midpoint",
+          "O",
+          "B",
+          "D"
+        ],
+        [
+          "perpendicular",
+          "A",
+          "C",
+          "B",
+          "D"
+        ]
+      ],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "Show that if the diagonals of a quadrilateral bisect each other at right angles, then it is a rhombus."
+      },
+      "note": "The diagonals meet at O, taken as the origin, along the axes. Equal squared lengths give equal sides, so ABCD is a rhombus."
+    },
+    "validation": [
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: O = (0, 0); A = (p, 0); C = (-p, 0); B = (0, q); D = (0, -q). Figure: O is the midpoint of AC; O is the midpoint of BD; AC ⊥ BD. Variables: p (positive); q (positive). Prove dist2(A,B) = dist2(B,C).",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      },
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: O = (0, 0); A = (p, 0); C = (-p, 0); B = (0, q); D = (0, -q). Figure: O is the midpoint of AC; O is the midpoint of BD; AC ⊥ BD. Variables: p (positive); q (positive). Prove dist2(B,C) = dist2(C,D).",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      },
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: O = (0, 0); A = (p, 0); C = (-p, 0); B = (0, q); D = (0, -q). Figure: O is the midpoint of AC; O is the midpoint of BD; AC ⊥ BD. Variables: p (positive); q (positive). Prove dist2(C,D) = dist2(D,A).",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      }
+    ],
+    "attempts": [
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 4,
+          "elapsed_seconds": 0.016
+        }
+      ],
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 4,
+          "elapsed_seconds": 0.015
+        }
+      ],
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 4,
+          "elapsed_seconds": 0.016
+        }
+      ]
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "identity",
+    "domain_conditions": [],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS.",
+      "Chain runs from the stated LHS to the stated RHS.",
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": [
+      {},
+      {},
+      {}
+    ],
+    "presentation": {
+      "steps": 6,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-IX-001\n\n28. Show that if the diagonals of a quadrilateral bisect each other at right angles, then it is a rhombus.\n\n**Solution**\n\n**Part 1: $AB^{2} = BC^{2}$**\n\nTake coordinates: $O = \\left(0, 0\\right)$, $A = \\left(p, 0\\right)$, $C = \\left(- p, 0\\right)$, $B = \\left(0, q\\right)$, $D = \\left(0, - q\\right)$.\n\n*The diagonals meet at O, taken as the origin, along the axes. Equal squared lengths give equal sides, so ABCD is a rhombus.*\n\nThese coordinates give: O is the midpoint of AC; O is the midpoint of BD; AC ⊥ BD.\n\nThen:\n\n$$AB^{2} = \\left(0 - p\\right)^{2} + \\left(q\\right)^{2} = p^{2} + q^{2}$$\n\n$$BC^{2} = \\left(- p\\right)^{2} + \\left(0 - q\\right)^{2} = p^{2} + q^{2}$$\n\n**LHS:**\n\n$$AB^{2}$$\n\n$$= p^{2} + q^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$BC^{2}$$\n\n$$= p^{2} + q^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n\n**Part 2: $BC^{2} = CD^{2}$**\n\nTake coordinates: $O = \\left(0, 0\\right)$, $A = \\left(p, 0\\right)$, $C = \\left(- p, 0\\right)$, $B = \\left(0, q\\right)$, $D = \\left(0, - q\\right)$.\n\n*The diagonals meet at O, taken as the origin, along the axes. Equal squared lengths give equal sides, so ABCD is a rhombus.*\n\nThese coordinates give: O is the midpoint of AC; O is the midpoint of BD; AC ⊥ BD.\n\nThen:\n\n$$BC^{2} = \\left(- p\\right)^{2} + \\left(0 - q\\right)^{2} = p^{2} + q^{2}$$\n\n$$CD^{2} = \\left(0 - \\left(- p\\right)\\right)^{2} + \\left(- q\\right)^{2} = p^{2} + q^{2}$$\n\nFrom the earlier part: $AB^{2} = BC^{2}$.\n\n**LHS:**\n\n$$BC^{2}$$\n\n$$= p^{2} + q^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$CD^{2}$$\n\n$$= p^{2} + q^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n\n**Part 3: $CD^{2} = DA^{2}$**\n\nTake coordinates: $O = \\left(0, 0\\right)$, $A = \\left(p, 0\\right)$, $C = \\left(- p, 0\\right)$, $B = \\left(0, q\\right)$, $D = \\left(0, - q\\right)$.\n\n*The diagonals meet at O, taken as the origin, along the axes. Equal squared lengths give equal sides, so ABCD is a rhombus.*\n\nThese coordinates give: O is the midpoint of AC; O is the midpoint of BD; AC ⊥ BD.\n\nThen:\n\n$$CD^{2} = \\left(0 - \\left(- p\\right)\\right)^{2} + \\left(- q\\right)^{2} = p^{2} + q^{2}$$\n\n$$DA^{2} = \\left(p\\right)^{2} + \\left(0 - \\left(- q\\right)\\right)^{2} = p^{2} + q^{2}$$\n\nFrom the earlier part: $AB^{2} = BC^{2}$.\n\nFrom the earlier part: $BC^{2} = CD^{2}$.\n\n**LHS:**\n\n$$CD^{2}$$\n\n$$= p^{2} + q^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$DA^{2}$$\n\n$$= p^{2} + q^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n"
   },
   {
     "id": "PD-MATH-IX-002",
@@ -1308,12 +1629,405 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "geo_dist2(P, Q)",
+        "output": "2*a**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "PQ^{2}",
+        "output_latex": "2 a^{2}",
+        "goal_part": 1
+      },
+      {
+        "input": "2*a**2",
+        "output": "geo_dist2(Q, R)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "2 a^{2}",
+        "output_latex": "QR^{2}",
+        "goal_part": 1
+      },
+      {
+        "input": "geo_dist2(Q, R)",
+        "output": "2*a**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "QR^{2}",
+        "output_latex": "2 a^{2}",
+        "goal_part": 2
+      },
+      {
+        "input": "2*a**2",
+        "output": "geo_dist2(R, S)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "2 a^{2}",
+        "output_latex": "RS^{2}",
+        "goal_part": 2
+      },
+      {
+        "input": "geo_dist2(R, S)",
+        "output": "2*a**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "RS^{2}",
+        "output_latex": "2 a^{2}",
+        "goal_part": 3
+      },
+      {
+        "input": "2*a**2",
+        "output": "geo_dist2(S, P)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "2 a^{2}",
+        "output_latex": "SP^{2}",
+        "goal_part": 3
+      },
+      {
+        "input": "geo_dot(Q, P, Q, R)",
+        "output": "0",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\overrightarrow{QP} \\cdot \\overrightarrow{QR}",
+        "output_latex": "0",
+        "goal_part": 4
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-IX-004",
+      "goal": {
+        "kind": "prove_identity",
+        "parts": [
+          {
+            "lhs": "dist2(P,Q)",
+            "rhs": "dist2(Q,R)"
+          },
+          {
+            "lhs": "dist2(Q,R)",
+            "rhs": "dist2(R,S)"
+          },
+          {
+            "lhs": "dist2(R,S)",
+            "rhs": "dist2(S,P)"
+          },
+          {
+            "lhs": "dot(Q,P,Q,R)",
+            "rhs": "0"
+          }
+        ]
+      },
+      "variables": {
+        "a": [
+          "positive"
+        ]
+      },
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {
+        "A": [
+          "0",
+          "0"
+        ],
+        "B": [
+          "2*a",
+          "0"
+        ],
+        "C": [
+          "2*a",
+          "2*a"
+        ],
+        "D": [
+          "0",
+          "2*a"
+        ],
+        "P": [
+          "a",
+          "0"
+        ],
+        "Q": [
+          "2*a",
+          "a"
+        ],
+        "R": [
+          "a",
+          "2*a"
+        ],
+        "S": [
+          "0",
+          "a"
+        ]
+      },
+      "nondegenerate": [],
+      "figure": [
+        [
+          "right_angle",
+          "D",
+          "A",
+          "B"
+        ],
+        [
+          "right_angle",
+          "A",
+          "B",
+          "C"
+        ],
+        [
+          "equal_length",
+          "A",
+          "B",
+          "B",
+          "C"
+        ],
+        [
+          "equal_length",
+          "B",
+          "C",
+          "C",
+          "D"
+        ],
+        [
+          "midpoint",
+          "P",
+          "A",
+          "B"
+        ],
+        [
+          "midpoint",
+          "Q",
+          "B",
+          "C"
+        ],
+        [
+          "midpoint",
+          "R",
+          "C",
+          "D"
+        ],
+        [
+          "midpoint",
+          "S",
+          "D",
+          "A"
+        ]
+      ],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "Show that quadrilateral formed by joining the mid points of the pairs of adjacent sides of a square is also a square."
+      },
+      "note": "Square of side 2a. Four equal sides and a right angle at Q (the dot product of QP and QR is 0) make PQRS a square."
+    },
+    "validation": [
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: A = (0, 0); B = (2*a, 0); C = (2*a, 2*a); D = (0, 2*a); P = (a, 0); Q = (2*a, a); R = (a, 2*a); S = (0, a). Figure: ∠DAB = 90°; ∠ABC = 90°; AB = BC; BC = CD; P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA. Variables: a (positive). Prove dist2(P,Q) = dist2(Q,R).",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      },
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: A = (0, 0); B = (2*a, 0); C = (2*a, 2*a); D = (0, 2*a); P = (a, 0); Q = (2*a, a); R = (a, 2*a); S = (0, a). Figure: ∠DAB = 90°; ∠ABC = 90°; AB = BC; BC = CD; P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA. Variables: a (positive). Prove dist2(Q,R) = dist2(R,S).",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      },
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: A = (0, 0); B = (2*a, 0); C = (2*a, 2*a); D = (0, 2*a); P = (a, 0); Q = (2*a, a); R = (a, 2*a); S = (0, a). Figure: ∠DAB = 90°; ∠ABC = 90°; AB = BC; BC = CD; P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA. Variables: a (positive). Prove dist2(R,S) = dist2(S,P).",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      },
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: A = (0, 0); B = (2*a, 0); C = (2*a, 2*a); D = (0, 2*a); P = (a, 0); Q = (2*a, a); R = (a, 2*a); S = (0, a). Figure: ∠DAB = 90°; ∠ABC = 90°; AB = BC; BC = CD; P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA. Variables: a (positive). Prove dot(Q,P,Q,R) = 0.",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      }
+    ],
+    "attempts": [
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 4,
+          "elapsed_seconds": 0.031
+        }
+      ],
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 4,
+          "elapsed_seconds": 0.016
+        }
+      ],
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 4,
+          "elapsed_seconds": 0.016
+        }
+      ],
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 3,
+          "elapsed_seconds": 0.0
+        }
+      ]
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "identity",
+    "domain_conditions": [],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS.",
+      "Chain runs from the stated LHS to the stated RHS.",
+      "Chain runs from the stated LHS to the stated RHS.",
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": [
+      {},
+      {},
+      {},
+      {}
+    ],
+    "presentation": {
+      "steps": 7,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-IX-004\n\n35. Show that quadrilateral formed by joining the mid points of the pairs of adjacent sides of a square is also a square.\n\n**Solution**\n\n**Part 1: $PQ^{2} = QR^{2}$**\n\nTake coordinates: $A = \\left(0, 0\\right)$, $B = \\left(2 a, 0\\right)$, $C = \\left(2 a, 2 a\\right)$, $D = \\left(0, 2 a\\right)$, $P = \\left(a, 0\\right)$, $Q = \\left(2 a, a\\right)$, $R = \\left(a, 2 a\\right)$, $S = \\left(0, a\\right)$.\n\n*Square of side 2a. Four equal sides and a right angle at Q (the dot product of QP and QR is 0) make PQRS a square.*\n\nThese coordinates give: ∠DAB = 90°; ∠ABC = 90°; AB = BC; BC = CD; P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.\n\nThen:\n\n$$PQ^{2} = \\left(2 a - a\\right)^{2} + \\left(a\\right)^{2} = 2 a^{2}$$\n\n$$QR^{2} = \\left(a - 2 a\\right)^{2} + \\left(2 a - a\\right)^{2} = 2 a^{2}$$\n\n**LHS:**\n\n$$PQ^{2}$$\n\n$$= 2 a^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$QR^{2}$$\n\n$$= 2 a^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n\n**Part 2: $QR^{2} = RS^{2}$**\n\nTake coordinates: $A = \\left(0, 0\\right)$, $B = \\left(2 a, 0\\right)$, $C = \\left(2 a, 2 a\\right)$, $D = \\left(0, 2 a\\right)$, $P = \\left(a, 0\\right)$, $Q = \\left(2 a, a\\right)$, $R = \\left(a, 2 a\\right)$, $S = \\left(0, a\\right)$.\n\n*Square of side 2a. Four equal sides and a right angle at Q (the dot product of QP and QR is 0) make PQRS a square.*\n\nThese coordinates give: ∠DAB = 90°; ∠ABC = 90°; AB = BC; BC = CD; P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.\n\nThen:\n\n$$QR^{2} = \\left(a - 2 a\\right)^{2} + \\left(2 a - a\\right)^{2} = 2 a^{2}$$\n\n$$RS^{2} = \\left(0 - a\\right)^{2} + \\left(a - 2 a\\right)^{2} = 2 a^{2}$$\n\nFrom the earlier part: $PQ^{2} = QR^{2}$.\n\n**LHS:**\n\n$$QR^{2}$$\n\n$$= 2 a^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$RS^{2}$$\n\n$$= 2 a^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n\n**Part 3: $RS^{2} = SP^{2}$**\n\nTake coordinates: $A = \\left(0, 0\\right)$, $B = \\left(2 a, 0\\right)$, $C = \\left(2 a, 2 a\\right)$, $D = \\left(0, 2 a\\right)$, $P = \\left(a, 0\\right)$, $Q = \\left(2 a, a\\right)$, $R = \\left(a, 2 a\\right)$, $S = \\left(0, a\\right)$.\n\n*Square of side 2a. Four equal sides and a right angle at Q (the dot product of QP and QR is 0) make PQRS a square.*\n\nThese coordinates give: ∠DAB = 90°; ∠ABC = 90°; AB = BC; BC = CD; P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.\n\nThen:\n\n$$RS^{2} = \\left(0 - a\\right)^{2} + \\left(a - 2 a\\right)^{2} = 2 a^{2}$$\n\n$$SP^{2} = \\left(a\\right)^{2} + \\left(0 - a\\right)^{2} = 2 a^{2}$$\n\nFrom the earlier part: $PQ^{2} = QR^{2}$.\n\nFrom the earlier part: $QR^{2} = RS^{2}$.\n\n**LHS:**\n\n$$RS^{2}$$\n\n$$= 2 a^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$SP^{2}$$\n\n$$= 2 a^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n\n**Part 4: $\\overrightarrow{QP} \\cdot \\overrightarrow{QR} = 0$**\n\nTake coordinates: $A = \\left(0, 0\\right)$, $B = \\left(2 a, 0\\right)$, $C = \\left(2 a, 2 a\\right)$, $D = \\left(0, 2 a\\right)$, $P = \\left(a, 0\\right)$, $Q = \\left(2 a, a\\right)$, $R = \\left(a, 2 a\\right)$, $S = \\left(0, a\\right)$.\n\n*Square of side 2a. Four equal sides and a right angle at Q (the dot product of QP and QR is 0) make PQRS a square.*\n\nThese coordinates give: ∠DAB = 90°; ∠ABC = 90°; AB = BC; BC = CD; P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.\n\nThen:\n\n$$\\overrightarrow{QP} \\cdot \\overrightarrow{QR} = \\left(a - 2 a\\right)\\left(a - 2 a\\right) + \\left(0 - a\\right)\\left(2 a - a\\right) = 0$$\n\nFrom the earlier part: $PQ^{2} = QR^{2}$.\n\nFrom the earlier part: $QR^{2} = RS^{2}$.\n\nFrom the earlier part: $RS^{2} = SP^{2}$.\n\n**LHS:**\n\n$$\\overrightarrow{QP} \\cdot \\overrightarrow{QR}$$\n\n$$= 0$$\n\n*Write each length, area or product in coordinates (see above).*\n\nThis is the RHS, so LHS = RHS. Hence proved.\n"
   },
   {
     "id": "PD-MATH-IX-005",
@@ -1438,6 +2152,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "7 log 16/15 + 5 log 25/24 + 3 log 81/80 = log 2"
@@ -1458,7 +2176,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 4,
-        "elapsed_seconds": 0.031
+        "elapsed_seconds": 0.047
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -1504,12 +2222,268 @@
       }
     },
     "figure_required": true,
-    "trace": [],
+    "trace": [
+      {
+        "input": "geo_xcoord(A)/2 + geo_xcoord(C)/2",
+        "output": "b/2 + p/2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\frac{x_{A}}{2} + \\frac{x_{C}}{2}",
+        "output_latex": "\\frac{b}{2} + \\frac{p}{2}",
+        "goal_part": 1
+      },
+      {
+        "input": "b/2 + p/2",
+        "output": "geo_xcoord(M)/2 + geo_xcoord(N)/2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\frac{b}{2} + \\frac{p}{2}",
+        "output_latex": "\\frac{x_{M}}{2} + \\frac{x_{N}}{2}",
+        "goal_part": 1
+      },
+      {
+        "input": "geo_ycoord(A)/2 + geo_ycoord(C)/2",
+        "output": "q/2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\frac{y_{A}}{2} + \\frac{y_{C}}{2}",
+        "output_latex": "\\frac{q}{2}",
+        "goal_part": 2
+      },
+      {
+        "input": "q/2",
+        "output": "geo_ycoord(M)/2 + geo_ycoord(N)/2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\frac{q}{2}",
+        "output_latex": "\\frac{y_{M}}{2} + \\frac{y_{N}}{2}",
+        "goal_part": 2
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "The supplied figure has no verified symbolic geometry encoding or Newclid replay."
+    "spec": {
+      "id": "PD-MATH-IX-006",
+      "goal": {
+        "kind": "prove_identity",
+        "parts": [
+          {
+            "lhs": "(xcoord(A) + xcoord(C))/2",
+            "rhs": "(xcoord(M) + xcoord(N))/2"
+          },
+          {
+            "lhs": "(ycoord(A) + ycoord(C))/2",
+            "rhs": "(ycoord(M) + ycoord(N))/2"
+          }
+        ]
+      },
+      "variables": {
+        "b": [
+          "positive"
+        ],
+        "p": [
+          "real"
+        ],
+        "q": [
+          "positive"
+        ],
+        "m": [
+          "positive"
+        ]
+      },
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {
+        "A": [
+          "0",
+          "0"
+        ],
+        "B": [
+          "b",
+          "0"
+        ],
+        "D": [
+          "p",
+          "q"
+        ],
+        "C": [
+          "b + p",
+          "q"
+        ],
+        "M": [
+          "m",
+          "0"
+        ],
+        "N": [
+          "b + p - m",
+          "q"
+        ]
+      },
+      "nondegenerate": [],
+      "figure": [
+        [
+          "parallel",
+          "A",
+          "B",
+          "D",
+          "C"
+        ],
+        [
+          "parallel",
+          "A",
+          "D",
+          "B",
+          "C"
+        ],
+        [
+          "on_line",
+          "M",
+          "A",
+          "B"
+        ],
+        [
+          "on_line",
+          "N",
+          "C",
+          "D"
+        ],
+        [
+          "equal_length",
+          "A",
+          "M",
+          "C",
+          "N"
+        ]
+      ],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "In a parallelogram ABCD, points M and N have been taken on opposite sides AB and CD respectively such that AM = CN. Show that AC and MN bisect each other."
+      },
+      "note": "A at the origin, AB along the x-axis. The midpoints of AC and MN have the same coordinates, so the diagonals bisect each other."
+    },
+    "validation": [
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: A = (0, 0); B = (b, 0); D = (p, q); C = (b + p, q); M = (m, 0); N = (b + p - m, q). Figure: AB ∥ DC; AD ∥ BC; M lies on line AB; N lies on line CD; AM = CN. Variables: b (positive); p (real); q (positive); m (positive). Prove (xcoord(A) + xcoord(C))/2 = (xcoord(M) + xcoord(N))/2.",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      },
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: A = (0, 0); B = (b, 0); D = (p, q); C = (b + p, q); M = (m, 0); N = (b + p - m, q). Figure: AB ∥ DC; AD ∥ BC; M lies on line AB; N lies on line CD; AM = CN. Variables: b (positive); p (real); q (positive); m (positive). Prove (ycoord(A) + ycoord(C))/2 = (ycoord(M) + ycoord(N))/2.",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      }
+    ],
+    "attempts": [
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 5,
+          "elapsed_seconds": 0.031
+        }
+      ],
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 4,
+          "elapsed_seconds": 0.016
+        }
+      ]
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "identity",
+    "domain_conditions": [],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS.",
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": [
+      {},
+      {}
+    ],
+    "presentation": {
+      "steps": 4,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-IX-006\n\n(b). In a parallelogram ABCD, points \\( M \\) and \\( N \\) have been taken on opposite sides AB and CD respectively such that \\( AM = CN \\). Show that \\( AC \\) and \\( MN \\) bisect each other. [3]\n\n**Solution**\n\n**Part 1: $\\frac{x_{A} + x_{C}}{2} = \\frac{x_{M} + x_{N}}{2}$**\n\nTake coordinates: $A = \\left(0, 0\\right)$, $B = \\left(b, 0\\right)$, $D = \\left(p, q\\right)$, $C = \\left(b + p, q\\right)$, $M = \\left(m, 0\\right)$, $N = \\left(b - m + p, q\\right)$.\n\n*A at the origin, AB along the x-axis. The midpoints of AC and MN have the same coordinates, so the diagonals bisect each other.*\n\nThese coordinates give: AB ∥ DC; AD ∥ BC; M lies on line AB; N lies on line CD; AM = CN.\n\nThen:\n\n**LHS:**\n\n$$\\frac{x_{A} + x_{C}}{2}$$\n\n$$= \\frac{b}{2} + \\frac{p}{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$\\frac{x_{M} + x_{N}}{2}$$\n\n$$= \\frac{b}{2} + \\frac{p}{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n\n**Part 2: $\\frac{y_{A} + y_{C}}{2} = \\frac{y_{M} + y_{N}}{2}$**\n\nTake coordinates: $A = \\left(0, 0\\right)$, $B = \\left(b, 0\\right)$, $D = \\left(p, q\\right)$, $C = \\left(b + p, q\\right)$, $M = \\left(m, 0\\right)$, $N = \\left(b - m + p, q\\right)$.\n\n*A at the origin, AB along the x-axis. The midpoints of AC and MN have the same coordinates, so the diagonals bisect each other.*\n\nThese coordinates give: AB ∥ DC; AD ∥ BC; M lies on line AB; N lies on line CD; AM = CN.\n\nThen:\n\nFrom the earlier part: $\\frac{x_{A}}{2} + \\frac{x_{C}}{2} = \\frac{x_{M}}{2} + \\frac{x_{N}}{2}$.\n\n**LHS:**\n\n$$\\frac{y_{A} + y_{C}}{2}$$\n\n$$= \\frac{q}{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$\\frac{y_{M} + y_{N}}{2}$$\n\n$$= \\frac{q}{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n"
   },
   {
     "id": "PD-MATH-IX-007",
@@ -1541,12 +2515,160 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "geo_dist2(A, D) + geo_dist2(C, E)",
+        "output": "5*a**2 + 5*c**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "AD^{2} + CE^{2}",
+        "output_latex": "5 a^{2} + 5 c^{2}",
+        "goal_part": 1
+      },
+      {
+        "input": "5*a**2 + 5*c**2",
+        "output": "5*geo_dist2(D, E)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "5 a^{2} + 5 c^{2}",
+        "output_latex": "5 DE^{2}",
+        "goal_part": 1
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-IX-007",
+      "goal": {
+        "kind": "prove_identity",
+        "lhs": "dist2(A,D)+dist2(C,E)",
+        "rhs": "5*dist2(D,E)"
+      },
+      "variables": {
+        "a": [
+          "positive"
+        ],
+        "c": [
+          "positive"
+        ]
+      },
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {
+        "B": [
+          "0",
+          "0"
+        ],
+        "A": [
+          "0",
+          "2*a"
+        ],
+        "C": [
+          "2*c",
+          "0"
+        ],
+        "D": [
+          "c",
+          "0"
+        ],
+        "E": [
+          "0",
+          "a"
+        ]
+      },
+      "nondegenerate": [],
+      "figure": [
+        [
+          "right_angle",
+          "A",
+          "B",
+          "C"
+        ],
+        [
+          "midpoint",
+          "D",
+          "B",
+          "C"
+        ],
+        [
+          "midpoint",
+          "E",
+          "A",
+          "B"
+        ]
+      ],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "In ΔABC, ∠ABC = 90°. If D and E are the mid-points of the sides BC and AB respectively, prove that AD² + CE² = 5 DE²."
+      },
+      "note": "B at the origin, BC along the x-axis and BA along the y-axis."
+    },
+    "validation": {
+      "status": "VALID",
+      "reason": "",
+      "english": "Points: B = (0, 0); A = (0, 2*a); C = (2*c, 0); D = (c, 0); E = (0, a). Figure: ∠ABC = 90°; D is the midpoint of BC; E is the midpoint of AB. Variables: a (positive); c (positive). Prove dist2(A,D)+dist2(C,E) = 5*dist2(D,E).",
+      "conditions": [],
+      "sample_points_checked": 16,
+      "warnings": []
+    },
+    "attempts": [
+      {
+        "strategy": "identity",
+        "status": "SOLVED",
+        "reason": null,
+        "states_explored": 4,
+        "elapsed_seconds": 0.016
+      }
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "identity",
+    "domain_conditions": [],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": {},
+    "presentation": {
+      "steps": 2,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-IX-007\n\n(c). In ΔABC, ∠ABC = 90°. If D and E are the mid-points of the sides BC and AB respectively, prove that AD² + CE² = 5 DE². [4]\n\n**Solution**\n\nTake coordinates: $B = \\left(0, 0\\right)$, $A = \\left(0, 2 a\\right)$, $C = \\left(2 c, 0\\right)$, $D = \\left(c, 0\\right)$, $E = \\left(0, a\\right)$.\n\n*B at the origin, BC along the x-axis and BA along the y-axis.*\n\nThese coordinates give: ∠ABC = 90°; D is the midpoint of BC; E is the midpoint of AB.\n\nThen:\n\n$$AD^{2} = \\left(c\\right)^{2} + \\left(0 - 2 a\\right)^{2} = 4 a^{2} + c^{2}$$\n\n$$CE^{2} = \\left(0 - 2 c\\right)^{2} + \\left(a\\right)^{2} = a^{2} + 4 c^{2}$$\n\n$$DE^{2} = \\left(0 - c\\right)^{2} + \\left(a\\right)^{2} = a^{2} + c^{2}$$\n\n**LHS:**\n\n$$AD^{2} + CE^{2}$$\n\n$$= 5 a^{2} + 5 c^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$5 DE^{2}$$\n\n$$= 5 a^{2} + 5 c^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n"
   },
   {
     "id": "PD-MATH-IX-008",
@@ -1615,12 +2737,369 @@
       }
     },
     "figure_required": true,
-    "trace": [],
+    "trace": [
+      {
+        "input": "geo_cross(S, R, A, C)",
+        "output": "0",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\overrightarrow{SR} \\times \\overrightarrow{AC}",
+        "output_latex": "0",
+        "goal_part": 1
+      },
+      {
+        "input": "geo_dist2(S, R)",
+        "output": "c1**2 + c2**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "SR^{2}",
+        "output_latex": "c_{1}^{2} + c_{2}^{2}",
+        "goal_part": 2
+      },
+      {
+        "input": "c1**2 + c2**2",
+        "output": "geo_dist2(A, C)/4",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "c_{1}^{2} + c_{2}^{2}",
+        "output_latex": "\\frac{AC^{2}}{4}",
+        "goal_part": 2
+      },
+      {
+        "input": "geo_dist2(P, Q)",
+        "output": "c1**2 + c2**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "PQ^{2}",
+        "output_latex": "c_{1}^{2} + c_{2}^{2}",
+        "goal_part": 3
+      },
+      {
+        "input": "c1**2 + c2**2",
+        "output": "geo_dist2(S, R)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "c_{1}^{2} + c_{2}^{2}",
+        "output_latex": "SR^{2}",
+        "goal_part": 3
+      },
+      {
+        "input": "geo_cross(P, Q, S, R)",
+        "output": "0",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\overrightarrow{PQ} \\times \\overrightarrow{SR}",
+        "output_latex": "0",
+        "goal_part": 4
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "The supplied figure has no verified symbolic geometry encoding or Newclid replay."
+    "spec": {
+      "id": "PD-MATH-IX-009",
+      "goal": {
+        "kind": "prove_identity",
+        "parts": [
+          {
+            "lhs": "cross(S,R,A,C)",
+            "rhs": "0"
+          },
+          {
+            "lhs": "dist2(S,R)",
+            "rhs": "dist2(A,C)/4"
+          },
+          {
+            "lhs": "dist2(P,Q)",
+            "rhs": "dist2(S,R)"
+          },
+          {
+            "lhs": "cross(P,Q,S,R)",
+            "rhs": "0"
+          }
+        ]
+      },
+      "variables": {
+        "b1": [
+          "real"
+        ],
+        "b2": [
+          "real"
+        ],
+        "c1": [
+          "real"
+        ],
+        "c2": [
+          "real"
+        ],
+        "d1": [
+          "real"
+        ],
+        "d2": [
+          "real"
+        ]
+      },
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {
+        "A": [
+          "0",
+          "0"
+        ],
+        "B": [
+          "2*b1",
+          "2*b2"
+        ],
+        "C": [
+          "2*c1",
+          "2*c2"
+        ],
+        "D": [
+          "2*d1",
+          "2*d2"
+        ],
+        "P": [
+          "b1",
+          "b2"
+        ],
+        "Q": [
+          "b1 + c1",
+          "b2 + c2"
+        ],
+        "R": [
+          "c1 + d1",
+          "c2 + d2"
+        ],
+        "S": [
+          "d1",
+          "d2"
+        ]
+      },
+      "nondegenerate": [],
+      "figure": [
+        [
+          "midpoint",
+          "P",
+          "A",
+          "B"
+        ],
+        [
+          "midpoint",
+          "Q",
+          "B",
+          "C"
+        ],
+        [
+          "midpoint",
+          "R",
+          "C",
+          "D"
+        ],
+        [
+          "midpoint",
+          "S",
+          "D",
+          "A"
+        ]
+      ],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "ABCD is a quadrilateral in which P, Q, R and S are mid-points of AB, BC, CD and DA respectively. AC is its diagonal. Show that (a) SR ∥ AC, SR = 1/2 AC (b) PQ = SR (c) PQRS is a parallelogram"
+      },
+      "note": "Any quadrilateral, A at the origin. A zero cross product means parallel. (c) follows from PQ ∥ SR and PQ = SR."
+    },
+    "validation": [
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: A = (0, 0); B = (2*b1, 2*b2); C = (2*c1, 2*c2); D = (2*d1, 2*d2); P = (b1, b2); Q = (b1 + c1, b2 + c2); R = (c1 + d1, c2 + d2); S = (d1, d2). Figure: P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA. Variables: b1 (real); b2 (real); c1 (real); c2 (real); d1 (real); d2 (real). Prove cross(S,R,A,C) = 0.",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      },
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: A = (0, 0); B = (2*b1, 2*b2); C = (2*c1, 2*c2); D = (2*d1, 2*d2); P = (b1, b2); Q = (b1 + c1, b2 + c2); R = (c1 + d1, c2 + d2); S = (d1, d2). Figure: P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA. Variables: b1 (real); b2 (real); c1 (real); c2 (real); d1 (real); d2 (real). Prove dist2(S,R) = dist2(A,C)/4.",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      },
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: A = (0, 0); B = (2*b1, 2*b2); C = (2*c1, 2*c2); D = (2*d1, 2*d2); P = (b1, b2); Q = (b1 + c1, b2 + c2); R = (c1 + d1, c2 + d2); S = (d1, d2). Figure: P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA. Variables: b1 (real); b2 (real); c1 (real); c2 (real); d1 (real); d2 (real). Prove dist2(P,Q) = dist2(S,R).",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      },
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: A = (0, 0); B = (2*b1, 2*b2); C = (2*c1, 2*c2); D = (2*d1, 2*d2); P = (b1, b2); Q = (b1 + c1, b2 + c2); R = (c1 + d1, c2 + d2); S = (d1, d2). Figure: P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA. Variables: b1 (real); b2 (real); c1 (real); c2 (real); d1 (real); d2 (real). Prove cross(P,Q,S,R) = 0.",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      }
+    ],
+    "attempts": [
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 3,
+          "elapsed_seconds": 0.0
+        }
+      ],
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 4,
+          "elapsed_seconds": 0.031
+        }
+      ],
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 4,
+          "elapsed_seconds": 0.016
+        }
+      ],
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 3,
+          "elapsed_seconds": 0.0
+        }
+      ]
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "identity",
+    "domain_conditions": [],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS.",
+      "Chain runs from the stated LHS to the stated RHS.",
+      "Chain runs from the stated LHS to the stated RHS.",
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": [
+      {},
+      {},
+      {},
+      {}
+    ],
+    "presentation": {
+      "steps": 6,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-IX-009\n\n(iii) In the given figure, ABCD is a quadrilateral in which P,Q,R and S are mid-points of AB, BC, CD and DA respectively. AC is its diagonal. Show that\n\n(a) \\(\\mathrm{SR} \\parallel \\mathrm{AC}, \\mathrm{SR} = \\frac{1}{2} \\mathrm{AC}\\)\n(b) \\(\\mathrm{PQ} = \\mathrm{SR}\\)\n(c) PQRS is a parallelogram\n\n[4]\n\n**Solution**\n\n**Part 1: $\\overrightarrow{SR} \\times \\overrightarrow{AC} = 0$**\n\nTake coordinates: $A = \\left(0, 0\\right)$, $B = \\left(2 b_{1}, 2 b_{2}\\right)$, $C = \\left(2 c_{1}, 2 c_{2}\\right)$, $D = \\left(2 d_{1}, 2 d_{2}\\right)$, $P = \\left(b_{1}, b_{2}\\right)$, $Q = \\left(b_{1} + c_{1}, b_{2} + c_{2}\\right)$, $R = \\left(c_{1} + d_{1}, c_{2} + d_{2}\\right)$, $S = \\left(d_{1}, d_{2}\\right)$.\n\n*Any quadrilateral, A at the origin. A zero cross product means parallel. (c) follows from PQ ∥ SR and PQ = SR.*\n\nThese coordinates give: P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.\n\nThen:\n\n$$\\overrightarrow{SR} \\times \\overrightarrow{AC} = \\left(c_{1} + d_{1} - d_{1}\\right)\\left(2 c_{2}\\right) - \\left(c_{2} + d_{2} - d_{2}\\right)\\left(2 c_{1}\\right) = 0$$\n\n**LHS:**\n\n$$\\overrightarrow{SR} \\times \\overrightarrow{AC}$$\n\n$$= 0$$\n\n*Write each length, area or product in coordinates (see above).*\n\nThis is the RHS, so LHS = RHS. Hence proved.\n\n**Part 2: $SR^{2} = \\frac{AC^{2}}{4}$**\n\nTake coordinates: $A = \\left(0, 0\\right)$, $B = \\left(2 b_{1}, 2 b_{2}\\right)$, $C = \\left(2 c_{1}, 2 c_{2}\\right)$, $D = \\left(2 d_{1}, 2 d_{2}\\right)$, $P = \\left(b_{1}, b_{2}\\right)$, $Q = \\left(b_{1} + c_{1}, b_{2} + c_{2}\\right)$, $R = \\left(c_{1} + d_{1}, c_{2} + d_{2}\\right)$, $S = \\left(d_{1}, d_{2}\\right)$.\n\n*Any quadrilateral, A at the origin. A zero cross product means parallel. (c) follows from PQ ∥ SR and PQ = SR.*\n\nThese coordinates give: P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.\n\nThen:\n\n$$AC^{2} = \\left(2 c_{1}\\right)^{2} + \\left(2 c_{2}\\right)^{2} = 4 \\left(c_{1}^{2} + c_{2}^{2}\\right)$$\n\n$$SR^{2} = \\left(c_{1} + d_{1} - d_{1}\\right)^{2} + \\left(c_{2} + d_{2} - d_{2}\\right)^{2} = c_{1}^{2} + c_{2}^{2}$$\n\nFrom the earlier part: $\\overrightarrow{SR} \\times \\overrightarrow{AC} = 0$.\n\n**LHS:**\n\n$$SR^{2}$$\n\n$$= c_{1}^{2} + c_{2}^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$\\frac{AC^{2}}{4}$$\n\n$$= c_{1}^{2} + c_{2}^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n\n**Part 3: $PQ^{2} = SR^{2}$**\n\nTake coordinates: $A = \\left(0, 0\\right)$, $B = \\left(2 b_{1}, 2 b_{2}\\right)$, $C = \\left(2 c_{1}, 2 c_{2}\\right)$, $D = \\left(2 d_{1}, 2 d_{2}\\right)$, $P = \\left(b_{1}, b_{2}\\right)$, $Q = \\left(b_{1} + c_{1}, b_{2} + c_{2}\\right)$, $R = \\left(c_{1} + d_{1}, c_{2} + d_{2}\\right)$, $S = \\left(d_{1}, d_{2}\\right)$.\n\n*Any quadrilateral, A at the origin. A zero cross product means parallel. (c) follows from PQ ∥ SR and PQ = SR.*\n\nThese coordinates give: P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.\n\nThen:\n\n$$PQ^{2} = \\left(b_{1} + c_{1} - b_{1}\\right)^{2} + \\left(b_{2} + c_{2} - b_{2}\\right)^{2} = c_{1}^{2} + c_{2}^{2}$$\n\n$$SR^{2} = \\left(c_{1} + d_{1} - d_{1}\\right)^{2} + \\left(c_{2} + d_{2} - d_{2}\\right)^{2} = c_{1}^{2} + c_{2}^{2}$$\n\nFrom the earlier part: $\\overrightarrow{SR} \\times \\overrightarrow{AC} = 0$.\n\nFrom the earlier part: $SR^{2} = \\frac{AC^{2}}{4}$.\n\n**LHS:**\n\n$$PQ^{2}$$\n\n$$= c_{1}^{2} + c_{2}^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$SR^{2}$$\n\n$$= c_{1}^{2} + c_{2}^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n\n**Part 4: $\\overrightarrow{PQ} \\times \\overrightarrow{SR} = 0$**\n\nTake coordinates: $A = \\left(0, 0\\right)$, $B = \\left(2 b_{1}, 2 b_{2}\\right)$, $C = \\left(2 c_{1}, 2 c_{2}\\right)$, $D = \\left(2 d_{1}, 2 d_{2}\\right)$, $P = \\left(b_{1}, b_{2}\\right)$, $Q = \\left(b_{1} + c_{1}, b_{2} + c_{2}\\right)$, $R = \\left(c_{1} + d_{1}, c_{2} + d_{2}\\right)$, $S = \\left(d_{1}, d_{2}\\right)$.\n\n*Any quadrilateral, A at the origin. A zero cross product means parallel. (c) follows from PQ ∥ SR and PQ = SR.*\n\nThese coordinates give: P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.\n\nThen:\n\n$$\\overrightarrow{PQ} \\times \\overrightarrow{SR} = \\left(b_{1} + c_{1} - b_{1}\\right)\\left(c_{2} + d_{2} - d_{2}\\right) - \\left(b_{2} + c_{2} - b_{2}\\right)\\left(c_{1} + d_{1} - d_{1}\\right) = 0$$\n\nFrom the earlier part: $\\overrightarrow{SR} \\times \\overrightarrow{AC} = 0$.\n\nFrom the earlier part: $SR^{2} = \\frac{AC^{2}}{4}$.\n\nFrom the earlier part: $PQ^{2} = SR^{2}$.\n\n**LHS:**\n\n$$\\overrightarrow{PQ} \\times \\overrightarrow{SR}$$\n\n$$= 0$$\n\n*Write each length, area or product in coordinates (see above).*\n\nThis is the RHS, so LHS = RHS. Hence proved.\n"
   },
   {
     "id": "PD-MATH-IX-010",
@@ -2066,6 +3545,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "V² = xyz"
@@ -2086,7 +3569,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 25,
-        "elapsed_seconds": 0.953
+        "elapsed_seconds": 0.938
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -2132,12 +3615,166 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "geo_dist2(P, M) + geo_dist2(R, N)",
+        "output": "m**2 + n**2 + p**2 + r**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "PM^{2} + RN^{2}",
+        "output_latex": "m^{2} + n^{2} + p^{2} + r^{2}",
+        "goal_part": 1
+      },
+      {
+        "input": "m**2 + n**2 + p**2 + r**2",
+        "output": "geo_dist2(M, N) + geo_dist2(P, R)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "m^{2} + n^{2} + p^{2} + r^{2}",
+        "output_latex": "MN^{2} + PR^{2}",
+        "goal_part": 1
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-IX-014",
+      "goal": {
+        "kind": "prove_identity",
+        "lhs": "dist2(P,M)+dist2(R,N)",
+        "rhs": "dist2(P,R)+dist2(M,N)"
+      },
+      "variables": {
+        "p": [
+          "positive"
+        ],
+        "r": [
+          "positive"
+        ],
+        "m": [
+          "positive"
+        ],
+        "n": [
+          "positive"
+        ]
+      },
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {
+        "Q": [
+          "0",
+          "0"
+        ],
+        "P": [
+          "0",
+          "p"
+        ],
+        "R": [
+          "r",
+          "0"
+        ],
+        "M": [
+          "m",
+          "0"
+        ],
+        "N": [
+          "0",
+          "n"
+        ]
+      },
+      "nondegenerate": [],
+      "figure": [
+        [
+          "right_angle",
+          "P",
+          "Q",
+          "R"
+        ],
+        [
+          "on_line",
+          "M",
+          "Q",
+          "R"
+        ],
+        [
+          "on_line",
+          "N",
+          "P",
+          "Q"
+        ]
+      ],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "M and N are points on sides QR and PQ respectively of ΔPQR, right angled at Q. Prove that PM² + RN² = PR² + MN²."
+      },
+      "note": "Q at the origin, QR along the x-axis and QP along the y-axis."
+    },
+    "validation": {
+      "status": "VALID",
+      "reason": "",
+      "english": "Points: Q = (0, 0); P = (0, p); R = (r, 0); M = (m, 0); N = (0, n). Figure: ∠PQR = 90°; M lies on line QR; N lies on line PQ. Variables: p (positive); r (positive); m (positive); n (positive). Prove dist2(P,M)+dist2(R,N) = dist2(P,R)+dist2(M,N).",
+      "conditions": [],
+      "sample_points_checked": 16,
+      "warnings": []
+    },
+    "attempts": [
+      {
+        "strategy": "identity",
+        "status": "SOLVED",
+        "reason": null,
+        "states_explored": 4,
+        "elapsed_seconds": 0.031
+      }
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "identity",
+    "domain_conditions": [],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": {},
+    "presentation": {
+      "steps": 2,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-IX-014\n\nb) M and N are points on sides QR and PQ respectively of $$\\Delta PQR$$, right angled at Q. prove that:\n\n$$PM^2 + RN^2 = PR^2 + MN^2$$ [3]\n\n**Solution**\n\nTake coordinates: $Q = \\left(0, 0\\right)$, $P = \\left(0, p\\right)$, $R = \\left(r, 0\\right)$, $M = \\left(m, 0\\right)$, $N = \\left(0, n\\right)$.\n\n*Q at the origin, QR along the x-axis and QP along the y-axis.*\n\nThese coordinates give: ∠PQR = 90°; M lies on line QR; N lies on line PQ.\n\nThen:\n\n$$MN^{2} = \\left(0 - m\\right)^{2} + \\left(n\\right)^{2} = m^{2} + n^{2}$$\n\n$$PM^{2} = \\left(m\\right)^{2} + \\left(0 - p\\right)^{2} = m^{2} + p^{2}$$\n\n$$PR^{2} = \\left(r\\right)^{2} + \\left(0 - p\\right)^{2} = p^{2} + r^{2}$$\n\n$$RN^{2} = \\left(0 - r\\right)^{2} + \\left(n\\right)^{2} = n^{2} + r^{2}$$\n\n**LHS:**\n\n$$PM^{2} + RN^{2}$$\n\n$$= m^{2} + n^{2} + p^{2} + r^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$PR^{2} + MN^{2}$$\n\n$$= m^{2} + n^{2} + p^{2} + r^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n"
   },
   {
     "id": "PD-MATH-IX-015",
@@ -2335,6 +3972,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "1/(1+a+b⁻¹) + 1/(1+b+c⁻¹) + 1/(1+c+a⁻¹) = 1"
@@ -2362,7 +4003,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 3,
-        "elapsed_seconds": 0.219
+        "elapsed_seconds": 0.266
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -2526,12 +4167,198 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "geo_area(B, C, G)",
+        "output": "c*q/6",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\operatorname{ar}\\left(\\triangle BCG\\right)",
+        "output_latex": "\\frac{c q}{6}",
+        "goal_part": 1
+      },
+      {
+        "input": "c*q/6",
+        "output": "p*q/6 + q*(c - p)/6",
+        "rule_id": "algebra_finish",
+        "reason": "Simplify algebraically.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\frac{c q}{6}",
+        "output_latex": "\\frac{p q}{6} + \\frac{q \\left(c - p\\right)}{6}",
+        "goal_part": 1
+      },
+      {
+        "input": "p*q/6 + q*(c - p)/6",
+        "output": "geo_area(A, B, C)/3",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\frac{p q}{6} + \\frac{q \\left(c - p\\right)}{6}",
+        "output_latex": "\\frac{\\operatorname{ar}\\left(\\triangle ABC\\right)}{3}",
+        "goal_part": 1
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-IX-019",
+      "goal": {
+        "kind": "prove_identity",
+        "lhs": "area(B,C,G)",
+        "rhs": "area(A,B,C)/3"
+      },
+      "variables": {
+        "c": [
+          "positive"
+        ],
+        "p": [
+          "real"
+        ],
+        "q": [
+          "positive"
+        ]
+      },
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {
+        "B": [
+          "0",
+          "0"
+        ],
+        "C": [
+          "c",
+          "0"
+        ],
+        "A": [
+          "p",
+          "q"
+        ],
+        "D": [
+          "c/2",
+          "0"
+        ],
+        "E": [
+          "(p+c)/2",
+          "q/2"
+        ],
+        "G": [
+          "(p+c)/3",
+          "q/3"
+        ]
+      },
+      "nondegenerate": [],
+      "figure": [
+        [
+          "midpoint",
+          "D",
+          "B",
+          "C"
+        ],
+        [
+          "midpoint",
+          "E",
+          "C",
+          "A"
+        ],
+        [
+          "on_line",
+          "G",
+          "A",
+          "D"
+        ],
+        [
+          "on_line",
+          "G",
+          "B",
+          "E"
+        ]
+      ],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "If the medians of a triangles ABC intersect at G. Prove that area of ΔBCG = 1/3 area of ΔABC."
+      },
+      "note": "B at the origin, BC along the x-axis, A above it. G lies on the medians AD and BE (checked). Areas are by the coordinate formula; both triangles run the same way round, so the signed areas are the areas."
+    },
+    "validation": {
+      "status": "VALID",
+      "reason": "",
+      "english": "Points: B = (0, 0); C = (c, 0); A = (p, q); D = (c/2, 0); E = ((p+c)/2, q/2); G = ((p+c)/3, q/3). Figure: D is the midpoint of BC; E is the midpoint of CA; G lies on line AD; G lies on line BE. Variables: c (positive); p (real); q (positive). Prove area(B,C,G) = area(A,B,C)/3.",
+      "conditions": [],
+      "sample_points_checked": 16,
+      "warnings": []
+    },
+    "attempts": [
+      {
+        "strategy": "identity",
+        "status": "SOLVED",
+        "reason": null,
+        "states_explored": 4,
+        "elapsed_seconds": 0.016
+      }
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "identity",
+    "domain_conditions": [],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": {},
+    "presentation": {
+      "steps": 3,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-IX-019\n\n(c) If the medians of a triangles ABC intersect at G. Prove that area of $\\Delta BCG = \\frac{1}{3}$ area of $\\Delta ABC$.\n\n**Solution**\n\nTake coordinates: $B = \\left(0, 0\\right)$, $C = \\left(c, 0\\right)$, $A = \\left(p, q\\right)$, $D = \\left(\\frac{c}{2}, 0\\right)$, $E = \\left(\\frac{c}{2} + \\frac{p}{2}, \\frac{q}{2}\\right)$, $G = \\left(\\frac{c}{3} + \\frac{p}{3}, \\frac{q}{3}\\right)$.\n\n*B at the origin, BC along the x-axis, A above it. G lies on the medians AD and BE (checked). Areas are by the coordinate formula; both triangles run the same way round, so the signed areas are the areas.*\n\nThese coordinates give: D is the midpoint of BC; E is the midpoint of CA; G lies on line AD; G lies on line BE.\n\nThen:\n\n$$\\operatorname{ar}\\left(\\triangle ABC\\right) = \\frac{1}{2}\\left[\\left(0 - p\\right)\\left(0 - q\\right) - \\left(0 - q\\right)\\left(c - p\\right)\\right] = \\frac{c q}{2}$$\n\n$$\\operatorname{ar}\\left(\\triangle BCG\\right) = \\frac{1}{2}\\left[\\left(c\\right)\\left(\\frac{q}{3}\\right) - \\left(0\\right)\\left(\\frac{c}{3} + \\frac{p}{3}\\right)\\right] = \\frac{c q}{6}$$\n\n**LHS:**\n\n$$\\operatorname{ar}\\left(\\triangle BCG\\right)$$\n\n$$= \\frac{c q}{6}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$\\frac{\\operatorname{ar}\\left(\\triangle ABC\\right)}{3}$$\n\n$$= \\frac{p q}{6} + \\frac{q \\left(c - p\\right)}{6}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n$$= \\frac{c q}{6}$$\n\n*Simplify algebraically.*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n"
   },
   {
     "id": "PD-MATH-IX-020",
@@ -2631,6 +4458,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "1/(√2+1) + 1/(√3+√2) + 1/(2+√3) = 1"
@@ -2651,7 +4482,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 3,
-        "elapsed_seconds": 0.391
+        "elapsed_seconds": 0.39
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -2743,6 +4574,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "aᵃ.bᵇ.cᶜ = 1"
@@ -2870,12 +4705,173 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "geo_dist2(O, A) + geo_dist2(O, C)",
+        "output": "x**2 + y**2 + (a - x)**2 + (b - y)**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "OA^{2} + OC^{2}",
+        "output_latex": "x^{2} + y^{2} + \\left(a - x\\right)^{2} + \\left(b - y\\right)^{2}",
+        "goal_part": 1
+      },
+      {
+        "input": "x**2 + y**2 + (a - x)**2 + (b - y)**2",
+        "output": "geo_dist2(O, B) + geo_dist2(O, D)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "x^{2} + y^{2} + \\left(a - x\\right)^{2} + \\left(b - y\\right)^{2}",
+        "output_latex": "OB^{2} + OD^{2}",
+        "goal_part": 1
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-IX-024",
+      "goal": {
+        "kind": "prove_identity",
+        "lhs": "dist2(O,A)+dist2(O,C)",
+        "rhs": "dist2(O,B)+dist2(O,D)"
+      },
+      "variables": {
+        "a": [
+          "positive"
+        ],
+        "b": [
+          "positive"
+        ],
+        "x": [
+          "real"
+        ],
+        "y": [
+          "real"
+        ]
+      },
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {
+        "A": [
+          "0",
+          "0"
+        ],
+        "B": [
+          "a",
+          "0"
+        ],
+        "C": [
+          "a",
+          "b"
+        ],
+        "D": [
+          "0",
+          "b"
+        ],
+        "O": [
+          "x",
+          "y"
+        ]
+      },
+      "nondegenerate": [],
+      "figure": [
+        [
+          "right_angle",
+          "D",
+          "A",
+          "B"
+        ],
+        [
+          "right_angle",
+          "A",
+          "B",
+          "C"
+        ],
+        [
+          "right_angle",
+          "B",
+          "C",
+          "D"
+        ],
+        [
+          "equal_length",
+          "A",
+          "B",
+          "D",
+          "C"
+        ]
+      ],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "If O is any point in the interior of a rectangle ABCD. Prove that OA² + OC² = OB² + OD²"
+      },
+      "note": "A at the origin, AB along the x-axis and AD along the y-axis; O = (x, y). The identity holds for any O."
+    },
+    "validation": {
+      "status": "VALID",
+      "reason": "",
+      "english": "Points: A = (0, 0); B = (a, 0); C = (a, b); D = (0, b); O = (x, y). Figure: ∠DAB = 90°; ∠ABC = 90°; ∠BCD = 90°; AB = DC. Variables: a (positive); b (positive); x (real); y (real). Prove dist2(O,A)+dist2(O,C) = dist2(O,B)+dist2(O,D).",
+      "conditions": [],
+      "sample_points_checked": 16,
+      "warnings": []
+    },
+    "attempts": [
+      {
+        "strategy": "identity",
+        "status": "SOLVED",
+        "reason": null,
+        "states_explored": 4,
+        "elapsed_seconds": 0.078
+      }
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "identity",
+    "domain_conditions": [],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": {},
+    "presentation": {
+      "steps": 2,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-IX-024\n\nX. (a) If O is any point in the interior of a rectangle ABCD. Prove that \\( \\mathrm{OA}^2 + \\mathrm{OC}^2 = \\mathrm{OB}^2 + \\mathrm{OD}^2 \\) [5]\n\n**Solution**\n\nTake coordinates: $A = \\left(0, 0\\right)$, $B = \\left(a, 0\\right)$, $C = \\left(a, b\\right)$, $D = \\left(0, b\\right)$, $O = \\left(x, y\\right)$.\n\n*A at the origin, AB along the x-axis and AD along the y-axis; O = (x, y). The identity holds for any O.*\n\nThese coordinates give: ∠DAB = 90°; ∠ABC = 90°; ∠BCD = 90°; AB = DC.\n\nThen:\n\n$$OA^{2} = \\left(0 - x\\right)^{2} + \\left(0 - y\\right)^{2} = x^{2} + y^{2}$$\n\n$$OB^{2} = \\left(a - x\\right)^{2} + \\left(0 - y\\right)^{2} = a^{2} - 2 a x + x^{2} + y^{2}$$\n\n$$OC^{2} = \\left(a - x\\right)^{2} + \\left(b - y\\right)^{2} = a^{2} - 2 a x + b^{2} - 2 b y + x^{2} + y^{2}$$\n\n$$OD^{2} = \\left(0 - x\\right)^{2} + \\left(b - y\\right)^{2} = b^{2} - 2 b y + x^{2} + y^{2}$$\n\n**LHS:**\n\n$$OA^{2} + OC^{2}$$\n\n$$= x^{2} + y^{2} + \\left(a - x\\right)^{2} + \\left(b - y\\right)^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$OB^{2} + OD^{2}$$\n\n$$= x^{2} + y^{2} + \\left(a - x\\right)^{2} + \\left(b - y\\right)^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n"
   },
   {
     "id": "PD-MATH-IX-025",
@@ -2907,12 +4903,229 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "geo_cross(M, N, A, B)",
+        "output": "0",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\overrightarrow{MN} \\times \\overrightarrow{AB}",
+        "output_latex": "0",
+        "goal_part": 1
+      },
+      {
+        "input": "geo_dist2(M, N)",
+        "output": "(a - c)**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "MN^{2}",
+        "output_latex": "\\left(a - c\\right)^{2}",
+        "goal_part": 2
+      },
+      {
+        "input": "(a - c)**2",
+        "output": "(geo_dist(A, B)/2 - geo_dist(D, C)/2)**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\left(a - c\\right)^{2}",
+        "output_latex": "\\left(\\frac{AB}{2} - \\frac{DC}{2}\\right)^{2}",
+        "goal_part": 2
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-IX-025",
+      "goal": {
+        "kind": "prove_identity",
+        "parts": [
+          {
+            "lhs": "cross(M,N,A,B)",
+            "rhs": "0"
+          },
+          {
+            "lhs": "dist2(M,N)",
+            "rhs": "((dist(A,B) - dist(D,C))/2)**2"
+          }
+        ]
+      },
+      "variables": {
+        "a": [
+          "positive"
+        ],
+        "c": [
+          "positive"
+        ],
+        "d": [
+          "real"
+        ],
+        "h": [
+          "positive"
+        ]
+      },
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {
+        "A": [
+          "0",
+          "0"
+        ],
+        "B": [
+          "2*a",
+          "0"
+        ],
+        "D": [
+          "2*d",
+          "2*h"
+        ],
+        "C": [
+          "2*d + 2*c",
+          "2*h"
+        ],
+        "M": [
+          "d + c",
+          "h"
+        ],
+        "N": [
+          "a + d",
+          "h"
+        ]
+      },
+      "nondegenerate": [],
+      "figure": [
+        [
+          "parallel",
+          "A",
+          "B",
+          "D",
+          "C"
+        ],
+        [
+          "midpoint",
+          "M",
+          "A",
+          "C"
+        ],
+        [
+          "midpoint",
+          "N",
+          "B",
+          "D"
+        ]
+      ],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "Prove that the line segment joining the mid-points of the diagonals of a trapezium is parallel to the parallel sides of trapezium and is equal to half the difference of these sides."
+      },
+      "note": "AB ∥ DC with AB = 2a, DC = 2c. M, N are the midpoints of the diagonals AC, BD. A zero cross product means MN ∥ AB; MN² = ((AB - DC)/2)² gives MN = half the difference."
+    },
+    "validation": [
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: A = (0, 0); B = (2*a, 0); D = (2*d, 2*h); C = (2*d + 2*c, 2*h); M = (d + c, h); N = (a + d, h). Figure: AB ∥ DC; M is the midpoint of AC; N is the midpoint of BD. Variables: a (positive); c (positive); d (real); h (positive). Prove cross(M,N,A,B) = 0.",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      },
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Points: A = (0, 0); B = (2*a, 0); D = (2*d, 2*h); C = (2*d + 2*c, 2*h); M = (d + c, h); N = (a + d, h). Figure: AB ∥ DC; M is the midpoint of AC; N is the midpoint of BD. Variables: a (positive); c (positive); d (real); h (positive). Prove dist2(M,N) = ((dist(A,B) - dist(D,C))/2)**2.",
+        "conditions": [],
+        "sample_points_checked": 16,
+        "warnings": []
+      }
+    ],
+    "attempts": [
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 3,
+          "elapsed_seconds": 0.0
+        }
+      ],
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 4,
+          "elapsed_seconds": 0.078
+        }
+      ]
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "identity",
+    "domain_conditions": [],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS.",
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": [
+      {},
+      {}
+    ],
+    "presentation": {
+      "steps": 3,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-IX-025\n\n(ii) Prove that the line segment joining the mid-points of the diagonals of a trapezium is parallel to the parallel sides of trapezium and is equal to half the difference of these sides.\n\n**Solution**\n\n**Part 1: $\\overrightarrow{MN} \\times \\overrightarrow{AB} = 0$**\n\nTake coordinates: $A = \\left(0, 0\\right)$, $B = \\left(2 a, 0\\right)$, $D = \\left(2 d, 2 h\\right)$, $C = \\left(2 c + 2 d, 2 h\\right)$, $M = \\left(c + d, h\\right)$, $N = \\left(a + d, h\\right)$.\n\n*AB ∥ DC with AB = 2a, DC = 2c. M, N are the midpoints of the diagonals AC, BD. A zero cross product means MN ∥ AB; MN² = ((AB - DC)/2)² gives MN = half the difference.*\n\nThese coordinates give: AB ∥ DC; M is the midpoint of AC; N is the midpoint of BD.\n\nThen:\n\n$$\\overrightarrow{MN} \\times \\overrightarrow{AB} = \\left(a + d - \\left(c + d\\right)\\right)\\left(0\\right) - \\left(h - h\\right)\\left(2 a\\right) = 0$$\n\n**LHS:**\n\n$$\\overrightarrow{MN} \\times \\overrightarrow{AB}$$\n\n$$= 0$$\n\n*Write each length, area or product in coordinates (see above).*\n\nThis is the RHS, so LHS = RHS. Hence proved.\n\n**Part 2: $MN^{2} = \\left(\\frac{AB - DC}{2}\\right)^{2}$**\n\nTake coordinates: $A = \\left(0, 0\\right)$, $B = \\left(2 a, 0\\right)$, $D = \\left(2 d, 2 h\\right)$, $C = \\left(2 c + 2 d, 2 h\\right)$, $M = \\left(c + d, h\\right)$, $N = \\left(a + d, h\\right)$.\n\n*AB ∥ DC with AB = 2a, DC = 2c. M, N are the midpoints of the diagonals AC, BD. A zero cross product means MN ∥ AB; MN² = ((AB - DC)/2)² gives MN = half the difference.*\n\nThese coordinates give: AB ∥ DC; M is the midpoint of AC; N is the midpoint of BD.\n\nThen:\n\n$$AB = \\sqrt{\\left(2 a\\right)^{2} + \\left(0\\right)^{2}} = 2 a$$\n\n$$DC = \\sqrt{\\left(2 c + 2 d - 2 d\\right)^{2} + \\left(2 h - 2 h\\right)^{2}} = 2 c$$\n\n$$MN^{2} = \\left(a + d - \\left(c + d\\right)\\right)^{2} + \\left(h - h\\right)^{2} = \\left(a - c\\right)^{2}$$\n\nFrom the earlier part: $\\overrightarrow{MN} \\times \\overrightarrow{AB} = 0$.\n\n**LHS:**\n\n$$MN^{2}$$\n\n$$= \\left(a - c\\right)^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$\\left(\\frac{AB - DC}{2}\\right)^{2}$$\n\n$$= \\left(a - c\\right)^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n"
   },
   {
     "id": "PD-MATH-X-001",
@@ -3091,6 +5304,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "(sin A + cosec A)^2 + (cos A + sec A)^2 = 5 + sec^2 A cosec^2 A"
@@ -3114,7 +5331,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 14,
-        "elapsed_seconds": 0.5
+        "elapsed_seconds": 0.531
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -3310,6 +5527,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "sec⁴A(1 - sin⁴A) - 2tan²A = 1"
@@ -3332,7 +5553,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 7,
-        "elapsed_seconds": 0.531
+        "elapsed_seconds": 0.469
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -3524,6 +5745,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "(x+y)²/(y+z)² = x/z"
@@ -3549,7 +5774,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 4,
-        "elapsed_seconds": 0.14
+        "elapsed_seconds": 0.125
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -3697,6 +5922,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "sec^2 A . cosec^2 A = tan^2 A + cot^2 A + 2"
@@ -3720,7 +5949,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 5,
-        "elapsed_seconds": 0.109
+        "elapsed_seconds": 0.11
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -3966,6 +6195,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "(1 + sin θ)/(1 - sin θ) - (1 - sin θ)/(1 + sin θ) = 4 tan θ sec θ"
@@ -3990,7 +6223,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 6,
-        "elapsed_seconds": 0.188
+        "elapsed_seconds": 0.125
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -4207,6 +6440,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "x/y = a/b"
@@ -4378,6 +6615,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": "factor_theorem",
       "quotes": {
         "goal": "Using factor theorem show that (3x + 2) is a factor of 3x^3 + 2x^2 - 3x - 2. Hence, factorise the expression completely."
@@ -4481,12 +6722,259 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "Eq(x, (sqrt(a**2 - b**2) + sqrt(a**2 + b**2))/(-sqrt(a**2 - b**2) + sqrt(a**2 + b**2)))",
+        "output": "Eq((x + 1)/(x - 1), sqrt(a**2 + b**2)/sqrt(a**2 - b**2))",
+        "rule_id": "componendo_dividendo",
+        "reason": "Componendo and dividendo: if $\\frac{a}{b} = \\frac{c}{d}$ then $\\frac{a + b}{a - b} = \\frac{c + d}{c - d}$.",
+        "relation": "derived",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "implied": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "method_template",
+        "input_latex": "x = \\frac{\\sqrt{a^{2} - b^{2}} + \\sqrt{a^{2} + b^{2}}}{- \\sqrt{a^{2} - b^{2}} + \\sqrt{a^{2} + b^{2}}}",
+        "output_latex": "\\frac{x + 1}{x - 1} = \\frac{\\sqrt{a^{2} + b^{2}}}{\\sqrt{a^{2} - b^{2}}}",
+        "goal_part": 1
+      },
+      {
+        "input": "Eq((x + 1)/(x - 1), sqrt(a**2 + b**2)/sqrt(a**2 - b**2))",
+        "output": "Eq((x + 1)**2/(x - 1)**2, (a**2 + b**2)/(a**2 - b**2))",
+        "rule_id": "square_both_sides",
+        "reason": "Square both sides.",
+        "relation": "derived",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "implied": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "method_template",
+        "input_latex": "\\frac{x + 1}{x - 1} = \\frac{\\sqrt{a^{2} + b^{2}}}{\\sqrt{a^{2} - b^{2}}}",
+        "output_latex": "\\frac{\\left(x + 1\\right)^{2}}{\\left(x - 1\\right)^{2}} = \\frac{a^{2} + b^{2}}{a^{2} - b^{2}}",
+        "goal_part": 1
+      },
+      {
+        "input": "Eq((x + 1)**2/(x - 1)**2, (a**2 + b**2)/(a**2 - b**2))",
+        "output": "Eq((x + 1)**2/(x - 1)**2, (a**2 + b**2)/((a - b)*(a + b)))",
+        "rule_id": "simplify_sides",
+        "reason": "Simplify each side.",
+        "relation": "derived",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "implied": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "method_template",
+        "input_latex": "\\frac{\\left(x + 1\\right)^{2}}{\\left(x - 1\\right)^{2}} = \\frac{a^{2} + b^{2}}{a^{2} - b^{2}}",
+        "output_latex": "\\frac{\\left(x + 1\\right)^{2}}{\\left(x - 1\\right)^{2}} = \\frac{a^{2} + b^{2}}{\\left(a - b\\right) \\left(a + b\\right)}",
+        "goal_part": 1
+      },
+      {
+        "input": "Eq((x + 1)**2/(x - 1)**2, (a**2 + b**2)/((a - b)*(a + b)))",
+        "output": "Eq((x**2 + 1)/(2*x), (a**2 + b**2 + (a - b)*(a + b))/(a**2 + b**2 - (a - b)*(a + b)))",
+        "rule_id": "componendo_dividendo",
+        "reason": "Componendo and dividendo: if $\\frac{a}{b} = \\frac{c}{d}$ then $\\frac{a + b}{a - b} = \\frac{c + d}{c - d}$.",
+        "relation": "derived",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "implied": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "method_template",
+        "input_latex": "\\frac{\\left(x + 1\\right)^{2}}{\\left(x - 1\\right)^{2}} = \\frac{a^{2} + b^{2}}{\\left(a - b\\right) \\left(a + b\\right)}",
+        "output_latex": "\\frac{x^{2} + 1}{2 x} = \\frac{a^{2} + b^{2} + \\left(a - b\\right) \\left(a + b\\right)}{a^{2} + b^{2} - \\left(a - b\\right) \\left(a + b\\right)}",
+        "goal_part": 1
+      },
+      {
+        "input": "Eq((x**2 + 1)/(2*x), (a**2 + b**2 + (a - b)*(a + b))/(a**2 + b**2 - (a - b)*(a + b)))",
+        "output": "Eq((x**2 + 1)/(2*x), a**2/b**2)",
+        "rule_id": "simplify_sides",
+        "reason": "Simplify each side.",
+        "relation": "derived",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "implied": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "method_template",
+        "input_latex": "\\frac{x^{2} + 1}{2 x} = \\frac{a^{2} + b^{2} + \\left(a - b\\right) \\left(a + b\\right)}{a^{2} + b^{2} - \\left(a - b\\right) \\left(a + b\\right)}",
+        "output_latex": "\\frac{x^{2} + 1}{2 x} = \\frac{a^{2}}{b^{2}}",
+        "goal_part": 1
+      },
+      {
+        "input": "Eq((x**2 + 1)/(2*x), a**2/b**2)",
+        "output": "Eq(b**2*(x**2 + 1), 2*a**2*x)",
+        "rule_id": "cross_multiply",
+        "reason": "Cross-multiply to clear the denominators.",
+        "relation": "derived",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "implied": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "method_template",
+        "input_latex": "\\frac{x^{2} + 1}{2 x} = \\frac{a^{2}}{b^{2}}",
+        "output_latex": "b^{2} \\left(x^{2} + 1\\right) = 2 a^{2} x",
+        "goal_part": 1
+      },
+      {
+        "input": "Eq(b**2*(x**2 + 1), 2*a**2*x)",
+        "output": "Eq(b**2, 2*a**2*x/(x**2 + 1))",
+        "rule_id": "solve_for",
+        "reason": "Make $b^{2}$ the subject.",
+        "relation": "derived",
+        "part": "step",
+        "reverse": false,
+        "params": {
+          "atom": "b**2"
+        },
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "implied": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "method_template",
+        "input_latex": "b^{2} \\left(x^{2} + 1\\right) = 2 a^{2} x",
+        "output_latex": "b^{2} = \\frac{2 a^{2} x}{x^{2} + 1}",
+        "goal_part": 1
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-X-009",
+      "goal": {
+        "kind": "prove_from_hypotheses",
+        "lhs": "b**2",
+        "rhs": "2*a**2*x/(x**2 + 1)"
+      },
+      "variables": {
+        "a": [
+          "positive"
+        ],
+        "b": [
+          "positive"
+        ],
+        "x": [
+          "real"
+        ]
+      },
+      "hypotheses": [
+        {
+          "lhs": "x",
+          "rhs": "(sqrt(a**2 + b**2) + sqrt(a**2 - b**2))/(sqrt(a**2 + b**2) - sqrt(a**2 - b**2))",
+          "quote": "x = (√(a² + b²) + √(a² − b²))/(√(a² + b²) − √(a² − b²))"
+        }
+      ],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
+      "prescribed_method": "componendo_dividendo",
+      "quotes": {
+        "goal": "Use componendo and dividendo to prove that b² = 2a²x/(x² + 1)"
+      },
+      "note": ""
+    },
+    "validation": {
+      "status": "VALID",
+      "reason": "",
+      "english": "Variables: a (positive); b (positive); x (real). Given x = (sqrt(a**2 + b**2) + sqrt(a**2 - b**2))/(sqrt(a**2 + b**2) - sqrt(a**2 - b**2)). Prove b**2 = 2*a**2*x/(x**2 + 1). Method required: componendo dividendo.",
+      "conditions": [
+        "x**2 + 1 != 0",
+        "a**2 + b**2 >= 0",
+        "a**2 - b**2 >= 0",
+        "-sqrt(a**2 - b**2) + sqrt(a**2 + b**2) != 0"
+      ],
+      "sample_points_checked": 16,
+      "warnings": []
+    },
+    "attempts": [
+      {
+        "strategy": "componendo_dividendo",
+        "status": "SOLVED",
+        "reason": null,
+        "states_explored": null,
+        "elapsed_seconds": null
+      }
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "componendo_dividendo",
+    "domain_conditions": [
+      "x**2 + 1 != 0",
+      "a**2 + b**2 >= 0",
+      "a**2 - b**2 >= 0",
+      "-sqrt(a**2 - b**2) + sqrt(a**2 + b**2) != 0"
+    ],
+    "goal_check": [
+      "Each equation follows from the given one, and the last is the goal."
+    ],
+    "diagnostics": {},
+    "presentation": {
+      "steps": 7,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-X-009\n\nb) Given x = $$\\frac{\\sqrt{a^2 + b^2} + \\sqrt{a^2 - b^2}}{\\sqrt{a^2 + b^2} - \\sqrt{a^2 - b^2}}$$.\n\nUse componendo and dividendo to prove that $$b^2 = \\frac{2a^2x}{x^2 + 1}$$. [3]\n\n**Solution**\n\nGiven: $x = \\frac{\\sqrt{a^{2} + b^{2}} + \\sqrt{a^{2} - b^{2}}}{\\sqrt{a^{2} + b^{2}} - \\sqrt{a^{2} - b^{2}}}$.\n\n$$\\implies \\frac{x + 1}{x - 1} = \\frac{\\sqrt{a^{2} + b^{2}}}{\\sqrt{a^{2} - b^{2}}}$$\n\n*Componendo and dividendo: if $\\frac{a}{b} = \\frac{c}{d}$ then $\\frac{a + b}{a - b} = \\frac{c + d}{c - d}$.*\n\n$$\\implies \\frac{\\left(x + 1\\right)^{2}}{\\left(x - 1\\right)^{2}} = \\frac{a^{2} + b^{2}}{a^{2} - b^{2}}$$\n\n*Square both sides.*\n\n$$\\implies \\frac{\\left(x + 1\\right)^{2}}{\\left(x - 1\\right)^{2}} = \\frac{a^{2} + b^{2}}{\\left(a - b\\right) \\left(a + b\\right)}$$\n\n*Simplify each side.*\n\n$$\\implies \\frac{x^{2} + 1}{2 x} = \\frac{a^{2} + b^{2} + \\left(a - b\\right) \\left(a + b\\right)}{a^{2} + b^{2} - \\left(a - b\\right) \\left(a + b\\right)}$$\n\n*Componendo and dividendo: if $\\frac{a}{b} = \\frac{c}{d}$ then $\\frac{a + b}{a - b} = \\frac{c + d}{c - d}$.*\n\n$$\\implies \\frac{x^{2} + 1}{2 x} = \\frac{a^{2}}{b^{2}}$$\n\n*Simplify each side.*\n\n$$\\implies b^{2} \\left(x^{2} + 1\\right) = 2 a^{2} x$$\n\n*Cross-multiply to clear the denominators.*\n\n$$\\implies b^{2} = \\frac{2 a^{2} x}{x^{2} + 1}$$\n\n*Make $b^{2}$ the subject.*\n\nHence proved.\n\nValid where $a^{2} - b^{2} \\geq 0$, $- \\sqrt{a^{2} - b^{2}} + \\sqrt{a^{2} + b^{2}} \\neq 0$.\n"
   },
   {
     "id": "PD-MATH-X-010",
@@ -4611,6 +7099,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "p/q = r/s"
@@ -4799,6 +7291,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "the ratio of their volume is 3√3/4"
@@ -4821,7 +7317,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 3,
-        "elapsed_seconds": 0.032
+        "elapsed_seconds": 0.031
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -5072,6 +7568,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "c² = a²(1 + m²)"
@@ -5094,7 +7594,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 4,
-        "elapsed_seconds": 0.047
+        "elapsed_seconds": 0.031
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -5181,12 +7681,300 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "Eq(geo_cross(D, E, B, C), 0)",
+        "output": "Eq(-c*(q*t - q*u), 0)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "implication",
+        "part": "premise",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "method_template",
+        "input_latex": "\\overrightarrow{DE} \\times \\overrightarrow{BC} = 0",
+        "output_latex": "- c \\left(q t - q u\\right) = 0",
+        "goal_part": 1
+      },
+      {
+        "input": "Eq(-c*(q*t - q*u), 0)",
+        "output": "Eq(t, u)",
+        "rule_id": "solve_for",
+        "reason": "Make $t$ the subject.",
+        "relation": "implication",
+        "part": "premise",
+        "reverse": false,
+        "params": {
+          "atom": "t"
+        },
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "method_template",
+        "input_latex": "- c \\left(q t - q u\\right) = 0",
+        "output_latex": "t = u",
+        "goal_part": 1
+      },
+      {
+        "input": "geo_dist2(A, D)*geo_dist2(E, C)",
+        "output": "(p**2*t**2 + q**2*t**2)*((q*u - q)**2 + (c - p - u*(c - p))**2)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "AD^{2} EC^{2}",
+        "output_latex": "\\left(p^{2} t^{2} + q^{2} t^{2}\\right) \\left(\\left(q u - q\\right)^{2} + \\left(c - p - u \\left(c - p\\right)\\right)^{2}\\right)",
+        "goal_part": 1
+      },
+      {
+        "input": "(p**2*t**2 + q**2*t**2)*((q*u - q)**2 + (c - p - u*(c - p))**2)",
+        "output": "(p**2*u**2 + q**2*u**2)*((q*u - q)**2 + (c - p - u*(c - p))**2)",
+        "rule_id": "substitute",
+        "reason": "Substitute $t = u$.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {
+          "variable": "t",
+          "value": "u"
+        },
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\left(p^{2} t^{2} + q^{2} t^{2}\\right) \\left(\\left(q u - q\\right)^{2} + \\left(c - p - u \\left(c - p\\right)\\right)^{2}\\right)",
+        "output_latex": "\\left(p^{2} u^{2} + q^{2} u^{2}\\right) \\left(\\left(q u - q\\right)^{2} + \\left(c - p - u \\left(c - p\\right)\\right)^{2}\\right)",
+        "goal_part": 1
+      },
+      {
+        "input": "(p**2*u**2 + q**2*u**2)*((q*u - q)**2 + (c - p - u*(c - p))**2)",
+        "output": "(q**2*u**2 + u**2*(c - p)**2)*((p*u - p)**2 + (q*u - q)**2)",
+        "rule_id": "algebra_finish",
+        "reason": "Simplify.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\left(p^{2} u^{2} + q^{2} u^{2}\\right) \\left(\\left(q u - q\\right)^{2} + \\left(c - p - u \\left(c - p\\right)\\right)^{2}\\right)",
+        "output_latex": "\\left(q^{2} u^{2} + u^{2} \\left(c - p\\right)^{2}\\right) \\left(\\left(p u - p\\right)^{2} + \\left(q u - q\\right)^{2}\\right)",
+        "goal_part": 1
+      },
+      {
+        "input": "(q**2*u**2 + u**2*(c - p)**2)*((p*u - p)**2 + (q*u - q)**2)",
+        "output": "(q**2*u**2 + u**2*(c - p)**2)*((p*t - p)**2 + (q*t - q)**2)",
+        "rule_id": "substitute",
+        "reason": "Substitute $t = u$.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {
+          "variable": "t",
+          "value": "u"
+        },
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\left(q^{2} u^{2} + u^{2} \\left(c - p\\right)^{2}\\right) \\left(\\left(p u - p\\right)^{2} + \\left(q u - q\\right)^{2}\\right)",
+        "output_latex": "\\left(q^{2} u^{2} + u^{2} \\left(c - p\\right)^{2}\\right) \\left(\\left(p t - p\\right)^{2} + \\left(q t - q\\right)^{2}\\right)",
+        "goal_part": 1
+      },
+      {
+        "input": "(q**2*u**2 + u**2*(c - p)**2)*((p*t - p)**2 + (q*t - q)**2)",
+        "output": "geo_dist2(A, E)*geo_dist2(D, B)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\left(q^{2} u^{2} + u^{2} \\left(c - p\\right)^{2}\\right) \\left(\\left(p t - p\\right)^{2} + \\left(q t - q\\right)^{2}\\right)",
+        "output_latex": "AE^{2} DB^{2}",
+        "goal_part": 1
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-X-017",
+      "goal": {
+        "kind": "prove_from_hypotheses",
+        "lhs": "dist2(A,D)*dist2(E,C)",
+        "rhs": "dist2(A,E)*dist2(D,B)"
+      },
+      "variables": {
+        "c": [
+          "positive"
+        ],
+        "p": [
+          "real"
+        ],
+        "q": [
+          "positive"
+        ],
+        "t": [
+          "positive"
+        ],
+        "u": [
+          "positive"
+        ]
+      },
+      "hypotheses": [
+        {
+          "lhs": "cross(D,E,B,C)",
+          "rhs": "0",
+          "quote": "a line parallel to BC meets AB at D and AC at E"
+        }
+      ],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {
+        "B": [
+          "0",
+          "0"
+        ],
+        "C": [
+          "c",
+          "0"
+        ],
+        "A": [
+          "p",
+          "q"
+        ],
+        "D": [
+          "p - t*p",
+          "q - t*q"
+        ],
+        "E": [
+          "p + u*(c - p)",
+          "q - u*q"
+        ]
+      },
+      "nondegenerate": [],
+      "figure": [
+        [
+          "on_line",
+          "D",
+          "A",
+          "B"
+        ],
+        [
+          "on_line",
+          "E",
+          "A",
+          "C"
+        ]
+      ],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "If a line is drawn parallel to one side of a triangle to intersect the other two sides in distinct points, then prove that other two sides are divided in the same ratio."
+      },
+      "note": "D = A + t(B - A) and E = A + u(C - A). AD/DB = AE/EC is shown as AD²·EC² = AE²·DB² (lengths are positive)."
+    },
+    "validation": {
+      "status": "VALID",
+      "reason": "",
+      "english": "Points: B = (0, 0); C = (c, 0); A = (p, q); D = (p - t*p, q - t*q); E = (p + u*(c - p), q - u*q). Figure: D lies on line AB; E lies on line AC. Variables: c (positive); p (real); q (positive); t (positive); u (positive). Given cross(D,E,B,C) = 0. Prove dist2(A,D)*dist2(E,C) = dist2(A,E)*dist2(D,B).",
+      "conditions": [],
+      "sample_points_checked": 16,
+      "warnings": []
+    },
+    "attempts": [
+      {
+        "strategy": "conditional",
+        "status": "SOLVED",
+        "reason": null,
+        "states_explored": 12,
+        "elapsed_seconds": 0.921
+      }
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "conditional",
+    "domain_conditions": [],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": {},
+    "presentation": {
+      "steps": 7,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-X-017\n\n32. (A) If a line is drawn parallel to one side of a triangle to intersect the other two sides in distinct points, then prove that other two sides are divided in the same ratio. 5\n\n**Solution**\n\nTake coordinates: $B = \\left(0, 0\\right)$, $C = \\left(c, 0\\right)$, $A = \\left(p, q\\right)$, $D = \\left(- p t + p, - q t + q\\right)$, $E = \\left(p + u \\left(c - p\\right), - q u + q\\right)$.\n\n*D = A + t(B - A) and E = A + u(C - A). AD/DB = AE/EC is shown as AD²·EC² = AE²·DB² (lengths are positive).*\n\nThese coordinates give: D lies on line AB; E lies on line AC.\n\nThen:\n\n$$\\overrightarrow{DE} \\times \\overrightarrow{BC} = \\left(p + u \\left(c - p\\right) - \\left(- p t + p\\right)\\right)\\left(0\\right) - \\left(- q u + q - \\left(- q t + q\\right)\\right)\\left(c\\right) = - c q \\left(t - u\\right)$$\n\n$$AD^{2} = \\left(- p t + p - p\\right)^{2} + \\left(- q t + q - q\\right)^{2} = t^{2} \\left(p^{2} + q^{2}\\right)$$\n\n$$AE^{2} = \\left(p + u \\left(c - p\\right) - p\\right)^{2} + \\left(- q u + q - q\\right)^{2} = u^{2} \\left(c^{2} - 2 c p + p^{2} + q^{2}\\right)$$\n\n$$DB^{2} = \\left(0 - \\left(- p t + p\\right)\\right)^{2} + \\left(0 - \\left(- q t + q\\right)\\right)^{2} = \\left(p^{2} + q^{2}\\right) \\left(t - 1\\right)^{2}$$\n\n$$EC^{2} = \\left(c - \\left(p + u \\left(c - p\\right)\\right)\\right)^{2} + \\left(0 - \\left(- q u + q\\right)\\right)^{2} = \\left(u - 1\\right)^{2} \\left(c^{2} - 2 c p + p^{2} + q^{2}\\right)$$\n\nGiven: $\\overrightarrow{DE} \\times \\overrightarrow{BC} = 0$.\n\nFrom the given condition:\n\n$$\\overrightarrow{DE} \\times \\overrightarrow{BC} = 0 \\implies - c \\left(q t - q u\\right) = 0$$\n\n*Write each length, area or product in coordinates (see above).*\n\n$$- c \\left(q t - q u\\right) = 0 \\implies t = u$$\n\n*Make $t$ the subject.*\n\n**LHS:**\n\n$$AD^{2} EC^{2}$$\n\n$$= \\left(p^{2} t^{2} + q^{2} t^{2}\\right) \\left(\\left(q u - q\\right)^{2} + \\left(c - p - u \\left(c - p\\right)\\right)^{2}\\right)$$\n\n*Write each length, area or product in coordinates (see above).*\n\n$$= \\left(p^{2} u^{2} + q^{2} u^{2}\\right) \\left(\\left(q u - q\\right)^{2} + \\left(c - p - u \\left(c - p\\right)\\right)^{2}\\right)$$\n\n*Substitute $t = u$.*\n\n$$= \\left(q^{2} u^{2} + u^{2} \\left(c - p\\right)^{2}\\right) \\left(\\left(p u - p\\right)^{2} + \\left(q u - q\\right)^{2}\\right)$$\n\n*Simplify.*\n\n**RHS:**\n\n$$AE^{2} DB^{2}$$\n\n$$= \\left(q^{2} u^{2} + u^{2} \\left(c - p\\right)^{2}\\right) \\left(\\left(p t - p\\right)^{2} + \\left(q t - q\\right)^{2}\\right)$$\n\n*Write each length, area or product in coordinates (see above).*\n\n$$= \\left(q^{2} u^{2} + u^{2} \\left(c - p\\right)^{2}\\right) \\left(\\left(p u - p\\right)^{2} + \\left(q u - q\\right)^{2}\\right)$$\n\n*Substitute $t = u$.*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n"
   },
   {
     "id": "PD-MATH-X-018",
@@ -5522,6 +8310,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "the 25th term of the A.P. is three times its 11th term"
@@ -5542,7 +8334,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 6,
-        "elapsed_seconds": 0.047
+        "elapsed_seconds": 0.031
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -5730,6 +8522,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "sequences": "The first term of each A.P. is 1 and their common differences are 1, 2 and 3 respectively.",
@@ -5751,7 +8547,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 4,
-        "elapsed_seconds": 0.032
+        "elapsed_seconds": 0.031
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -5921,6 +8717,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "there exists a value of X such that sum of numbers of houses preceding the house numbered X is equal to sum of the numbers of houses following X"
@@ -6025,12 +8825,157 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "geo_dist2(P, T)",
+        "output": "(-p + r**2/p)**2 + r**2*(p**2 - r**2)/p**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "PT^{2}",
+        "output_latex": "\\left(- p + \\frac{r^{2}}{p}\\right)^{2} + \\frac{r^{2} \\left(p^{2} - r^{2}\\right)}{p^{2}}",
+        "goal_part": 1
+      },
+      {
+        "input": "(-p + r**2/p)**2 + r**2*(p**2 - r**2)/p**2",
+        "output": "geo_dist2(P, U)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\left(- p + \\frac{r^{2}}{p}\\right)^{2} + \\frac{r^{2} \\left(p^{2} - r^{2}\\right)}{p^{2}}",
+        "output_latex": "PU^{2}",
+        "goal_part": 1
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-X-025",
+      "goal": {
+        "kind": "prove_identity",
+        "lhs": "dist2(P,T)",
+        "rhs": "dist2(P,U)"
+      },
+      "variables": {
+        "p": [
+          "positive"
+        ],
+        "r": [
+          "positive"
+        ]
+      },
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {
+        "O": [
+          "0",
+          "0"
+        ],
+        "P": [
+          "p",
+          "0"
+        ],
+        "T": [
+          "r**2/p",
+          "r*sqrt(p**2 - r**2)/p"
+        ],
+        "U": [
+          "r**2/p",
+          "-r*sqrt(p**2 - r**2)/p"
+        ]
+      },
+      "nondegenerate": [],
+      "figure": [
+        [
+          "equal_length",
+          "O",
+          "T",
+          "O",
+          "U"
+        ],
+        [
+          "right_angle",
+          "O",
+          "T",
+          "P"
+        ],
+        [
+          "right_angle",
+          "O",
+          "U",
+          "P"
+        ]
+      ],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "Prove that the lengths of tangents drawn from an external point to a circle are equal."
+      },
+      "note": "Centre O at the origin and the external point P = (p, 0), p > r. T and U are the points of contact: OT = OU = r and OT ⊥ PT, OU ⊥ PU (checked). Equal squared lengths give PT = PU."
+    },
+    "validation": {
+      "status": "VALID",
+      "reason": "",
+      "english": "Points: O = (0, 0); P = (p, 0); T = (r**2/p, r*sqrt(p**2 - r**2)/p); U = (r**2/p, -r*sqrt(p**2 - r**2)/p). Figure: OT = OU; ∠OTP = 90°; ∠OUP = 90°. Variables: p (positive); r (positive). Prove dist2(P,T) = dist2(P,U).",
+      "conditions": [],
+      "sample_points_checked": 16,
+      "warnings": []
+    },
+    "attempts": [
+      {
+        "strategy": "identity",
+        "status": "SOLVED",
+        "reason": null,
+        "states_explored": 6,
+        "elapsed_seconds": 0.125
+      }
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "identity",
+    "domain_conditions": [],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": {},
+    "presentation": {
+      "steps": 2,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-X-025\n\nProve that the lengths of tangents drawn from an external point to a circle are equal.\n\n**Solution**\n\nTake coordinates: $O = \\left(0, 0\\right)$, $P = \\left(p, 0\\right)$, $T = \\left(\\frac{r^{2}}{p}, \\frac{r \\sqrt{p^{2} - r^{2}}}{p}\\right)$, $U = \\left(\\frac{r^{2}}{p}, - \\frac{r \\sqrt{p^{2} - r^{2}}}{p}\\right)$.\n\n*Centre O at the origin and the external point P = (p, 0), p > r. T and U are the points of contact: OT = OU = r and OT ⊥ PT, OU ⊥ PU (checked). Equal squared lengths give PT = PU.*\n\nThese coordinates give: OT = OU; ∠OTP = 90°; ∠OUP = 90°.\n\nThen:\n\n$$PT^{2} = \\left(\\frac{r^{2}}{p} - p\\right)^{2} + \\left(\\frac{r \\sqrt{p^{2} - r^{2}}}{p}\\right)^{2} = \\left(p - r\\right) \\left(p + r\\right)$$\n\n$$PU^{2} = \\left(\\frac{r^{2}}{p} - p\\right)^{2} + \\left(- \\frac{r \\sqrt{p^{2} - r^{2}}}{p}\\right)^{2} = \\left(p - r\\right) \\left(p + r\\right)$$\n\n**LHS:**\n\n$$PT^{2}$$\n\n$$= \\left(- p + \\frac{r^{2}}{p}\\right)^{2} + \\frac{r^{2} \\left(p^{2} - r^{2}\\right)}{p^{2}}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$PU^{2}$$\n\n$$= \\left(- p + \\frac{r^{2}}{p}\\right)^{2} + \\frac{r^{2} \\left(p^{2} - r^{2}\\right)}{p^{2}}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n"
   },
   {
     "id": "PD-MATH-X-026",
@@ -6121,6 +9066,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "the area of an equilateral triangle described on one side of the square is equal to half the area of the equilateral triangle described on one of its diagonal"
@@ -6224,12 +9173,155 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "9*geo_dist2(A, D)",
+        "output": "63*a**2",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "9 AD^{2}",
+        "output_latex": "63 a^{2}",
+        "goal_part": 1
+      },
+      {
+        "input": "63*a**2",
+        "output": "7*geo_dist2(A, B)",
+        "rule_id": "use_coordinates",
+        "reason": "Write each length, area or product in coordinates (see above).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "63 a^{2}",
+        "output_latex": "7 AB^{2}",
+        "goal_part": 1
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-X-028",
+      "goal": {
+        "kind": "prove_identity",
+        "lhs": "9*dist2(A,D)",
+        "rhs": "7*dist2(A,B)"
+      },
+      "variables": {
+        "a": [
+          "positive"
+        ]
+      },
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {
+        "B": [
+          "0",
+          "0"
+        ],
+        "C": [
+          "3*a",
+          "0"
+        ],
+        "A": [
+          "3*a/2",
+          "3*sqrt(3)*a/2"
+        ],
+        "D": [
+          "a",
+          "0"
+        ]
+      },
+      "nondegenerate": [],
+      "figure": [
+        [
+          "equal_length",
+          "A",
+          "B",
+          "B",
+          "C"
+        ],
+        [
+          "equal_length",
+          "A",
+          "C",
+          "B",
+          "C"
+        ],
+        [
+          "on_line",
+          "D",
+          "B",
+          "C"
+        ]
+      ],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "In an equilateral ΔABC, D is a point on side BC such that BD = 1/3 BC. Prove that 9(AD)^2 = 7(AB)^2"
+      },
+      "note": "Side 3a with B at the origin and BC along the x-axis; D = (a, 0) gives BD = a = BC/3."
+    },
+    "validation": {
+      "status": "VALID",
+      "reason": "",
+      "english": "Points: B = (0, 0); C = (3*a, 0); A = (3*a/2, 3*sqrt(3)*a/2); D = (a, 0). Figure: AB = BC; AC = BC; D lies on line BC. Variables: a (positive). Prove 9*dist2(A,D) = 7*dist2(A,B).",
+      "conditions": [],
+      "sample_points_checked": 16,
+      "warnings": []
+    },
+    "attempts": [
+      {
+        "strategy": "identity",
+        "status": "SOLVED",
+        "reason": null,
+        "states_explored": 4,
+        "elapsed_seconds": 0.016
+      }
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "identity",
+    "domain_conditions": [],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": {},
+    "presentation": {
+      "steps": 2,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-X-028\n\nIn an equilateral ΔABC, D is a point on side BC such that BD = 1/3 BC. Prove that 9(AD)^2 = 7(AB)^2\n\n**Solution**\n\nTake coordinates: $B = \\left(0, 0\\right)$, $C = \\left(3 a, 0\\right)$, $A = \\left(\\frac{3 a}{2}, \\frac{3 \\sqrt{3} a}{2}\\right)$, $D = \\left(a, 0\\right)$.\n\n*Side 3a with B at the origin and BC along the x-axis; D = (a, 0) gives BD = a = BC/3.*\n\nThese coordinates give: AB = BC; AC = BC; D lies on line BC.\n\nThen:\n\n$$AB^{2} = \\left(0 - \\frac{3 a}{2}\\right)^{2} + \\left(0 - \\frac{3 \\sqrt{3} a}{2}\\right)^{2} = 9 a^{2}$$\n\n$$AD^{2} = \\left(a - \\frac{3 a}{2}\\right)^{2} + \\left(0 - \\frac{3 \\sqrt{3} a}{2}\\right)^{2} = 7 a^{2}$$\n\n**LHS:**\n\n$$9 AD^{2}$$\n\n$$= 63 a^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\n**RHS:**\n\n$$7 AB^{2}$$\n\n$$= 63 a^{2}$$\n\n*Write each length, area or product in coordinates (see above).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n"
   },
   {
     "id": "PD-MATH-X-029",
@@ -6371,6 +9463,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": "completing_square",
       "quotes": {
         "goal": "Using completing the square method, show that the equation x^2 - 8x + 18 = 0 has no solution."
@@ -6674,6 +9770,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "cot (A - B) = 1/x + 1/y"
@@ -6702,7 +9802,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 21,
-        "elapsed_seconds": 1.5
+        "elapsed_seconds": 1.859
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -6874,6 +9974,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "cos 20° cos 40° cos 60° cos 80° = 1/16"
@@ -6894,7 +9998,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 7,
-        "elapsed_seconds": 0.422
+        "elapsed_seconds": 0.625
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -7326,6 +10430,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "i) cos(α-β) = (a²+b²-2)/2; ii) tan((α-β)/2) = ±√((4-a²-b²)/(a²+b²))"
@@ -7360,7 +10468,7 @@
           "status": "SOLVED",
           "reason": null,
           "states_explored": 18,
-          "elapsed_seconds": 0.719
+          "elapsed_seconds": 0.782
         }
       ],
       [
@@ -7369,7 +10477,7 @@
           "status": "SOLVED",
           "reason": null,
           "states_explored": 4,
-          "elapsed_seconds": 0.813
+          "elapsed_seconds": 1.203
         }
       ]
     ],
@@ -7539,6 +10647,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "1/(b + c), 1/(c + a), 1/(a + b) are in A.P."
@@ -7563,14 +10675,14 @@
         "status": "INCONCLUSIVE",
         "reason": "Search budget exhausted; no approved derivation found.",
         "states_explored": 20,
-        "elapsed_seconds": 0.89
+        "elapsed_seconds": 0.875
       },
       {
         "strategy": "difference",
         "status": "SOLVED",
         "reason": null,
         "states_explored": 6,
-        "elapsed_seconds": 0.39
+        "elapsed_seconds": 0.312
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -7622,12 +10734,159 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "b + d",
+        "output": "b + d/2 + sqrt(-b*(b + d) + (b + d/2)**2)",
+        "rule_id": "simplify_radicand",
+        "reason": "Simplify under the root sign (a square root of a square of a nonnegative quantity is that quantity).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "b + d",
+        "output_latex": "b + \\frac{d}{2} + \\sqrt{- b \\left(b + d\\right) + \\left(b + \\frac{d}{2}\\right)^{2}}",
+        "goal_part": 1
+      },
+      {
+        "input": "b",
+        "output": "b + d/2 - sqrt(-b*(b + d) + (b + d/2)**2)",
+        "rule_id": "simplify_radicand",
+        "reason": "Simplify under the root sign (a square root of a square of a nonnegative quantity is that quantity).",
+        "relation": "equality",
+        "part": "step",
+        "reverse": true,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "b",
+        "output_latex": "b + \\frac{d}{2} - \\sqrt{- b \\left(b + d\\right) + \\left(b + \\frac{d}{2}\\right)^{2}}",
+        "goal_part": 2
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-XI-006",
+      "goal": {
+        "kind": "prove_identity",
+        "parts": [
+          {
+            "lhs": "b + d",
+            "rhs": "((b + d) + b)/2 + sqrt((((b + d) + b)/2)**2 - (b + d)*b)"
+          },
+          {
+            "lhs": "b",
+            "rhs": "((b + d) + b)/2 - sqrt((((b + d) + b)/2)**2 - (b + d)*b)"
+          }
+        ]
+      },
+      "variables": {
+        "b": [
+          "positive"
+        ],
+        "d": [
+          "nonnegative"
+        ]
+      },
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "If A and G be the AM and GM between two positive numbers, then prove that the numbers are A ± √(A² − G²)"
+      },
+      "note": "Call the numbers b + d and b with d ≥ 0 (b + d is the larger). Then A = ((b + d) + b)/2 and G² = (b + d)b are written in directly, so A ± √(A² − G²) is the right side of each part."
+    },
+    "validation": [
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Variables: b (positive); d (nonnegative). Prove b + d = ((b + d) + b)/2 + sqrt((((b + d) + b)/2)**2 - (b + d)*b).",
+        "conditions": [
+          "-b*(b + d) + (b + d/2)**2 >= 0"
+        ],
+        "sample_points_checked": 16,
+        "warnings": []
+      },
+      {
+        "status": "VALID",
+        "reason": "",
+        "english": "Variables: b (positive); d (nonnegative). Prove b = ((b + d) + b)/2 - sqrt((((b + d) + b)/2)**2 - (b + d)*b).",
+        "conditions": [
+          "-b*(b + d) + (b + d/2)**2 >= 0"
+        ],
+        "sample_points_checked": 16,
+        "warnings": []
+      }
+    ],
+    "attempts": [
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 3,
+          "elapsed_seconds": 0.031
+        }
+      ],
+      [
+        {
+          "strategy": "identity",
+          "status": "SOLVED",
+          "reason": null,
+          "states_explored": 3,
+          "elapsed_seconds": 0.016
+        }
+      ]
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "identity",
+    "domain_conditions": [
+      "-b*(b + d) + (b + d/2)**2 >= 0"
+    ],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS.",
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": [
+      {},
+      {}
+    ],
+    "presentation": {
+      "steps": 2,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-XI-006\n\n28. If A and G be the AM and GM between two positive numbers, then prove that the numbers are $A \\pm \\sqrt{A^2 - G^2}$\n\n**Solution**\n\n**Part 1: $b + d = \\frac{b + d + b}{2} + \\sqrt{\\left(\\frac{b + d + b}{2}\\right)^{2} - \\left(b + d\\right) b}$**\n\n**LHS:**\n\n$$b + d$$\n\n**RHS:**\n\n$$\\frac{b + d + b}{2} + \\sqrt{\\left(\\frac{b + d + b}{2}\\right)^{2} - \\left(b + d\\right) b}$$\n\n$$= b + d$$\n\n*Simplify under the root sign (a square root of a square of a nonnegative quantity is that quantity).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n\nValid where $- b \\left(b + d\\right) + \\left(b + \\frac{d}{2}\\right)^{2} \\geq 0$.\n\n**Part 2: $b = \\frac{b + d + b}{2} - \\sqrt{\\left(\\frac{b + d + b}{2}\\right)^{2} - \\left(b + d\\right) b}$**\n\nFrom the earlier part: $b + d = b + \\frac{d}{2} + \\sqrt{- b \\left(b + d\\right) + \\left(b + \\frac{d}{2}\\right)^{2}}$.\n\n**LHS:**\n\n$$b$$\n\n**RHS:**\n\n$$\\frac{b + d + b}{2} - \\sqrt{\\left(\\frac{b + d + b}{2}\\right)^{2} - \\left(b + d\\right) b}$$\n\n$$= b$$\n\n*Simplify under the root sign (a square root of a square of a nonnegative quantity is that quantity).*\n\nBoth sides reduce to the same expression, so LHS = RHS. Hence proved.\n\nValid where $- b \\left(b + d\\right) + \\left(b + \\frac{d}{2}\\right)^{2} \\geq 0$.\n"
   },
   {
     "id": "PD-MATH-XI-007",
@@ -7908,6 +11167,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "a, b, c are also in GP"
@@ -7932,7 +11195,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 3,
-        "elapsed_seconds": 0.016
+        "elapsed_seconds": 0.0
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -8079,6 +11342,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "sin x/cos 3x + sin 3x/cos 9x + sin 9x/cos 27x = 1/2 (tan 27x - tan x)"
@@ -8104,7 +11371,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 13,
-        "elapsed_seconds": 9.578
+        "elapsed_seconds": 11.25
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -8465,6 +11732,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "S₁(S₃ - S₂) = (S₂ - S₁)²"
@@ -8488,7 +11759,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 11,
-        "elapsed_seconds": 0.36
+        "elapsed_seconds": 0.437
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -8731,6 +12002,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "Find the derivative of f(x) from the first principle, where f(x) = x² sin x"
@@ -9075,6 +12350,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "Using the first principle, find the derivative of √(3x + 4)."
@@ -9296,12 +12575,168 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "Eq(p*r, 2*q + 2*s)",
+        "output": "Eq(q, p*r/2 - s)",
+        "rule_id": "solve_for",
+        "reason": "Make $q$ the subject.",
+        "relation": "implication",
+        "part": "premise",
+        "reverse": false,
+        "params": {
+          "atom": "q"
+        },
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "method_template",
+        "input_latex": "p r = 2 q + 2 s",
+        "output_latex": "q = \\frac{p r}{2} - s",
+        "goal_part": 1
+      },
+      {
+        "input": "p**2 - 4*q + r**2 - 4*s",
+        "output": "p**2 - 2*p*r + r**2",
+        "rule_id": "substitute",
+        "reason": "Substitute $q = \\frac{p r}{2} - s$.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {
+          "variable": "q",
+          "value": "p*r/2 - s"
+        },
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "p^{2} - 4 q + r^{2} - 4 s",
+        "output_latex": "p^{2} - 2 p r + r^{2}",
+        "goal_part": 1
+      },
+      {
+        "input": "p**2 - 2*p*r + r**2",
+        "output": "(p - r)**2",
+        "rule_id": "algebra_finish",
+        "reason": "Simplify algebraically.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "p^{2} - 2 p r + r^{2}",
+        "output_latex": "\\left(p - r\\right)^{2}",
+        "goal_part": 1
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-XI-025",
+      "goal": {
+        "kind": "one_real_roots",
+        "variable": "x",
+        "polynomials": [
+          "x**2 + p*x + q",
+          "x**2 + r*x + s"
+        ]
+      },
+      "variables": {
+        "p": [
+          "real"
+        ],
+        "q": [
+          "real"
+        ],
+        "r": [
+          "real"
+        ],
+        "s": [
+          "real"
+        ],
+        "x": [
+          "real"
+        ]
+      },
+      "hypotheses": [
+        {
+          "lhs": "p*r",
+          "rhs": "2*(q + s)",
+          "quote": "pr = 2(q + s)"
+        }
+      ],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "at least one of the equations x² + px + q = 0 and x² + rx + s = 0 has real roots"
+      },
+      "note": ""
+    },
+    "validation": {
+      "status": "VALID",
+      "reason": "Not numerically checkable here; the route's own checker is used.",
+      "english": "Variables: p (real); q (real); r (real); s (real); x (real). Given p*r = 2*(q + s). Show at least one of x**2 + p*x + q = 0, x**2 + r*x + s = 0 has real roots in x.",
+      "conditions": []
+    },
+    "attempts": [
+      {
+        "strategy": "one_real_roots",
+        "status": "SOLVED",
+        "reason": null,
+        "states_explored": 5,
+        "elapsed_seconds": 0.047
+      }
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "one_real_roots",
+    "domain_conditions": [],
+    "goal_check": [
+      "The sum of the discriminants equals a square times a positive number, so it is not negative."
+    ],
+    "diagnostics": {
+      "sum": "p**2 - 4*q + r**2 - 4*s",
+      "square": "(p - r)**2"
+    },
+    "presentation": {
+      "steps": 3,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-XI-025\n\nShow that, if $$p, q, r$$ and $$s$$ are real numbers such that, $$pr = 2(q + s)$$, then at least one of the equations $$x^2 + px + q = 0$$, and $$x^2 + rx + s = 0$$ has real roots.\n\n**Solution**\n\nGiven: $p r = 2 \\left(q + s\\right)$.\n\nFrom the given condition:\n\n$$p r = 2 q + 2 s \\implies q = \\frac{p r}{2} - s$$\n\n*Make $q$ the subject.*\n\nFor $x^{2} + p x + q = 0$ the discriminant is $D_{1} = p^{2} - 4 q$.\n\nFor $x^{2} + r x + s = 0$ the discriminant is $D_{2} = r^{2} - 4 s$.\n\nAdd them: $D_{1} + D_{2}$\n\n$$p^{2} - 4 q + r^{2} - 4 s$$\n\n$$= p^{2} - 2 p r + r^{2}$$\n\n*Substitute $q = \\frac{p r}{2} - s$.*\n\n$$= \\left(p - r\\right)^{2}$$\n\n*Simplify algebraically.*\n\nA square is never negative, so $D_{1} + D_{2} \\geq 0$. The discriminants cannot both be negative, so at least one of them is $\\geq 0$: at least one equation has real roots.\n"
   },
   {
     "id": "PD-MATH-XI-026",
@@ -9487,12 +12922,143 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "x**3 + 8*x",
+        "output": "x*(x**2 + 8)",
+        "rule_id": "factor_out_root",
+        "reason": "Factorise.",
+        "relation": "factorisation",
+        "part": "premise",
+        "reverse": false,
+        "params": {
+          "factor": "x**2 + 8"
+        },
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "passed": true
+          }
+        },
+        "origin": "method_template",
+        "input_latex": "x^{3} + 8 x",
+        "output_latex": "x \\left(x^{2} + 8\\right)",
+        "goal_part": 1
+      },
+      {
+        "input": "x**2 + 8",
+        "output": "x**2 + 8",
+        "rule_id": "complete_square",
+        "reason": "Complete the square.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {
+          "variable": "x"
+        },
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "exact": true,
+            "numeric": true,
+            "domain": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "x^{2} + 8",
+        "output_latex": "x^{2} + 8",
+        "goal_part": 1
+      },
+      {
+        "input": "x**2 + 8",
+        "output": "x**2 + 8 > 0",
+        "rule_id": "square_plus_positive",
+        "reason": "A real square is nonnegative and the constant is positive.",
+        "relation": "implication",
+        "part": "step",
+        "reverse": false,
+        "params": {
+          "variable": "x"
+        },
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "passed": true,
+            "replayed": true
+          }
+        },
+        "origin": "method_template",
+        "input_latex": "x^{2} + 8",
+        "output_latex": "x^{2} + 8 > 0",
+        "goal_part": 1
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-XI-030",
+      "goal": {
+        "kind": "only_solution",
+        "variable": "x",
+        "lhs": "x**3 + 8*x",
+        "rhs": "0",
+        "value": "0"
+      },
+      "variables": {
+        "x": [
+          "real"
+        ]
+      },
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "If x is a real number such that x³ + 8x = 0, then x = 0 (by contradiction)"
+      },
+      "note": ""
+    },
+    "validation": {
+      "status": "VALID",
+      "reason": "Not numerically checkable here; the route's own checker is used.",
+      "english": "Variables: x (real). Show the only real solution of x**3 + 8*x = 0 is x = 0.",
+      "conditions": []
+    },
+    "attempts": [
+      {
+        "strategy": "only_solution",
+        "status": "SOLVED",
+        "reason": null,
+        "states_explored": null,
+        "elapsed_seconds": null
+      }
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "only_solution",
+    "domain_conditions": [],
+    "goal_check": [
+      "The equation is (x - value)^k times a factor that is never zero."
+    ],
+    "diagnostics": {
+      "other": "x**2 + 8"
+    },
+    "presentation": {
+      "steps": 3,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-XI-030\n\n(c) Show that the given statement is true by the method of contradiction:\n\nIf x is a real number such that x³ + 8x = 0, thus x = 0\n\n**Solution**\n\n$$x^{3} + 8 x = 0 \\iff x \\left(x^{2} + 8\\right) = 0$$\n\nSuppose, for contradiction, that $x \\neq 0$. Then $x^{2} + 8 = 0$.\n\n$$x^{2} + 8 = x^{2} + 8$$\n\n*Complete the square.*\n\n$$x^{2} + 8 > 0$$\n\n*A real square is nonnegative and the constant is positive.*\n\nSo $x^{2} + 8$ is never zero for real $x$: a contradiction. Hence $x = 0$.\n"
   },
   {
     "id": "PD-MATH-XI-031",
@@ -9863,6 +13429,10 @@
       },
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "d²y/dx² = (dy/dx)²"
@@ -9883,7 +13453,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 8,
-        "elapsed_seconds": 0.187
+        "elapsed_seconds": 0.235
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -10098,6 +13668,10 @@
       },
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "d²y/dx² - (1/y)(dy/dx)² - y/x = 0"
@@ -10122,7 +13696,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 3,
-        "elapsed_seconds": 0.313
+        "elapsed_seconds": 0.391
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -10345,6 +13919,10 @@
       },
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "dy/dx = y(x-1)/(x(y+1))"
@@ -10369,7 +13947,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 11,
-        "elapsed_seconds": 0.266
+        "elapsed_seconds": 0.234
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -10697,6 +14275,10 @@
       },
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "(1 + x²)y₂ + (2x - 1)y₁ = 0"
@@ -10719,7 +14301,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 14,
-        "elapsed_seconds": 0.984
+        "elapsed_seconds": 1.141
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",
@@ -10954,12 +14536,178 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "acos(7*sqrt(2)/10) + 2*atan(1/8) + 2*atan(1/5)",
+        "output": "atan(1/7) + 2*atan(1/8) + 2*atan(1/5)",
+        "rule_id": "cos_inverse_to_tan_inverse",
+        "reason": "Use $\\cos^{-1} x = \\tan^{-1}\\frac{\\sqrt{1 - x^{2}}}{x}$, valid as $0 < x \\le 1$.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\operatorname{acos}{\\left(\\frac{7 \\sqrt{2}}{10} \\right)} + 2 \\operatorname{atan}{\\left(\\frac{1}{8} \\right)} + 2 \\operatorname{atan}{\\left(\\frac{1}{5} \\right)}",
+        "output_latex": "\\operatorname{atan}{\\left(\\frac{1}{7} \\right)} + 2 \\operatorname{atan}{\\left(\\frac{1}{8} \\right)} + 2 \\operatorname{atan}{\\left(\\frac{1}{5} \\right)}",
+        "goal_part": 1
+      },
+      {
+        "input": "atan(1/7) + 2*atan(1/8) + 2*atan(1/5)",
+        "output": "atan(1/7) + atan(16/63) + 2*atan(1/5)",
+        "rule_id": "double_tan_inverse",
+        "reason": "Use $2\\tan^{-1} x = \\tan^{-1}\\frac{2x}{1 - x^{2}}$, valid as $|x| < 1$.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\operatorname{atan}{\\left(\\frac{1}{7} \\right)} + 2 \\operatorname{atan}{\\left(\\frac{1}{8} \\right)} + 2 \\operatorname{atan}{\\left(\\frac{1}{5} \\right)}",
+        "output_latex": "\\operatorname{atan}{\\left(\\frac{1}{7} \\right)} + \\operatorname{atan}{\\left(\\frac{16}{63} \\right)} + 2 \\operatorname{atan}{\\left(\\frac{1}{5} \\right)}",
+        "goal_part": 1
+      },
+      {
+        "input": "atan(1/7) + atan(16/63) + 2*atan(1/5)",
+        "output": "atan(7/17) + 2*atan(1/5)",
+        "rule_id": "tan_inverse_sum",
+        "reason": "Use $\\tan^{-1} x + \\tan^{-1} y = \\tan^{-1}\\frac{x + y}{1 - xy}$, valid as $xy < 1$.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\operatorname{atan}{\\left(\\frac{1}{7} \\right)} + \\operatorname{atan}{\\left(\\frac{16}{63} \\right)} + 2 \\operatorname{atan}{\\left(\\frac{1}{5} \\right)}",
+        "output_latex": "\\operatorname{atan}{\\left(\\frac{7}{17} \\right)} + 2 \\operatorname{atan}{\\left(\\frac{1}{5} \\right)}",
+        "goal_part": 1
+      },
+      {
+        "input": "atan(7/17) + 2*atan(1/5)",
+        "output": "atan(7/17) + atan(5/12)",
+        "rule_id": "double_tan_inverse",
+        "reason": "Use $2\\tan^{-1} x = \\tan^{-1}\\frac{2x}{1 - x^{2}}$, valid as $|x| < 1$.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\operatorname{atan}{\\left(\\frac{7}{17} \\right)} + 2 \\operatorname{atan}{\\left(\\frac{1}{5} \\right)}",
+        "output_latex": "\\operatorname{atan}{\\left(\\frac{7}{17} \\right)} + \\operatorname{atan}{\\left(\\frac{5}{12} \\right)}",
+        "goal_part": 1
+      },
+      {
+        "input": "atan(7/17) + atan(5/12)",
+        "output": "pi/4",
+        "rule_id": "tan_inverse_sum",
+        "reason": "Use $\\tan^{-1} x + \\tan^{-1} y = \\tan^{-1}\\frac{x + y}{1 - xy}$, valid as $xy < 1$.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\operatorname{atan}{\\left(\\frac{7}{17} \\right)} + \\operatorname{atan}{\\left(\\frac{5}{12} \\right)}",
+        "output_latex": "\\frac{\\pi}{4}",
+        "goal_part": 1
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-XII-010",
+      "goal": {
+        "kind": "prove_identity",
+        "lhs": "2*atan(1/5) + acos(7/(5*sqrt(2))) + 2*atan(1/8)",
+        "rhs": "pi/4"
+      },
+      "variables": {},
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "2 tan⁻¹(1/5) + cos⁻¹(7/(5√2)) + 2 tan⁻¹(1/8) = π/4"
+      },
+      "note": "Principal values throughout."
+    },
+    "validation": {
+      "status": "VALID",
+      "reason": "",
+      "english": "Prove 2*atan(1/5) + acos(7/(5*sqrt(2))) + 2*atan(1/8) = pi/4.",
+      "conditions": [],
+      "sample_points_checked": 16,
+      "warnings": []
+    },
+    "attempts": [
+      {
+        "strategy": "identity",
+        "status": "SOLVED",
+        "reason": null,
+        "states_explored": 7,
+        "elapsed_seconds": 0.093
+      }
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "identity",
+    "domain_conditions": [],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": {},
+    "presentation": {
+      "steps": 5,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-XII-010\n\n(i) Prove that $2 \\tan^{-1} \\left(\\frac{1}{5}\\right) + \\cos^{-1} \\left(\\frac{7}{5\\sqrt{2}}\\right) + 2 \\tan^{-1} \\left(\\frac{1}{8}\\right) = \\frac{\\pi}{4}$\n\n**Solution**\n\n**LHS:**\n\n$$2 \\tan^{-1}\\left(\\frac{1}{5}\\right) + \\cos^{-1}\\left(\\frac{7}{5 \\sqrt{2}}\\right) + 2 \\tan^{-1}\\left(\\frac{1}{8}\\right)$$\n\n$$= \\tan^{-1}\\left(\\frac{1}{7}\\right) + 2 \\tan^{-1}\\left(\\frac{1}{8}\\right) + 2 \\tan^{-1}\\left(\\frac{1}{5}\\right)$$\n\n*Use $\\cos^{-1} x = \\tan^{-1}\\frac{\\sqrt{1 - x^{2}}}{x}$, valid as $0 < x \\le 1$.*\n\n$$= \\tan^{-1}\\left(\\frac{1}{7}\\right) + \\tan^{-1}\\left(\\frac{16}{63}\\right) + 2 \\tan^{-1}\\left(\\frac{1}{5}\\right)$$\n\n*Use $2\\tan^{-1} x = \\tan^{-1}\\frac{2x}{1 - x^{2}}$, valid as $|x| < 1$.*\n\n$$= \\tan^{-1}\\left(\\frac{7}{17}\\right) + 2 \\tan^{-1}\\left(\\frac{1}{5}\\right)$$\n\n*Use $\\tan^{-1} x + \\tan^{-1} y = \\tan^{-1}\\frac{x + y}{1 - xy}$, valid as $xy < 1$.*\n\n$$= \\tan^{-1}\\left(\\frac{7}{17}\\right) + \\tan^{-1}\\left(\\frac{5}{12}\\right)$$\n\n*Use $2\\tan^{-1} x = \\tan^{-1}\\frac{2x}{1 - x^{2}}$, valid as $|x| < 1$.*\n\n$$= \\frac{\\pi}{4}$$\n\n*Use $\\tan^{-1} x + \\tan^{-1} y = \\tan^{-1}\\frac{x + y}{1 - xy}$, valid as $xy < 1$.*\n\nThis is the RHS, so LHS = RHS. Hence proved.\n"
   },
   {
     "id": "PD-MATH-XII-011",
@@ -10991,12 +14739,153 @@
       }
     },
     "figure_required": false,
-    "trace": [],
+    "trace": [
+      {
+        "input": "acot((sqrt(1 - sin(x)) + sqrt(sin(x) + 1))/(-sqrt(1 - sin(x)) + sqrt(sin(x) + 1)))",
+        "output": "acot((sqrt(sin(x) + 1) - sin(x/2) + cos(x/2))/(sqrt(sin(x) + 1) + sin(x/2) - cos(x/2)))",
+        "rule_id": "half_angle_root",
+        "reason": "Use $1 \\pm \\sin x = \\left(\\cos\\frac{x}{2} \\pm \\sin\\frac{x}{2}\\right)^{2}$ (and $1 + \\cos x = 2\\cos^{2}\\frac{x}{2}$, $1 - \\cos x = 2\\sin^{2}\\frac{x}{2}$); the root is the nonnegative one on the given interval.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\operatorname{acot}{\\left(\\frac{\\sqrt{1 - \\sin{\\left(x \\right)}} + \\sqrt{\\sin{\\left(x \\right)} + 1}}{- \\sqrt{1 - \\sin{\\left(x \\right)}} + \\sqrt{\\sin{\\left(x \\right)} + 1}} \\right)}",
+        "output_latex": "\\operatorname{acot}{\\left(\\frac{\\sqrt{\\sin{\\left(x \\right)} + 1} - \\sin{\\left(\\frac{x}{2} \\right)} + \\cos{\\left(\\frac{x}{2} \\right)}}{\\sqrt{\\sin{\\left(x \\right)} + 1} + \\sin{\\left(\\frac{x}{2} \\right)} - \\cos{\\left(\\frac{x}{2} \\right)}} \\right)}",
+        "goal_part": 1
+      },
+      {
+        "input": "acot((sqrt(sin(x) + 1) - sin(x/2) + cos(x/2))/(sqrt(sin(x) + 1) + sin(x/2) - cos(x/2)))",
+        "output": "acot(cos(x/2)/sin(x/2))",
+        "rule_id": "half_angle_root",
+        "reason": "Use $1 \\pm \\sin x = \\left(\\cos\\frac{x}{2} \\pm \\sin\\frac{x}{2}\\right)^{2}$ (and $1 + \\cos x = 2\\cos^{2}\\frac{x}{2}$, $1 - \\cos x = 2\\sin^{2}\\frac{x}{2}$); the root is the nonnegative one on the given interval.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\operatorname{acot}{\\left(\\frac{\\sqrt{\\sin{\\left(x \\right)} + 1} - \\sin{\\left(\\frac{x}{2} \\right)} + \\cos{\\left(\\frac{x}{2} \\right)}}{\\sqrt{\\sin{\\left(x \\right)} + 1} + \\sin{\\left(\\frac{x}{2} \\right)} - \\cos{\\left(\\frac{x}{2} \\right)}} \\right)}",
+        "output_latex": "\\operatorname{acot}{\\left(\\frac{\\cos{\\left(\\frac{x}{2} \\right)}}{\\sin{\\left(\\frac{x}{2} \\right)}} \\right)}",
+        "goal_part": 1
+      },
+      {
+        "input": "acot(cos(x/2)/sin(x/2))",
+        "output": "x/2",
+        "rule_id": "inverse_of_cot",
+        "reason": "Use $\\cot^{-1}(\\cot u) = u$ for $0 < u < \\pi$ (and $\\tan^{-1}(\\tan u) = u$ for $-\\frac{\\pi}{2} < u < \\frac{\\pi}{2}$); the given interval puts $u$ there.",
+        "relation": "equality",
+        "part": "step",
+        "reverse": false,
+        "params": {},
+        "verification": {
+          "passed": true,
+          "checker": "rule replay + exact ideal reduction + 50-digit numeric check + domain certificate (mathcore.verify)",
+          "details": {
+            "replayed": true,
+            "numeric": true,
+            "passed": true
+          }
+        },
+        "origin": "code_search",
+        "input_latex": "\\operatorname{acot}{\\left(\\frac{\\cos{\\left(\\frac{x}{2} \\right)}}{\\sin{\\left(\\frac{x}{2} \\right)}} \\right)}",
+        "output_latex": "\\frac{x}{2}",
+        "goal_part": 1
+      }
+    ],
     "method_approval": "draft_unverified",
-    "presentation_review": "not_reviewed",
+    "presentation_review": "template_rendered_unreviewed",
     "formalization_review": "draft_manual_transcription",
-    "status": "UNSUPPORTED",
-    "reason": "No spec has been written for this question yet."
+    "spec": {
+      "id": "PD-MATH-XII-011",
+      "goal": {
+        "kind": "prove_identity",
+        "lhs": "acot((sqrt(1+sin(x)) + sqrt(1-sin(x)))/(sqrt(1+sin(x)) - sqrt(1-sin(x))))",
+        "rhs": "x/2"
+      },
+      "variables": {
+        "x": [
+          "real"
+        ]
+      },
+      "hypotheses": [],
+      "sequences": {},
+      "functions": {},
+      "definitions": {},
+      "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {
+        "x": [
+          "0",
+          "pi/4"
+        ]
+      },
+      "prescribed_method": null,
+      "quotes": {
+        "goal": "cot⁻¹[(√(1+sin x) + √(1−sin x))/(√(1+sin x) − √(1−sin x))] = x/2, x ∈ (0, π/4)"
+      },
+      "note": ""
+    },
+    "validation": {
+      "status": "VALID",
+      "reason": "",
+      "english": "Variables: x (real). Prove acot((sqrt(1+sin(x)) + sqrt(1-sin(x)))/(sqrt(1+sin(x)) - sqrt(1-sin(x)))) = x/2.",
+      "conditions": [
+        "sin(x) + 1 >= 0",
+        "1 - sin(x) >= 0",
+        "-sqrt(1 - sin(x)) + sqrt(sin(x) + 1) != 0",
+        "x > 0",
+        "-x + pi/4 > 0"
+      ],
+      "sample_points_checked": 16,
+      "warnings": []
+    },
+    "attempts": [
+      {
+        "strategy": "identity",
+        "status": "SOLVED",
+        "reason": null,
+        "states_explored": 5,
+        "elapsed_seconds": 0.625
+      }
+    ],
+    "status": "SOLVED_AND_TRACE_CHECKED",
+    "method": "identity",
+    "domain_conditions": [
+      "sin(x) + 1 >= 0",
+      "1 - sin(x) >= 0",
+      "-sqrt(1 - sin(x)) + sqrt(sin(x) + 1) != 0",
+      "x > 0",
+      "-x + pi/4 > 0"
+    ],
+    "goal_check": [
+      "Chain runs from the stated LHS to the stated RHS."
+    ],
+    "diagnostics": {},
+    "presentation": {
+      "steps": 3,
+      "large_jumps": []
+    },
+    "answer": "## PD-MATH-XII-011\n\n# Question 14\n\n[3+3=6]\n\na) Prove that $$\\cot^{-1}\\left[\\frac{\\sqrt{1+sinx}+\\sqrt{1-sinx}}{\\sqrt{1+sinx}-\\sqrt{1-sinx}}\\right]=\\frac{x}{2}, x\\in(0,\\frac{\\pi}{4})$$\n\n**Solution**\n\n**LHS:**\n\n$$\\cot^{-1}\\left(\\frac{\\sqrt{1 + \\sin x} + \\sqrt{1 - \\sin x}}{\\sqrt{1 + \\sin x} - \\sqrt{1 - \\sin x}}\\right)$$\n\n$$= \\cot^{-1}\\left(\\frac{\\cos\\left(\\frac{x}{2}\\right)}{\\sin \\frac{x}{2}}\\right)$$\n\n*Use $1 \\pm \\sin x = \\left(\\cos\\frac{x}{2} \\pm \\sin\\frac{x}{2}\\right)^{2}$ (and $1 + \\cos x = 2\\cos^{2}\\frac{x}{2}$, $1 - \\cos x = 2\\sin^{2}\\frac{x}{2}$); the root is the nonnegative one on the given interval.*\n\n$$= \\frac{x}{2}$$\n\n*Use $\\cot^{-1}(\\cot u) = u$ for $0 < u < \\pi$ (and $\\tan^{-1}(\\tan u) = u$ for $-\\frac{\\pi}{2} < u < \\frac{\\pi}{2}$); the given interval puts $u$ there.*\n\nThis is the RHS, so LHS = RHS. Hence proved.\n\nValid where $\\sin x + 1 \\geq 0$, $1 - \\sin x \\geq 0$, $- \\sqrt{1 - \\sin x} + \\sqrt{\\sin x + 1} \\neq 0$, $x > 0$, $- x + \\frac{\\pi}{4} > 0$.\n"
   },
   {
     "id": "PD-MATH-XII-012",
@@ -11421,6 +15310,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "Show that the height of a cylinder of maximum volume that can be inscribed in a sphere of radius R is 2R/√3. Find the volume of the largest cylinder."
@@ -11784,6 +15677,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "the area of a right-angled triangle of given hypotenuse is maximum when the triangle is isosceles"
@@ -12045,6 +15942,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "the total surface area is minimum when the ratio of the length of the cylinder to the diameter of its semi-circular ends is π : (π + 2)"
@@ -12212,6 +16113,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "Show that the function f(x) = x³ - 3x² + 6x - 100 is increasing on R."
@@ -12529,6 +16434,10 @@
         }
       },
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "(a) the marginal cost (MC) (b) the average cost (AC) (c) Prove that marginal average cost (MAC) = (x(MC) - C(x))/x²"
@@ -12569,7 +16478,7 @@
           "status": "SOLVED",
           "reason": null,
           "states_explored": 5,
-          "elapsed_seconds": 0.047
+          "elapsed_seconds": 0.078
         }
       ],
       [
@@ -12578,7 +16487,7 @@
           "status": "SOLVED",
           "reason": null,
           "states_explored": 5,
-          "elapsed_seconds": 0.078
+          "elapsed_seconds": 0.094
         }
       ],
       [
@@ -12587,7 +16496,7 @@
           "status": "SOLVED",
           "reason": null,
           "states_explored": 4,
-          "elapsed_seconds": 0.063
+          "elapsed_seconds": 0.109
         }
       ]
     ],
@@ -12747,6 +16656,10 @@
         }
       },
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "Show that the marginal cost decreases as the output x increases."
@@ -13423,6 +17336,10 @@
       "abstract": [
         "f"
       ],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "Prove that ∫₀ᵃ f(x) dx = ∫₀ᵃ f(a-x) dx, hence evaluate ∫₀^π x sin x/(1 + cos² x) dx."
@@ -13739,6 +17656,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "∫ from π/4 to 3π/4 of x/(1 + sin x) dx = (√2 - 1)π"
@@ -13992,6 +17913,10 @@
       "functions": {},
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "the curves y² = 4x and x² = 4y divide the area of the square bounded by x = 0, x = 4, y = 0 and y = 4 into three equal parts"
@@ -14310,6 +18235,10 @@
       },
       "definitions": {},
       "abstract": [],
+      "points": {},
+      "nondegenerate": [],
+      "figure": [],
+      "intervals": {},
       "prescribed_method": null,
       "quotes": {
         "goal": "x d²y/dx² + 2 dy/dx - xy + x² - 2 = 0"
@@ -14332,7 +18261,7 @@
         "status": "SOLVED",
         "reason": null,
         "states_explored": 4,
-        "elapsed_seconds": 0.11
+        "elapsed_seconds": 0.125
       }
     ],
     "status": "SOLVED_AND_TRACE_CHECKED",

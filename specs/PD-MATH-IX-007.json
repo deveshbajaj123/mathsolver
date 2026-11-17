@@ -1,0 +1,62 @@
+{
+  "id": "PD-MATH-IX-007",
+  "variables": {
+    "a": [
+      "positive"
+    ],
+    "c": [
+      "positive"
+    ]
+  },
+  "points": {
+    "B": [
+      "0",
+      "0"
+    ],
+    "A": [
+      "0",
+      "2*a"
+    ],
+    "C": [
+      "2*c",
+      "0"
+    ],
+    "D": [
+      "c",
+      "0"
+    ],
+    "E": [
+      "0",
+      "a"
+    ]
+  },
+  "figure": [
+    [
+      "right_angle",
+      "A",
+      "B",
+      "C"
+    ],
+    [
+      "midpoint",
+      "D",
+      "B",
+      "C"
+    ],
+    [
+      "midpoint",
+      "E",
+      "A",
+      "B"
+    ]
+  ],
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "dist2(A,D)+dist2(C,E)",
+    "rhs": "5*dist2(D,E)"
+  },
+  "quotes": {
+    "goal": "In ΔABC, ∠ABC = 90°. If D and E are the mid-points of the sides BC and AB respectively, prove that AD² + CE² = 5 DE²."
+  },
+  "note": "B at the origin, BC along the x-axis and BA along the y-axis."
+}

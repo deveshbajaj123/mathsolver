@@ -162,6 +162,250 @@ $$= 1$$
 
 This is the RHS, so LHS = RHS. Hence proved.
 
+## PD-MATH-IX-001
+
+28. Show that if the diagonals of a quadrilateral bisect each other at right angles, then it is a rhombus.
+
+**Solution**
+
+**Part 1: $AB^{2} = BC^{2}$**
+
+Take coordinates: $O = \left(0, 0\right)$, $A = \left(p, 0\right)$, $C = \left(- p, 0\right)$, $B = \left(0, q\right)$, $D = \left(0, - q\right)$.
+
+*The diagonals meet at O, taken as the origin, along the axes. Equal squared lengths give equal sides, so ABCD is a rhombus.*
+
+These coordinates give: O is the midpoint of AC; O is the midpoint of BD; AC ⊥ BD.
+
+Then:
+
+$$AB^{2} = \left(0 - p\right)^{2} + \left(q\right)^{2} = p^{2} + q^{2}$$
+
+$$BC^{2} = \left(- p\right)^{2} + \left(0 - q\right)^{2} = p^{2} + q^{2}$$
+
+**LHS:**
+
+$$AB^{2}$$
+
+$$= p^{2} + q^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$BC^{2}$$
+
+$$= p^{2} + q^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+**Part 2: $BC^{2} = CD^{2}$**
+
+Take coordinates: $O = \left(0, 0\right)$, $A = \left(p, 0\right)$, $C = \left(- p, 0\right)$, $B = \left(0, q\right)$, $D = \left(0, - q\right)$.
+
+*The diagonals meet at O, taken as the origin, along the axes. Equal squared lengths give equal sides, so ABCD is a rhombus.*
+
+These coordinates give: O is the midpoint of AC; O is the midpoint of BD; AC ⊥ BD.
+
+Then:
+
+$$BC^{2} = \left(- p\right)^{2} + \left(0 - q\right)^{2} = p^{2} + q^{2}$$
+
+$$CD^{2} = \left(0 - \left(- p\right)\right)^{2} + \left(- q\right)^{2} = p^{2} + q^{2}$$
+
+From the earlier part: $AB^{2} = BC^{2}$.
+
+**LHS:**
+
+$$BC^{2}$$
+
+$$= p^{2} + q^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$CD^{2}$$
+
+$$= p^{2} + q^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+**Part 3: $CD^{2} = DA^{2}$**
+
+Take coordinates: $O = \left(0, 0\right)$, $A = \left(p, 0\right)$, $C = \left(- p, 0\right)$, $B = \left(0, q\right)$, $D = \left(0, - q\right)$.
+
+*The diagonals meet at O, taken as the origin, along the axes. Equal squared lengths give equal sides, so ABCD is a rhombus.*
+
+These coordinates give: O is the midpoint of AC; O is the midpoint of BD; AC ⊥ BD.
+
+Then:
+
+$$CD^{2} = \left(0 - \left(- p\right)\right)^{2} + \left(- q\right)^{2} = p^{2} + q^{2}$$
+
+$$DA^{2} = \left(p\right)^{2} + \left(0 - \left(- q\right)\right)^{2} = p^{2} + q^{2}$$
+
+From the earlier part: $AB^{2} = BC^{2}$.
+
+From the earlier part: $BC^{2} = CD^{2}$.
+
+**LHS:**
+
+$$CD^{2}$$
+
+$$= p^{2} + q^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$DA^{2}$$
+
+$$= p^{2} + q^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+## PD-MATH-IX-004
+
+35. Show that quadrilateral formed by joining the mid points of the pairs of adjacent sides of a square is also a square.
+
+**Solution**
+
+**Part 1: $PQ^{2} = QR^{2}$**
+
+Take coordinates: $A = \left(0, 0\right)$, $B = \left(2 a, 0\right)$, $C = \left(2 a, 2 a\right)$, $D = \left(0, 2 a\right)$, $P = \left(a, 0\right)$, $Q = \left(2 a, a\right)$, $R = \left(a, 2 a\right)$, $S = \left(0, a\right)$.
+
+*Square of side 2a. Four equal sides and a right angle at Q (the dot product of QP and QR is 0) make PQRS a square.*
+
+These coordinates give: ∠DAB = 90°; ∠ABC = 90°; AB = BC; BC = CD; P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.
+
+Then:
+
+$$PQ^{2} = \left(2 a - a\right)^{2} + \left(a\right)^{2} = 2 a^{2}$$
+
+$$QR^{2} = \left(a - 2 a\right)^{2} + \left(2 a - a\right)^{2} = 2 a^{2}$$
+
+**LHS:**
+
+$$PQ^{2}$$
+
+$$= 2 a^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$QR^{2}$$
+
+$$= 2 a^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+**Part 2: $QR^{2} = RS^{2}$**
+
+Take coordinates: $A = \left(0, 0\right)$, $B = \left(2 a, 0\right)$, $C = \left(2 a, 2 a\right)$, $D = \left(0, 2 a\right)$, $P = \left(a, 0\right)$, $Q = \left(2 a, a\right)$, $R = \left(a, 2 a\right)$, $S = \left(0, a\right)$.
+
+*Square of side 2a. Four equal sides and a right angle at Q (the dot product of QP and QR is 0) make PQRS a square.*
+
+These coordinates give: ∠DAB = 90°; ∠ABC = 90°; AB = BC; BC = CD; P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.
+
+Then:
+
+$$QR^{2} = \left(a - 2 a\right)^{2} + \left(2 a - a\right)^{2} = 2 a^{2}$$
+
+$$RS^{2} = \left(0 - a\right)^{2} + \left(a - 2 a\right)^{2} = 2 a^{2}$$
+
+From the earlier part: $PQ^{2} = QR^{2}$.
+
+**LHS:**
+
+$$QR^{2}$$
+
+$$= 2 a^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$RS^{2}$$
+
+$$= 2 a^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+**Part 3: $RS^{2} = SP^{2}$**
+
+Take coordinates: $A = \left(0, 0\right)$, $B = \left(2 a, 0\right)$, $C = \left(2 a, 2 a\right)$, $D = \left(0, 2 a\right)$, $P = \left(a, 0\right)$, $Q = \left(2 a, a\right)$, $R = \left(a, 2 a\right)$, $S = \left(0, a\right)$.
+
+*Square of side 2a. Four equal sides and a right angle at Q (the dot product of QP and QR is 0) make PQRS a square.*
+
+These coordinates give: ∠DAB = 90°; ∠ABC = 90°; AB = BC; BC = CD; P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.
+
+Then:
+
+$$RS^{2} = \left(0 - a\right)^{2} + \left(a - 2 a\right)^{2} = 2 a^{2}$$
+
+$$SP^{2} = \left(a\right)^{2} + \left(0 - a\right)^{2} = 2 a^{2}$$
+
+From the earlier part: $PQ^{2} = QR^{2}$.
+
+From the earlier part: $QR^{2} = RS^{2}$.
+
+**LHS:**
+
+$$RS^{2}$$
+
+$$= 2 a^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$SP^{2}$$
+
+$$= 2 a^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+**Part 4: $\overrightarrow{QP} \cdot \overrightarrow{QR} = 0$**
+
+Take coordinates: $A = \left(0, 0\right)$, $B = \left(2 a, 0\right)$, $C = \left(2 a, 2 a\right)$, $D = \left(0, 2 a\right)$, $P = \left(a, 0\right)$, $Q = \left(2 a, a\right)$, $R = \left(a, 2 a\right)$, $S = \left(0, a\right)$.
+
+*Square of side 2a. Four equal sides and a right angle at Q (the dot product of QP and QR is 0) make PQRS a square.*
+
+These coordinates give: ∠DAB = 90°; ∠ABC = 90°; AB = BC; BC = CD; P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.
+
+Then:
+
+$$\overrightarrow{QP} \cdot \overrightarrow{QR} = \left(a - 2 a\right)\left(a - 2 a\right) + \left(0 - a\right)\left(2 a - a\right) = 0$$
+
+From the earlier part: $PQ^{2} = QR^{2}$.
+
+From the earlier part: $QR^{2} = RS^{2}$.
+
+From the earlier part: $RS^{2} = SP^{2}$.
+
+**LHS:**
+
+$$\overrightarrow{QP} \cdot \overrightarrow{QR}$$
+
+$$= 0$$
+
+*Write each length, area or product in coordinates (see above).*
+
+This is the RHS, so LHS = RHS. Hence proved.
+
 ## PD-MATH-IX-005
 
 (c) Prove that: $$7 \log \frac{16}{15} + 5 \log \frac{25}{24} + 3 \log \frac{81}{80} = \log 2.$$ [4]
@@ -183,6 +427,240 @@ $$= \left(- 12 \log{\left(2 \right)} - 3 \log{\left(5 \right)} + 12 \log{\left(3
 $$= \log{\left(2 \right)}$$
 
 *Cancel.*
+
+This is the RHS, so LHS = RHS. Hence proved.
+
+## PD-MATH-IX-006
+
+(b). In a parallelogram ABCD, points \( M \) and \( N \) have been taken on opposite sides AB and CD respectively such that \( AM = CN \). Show that \( AC \) and \( MN \) bisect each other. [3]
+
+**Solution**
+
+**Part 1: $\frac{x_{A} + x_{C}}{2} = \frac{x_{M} + x_{N}}{2}$**
+
+Take coordinates: $A = \left(0, 0\right)$, $B = \left(b, 0\right)$, $D = \left(p, q\right)$, $C = \left(b + p, q\right)$, $M = \left(m, 0\right)$, $N = \left(b - m + p, q\right)$.
+
+*A at the origin, AB along the x-axis. The midpoints of AC and MN have the same coordinates, so the diagonals bisect each other.*
+
+These coordinates give: AB ∥ DC; AD ∥ BC; M lies on line AB; N lies on line CD; AM = CN.
+
+Then:
+
+**LHS:**
+
+$$\frac{x_{A} + x_{C}}{2}$$
+
+$$= \frac{b}{2} + \frac{p}{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$\frac{x_{M} + x_{N}}{2}$$
+
+$$= \frac{b}{2} + \frac{p}{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+**Part 2: $\frac{y_{A} + y_{C}}{2} = \frac{y_{M} + y_{N}}{2}$**
+
+Take coordinates: $A = \left(0, 0\right)$, $B = \left(b, 0\right)$, $D = \left(p, q\right)$, $C = \left(b + p, q\right)$, $M = \left(m, 0\right)$, $N = \left(b - m + p, q\right)$.
+
+*A at the origin, AB along the x-axis. The midpoints of AC and MN have the same coordinates, so the diagonals bisect each other.*
+
+These coordinates give: AB ∥ DC; AD ∥ BC; M lies on line AB; N lies on line CD; AM = CN.
+
+Then:
+
+From the earlier part: $\frac{x_{A}}{2} + \frac{x_{C}}{2} = \frac{x_{M}}{2} + \frac{x_{N}}{2}$.
+
+**LHS:**
+
+$$\frac{y_{A} + y_{C}}{2}$$
+
+$$= \frac{q}{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$\frac{y_{M} + y_{N}}{2}$$
+
+$$= \frac{q}{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+## PD-MATH-IX-007
+
+(c). In ΔABC, ∠ABC = 90°. If D and E are the mid-points of the sides BC and AB respectively, prove that AD² + CE² = 5 DE². [4]
+
+**Solution**
+
+Take coordinates: $B = \left(0, 0\right)$, $A = \left(0, 2 a\right)$, $C = \left(2 c, 0\right)$, $D = \left(c, 0\right)$, $E = \left(0, a\right)$.
+
+*B at the origin, BC along the x-axis and BA along the y-axis.*
+
+These coordinates give: ∠ABC = 90°; D is the midpoint of BC; E is the midpoint of AB.
+
+Then:
+
+$$AD^{2} = \left(c\right)^{2} + \left(0 - 2 a\right)^{2} = 4 a^{2} + c^{2}$$
+
+$$CE^{2} = \left(0 - 2 c\right)^{2} + \left(a\right)^{2} = a^{2} + 4 c^{2}$$
+
+$$DE^{2} = \left(0 - c\right)^{2} + \left(a\right)^{2} = a^{2} + c^{2}$$
+
+**LHS:**
+
+$$AD^{2} + CE^{2}$$
+
+$$= 5 a^{2} + 5 c^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$5 DE^{2}$$
+
+$$= 5 a^{2} + 5 c^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+## PD-MATH-IX-009
+
+(iii) In the given figure, ABCD is a quadrilateral in which P,Q,R and S are mid-points of AB, BC, CD and DA respectively. AC is its diagonal. Show that
+
+(a) \(\mathrm{SR} \parallel \mathrm{AC}, \mathrm{SR} = \frac{1}{2} \mathrm{AC}\)
+(b) \(\mathrm{PQ} = \mathrm{SR}\)
+(c) PQRS is a parallelogram
+
+[4]
+
+**Solution**
+
+**Part 1: $\overrightarrow{SR} \times \overrightarrow{AC} = 0$**
+
+Take coordinates: $A = \left(0, 0\right)$, $B = \left(2 b_{1}, 2 b_{2}\right)$, $C = \left(2 c_{1}, 2 c_{2}\right)$, $D = \left(2 d_{1}, 2 d_{2}\right)$, $P = \left(b_{1}, b_{2}\right)$, $Q = \left(b_{1} + c_{1}, b_{2} + c_{2}\right)$, $R = \left(c_{1} + d_{1}, c_{2} + d_{2}\right)$, $S = \left(d_{1}, d_{2}\right)$.
+
+*Any quadrilateral, A at the origin. A zero cross product means parallel. (c) follows from PQ ∥ SR and PQ = SR.*
+
+These coordinates give: P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.
+
+Then:
+
+$$\overrightarrow{SR} \times \overrightarrow{AC} = \left(c_{1} + d_{1} - d_{1}\right)\left(2 c_{2}\right) - \left(c_{2} + d_{2} - d_{2}\right)\left(2 c_{1}\right) = 0$$
+
+**LHS:**
+
+$$\overrightarrow{SR} \times \overrightarrow{AC}$$
+
+$$= 0$$
+
+*Write each length, area or product in coordinates (see above).*
+
+This is the RHS, so LHS = RHS. Hence proved.
+
+**Part 2: $SR^{2} = \frac{AC^{2}}{4}$**
+
+Take coordinates: $A = \left(0, 0\right)$, $B = \left(2 b_{1}, 2 b_{2}\right)$, $C = \left(2 c_{1}, 2 c_{2}\right)$, $D = \left(2 d_{1}, 2 d_{2}\right)$, $P = \left(b_{1}, b_{2}\right)$, $Q = \left(b_{1} + c_{1}, b_{2} + c_{2}\right)$, $R = \left(c_{1} + d_{1}, c_{2} + d_{2}\right)$, $S = \left(d_{1}, d_{2}\right)$.
+
+*Any quadrilateral, A at the origin. A zero cross product means parallel. (c) follows from PQ ∥ SR and PQ = SR.*
+
+These coordinates give: P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.
+
+Then:
+
+$$AC^{2} = \left(2 c_{1}\right)^{2} + \left(2 c_{2}\right)^{2} = 4 \left(c_{1}^{2} + c_{2}^{2}\right)$$
+
+$$SR^{2} = \left(c_{1} + d_{1} - d_{1}\right)^{2} + \left(c_{2} + d_{2} - d_{2}\right)^{2} = c_{1}^{2} + c_{2}^{2}$$
+
+From the earlier part: $\overrightarrow{SR} \times \overrightarrow{AC} = 0$.
+
+**LHS:**
+
+$$SR^{2}$$
+
+$$= c_{1}^{2} + c_{2}^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$\frac{AC^{2}}{4}$$
+
+$$= c_{1}^{2} + c_{2}^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+**Part 3: $PQ^{2} = SR^{2}$**
+
+Take coordinates: $A = \left(0, 0\right)$, $B = \left(2 b_{1}, 2 b_{2}\right)$, $C = \left(2 c_{1}, 2 c_{2}\right)$, $D = \left(2 d_{1}, 2 d_{2}\right)$, $P = \left(b_{1}, b_{2}\right)$, $Q = \left(b_{1} + c_{1}, b_{2} + c_{2}\right)$, $R = \left(c_{1} + d_{1}, c_{2} + d_{2}\right)$, $S = \left(d_{1}, d_{2}\right)$.
+
+*Any quadrilateral, A at the origin. A zero cross product means parallel. (c) follows from PQ ∥ SR and PQ = SR.*
+
+These coordinates give: P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.
+
+Then:
+
+$$PQ^{2} = \left(b_{1} + c_{1} - b_{1}\right)^{2} + \left(b_{2} + c_{2} - b_{2}\right)^{2} = c_{1}^{2} + c_{2}^{2}$$
+
+$$SR^{2} = \left(c_{1} + d_{1} - d_{1}\right)^{2} + \left(c_{2} + d_{2} - d_{2}\right)^{2} = c_{1}^{2} + c_{2}^{2}$$
+
+From the earlier part: $\overrightarrow{SR} \times \overrightarrow{AC} = 0$.
+
+From the earlier part: $SR^{2} = \frac{AC^{2}}{4}$.
+
+**LHS:**
+
+$$PQ^{2}$$
+
+$$= c_{1}^{2} + c_{2}^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$SR^{2}$$
+
+$$= c_{1}^{2} + c_{2}^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+**Part 4: $\overrightarrow{PQ} \times \overrightarrow{SR} = 0$**
+
+Take coordinates: $A = \left(0, 0\right)$, $B = \left(2 b_{1}, 2 b_{2}\right)$, $C = \left(2 c_{1}, 2 c_{2}\right)$, $D = \left(2 d_{1}, 2 d_{2}\right)$, $P = \left(b_{1}, b_{2}\right)$, $Q = \left(b_{1} + c_{1}, b_{2} + c_{2}\right)$, $R = \left(c_{1} + d_{1}, c_{2} + d_{2}\right)$, $S = \left(d_{1}, d_{2}\right)$.
+
+*Any quadrilateral, A at the origin. A zero cross product means parallel. (c) follows from PQ ∥ SR and PQ = SR.*
+
+These coordinates give: P is the midpoint of AB; Q is the midpoint of BC; R is the midpoint of CD; S is the midpoint of DA.
+
+Then:
+
+$$\overrightarrow{PQ} \times \overrightarrow{SR} = \left(b_{1} + c_{1} - b_{1}\right)\left(c_{2} + d_{2} - d_{2}\right) - \left(b_{2} + c_{2} - b_{2}\right)\left(c_{1} + d_{1} - d_{1}\right) = 0$$
+
+From the earlier part: $\overrightarrow{SR} \times \overrightarrow{AC} = 0$.
+
+From the earlier part: $SR^{2} = \frac{AC^{2}}{4}$.
+
+From the earlier part: $PQ^{2} = SR^{2}$.
+
+**LHS:**
+
+$$\overrightarrow{PQ} \times \overrightarrow{SR}$$
+
+$$= 0$$
+
+*Write each length, area or product in coordinates (see above).*
 
 This is the RHS, so LHS = RHS. Hence proved.
 
@@ -230,6 +708,48 @@ $$= b^{2} z^{2}$$
 
 Both sides reduce to the same expression, so LHS = RHS. Hence proved.
 
+## PD-MATH-IX-014
+
+b) M and N are points on sides QR and PQ respectively of $$\Delta PQR$$, right angled at Q. prove that:
+
+$$PM^2 + RN^2 = PR^2 + MN^2$$ [3]
+
+**Solution**
+
+Take coordinates: $Q = \left(0, 0\right)$, $P = \left(0, p\right)$, $R = \left(r, 0\right)$, $M = \left(m, 0\right)$, $N = \left(0, n\right)$.
+
+*Q at the origin, QR along the x-axis and QP along the y-axis.*
+
+These coordinates give: ∠PQR = 90°; M lies on line QR; N lies on line PQ.
+
+Then:
+
+$$MN^{2} = \left(0 - m\right)^{2} + \left(n\right)^{2} = m^{2} + n^{2}$$
+
+$$PM^{2} = \left(m\right)^{2} + \left(0 - p\right)^{2} = m^{2} + p^{2}$$
+
+$$PR^{2} = \left(r\right)^{2} + \left(0 - p\right)^{2} = p^{2} + r^{2}$$
+
+$$RN^{2} = \left(0 - r\right)^{2} + \left(n\right)^{2} = n^{2} + r^{2}$$
+
+**LHS:**
+
+$$PM^{2} + RN^{2}$$
+
+$$= m^{2} + n^{2} + p^{2} + r^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$PR^{2} + MN^{2}$$
+
+$$= m^{2} + n^{2} + p^{2} + r^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
 ## PD-MATH-IX-015
 
 c) If $$abc = 1$$ , show that $$\frac{1}{1+a+b^{-1}} + \frac{1}{1+b+c^{-1}} + \frac{1}{1+c+a^{-1}} = 1$$ . [4]
@@ -268,6 +788,46 @@ This is the RHS, so LHS = RHS. Hence proved.
 
 Valid where $b \neq 0$, $a + 1 + \frac{1}{b} \neq 0$, $c \neq 0$, $b + 1 + \frac{1}{c} \neq 0$, $a \neq 0$, $c + 1 + \frac{1}{a} \neq 0$.
 
+## PD-MATH-IX-019
+
+(c) If the medians of a triangles ABC intersect at G. Prove that area of $\Delta BCG = \frac{1}{3}$ area of $\Delta ABC$.
+
+**Solution**
+
+Take coordinates: $B = \left(0, 0\right)$, $C = \left(c, 0\right)$, $A = \left(p, q\right)$, $D = \left(\frac{c}{2}, 0\right)$, $E = \left(\frac{c}{2} + \frac{p}{2}, \frac{q}{2}\right)$, $G = \left(\frac{c}{3} + \frac{p}{3}, \frac{q}{3}\right)$.
+
+*B at the origin, BC along the x-axis, A above it. G lies on the medians AD and BE (checked). Areas are by the coordinate formula; both triangles run the same way round, so the signed areas are the areas.*
+
+These coordinates give: D is the midpoint of BC; E is the midpoint of CA; G lies on line AD; G lies on line BE.
+
+Then:
+
+$$\operatorname{ar}\left(\triangle ABC\right) = \frac{1}{2}\left[\left(0 - p\right)\left(0 - q\right) - \left(0 - q\right)\left(c - p\right)\right] = \frac{c q}{2}$$
+
+$$\operatorname{ar}\left(\triangle BCG\right) = \frac{1}{2}\left[\left(c\right)\left(\frac{q}{3}\right) - \left(0\right)\left(\frac{c}{3} + \frac{p}{3}\right)\right] = \frac{c q}{6}$$
+
+**LHS:**
+
+$$\operatorname{ar}\left(\triangle BCG\right)$$
+
+$$= \frac{c q}{6}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$\frac{\operatorname{ar}\left(\triangle ABC\right)}{3}$$
+
+$$= \frac{p q}{6} + \frac{q \left(c - p\right)}{6}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+$$= \frac{c q}{6}$$
+
+*Simplify algebraically.*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
 ## PD-MATH-IX-020
 
 b. Prove that: $$\frac{1}{\sqrt{2}+1} + \frac{1}{\sqrt{3}+\sqrt{2}} + \frac{1}{2+\sqrt{3}} = 1$$ (3)
@@ -287,6 +847,110 @@ $$= 1$$
 *Cancel.*
 
 This is the RHS, so LHS = RHS. Hence proved.
+
+## PD-MATH-IX-024
+
+X. (a) If O is any point in the interior of a rectangle ABCD. Prove that \( \mathrm{OA}^2 + \mathrm{OC}^2 = \mathrm{OB}^2 + \mathrm{OD}^2 \) [5]
+
+**Solution**
+
+Take coordinates: $A = \left(0, 0\right)$, $B = \left(a, 0\right)$, $C = \left(a, b\right)$, $D = \left(0, b\right)$, $O = \left(x, y\right)$.
+
+*A at the origin, AB along the x-axis and AD along the y-axis; O = (x, y). The identity holds for any O.*
+
+These coordinates give: ∠DAB = 90°; ∠ABC = 90°; ∠BCD = 90°; AB = DC.
+
+Then:
+
+$$OA^{2} = \left(0 - x\right)^{2} + \left(0 - y\right)^{2} = x^{2} + y^{2}$$
+
+$$OB^{2} = \left(a - x\right)^{2} + \left(0 - y\right)^{2} = a^{2} - 2 a x + x^{2} + y^{2}$$
+
+$$OC^{2} = \left(a - x\right)^{2} + \left(b - y\right)^{2} = a^{2} - 2 a x + b^{2} - 2 b y + x^{2} + y^{2}$$
+
+$$OD^{2} = \left(0 - x\right)^{2} + \left(b - y\right)^{2} = b^{2} - 2 b y + x^{2} + y^{2}$$
+
+**LHS:**
+
+$$OA^{2} + OC^{2}$$
+
+$$= x^{2} + y^{2} + \left(a - x\right)^{2} + \left(b - y\right)^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$OB^{2} + OD^{2}$$
+
+$$= x^{2} + y^{2} + \left(a - x\right)^{2} + \left(b - y\right)^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+## PD-MATH-IX-025
+
+(ii) Prove that the line segment joining the mid-points of the diagonals of a trapezium is parallel to the parallel sides of trapezium and is equal to half the difference of these sides.
+
+**Solution**
+
+**Part 1: $\overrightarrow{MN} \times \overrightarrow{AB} = 0$**
+
+Take coordinates: $A = \left(0, 0\right)$, $B = \left(2 a, 0\right)$, $D = \left(2 d, 2 h\right)$, $C = \left(2 c + 2 d, 2 h\right)$, $M = \left(c + d, h\right)$, $N = \left(a + d, h\right)$.
+
+*AB ∥ DC with AB = 2a, DC = 2c. M, N are the midpoints of the diagonals AC, BD. A zero cross product means MN ∥ AB; MN² = ((AB - DC)/2)² gives MN = half the difference.*
+
+These coordinates give: AB ∥ DC; M is the midpoint of AC; N is the midpoint of BD.
+
+Then:
+
+$$\overrightarrow{MN} \times \overrightarrow{AB} = \left(a + d - \left(c + d\right)\right)\left(0\right) - \left(h - h\right)\left(2 a\right) = 0$$
+
+**LHS:**
+
+$$\overrightarrow{MN} \times \overrightarrow{AB}$$
+
+$$= 0$$
+
+*Write each length, area or product in coordinates (see above).*
+
+This is the RHS, so LHS = RHS. Hence proved.
+
+**Part 2: $MN^{2} = \left(\frac{AB - DC}{2}\right)^{2}$**
+
+Take coordinates: $A = \left(0, 0\right)$, $B = \left(2 a, 0\right)$, $D = \left(2 d, 2 h\right)$, $C = \left(2 c + 2 d, 2 h\right)$, $M = \left(c + d, h\right)$, $N = \left(a + d, h\right)$.
+
+*AB ∥ DC with AB = 2a, DC = 2c. M, N are the midpoints of the diagonals AC, BD. A zero cross product means MN ∥ AB; MN² = ((AB - DC)/2)² gives MN = half the difference.*
+
+These coordinates give: AB ∥ DC; M is the midpoint of AC; N is the midpoint of BD.
+
+Then:
+
+$$AB = \sqrt{\left(2 a\right)^{2} + \left(0\right)^{2}} = 2 a$$
+
+$$DC = \sqrt{\left(2 c + 2 d - 2 d\right)^{2} + \left(2 h - 2 h\right)^{2}} = 2 c$$
+
+$$MN^{2} = \left(a + d - \left(c + d\right)\right)^{2} + \left(h - h\right)^{2} = \left(a - c\right)^{2}$$
+
+From the earlier part: $\overrightarrow{MN} \times \overrightarrow{AB} = 0$.
+
+**LHS:**
+
+$$MN^{2}$$
+
+$$= \left(a - c\right)^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$\left(\frac{AB - DC}{2}\right)^{2}$$
+
+$$= \left(a - c\right)^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
 
 ## PD-MATH-X-001
 
@@ -528,6 +1192,48 @@ $$\left(3 x + 2\right) \left(x^{2} - 1\right) = \left(x - 1\right) \left(x + 1\r
 
 The last line is the complete factorisation.
 
+## PD-MATH-X-009
+
+b) Given x = $$\frac{\sqrt{a^2 + b^2} + \sqrt{a^2 - b^2}}{\sqrt{a^2 + b^2} - \sqrt{a^2 - b^2}}$$.
+
+Use componendo and dividendo to prove that $$b^2 = \frac{2a^2x}{x^2 + 1}$$. [3]
+
+**Solution**
+
+Given: $x = \frac{\sqrt{a^{2} + b^{2}} + \sqrt{a^{2} - b^{2}}}{\sqrt{a^{2} + b^{2}} - \sqrt{a^{2} - b^{2}}}$.
+
+$$\implies \frac{x + 1}{x - 1} = \frac{\sqrt{a^{2} + b^{2}}}{\sqrt{a^{2} - b^{2}}}$$
+
+*Componendo and dividendo: if $\frac{a}{b} = \frac{c}{d}$ then $\frac{a + b}{a - b} = \frac{c + d}{c - d}$.*
+
+$$\implies \frac{\left(x + 1\right)^{2}}{\left(x - 1\right)^{2}} = \frac{a^{2} + b^{2}}{a^{2} - b^{2}}$$
+
+*Square both sides.*
+
+$$\implies \frac{\left(x + 1\right)^{2}}{\left(x - 1\right)^{2}} = \frac{a^{2} + b^{2}}{\left(a - b\right) \left(a + b\right)}$$
+
+*Simplify each side.*
+
+$$\implies \frac{x^{2} + 1}{2 x} = \frac{a^{2} + b^{2} + \left(a - b\right) \left(a + b\right)}{a^{2} + b^{2} - \left(a - b\right) \left(a + b\right)}$$
+
+*Componendo and dividendo: if $\frac{a}{b} = \frac{c}{d}$ then $\frac{a + b}{a - b} = \frac{c + d}{c - d}$.*
+
+$$\implies \frac{x^{2} + 1}{2 x} = \frac{a^{2}}{b^{2}}$$
+
+*Simplify each side.*
+
+$$\implies b^{2} \left(x^{2} + 1\right) = 2 a^{2} x$$
+
+*Cross-multiply to clear the denominators.*
+
+$$\implies b^{2} = \frac{2 a^{2} x}{x^{2} + 1}$$
+
+*Make $b^{2}$ the subject.*
+
+Hence proved.
+
+Valid where $a^{2} - b^{2} \geq 0$, $- \sqrt{a^{2} - b^{2}} + \sqrt{a^{2} + b^{2}} \neq 0$.
+
 ## PD-MATH-X-010
 
 a) If $$\frac{3p + 4q}{3r + 4s} = \frac{3p - 4q}{3r - 4s}$$, Prove that $$\frac{p}{q} = \frac{r}{s}$$ [3]
@@ -611,6 +1317,72 @@ $$= a^{2} \left(m^{2} + 1\right)$$
 *Substitute $c^{2} = a^{2} \left(m^{2} + 1\right)$.*
 
 This is the RHS, so LHS = RHS. Hence proved.
+
+## PD-MATH-X-017
+
+32. (A) If a line is drawn parallel to one side of a triangle to intersect the other two sides in distinct points, then prove that other two sides are divided in the same ratio. 5
+
+**Solution**
+
+Take coordinates: $B = \left(0, 0\right)$, $C = \left(c, 0\right)$, $A = \left(p, q\right)$, $D = \left(- p t + p, - q t + q\right)$, $E = \left(p + u \left(c - p\right), - q u + q\right)$.
+
+*D = A + t(B - A) and E = A + u(C - A). AD/DB = AE/EC is shown as AD²·EC² = AE²·DB² (lengths are positive).*
+
+These coordinates give: D lies on line AB; E lies on line AC.
+
+Then:
+
+$$\overrightarrow{DE} \times \overrightarrow{BC} = \left(p + u \left(c - p\right) - \left(- p t + p\right)\right)\left(0\right) - \left(- q u + q - \left(- q t + q\right)\right)\left(c\right) = - c q \left(t - u\right)$$
+
+$$AD^{2} = \left(- p t + p - p\right)^{2} + \left(- q t + q - q\right)^{2} = t^{2} \left(p^{2} + q^{2}\right)$$
+
+$$AE^{2} = \left(p + u \left(c - p\right) - p\right)^{2} + \left(- q u + q - q\right)^{2} = u^{2} \left(c^{2} - 2 c p + p^{2} + q^{2}\right)$$
+
+$$DB^{2} = \left(0 - \left(- p t + p\right)\right)^{2} + \left(0 - \left(- q t + q\right)\right)^{2} = \left(p^{2} + q^{2}\right) \left(t - 1\right)^{2}$$
+
+$$EC^{2} = \left(c - \left(p + u \left(c - p\right)\right)\right)^{2} + \left(0 - \left(- q u + q\right)\right)^{2} = \left(u - 1\right)^{2} \left(c^{2} - 2 c p + p^{2} + q^{2}\right)$$
+
+Given: $\overrightarrow{DE} \times \overrightarrow{BC} = 0$.
+
+From the given condition:
+
+$$\overrightarrow{DE} \times \overrightarrow{BC} = 0 \implies - c \left(q t - q u\right) = 0$$
+
+*Write each length, area or product in coordinates (see above).*
+
+$$- c \left(q t - q u\right) = 0 \implies t = u$$
+
+*Make $t$ the subject.*
+
+**LHS:**
+
+$$AD^{2} EC^{2}$$
+
+$$= \left(p^{2} t^{2} + q^{2} t^{2}\right) \left(\left(q u - q\right)^{2} + \left(c - p - u \left(c - p\right)\right)^{2}\right)$$
+
+*Write each length, area or product in coordinates (see above).*
+
+$$= \left(p^{2} u^{2} + q^{2} u^{2}\right) \left(\left(q u - q\right)^{2} + \left(c - p - u \left(c - p\right)\right)^{2}\right)$$
+
+*Substitute $t = u$.*
+
+$$= \left(q^{2} u^{2} + u^{2} \left(c - p\right)^{2}\right) \left(\left(p u - p\right)^{2} + \left(q u - q\right)^{2}\right)$$
+
+*Simplify.*
+
+**RHS:**
+
+$$AE^{2} DB^{2}$$
+
+$$= \left(q^{2} u^{2} + u^{2} \left(c - p\right)^{2}\right) \left(\left(p t - p\right)^{2} + \left(q t - q\right)^{2}\right)$$
+
+*Write each length, area or product in coordinates (see above).*
+
+$$= \left(q^{2} u^{2} + u^{2} \left(c - p\right)^{2}\right) \left(\left(p u - p\right)^{2} + \left(q u - q\right)^{2}\right)$$
+
+*Substitute $t = u$.*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
 
 ## PD-MATH-X-021
 
@@ -730,6 +1502,42 @@ $$X = 35$$
 
 This value lies between $1$ and $49$, so the required $X$ exists.
 
+## PD-MATH-X-025
+
+Prove that the lengths of tangents drawn from an external point to a circle are equal.
+
+**Solution**
+
+Take coordinates: $O = \left(0, 0\right)$, $P = \left(p, 0\right)$, $T = \left(\frac{r^{2}}{p}, \frac{r \sqrt{p^{2} - r^{2}}}{p}\right)$, $U = \left(\frac{r^{2}}{p}, - \frac{r \sqrt{p^{2} - r^{2}}}{p}\right)$.
+
+*Centre O at the origin and the external point P = (p, 0), p > r. T and U are the points of contact: OT = OU = r and OT ⊥ PT, OU ⊥ PU (checked). Equal squared lengths give PT = PU.*
+
+These coordinates give: OT = OU; ∠OTP = 90°; ∠OUP = 90°.
+
+Then:
+
+$$PT^{2} = \left(\frac{r^{2}}{p} - p\right)^{2} + \left(\frac{r \sqrt{p^{2} - r^{2}}}{p}\right)^{2} = \left(p - r\right) \left(p + r\right)$$
+
+$$PU^{2} = \left(\frac{r^{2}}{p} - p\right)^{2} + \left(- \frac{r \sqrt{p^{2} - r^{2}}}{p}\right)^{2} = \left(p - r\right) \left(p + r\right)$$
+
+**LHS:**
+
+$$PT^{2}$$
+
+$$= \left(- p + \frac{r^{2}}{p}\right)^{2} + \frac{r^{2} \left(p^{2} - r^{2}\right)}{p^{2}}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$PU^{2}$$
+
+$$= \left(- p + \frac{r^{2}}{p}\right)^{2} + \frac{r^{2} \left(p^{2} - r^{2}\right)}{p^{2}}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
 ## PD-MATH-X-026
 
 Prove that the area of an equilateral triangle described on one side of the square is equal to half the area of the equilateral triangle described on one of its diagonal.
@@ -749,6 +1557,42 @@ $$\frac{\frac{\sqrt{3}}{4} d^{2}}{2}$$
 $$= \frac{\sqrt{3} a^{2}}{4}$$
 
 *Use the given $d^{2} = 2 a^{2}$.*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+## PD-MATH-X-028
+
+In an equilateral ΔABC, D is a point on side BC such that BD = 1/3 BC. Prove that 9(AD)^2 = 7(AB)^2
+
+**Solution**
+
+Take coordinates: $B = \left(0, 0\right)$, $C = \left(3 a, 0\right)$, $A = \left(\frac{3 a}{2}, \frac{3 \sqrt{3} a}{2}\right)$, $D = \left(a, 0\right)$.
+
+*Side 3a with B at the origin and BC along the x-axis; D = (a, 0) gives BD = a = BC/3.*
+
+These coordinates give: AB = BC; AC = BC; D lies on line BC.
+
+Then:
+
+$$AB^{2} = \left(0 - \frac{3 a}{2}\right)^{2} + \left(0 - \frac{3 \sqrt{3} a}{2}\right)^{2} = 9 a^{2}$$
+
+$$AD^{2} = \left(a - \frac{3 a}{2}\right)^{2} + \left(0 - \frac{3 \sqrt{3} a}{2}\right)^{2} = 7 a^{2}$$
+
+**LHS:**
+
+$$9 AD^{2}$$
+
+$$= 63 a^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
+
+**RHS:**
+
+$$7 AB^{2}$$
+
+$$= 63 a^{2}$$
+
+*Write each length, area or product in coordinates (see above).*
 
 Both sides reduce to the same expression, so LHS = RHS. Hence proved.
 
@@ -936,6 +1780,50 @@ Since LHS − RHS = 0, LHS = RHS. Hence proved.
 
 Valid where $b + c \neq 0$, $a + c \neq 0$, $a + b \neq 0$.
 
+## PD-MATH-XI-006
+
+28. If A and G be the AM and GM between two positive numbers, then prove that the numbers are $A \pm \sqrt{A^2 - G^2}$
+
+**Solution**
+
+**Part 1: $b + d = \frac{b + d + b}{2} + \sqrt{\left(\frac{b + d + b}{2}\right)^{2} - \left(b + d\right) b}$**
+
+**LHS:**
+
+$$b + d$$
+
+**RHS:**
+
+$$\frac{b + d + b}{2} + \sqrt{\left(\frac{b + d + b}{2}\right)^{2} - \left(b + d\right) b}$$
+
+$$= b + d$$
+
+*Simplify under the root sign (a square root of a square of a nonnegative quantity is that quantity).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+Valid where $- b \left(b + d\right) + \left(b + \frac{d}{2}\right)^{2} \geq 0$.
+
+**Part 2: $b = \frac{b + d + b}{2} - \sqrt{\left(\frac{b + d + b}{2}\right)^{2} - \left(b + d\right) b}$**
+
+From the earlier part: $b + d = b + \frac{d}{2} + \sqrt{- b \left(b + d\right) + \left(b + \frac{d}{2}\right)^{2}}$.
+
+**LHS:**
+
+$$b$$
+
+**RHS:**
+
+$$\frac{b + d + b}{2} - \sqrt{\left(\frac{b + d + b}{2}\right)^{2} - \left(b + d\right) b}$$
+
+$$= b$$
+
+*Simplify under the root sign (a square root of a square of a nonnegative quantity is that quantity).*
+
+Both sides reduce to the same expression, so LHS = RHS. Hence proved.
+
+Valid where $- b \left(b + d\right) + \left(b + \frac{d}{2}\right)^{2} \geq 0$.
+
 ## PD-MATH-XI-009
 
 32. i) If a² + b², ab + bc and b² + c² are in G.P., prove that a, b, c are also in GP [2]
@@ -1109,6 +1997,60 @@ $$= \frac{3}{2 \sqrt{3 x + 4}}$$
 *Let $h \to 0$ (using $\lim_{\theta \to 0} \frac{\sin\theta}{\theta} = 1$ where needed).*
 
 Hence $f'(x) = \frac{3}{2 \sqrt{3 x + 4}}$.
+
+## PD-MATH-XI-025
+
+Show that, if $$p, q, r$$ and $$s$$ are real numbers such that, $$pr = 2(q + s)$$, then at least one of the equations $$x^2 + px + q = 0$$, and $$x^2 + rx + s = 0$$ has real roots.
+
+**Solution**
+
+Given: $p r = 2 \left(q + s\right)$.
+
+From the given condition:
+
+$$p r = 2 q + 2 s \implies q = \frac{p r}{2} - s$$
+
+*Make $q$ the subject.*
+
+For $x^{2} + p x + q = 0$ the discriminant is $D_{1} = p^{2} - 4 q$.
+
+For $x^{2} + r x + s = 0$ the discriminant is $D_{2} = r^{2} - 4 s$.
+
+Add them: $D_{1} + D_{2}$
+
+$$p^{2} - 4 q + r^{2} - 4 s$$
+
+$$= p^{2} - 2 p r + r^{2}$$
+
+*Substitute $q = \frac{p r}{2} - s$.*
+
+$$= \left(p - r\right)^{2}$$
+
+*Simplify algebraically.*
+
+A square is never negative, so $D_{1} + D_{2} \geq 0$. The discriminants cannot both be negative, so at least one of them is $\geq 0$: at least one equation has real roots.
+
+## PD-MATH-XI-030
+
+(c) Show that the given statement is true by the method of contradiction:
+
+If x is a real number such that x³ + 8x = 0, thus x = 0
+
+**Solution**
+
+$$x^{3} + 8 x = 0 \iff x \left(x^{2} + 8\right) = 0$$
+
+Suppose, for contradiction, that $x \neq 0$. Then $x^{2} + 8 = 0$.
+
+$$x^{2} + 8 = x^{2} + 8$$
+
+*Complete the square.*
+
+$$x^{2} + 8 > 0$$
+
+*A real square is nonnegative and the constant is positive.*
+
+So $x^{2} + 8$ is never zero for real $x$: a contradiction. Hence $x = 0$.
 
 ## PD-MATH-XII-001
 
@@ -1293,6 +2235,64 @@ $$= 0$$
 *Cancel.*
 
 This is the RHS, so LHS = RHS. Hence proved.
+
+## PD-MATH-XII-010
+
+(i) Prove that $2 \tan^{-1} \left(\frac{1}{5}\right) + \cos^{-1} \left(\frac{7}{5\sqrt{2}}\right) + 2 \tan^{-1} \left(\frac{1}{8}\right) = \frac{\pi}{4}$
+
+**Solution**
+
+**LHS:**
+
+$$2 \tan^{-1}\left(\frac{1}{5}\right) + \cos^{-1}\left(\frac{7}{5 \sqrt{2}}\right) + 2 \tan^{-1}\left(\frac{1}{8}\right)$$
+
+$$= \tan^{-1}\left(\frac{1}{7}\right) + 2 \tan^{-1}\left(\frac{1}{8}\right) + 2 \tan^{-1}\left(\frac{1}{5}\right)$$
+
+*Use $\cos^{-1} x = \tan^{-1}\frac{\sqrt{1 - x^{2}}}{x}$, valid as $0 < x \le 1$.*
+
+$$= \tan^{-1}\left(\frac{1}{7}\right) + \tan^{-1}\left(\frac{16}{63}\right) + 2 \tan^{-1}\left(\frac{1}{5}\right)$$
+
+*Use $2\tan^{-1} x = \tan^{-1}\frac{2x}{1 - x^{2}}$, valid as $|x| < 1$.*
+
+$$= \tan^{-1}\left(\frac{7}{17}\right) + 2 \tan^{-1}\left(\frac{1}{5}\right)$$
+
+*Use $\tan^{-1} x + \tan^{-1} y = \tan^{-1}\frac{x + y}{1 - xy}$, valid as $xy < 1$.*
+
+$$= \tan^{-1}\left(\frac{7}{17}\right) + \tan^{-1}\left(\frac{5}{12}\right)$$
+
+*Use $2\tan^{-1} x = \tan^{-1}\frac{2x}{1 - x^{2}}$, valid as $|x| < 1$.*
+
+$$= \frac{\pi}{4}$$
+
+*Use $\tan^{-1} x + \tan^{-1} y = \tan^{-1}\frac{x + y}{1 - xy}$, valid as $xy < 1$.*
+
+This is the RHS, so LHS = RHS. Hence proved.
+
+## PD-MATH-XII-011
+
+# Question 14
+
+[3+3=6]
+
+a) Prove that $$\cot^{-1}\left[\frac{\sqrt{1+sinx}+\sqrt{1-sinx}}{\sqrt{1+sinx}-\sqrt{1-sinx}}\right]=\frac{x}{2}, x\in(0,\frac{\pi}{4})$$
+
+**Solution**
+
+**LHS:**
+
+$$\cot^{-1}\left(\frac{\sqrt{1 + \sin x} + \sqrt{1 - \sin x}}{\sqrt{1 + \sin x} - \sqrt{1 - \sin x}}\right)$$
+
+$$= \cot^{-1}\left(\frac{\cos\left(\frac{x}{2}\right)}{\sin \frac{x}{2}}\right)$$
+
+*Use $1 \pm \sin x = \left(\cos\frac{x}{2} \pm \sin\frac{x}{2}\right)^{2}$ (and $1 + \cos x = 2\cos^{2}\frac{x}{2}$, $1 - \cos x = 2\sin^{2}\frac{x}{2}$); the root is the nonnegative one on the given interval.*
+
+$$= \frac{x}{2}$$
+
+*Use $\cot^{-1}(\cot u) = u$ for $0 < u < \pi$ (and $\tan^{-1}(\tan u) = u$ for $-\frac{\pi}{2} < u < \frac{\pi}{2}$); the given interval puts $u$ there.*
+
+This is the RHS, so LHS = RHS. Hence proved.
+
+Valid where $\sin x + 1 \geq 0$, $1 - \sin x \geq 0$, $- \sqrt{1 - \sin x} + \sqrt{\sin x + 1} \neq 0$, $x > 0$, $- x + \frac{\pi}{4} > 0$.
 
 ## PD-MATH-XII-016
 

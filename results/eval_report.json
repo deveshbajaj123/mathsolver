@@ -3,14 +3,23 @@
     "development": {
       "questions": 112,
       "status_counts": {
-        "UNSUPPORTED": 72,
-        "SOLVED_AND_TRACE_CHECKED": 37,
+        "SOLVED_AND_TRACE_CHECKED": 54,
+        "UNSUPPORTED": 55,
         "INPUT_AMBIGUOUS": 1,
         "SOURCE_NEEDS_CORRECTION": 2
       },
       "solved_ids": [
+        "PD-MATH-IX-001",
+        "PD-MATH-IX-004",
         "PD-MATH-IX-005",
+        "PD-MATH-IX-006",
+        "PD-MATH-IX-007",
+        "PD-MATH-IX-009",
+        "PD-MATH-IX-014",
         "PD-MATH-IX-015",
+        "PD-MATH-IX-019",
+        "PD-MATH-IX-024",
+        "PD-MATH-IX-025",
         "PD-MATH-VII-002",
         "PD-MATH-VIII-001",
         "PD-MATH-VIII-005",
@@ -19,11 +28,15 @@
         "PD-MATH-X-005",
         "PD-MATH-X-006",
         "PD-MATH-X-007",
+        "PD-MATH-X-009",
         "PD-MATH-X-011",
         "PD-MATH-X-015",
+        "PD-MATH-X-017",
         "PD-MATH-X-021",
         "PD-MATH-X-022",
+        "PD-MATH-X-025",
         "PD-MATH-X-026",
+        "PD-MATH-X-028",
         "PD-MATH-X-030",
         "PD-MATH-XI-002",
         "PD-MATH-XI-003",
@@ -33,10 +46,14 @@
         "PD-MATH-XI-010",
         "PD-MATH-XI-015",
         "PD-MATH-XI-020",
+        "PD-MATH-XI-025",
+        "PD-MATH-XI-030",
         "PD-MATH-XII-001",
         "PD-MATH-XII-002",
         "PD-MATH-XII-003",
         "PD-MATH-XII-004",
+        "PD-MATH-XII-010",
+        "PD-MATH-XII-011",
         "PD-MATH-XII-016",
         "PD-MATH-XII-017",
         "PD-MATH-XII-018",
@@ -51,8 +68,8 @@
     "evaluation": {
       "questions": 23,
       "status_counts": {
-        "UNSUPPORTED": 14,
-        "SOLVED_AND_TRACE_CHECKED": 9
+        "UNSUPPORTED": 13,
+        "SOLVED_AND_TRACE_CHECKED": 10
       },
       "solved_ids": [
         "PD-MATH-IX-013",
@@ -62,12 +79,13 @@
         "PD-MATH-X-004",
         "PD-MATH-X-010",
         "PD-MATH-X-023",
+        "PD-MATH-XI-006",
         "PD-MATH-XI-013",
         "PD-MATH-XII-032"
       ]
     }
   },
-  "bank_runtime_seconds": 56.453,
+  "bank_runtime_seconds": 78.563,
   "variants": {
     "expected_solvable": 65,
     "solved": 65,
@@ -81,55 +99,55 @@
         "id": "V-X-001-swapped",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.67
+        "seconds": 0.75
       },
       {
         "id": "V-X-001-scaled",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 1.03
+        "seconds": 1.16
       },
       {
         "id": "V-X-002-swapped",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.48
+        "seconds": 0.59
       },
       {
         "id": "V-X-002-scaled",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.52
+        "seconds": 0.69
       },
       {
         "id": "V-X-004-swapped",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.25
+        "seconds": 0.42
       },
       {
         "id": "V-X-004-scaled",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.27
+        "seconds": 0.45
       },
       {
         "id": "V-X-005-swapped",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.48
+        "seconds": 0.89
       },
       {
         "id": "V-X-005-scaled",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.53
+        "seconds": 0.69
       },
       {
         "id": "V-T1",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.24
+        "seconds": 0.28
       },
       {
         "id": "V-T2",
@@ -141,25 +159,25 @@
         "id": "V-T3",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.14
+        "seconds": 0.31
       },
       {
         "id": "V-T4",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.39
+        "seconds": 0.47
       },
       {
         "id": "V-T5",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.05
+        "seconds": 0.06
       },
       {
         "id": "V-factor-0",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.03
+        "seconds": 0.05
       },
       {
         "id": "V-factor-1",
@@ -171,7 +189,7 @@
         "id": "V-factor-2",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.02
+        "seconds": 0.03
       },
       {
         "id": "V-factor-3",
@@ -189,7 +207,7 @@
         "id": "V-square-0",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.02
+        "seconds": 0.0
       },
       {
         "id": "V-square-1",
@@ -201,7 +219,7 @@
         "id": "V-square-2",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.0
+        "seconds": 0.02
       },
       {
         "id": "V-square-3",
@@ -219,79 +237,79 @@
         "id": "V-apterm-0",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.22
+        "seconds": 0.14
       },
       {
         "id": "V-apterm-1",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.11
+        "seconds": 0.16
       },
       {
         "id": "V-apterm-2",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.11
+        "seconds": 0.12
       },
       {
         "id": "V-apterm-3",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.11
+        "seconds": 0.14
       },
       {
         "id": "V-apsum-0",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.12
+        "seconds": 0.14
       },
       {
         "id": "V-apsum-1",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.09
+        "seconds": 0.16
       },
       {
         "id": "V-apsum-2",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.09
+        "seconds": 0.16
       },
       {
         "id": "V-symmetric",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 1.3
+        "seconds": 2.31
       },
       {
         "id": "V-reciprocal",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.09
+        "seconds": 0.11
       },
       {
         "id": "V-indices",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.31
+        "seconds": 0.41
       },
       {
         "id": "V-logs",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.12
+        "seconds": 0.14
       },
       {
         "id": "V-surds",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.81
+        "seconds": 0.97
       },
       {
         "id": "V-ratio",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.14
+        "seconds": 0.17
       },
       {
         "id": "V-proportion",
@@ -309,7 +327,7 @@
         "id": "V-ap-sums",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.08
+        "seconds": 0.11
       },
       {
         "id": "V-gp-squares",
@@ -321,151 +339,151 @@
         "id": "V-gp-sums",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.22
+        "seconds": 0.38
       },
       {
         "id": "V-houses-8",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.03
+        "seconds": 0.05
       },
       {
         "id": "V-houses-288",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.02
+        "seconds": 0.03
       },
       {
         "id": "V-volumes",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.08
+        "seconds": 0.09
       },
       {
         "id": "V-trig-compound",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.23
+        "seconds": 0.25
       },
       {
         "id": "V-trig-double-tan",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.53
+        "seconds": 0.64
       },
       {
         "id": "V-trig-triple",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.22
+        "seconds": 0.11
       },
       {
         "id": "V-trig-half",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.19
+        "seconds": 0.23
       },
       {
         "id": "V-trig-sum-product",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 1.28
+        "seconds": 1.91
       },
       {
         "id": "V-trig-telescoping",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 1.66
+        "seconds": 2.12
       },
       {
         "id": "V-trig-special",
         "expected_solved": false,
         "status": "INCONCLUSIVE",
-        "seconds": 180.36
+        "seconds": 180.19
       },
       {
         "id": "V-equation-quadratic-sin",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.58
+        "seconds": 0.67
       },
       {
         "id": "V-equation-cos-to-sin",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.56
+        "seconds": 0.66
       },
       {
         "id": "V-equation-double",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.58
+        "seconds": 0.64
       },
       {
         "id": "V-equation-sec-tan",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.22
+        "seconds": 0.28
       },
       {
         "id": "V-equation-extraneous-root",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.28
+        "seconds": 0.25
       },
       {
         "id": "V-equation-quadratic-cos",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.53
+        "seconds": 0.69
       },
       {
         "id": "V-deriv-explicit",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.34
+        "seconds": 0.41
       },
       {
         "id": "V-deriv-implicit",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.17
+        "seconds": 0.2
       },
       {
         "id": "V-deriv-log",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.38
+        "seconds": 0.44
       },
       {
         "id": "V-evaluate",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.03
+        "seconds": 0.05
       },
       {
         "id": "V-integral",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.05
+        "seconds": 0.25
       },
       {
         "id": "V-integral-reflection",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.31
+        "seconds": 0.42
       },
       {
         "id": "V-monotonic",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.03
+        "seconds": 0.05
       },
       {
         "id": "V-extremum",
         "expected_solved": true,
         "status": "SOLVED_AND_TRACE_CHECKED",
-        "seconds": 0.3
+        "seconds": 0.17
       },
       {
         "id": "V-first-principles",
@@ -617,6 +635,6 @@
   },
   "llm_calls": 0,
   "llm_tokens": 0,
-  "runtime_seconds": 256.7,
+  "runtime_seconds": 284.3,
   "readability_review": "not done; sample from results/sample_answers.md"
 }

@@ -277,6 +277,12 @@ def rename_variable(theory: Theory, old: s.Symbol, new: s.Symbol) -> Rule:
 
 
 register("use_definition", "calculus")(use_definition)
+
+
+@register("use_coordinates", "geometry")
+def use_coordinates(theory: Theory) -> Rule:
+    return Rule("use_coordinates", "Write each length, area or product in coordinates (see above).",
+                theory.expand_definitions, "geometry")
 static("log_both_sides", "calculus_equation", "Take logarithms of both sides.", _log_both_sides)
 static("differentiate", "calculus", "Differentiate.", differentiate)
 static("evaluate_integral", "integral", "Integrate.", evaluate_integral)

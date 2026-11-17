@@ -10,13 +10,13 @@ hold and the original expressions are defined. Both tests are sound.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from functools import lru_cache
 
 import sympy as s
 from sympy.core.function import AppliedUndef
 
-from .parse import named_class, sum_class, sum_formula, term_class, term_formula
+from .parse import named_class, sum_class, sum_formula, term_class, term_formula, expand_geometry
 
 TRIG = (s.sin, s.cos, s.tan, s.cot, s.sec, s.csc)
 Z, T = s.Symbol("_Z"), s.Symbol("_T")
@@ -29,13 +29,17 @@ class Theory:
     hypotheses: tuple = ()    # expressions equal to zero
     domain: tuple = ()        # nonzero factors in normal form
     definitions: tuple = ()   # (name, variable, expression) for named functions such as C(x)
+    points: tuple = ()        # (name, x, y): coordinates that define AB^2, ar(ABC), ...
+    intervals: tuple = ()     # (symbol, low, high): x lies strictly between low and high
 
     def with_facts(self, equations) -> "Theory":
         """Add derived equations (already verified consequences of the givens)."""
         extra = tuple(l - r for l, r in equations if (l - r) not in self.hypotheses)
-        return Theory(self.sequences, self.hypotheses + extra, self.domain, self.definitions)
+        return replace(self, hypotheses=self.hypotheses + extra)
 
     def expand_definitions(self, e: s.Expr) -> s.Expr:
+        if self.points:
+            e = expand_geometry(e, {name: (x, y) for name, x, y in self.points})
         for name, variable, expr in self.definitions:
             e = e.replace(named_class(name), lambda arg, v=variable, x=expr: x.xreplace({v: arg}))
         for name, kind, a, step in self.sequences:
@@ -252,8 +256,137 @@ def in_radical(target: s.Expr, ideal: list, nonzero: s.Expr = s.Integer(1)) -> b
     return list(s.groebner(polys, *gens, order="grevlex", domain="QQ")) == [s.Integer(1)]
 
 
+INVERSE_TRIG = (s.asin, s.acos, s.atan, s.acot)
+
+
+def _piece_bounds(expr: s.Expr, v: s.Symbol, low, high, pieces: int = 128):
+    """Guaranteed lower bound of expr on each of `pieces` equal parts of [low, high]
+    (mpmath interval arithmetic), or None if it cannot be evaluated."""
+    import mpmath
+    iv = mpmath.iv
+    iv.dps = 30
+    try:
+        f = s.lambdify(v, expr, modules=[{"mpf": iv.mpf, "sin": iv.sin, "cos": iv.cos, "tan": iv.tan, "sqrt": iv.sqrt,
+                                          "exp": iv.exp, "log": iv.log, "pi": iv.pi}, "mpmath"])
+        a, b = (iv.mpf(str(s.N(x, 40))) for x in (low, high))
+        a, b = a.a, b.b  # widen to cover the exact endpoints
+        width = (b - a)/pieces
+        return [iv.mpf(f(iv.mpf([a + k*width, a + (k + 1)*width]))).a for k in range(pieces)]
+    except Exception:
+        return None
+
+
+def _interval_bounds(expr: s.Expr, v: s.Symbol, low, high):
+    bounds = _piece_bounds(expr, v, low, high)
+    return None if bounds is None else min(bounds)
+
+
+def _positive_inside(expr: s.Expr, v: s.Symbol, low, high, strict: bool) -> bool:
+    """expr > 0 (or >= 0) for low < v < high, by interval arithmetic. A zero at an excluded
+    endpoint is allowed when expr is >= 0 there and moves away from zero on the end piece
+    (derivative positive at the low end, negative at the high end)."""
+    bounds = _piece_bounds(expr, v, low, high)
+    if bounds is None:
+        return False
+    good = [b > 0 if strict else b >= 0 for b in bounds]
+    if not all(good[1:-1]):
+        return False
+    derivative = s.diff(expr, v)
+    for index, end, sign in ((0, low, 1), (len(bounds) - 1, high, -1)):
+        if good[index]:
+            continue
+        at_end = s.N(expr.xreplace({v: end}), 50)
+        if not at_end.is_real or at_end < -s.Float("1e-45"):
+            return False
+        piece = (high - low)/len(bounds)
+        part = (end, end + piece) if sign == 1 else (end - piece, end)
+        slope = _piece_bounds(sign*derivative, v, *part, pieces=8)
+        if slope is None or not all(b > 0 for b in slope):
+            return False
+    return True
+
+
+@lru_cache(None)
+def positive_on(expr: s.Expr, theory: Theory, strict: bool = True) -> bool:
+    """expr > 0 (or >= 0) for every admissible value. A number: its sign to 50 digits. One
+    variable with an interval in the spec (strictly between low and high): SymPy's minimum on
+    the closed interval (a zero only at an excluded endpoint is allowed), else a guaranteed
+    lower bound from interval arithmetic."""
+    if expr.is_number:
+        value = s.N(expr, 50)
+        if not value.is_real:
+            return False
+        return bool(value > s.Float("1e-40")) if strict else bool(value >= 0)
+    symbols = expr.free_symbols
+    intervals = {v: (low, high) for v, low, high in theory.intervals}
+    if len(symbols) != 1 or next(iter(symbols)) not in intervals:
+        return False
+    v = next(iter(symbols))
+    low, high = intervals[v]
+    if _positive_inside(expr, v, low, high, strict):  # fast and guaranteed
+        return True
+    if s.count_ops(expr) > 12:
+        return False  # SymPy's minimum is too slow on large expressions; interval arithmetic was inconclusive
+    try:
+        least = s.minimum(expr, v, s.Interval(low, high))
+        if least is not None and least.is_number:
+            least = s.N(least, 50)
+            if least > s.Float("1e-40"):
+                return True
+            if abs(least) <= s.Float("1e-40"):
+                inside = s.solveset(expr, v, s.Interval.open(low, high))
+                return inside == s.S.EmptySet if strict else True
+            return False
+    except (NotImplementedError, ValueError, TypeError):
+        pass
+    return False
+
+
+def _inverse_equal(a: s.Expr, b: s.Expr, theory: Theory) -> bool:
+    """Equality of expressions with inverse trig functions, which Groebner bases do not cover.
+    The same inverse function on both sides: compare the arguments exactly. Otherwise compare
+    to 50 digits: a number directly, a function of one variable at 12 points inside its stated
+    interval. The rules that change an inverse function prove their branch condition themselves."""
+    if type(a) is type(b) and isinstance(a, INVERSE_TRIG) and exact_equal(a.args[0], b.args[0], theory):
+        return True
+    return _interval_numeric(a - b, theory)
+
+
+def _interval_numeric(difference: s.Expr, theory: Theory) -> bool:
+    symbols = difference.free_symbols
+    if not symbols:
+        return abs(s.N(difference, 60)) < s.Float("1e-45")
+    intervals = {v: (low, high) for v, low, high in theory.intervals}
+    if not symbols <= set(intervals):
+        return False
+    for k in range(1, 13):
+        point = {v: low + (high - low)*s.Rational(k, 13) + (high - low)*s.Rational(1, 997)
+                 for v, (low, high) in intervals.items() if v in symbols}
+        value = s.N(difference.xreplace(point), 60)
+        if not value.is_number or abs(value) > s.Float("1e-40"):
+            return False
+    return True
+
+
 @lru_cache(None)
 def exact_equal(a: s.Expr, b: s.Expr, theory: Theory = Theory()) -> bool:
+    try:
+        if _exact_equal(a, b, theory):
+            return True
+    except (s.PolynomialError, s.GeneratorsNeeded, NotImplementedError):
+        pass
+    # An inverse trig function is an opaque atom above; an identity that changes it (2 tan^-1 x = ...)
+    # holds only on a branch, and is compared as described in _inverse_equal.
+    if (a - b).has(*INVERSE_TRIG):
+        return _inverse_equal(theory.expand_definitions(a), theory.expand_definitions(b), theory)
+    return False
+
+
+def _exact_equal(a: s.Expr, b: s.Expr, theory: Theory) -> bool:
+    if theory.intervals and any(p.exp == s.Rational(1, 2) for p in (a - b).atoms(s.Pow)):
+        # Groebner bases prove a square root only up to sign; on the stated interval the branch
+        # is fixed, so the sides are compared there (see _interval_numeric).
+        return _interval_numeric(theory.expand_definitions(a - b), theory)
     difference = theory.expand_definitions(a - b)
     difference = difference.replace(lambda x: type(x).__name__ == "Bracket", lambda x: x.doit())
     if difference.has(s.Derivative):
@@ -262,6 +395,10 @@ def exact_equal(a: s.Expr, b: s.Expr, theory: Theory = Theory()) -> bool:
         return integrals_equal(difference)
     if not difference.free_symbols and numbers_equal(difference, s.Integer(0)):
         return True  # otherwise (e.g. logs, which are not algebraic numbers) use the normal form below
+    if any(p.exp == s.Rational(1, 2) for p in difference.atoms(s.Pow)) and s.expand(difference) == 0:
+        # SymPy takes a square root of a square using the declared signs (sqrt(d^2/4) = d/2 for d >= 0),
+        # which Groebner bases cannot: they know a root only up to sign.
+        return True
     n = _numerator(normal(difference))
     hyps = list(hypothesis_ideal(theory))
     if in_ideal(n, hyps):
@@ -310,10 +447,27 @@ def certified_nonzero(e: s.Expr, theory: Theory) -> bool:
 
 
 @lru_cache(None)
+def _signed_denominators(e: s.Expr, theory: Theory) -> bool:
+    """Every denominator keeps one sign on the stated interval, so none can vanish there."""
+    bases = [p.base for p in e.atoms(s.Pow) if p.exp.is_Number and p.exp < 0]
+    bases += [s.cos(f.args[0]) for f in e.atoms(s.tan, s.sec)] + [s.sin(f.args[0]) for f in e.atoms(s.cot, s.csc)]
+    intervals = {v: (low, high) for v, low, high in theory.intervals}
+
+    def one_sign(b):
+        if len(b.free_symbols) == 1 and next(iter(b.free_symbols)) in intervals:
+            v = next(iter(b.free_symbols))
+            if any(_positive_inside(c, v, *intervals[v], strict=True) for c in (b, -b)):
+                return True  # interval arithmetic first: fast and guaranteed
+        return positive_on(b, theory) or positive_on(-b, theory)
+    return all(one_sign(b) for b in bases)
+
+
 def domain_safe(e: s.Expr, theory: Theory) -> bool:
     """A new denominator is allowed only with a certificate that it cannot vanish."""
     if e.has(s.zoo, s.oo, -s.oo, s.nan):
         return False
+    if theory.intervals and _signed_denominators(e, theory):
+        return True
     original = s.prod(theory.domain)
     for f in denominator_factors(e, theory):
         if f in theory.domain or f.is_nonzero:  # e.g. 6x + 5 when x is declared positive

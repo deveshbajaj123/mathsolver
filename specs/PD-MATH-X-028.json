@@ -1,0 +1,57 @@
+{
+  "id": "PD-MATH-X-028",
+  "variables": {
+    "a": [
+      "positive"
+    ]
+  },
+  "points": {
+    "B": [
+      "0",
+      "0"
+    ],
+    "C": [
+      "3*a",
+      "0"
+    ],
+    "A": [
+      "3*a/2",
+      "3*sqrt(3)*a/2"
+    ],
+    "D": [
+      "a",
+      "0"
+    ]
+  },
+  "figure": [
+    [
+      "equal_length",
+      "A",
+      "B",
+      "B",
+      "C"
+    ],
+    [
+      "equal_length",
+      "A",
+      "C",
+      "B",
+      "C"
+    ],
+    [
+      "on_line",
+      "D",
+      "B",
+      "C"
+    ]
+  ],
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "9*dist2(A,D)",
+    "rhs": "7*dist2(A,B)"
+  },
+  "quotes": {
+    "goal": "In an equilateral ΔABC, D is a point on side BC such that BD = 1/3 BC. Prove that 9(AD)^2 = 7(AB)^2"
+  },
+  "note": "Side 3a with B at the origin and BC along the x-axis; D = (a, 0) gives BD = a = BC/3."
+}

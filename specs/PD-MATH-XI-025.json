@@ -1,0 +1,7 @@
+{
+  "id": "PD-MATH-XI-025",
+  "variables": {"p": ["real"], "q": ["real"], "r": ["real"], "s": ["real"], "x": ["real"]},
+  "hypotheses": [{"lhs": "p*r", "rhs": "2*(q + s)", "quote": "pr = 2(q + s)"}],
+  "goal": {"kind": "one_real_roots", "variable": "x", "polynomials": ["x**2 + p*x + q", "x**2 + r*x + s"]},
+  "quotes": {"goal": "at least one of the equations x² + px + q = 0 and x² + rx + s = 0 has real roots"}
+}

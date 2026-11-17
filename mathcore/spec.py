@@ -17,6 +17,9 @@ GOALS = {
     "show_no_real_roots": {"polynomial", "variable"},
     "find_value": {"variable", "lhs", "rhs"},
     "solve_equation": {"variable", "lhs", "rhs", "low", "high"},
+    "general_solution": {"variable", "lhs", "rhs"},
+    "one_real_roots": {"variable", "polynomials"},  # at least one of these quadratics has real roots
+    "only_solution": {"variable", "lhs", "rhs", "value"},  # the only real solution is variable = value
     "evaluate": {"expr"},
     "first_principles": {"function", "variable"},
     "monotonic": {"function", "variable", "direction"},
@@ -32,7 +35,7 @@ HYPOTHESES = {
     "equal_ratios": {"ratios"},
     "equal_roots": {"polynomial", "variable"},
 }
-METHODS = {None, "factor_theorem", "completing_square"}
+METHODS = {None, "factor_theorem", "completing_square", "componendo_dividendo"}
 
 
 class SpecError(ValueError):
@@ -49,6 +52,10 @@ class Spec:
     functions: dict = field(default_factory=dict)      # y -> {"of": "x", "derivatives": ["y1", "y2"]}: y depends on x
     definitions: dict = field(default_factory=dict)    # C -> {"of": "x", "expr": "..."}: a named function C(x)
     abstract: list = field(default_factory=list)       # names of unspecified functions, e.g. f in a property of integrals
+    points: dict = field(default_factory=dict)        # A -> ["x", "y"]: coordinates in declared variables
+    nondegenerate: list = field(default_factory=list)  # [["A", "B", "C"]]: triangles the figure assumes are proper
+    figure: list = field(default_factory=list)         # [["midpoint", "D", "B", "C"], ...]: facts checked against the coordinates
+    intervals: dict = field(default_factory=dict)      # x -> ["0", "pi/4"]: x lies strictly between the two
     prescribed_method: str | None = None
     quotes: dict = field(default_factory=dict)         # field -> source words
     note: str = ""
@@ -112,6 +119,22 @@ def from_json(data: dict) -> Spec:
     for name, definition in spec.definitions.items():
         if not name.isidentifier() or not {"of", "expr"} <= set(definition):
             raise SpecError(f"Bad definition {name}: {definition}")
+    for name, point in spec.points.items():
+        if not name.isidentifier() or name in spec.variables or len(point) != 2:
+            raise SpecError(f"Bad point {name}: {point}")
+    for triangle in spec.nondegenerate:
+        if len(triangle) != 3 or not set(triangle) <= set(spec.points):
+            raise SpecError(f"Bad nondegenerate triangle {triangle}")
+    for name, bounds in spec.intervals.items():
+        if name not in spec.variables or len(bounds) != 2:
+            raise SpecError(f"Bad interval for {name}: {bounds}")
+    from .figure import RELATIONS
+    for fact in spec.figure:
+        if not fact or fact[0] not in RELATIONS or len(fact) - 1 != RELATIONS[fact[0]][0] \
+                or not set(fact[1:]) <= set(spec.points):
+            raise SpecError(f"Bad figure fact {fact}")
+    if spec.points and not spec.figure and len(spec.points) > 2:
+        raise SpecError("A coordinate spec must list the figure facts its coordinates encode (\"figure\")")
     if kind == "prove_from_hypotheses" and not spec.hypotheses:
         raise SpecError("prove_from_hypotheses needs at least one hypothesis")
     if spec.prescribed_method not in METHODS:

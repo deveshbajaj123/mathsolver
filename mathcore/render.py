@@ -12,7 +12,8 @@ import json
 import sympy as s
 
 from .engine import Step
-from .notation import derivative_labels, school, source_latex, source_operations
+from .notation import POINT_FUNCTIONS, derivative_labels, school, source_latex, source_operations
+from .parse import geometry_value
 from .problem import Problem, conditions_text
 from .spec import hypothesis_kind
 
@@ -101,12 +102,12 @@ def _merge(steps: list[Step]) -> list[Step]:
     return merged
 
 
-def _chain(start: str, steps: list[Step], simplified=None) -> list[str]:
+def _chain(start: str, steps: list[Step], simplified=None, reason: str = "Simplify.") -> list[str]:
     """`simplified` is the parsed form, shown as its own line when reading the question
     already simplified it noticeably (e.g. the two volumes in X-011 becoming 2r^3/R^3)."""
     lines = [f"$${start}$$", ""]
     if simplified is not None:
-        lines += [f"$$= {_tex(simplified)}$$", "", "*Simplify.*", ""]
+        lines += [f"$$= {_tex(simplified)}$$", "", f"*{reason}*", ""]
     shown = start if simplified is None else _tex(simplified)
     for step in _merge(steps):
         if _tex(step.after) == shown:
@@ -116,8 +117,12 @@ def _chain(start: str, steps: list[Step], simplified=None) -> list[str]:
     return lines
 
 
+COORDINATE_REASON = "Write each length, area or product in coordinates (distance formula)."
+
+
 def _silently_simplified(problem: Problem, key: str):
-    """The parsed expression, if it has far fewer operations than the expression as written."""
+    """The parsed expression, if it has far fewer operations than the expression as written.
+    With coordinates it is always shown: that line is where the figure becomes algebra."""
     text = problem.spec.goal.get(key)
     expr = problem.exprs.get(key)
     if not text or expr is None:
@@ -131,7 +136,64 @@ def _restates_given(step: Step) -> bool:
             and s.expand(step.before.lhs - step.before.rhs + step.after.lhs - step.after.rhs) == 0)
 
 
+def _difference(q, p) -> str:
+    """x_Q - x_P as a student writes it, before any working."""
+    if p == 0:
+        return _tex(q)
+    later = _tex(p)
+    if p.is_Add or p.could_extract_minus_sign():
+        later = rf"\left({later}\right)"
+    return f"{_tex(q)} - {later}"
+
+
+def _written(name: str, at: list) -> str:
+    """A length, area or product with the coordinates substituted and nothing worked out."""
+    def bracket(text):
+        return rf"\left({text}\right)"
+    if name in ("dist2", "dist"):
+        (px, py), (qx, qy) = at
+        text = f"{bracket(_difference(qx, px))}^{{2}} + {bracket(_difference(qy, py))}^{{2}}"
+        return rf"\sqrt{{{text}}}" if name == "dist" else text
+    if name == "area":
+        (px, py), (qx, qy), (rx, ry) = at
+        return (rf"\frac{{1}}{{2}}\left[{bracket(_difference(qx, px))}{bracket(_difference(ry, py))} - "
+                rf"{bracket(_difference(qy, py))}{bracket(_difference(rx, px))}\right]")
+    (ax, ay), (bx, by), (cx, cy), (dx, dy) = at
+    u, v = (_difference(bx, ax), _difference(by, ay)), (_difference(dx, cx), _difference(dy, cy))
+    if name == "dot":
+        return f"{bracket(u[0])}{bracket(v[0])} + {bracket(u[1])}{bracket(v[1])}"
+    return f"{bracket(u[0])}{bracket(v[1])} - {bracket(u[1])}{bracket(v[0])}"
+
+
+def _coordinates(problem: Problem) -> list[str]:
+    if not problem.ctx.points:
+        return []
+    shown = ", ".join(rf"${name} = \left({_tex(x)}, {_tex(y)}\right)$" for name, (x, y) in problem.ctx.points.items())
+    lines = [f"Take coordinates: {shown}.", ""]
+    if problem.spec.note:
+        lines += [f"*{problem.spec.note}*", ""]
+    if problem.spec.figure:
+        from .figure import words
+        lines += ["These coordinates give: " + "; ".join(words(f) for f in problem.spec.figure) + ".", ""]
+    exprs = [e for e in problem.exprs.values() if isinstance(e, s.Basic)] + [l - r for l, r in problem.hypotheses]
+    quantities = sorted({q for e in exprs for q in e.atoms(s.Function) if getattr(q, "geometry", None)}, key=str)
+    if quantities:
+        lines += ["Then:", ""]
+        for q in quantities:
+            if q.geometry in ("xcoord", "ycoord"):
+                continue
+            at = [problem.ctx.points[a.name] for a in q.args]
+            written = _written(q.geometry, at)
+            value = _tex(s.factor(geometry_value(q.geometry, at)))
+            lines += [f"$${_tex(q)} = {written} = {value}$$", ""]
+    return lines
+
+
 def _givens(problem: Problem, premises: list[Step]) -> list[str]:
+    return _coordinates(problem) + _stated(problem, premises)
+
+
+def _stated(problem: Problem, premises: list[Step]) -> list[str]:
     lines = []
     for name, (kind, a, step) in problem.ctx.sequences.items():
         noun, what = ("AP", "common difference") if kind == "ap" else ("GP", "common ratio")
@@ -166,7 +228,7 @@ def _side(problem: Problem, key: str) -> str:
 def body(problem: Problem, found: dict) -> list[str]:
     kind, steps, premises = problem.kind, found["steps"], found.get("premises", [])
     lines = []
-    if kind in ("prove_identity", "prove_from_hypotheses"):
+    if kind in ("prove_identity", "prove_from_hypotheses") and found.get("form") != "derived":
         lhs, rhs = problem.exprs["lhs"], problem.exprs["rhs"]
         lines += _givens(problem, premises)
         form = found.get("form", "chain")
@@ -180,11 +242,13 @@ def body(problem: Problem, found: dict) -> list[str]:
         else:
             forward = [st for st in steps if not st.reverse]
             backward = [st for st in steps if st.reverse]
-            lines += ["**LHS:**", ""] + _chain(_side(problem, "lhs"), forward, _silently_simplified(problem, "lhs"))
+            why = "Simplify."
+            lines += ["**LHS:**", ""] + _chain(_side(problem, "lhs"), forward, _silently_simplified(problem, "lhs"), why)
             if backward:
                 # Steps found from the RHS are shown in their natural direction: RHS = ... = meeting point.
                 natural = [Step(st.after, st.before, st.rule, st.reason) for st in reversed(backward)]
-                lines += ["**RHS:**", ""] + _chain(_side(problem, "rhs"), natural, _silently_simplified(problem, "rhs"))
+                lines += ["**RHS:**", ""] + _chain(_side(problem, "rhs"), natural, _silently_simplified(problem, "rhs"), why)
+
                 lines.append("Both sides reduce to the same expression, so LHS = RHS. Hence proved.")
             else:
                 lines.append("This is the RHS, so LHS = RHS. Hence proved.")
@@ -251,6 +315,51 @@ def body(problem: Problem, found: dict) -> list[str]:
                               "undefined or false there.", ""]
                 values = ", ".join(_tex(r) for r in step.after)
                 lines.append(f"**Solution:** ${x} = {values}$." if step.after else "**Solution:** no value in the interval.")
+    elif kind == "one_real_roots":
+        x = _tex(problem.exprs["variable"])
+        from .strategies.algebra_methods import discriminants
+        lines += _givens(problem, premises)
+        names = []
+        for index, (p, d) in enumerate(zip(problem.exprs["polynomials"], discriminants(problem)), 1):
+            names.append(f"D_{{{index}}}")
+            lines += [f"For ${_source(problem, problem.spec.goal['polynomials'][index - 1], p)} = 0$ the discriminant is $D_{{{index}}} = {_tex(d)}$.", ""]
+        lines += [f"Add them: ${' + '.join(names)}$", ""] + _chain(_tex(steps[0].before), steps)
+        lines += [rf"A square is never negative, so ${' + '.join(names)} \geq 0$. The discriminants cannot both be "
+                  r"negative, so at least one of them is $\geq 0$: at least one equation has real roots."]
+    elif kind == "only_solution":
+        x, value = _tex(problem.exprs["variable"]), _tex(problem.exprs["value"])
+        factorise = premises[0]
+        other = _tex(found["diagnostics"]["other"])
+        lines += [rf"$${_side(problem, 'lhs')} = {_side(problem, 'rhs')} \iff {_tex(factorise.after)} = 0$$", "",
+                  rf"Suppose, for contradiction, that ${x} \neq {value}$. Then ${other} = 0$.", ""]
+        for step in steps:
+            if step.relation == "implication":
+                lines += [f"$${_tex(step.after)}$$", "", f"*{step.reason}*", ""]
+            elif step.after != step.before:  # completing the square of x^2 + c changes nothing
+                lines += [f"$${_tex(step.before)} = {_tex(step.after)}$$", "", f"*{step.reason}*", ""]
+        lines += [f"So ${other}$ is never zero for real ${x}$: a contradiction. Hence ${x} = {value}$."]
+    elif found.get("form") == "derived":
+        lines += _givens(problem, premises)
+        for step in steps:
+            lines += [rf"$$\implies {_tex(step.after)}$$", "", f"*{_reason(step.reason)}*", ""]
+        lines.append("Hence proved.")
+    elif kind == "general_solution":
+        x = _tex(problem.exprs["variable"])
+        lines += [f"$${_side(problem, 'lhs')} = {_side(problem, 'rhs')}$$", ""]
+        for step in steps:
+            if step.relation in ("equivalence", "implication"):
+                arrow = r"\iff" if step.relation == "equivalence" else r"\implies"
+                lines += [f"$${arrow} {_tex(step.after)}$$", "", f"*{step.reason}*", ""]
+            elif step.relation == "family":
+                if step.after:
+                    values = r" \quad\text{or}\quad ".join(f"{x} = {_tex(f)}" for f in step.after)
+                    lines += [rf"$${_tex(step.before)} \implies {values}$$", "", f"*Use ${step.reason}$.*", ""]
+                else:
+                    lines += [f"$${_tex(step.before)}$$ has no solution ({step.reason}).", ""]
+            elif step.relation == "general_set":
+                families = r",\quad ".join(f"{x} = {_tex(f)}" for f in step.after)
+                lines.append(f"**General solution:** ${families}$, where $n$ is any integer." if step.after
+                             else "**The equation has no solution.**")
     elif kind == "find_value":
         lines += _givens(problem, [])
         x = _tex(problem.exprs["variable"])

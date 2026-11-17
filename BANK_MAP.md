@@ -6,26 +6,26 @@ Priority score = sum over unsolved questions of feasibility weight {"high": 1.0,
 
 | Rank | Engine | Status | Questions | Solved | Open (high/med/low) | Figures | Classes | Score |
 |---:|---|---|---:|---:|---|---:|---|---:|
-| 1 | Synthetic Euclidean proofs (congruence, circles, similarity, areas) (`synthetic_geometry`) | partial | 28 | 1 | 0/22/5 | 13 | 7, 8, 9, 10 | 11.5 |
+| 1 | Synthetic Euclidean proofs (congruence, circles, similarity, areas) (`synthetic_geometry`) | partial | 28 | 9 | 0/15/4 | 13 | 7, 8, 9, 10 | 7.9 |
 | 2 | Coordinate and 3D analytic geometry (`analytic_coordinate`) | external | 8 | 0 | 6/2/0 | 0 | 9, 10, 11, 12 | 7.0 |
 | 3 | Vector identities (`vector_algebra`) | missing | 8 | 0 | 5/3/0 | 0 | 12 | 6.5 |
 | 4 | Set identities, logic and counterexamples (`boolean_membership`) | missing | 6 | 0 | 5/0/1 | 0 | 11 | 5.1 |
 | 5 | Determinant and matrix identities (`determinant_matrix`) | missing | 6 | 0 | 3/3/0 | 0 | 12 | 4.5 |
-| 6 | Length/area relations proved by Pythagoras (`metric_geometry_coordinates`) | partial | 4 | 0 | 4/0/0 | 0 | 9, 10 | 4.0 |
-| 7 | Relation and function properties (`relation_function`) | missing | 5 | 0 | 3/1/1 | 0 | 12 | 3.6 |
-| 8 | Complex-number identities (`complex_algebra`) | missing | 3 | 0 | 3/0/0 | 0 | 11 | 3.0 |
-| 9 | Probability from axioms (`probability_atoms`) | missing | 3 | 0 | 3/0/0 | 0 | 12 | 3.0 |
-| 10 | Mathematical induction (`induction`) | missing | 3 | 0 | 2/1/0 | 0 | 11 | 2.5 |
-| 11 | Factorial and binomial-coefficient identities (`factorial_binomial`) | missing | 3 | 0 | 1/2/0 | 0 | 11 | 2.0 |
-| 12 | Relations under given conditions (`constrained_relation`) | implemented | 12 | 9 | 0/3/0 | 1 | 8, 9, 10 | 1.5 |
-| 13 | Derivatives, implicit differentiation, first principles, ODE verification (`differentiation`) | implemented | 10 | 8 | 1/1/0 | 0 | 11, 12 | 1.5 |
-| 14 | Contradiction, irrationality and inequalities (`contradiction_inequality`) | missing | 5 | 0 | 0/2/3 | 1 | 9, 11 | 1.3 |
-| 15 | Inverse trigonometric identities (`inverse_trig_branch`) | missing | 2 | 0 | 0/2/0 | 0 | 12 | 1.0 |
-| 16 | AP/GP term and sum relations (`sequence_series`) | implemented | 7 | 6 | 1/0/0 | 0 | 10, 11 | 1.0 |
-| 17 | Exact algebraic, index, log and surd identities (`algebraic_identity`) | implemented | 3 | 3 | 0/0/0 | 0 | 8, 9 | 0 |
-| 18 | Definite integrals and areas (`definite_integration`) | implemented | 3 | 3 | 0/0/0 | 0 | 12 | 0 |
-| 19 | Maxima/minima and monotonicity (`extremum_monotonicity`) | implemented | 5 | 5 | 0/0/0 | 0 | 12 | 0 |
-| 20 | Factor theorem, completing the square, discriminant (`polynomial_theorems`) | implemented | 3 | 3 | 0/0/0 | 0 | 10 | 0 |
+| 6 | Relation and function properties (`relation_function`) | missing | 5 | 0 | 3/1/1 | 0 | 12 | 3.6 |
+| 7 | Complex-number identities (`complex_algebra`) | missing | 3 | 0 | 3/0/0 | 0 | 11 | 3.0 |
+| 8 | Probability from axioms (`probability_atoms`) | missing | 3 | 0 | 3/0/0 | 0 | 12 | 3.0 |
+| 9 | Mathematical induction (`induction`) | missing | 3 | 0 | 2/1/0 | 0 | 11 | 2.5 |
+| 10 | Factorial and binomial-coefficient identities (`factorial_binomial`) | missing | 3 | 0 | 1/2/0 | 0 | 11 | 2.0 |
+| 11 | Derivatives, implicit differentiation, first principles, ODE verification (`differentiation`) | implemented | 10 | 8 | 1/1/0 | 0 | 11, 12 | 1.5 |
+| 12 | Relations under given conditions (`constrained_relation`) | implemented | 12 | 10 | 0/2/0 | 1 | 8, 9, 10 | 1.0 |
+| 13 | Contradiction, irrationality and inequalities (`contradiction_inequality`) | partial | 5 | 2 | 0/0/3 | 1 | 9, 11 | 0.3 |
+| 14 | Exact algebraic, index, log and surd identities (`algebraic_identity`) | implemented | 3 | 3 | 0/0/0 | 0 | 8, 9 | 0 |
+| 15 | Definite integrals and areas (`definite_integration`) | implemented | 3 | 3 | 0/0/0 | 0 | 12 | 0 |
+| 16 | Maxima/minima and monotonicity (`extremum_monotonicity`) | implemented | 5 | 5 | 0/0/0 | 0 | 12 | 0 |
+| 17 | Inverse trigonometric identities (`inverse_trig_branch`) | implemented | 2 | 2 | 0/0/0 | 0 | 12 | 0 |
+| 18 | Length/area relations proved by Pythagoras (`metric_geometry_coordinates`) | implemented | 4 | 4 | 0/0/0 | 0 | 9, 10 | 0 |
+| 19 | Factor theorem, completing the square, discriminant (`polynomial_theorems`) | implemented | 3 | 3 | 0/0/0 | 0 | 10 | 0 |
+| 20 | AP/GP term and sum relations (`sequence_series`) | implemented | 7 | 7 | 0/0/0 | 0 | 10, 11 | 0 |
 | 21 | Trigonometric identities (`trig_identity`) | implemented | 8 | 8 | 0/0/0 | 0 | 10, 11 | 0 |
 
 ## Recommended build order
@@ -34,12 +34,12 @@ Phases group engines that share implementation work, so they differ from the per
 
 | Phase | Name | Engines | Open | Score | Rationale |
 |---:|---|---|---:|---:|---|
-| 1 | Symbolic core | `constrained_relation`, `algebraic_identity`, `sequence_series`, `complex_algebra`, `metric_geometry_coordinates`, `analytic_coordinate`, `vector_algebra`, `determinant_matrix` | 33 | 27.5 | One shared piece of work (safe parser with log/sqrt/symbols/vectors, a generic hypotheses-and-goal spec, elimination and exact-zero checks) serves eight engines. Mostly high-feasibility text-only questions. |
+| 1 | Symbolic core | `constrained_relation`, `algebraic_identity`, `sequence_series`, `complex_algebra`, `metric_geometry_coordinates`, `analytic_coordinate`, `vector_algebra`, `determinant_matrix` | 27 | 22.0 | One shared piece of work (safe parser with log/sqrt/symbols/vectors, a generic hypotheses-and-goal spec, elimination and exact-zero checks) serves eight engines. Mostly high-feasibility text-only questions. |
 | 2 | Calculus | `differentiation`, `extremum_monotonicity`, `definite_integration` | 2 | 1.5 | Reuses the phase 1 parser and spec; adds diff/limit/integrate with domain tracking. |
 | 3 | Discrete and logic | `boolean_membership`, `probability_atoms`, `relation_function`, `induction`, `factorial_binomial` | 20 | 16.2 | Small, decidable checkers with high feasibility; independent of each other. |
-| 4 | Trig extensions | `trig_identity`, `inverse_trig_branch`, `polynomial_theorems` | 2 | 1.0 | Extend existing code: constrained identities, special angles, branches, discriminant. |
-| 5 | Synthetic geometry | `synthetic_geometry` | 27 | 11.5 | Largest group but highest cost per question: figure encoding, Newclid adapter gaps and school-style write-ups. Needs the interpretation stage for figures. |
-| 6 | Open-ended | `contradiction_inequality` | 5 | 1.3 | Lowest automation yield; likely LLM-drafted with human review. |
+| 4 | Trig extensions | `trig_identity`, `inverse_trig_branch`, `polynomial_theorems` | 0 | 0 | Extend existing code: constrained identities, special angles, branches, discriminant. |
+| 5 | Synthetic geometry | `synthetic_geometry` | 19 | 7.9 | Largest group but highest cost per question: figure encoding, Newclid adapter gaps and school-style write-ups. Needs the interpretation stage for figures. |
+| 6 | Open-ended | `contradiction_inequality` | 3 | 0.3 | Lowest automation yield; likely LLM-drafted with human review. |
 
 ## Engines
 
@@ -47,23 +47,23 @@ Phases group engines that share implementation work, so they differ from the per
 
 - Existing code: newclid_probe.py, mathcore/strategies/geometry.py (one question)
 - Check: Newclid proof plus independent symbolic-coordinate check of the conclusion
-- Gaps: Figure-to-JGEX encoding, length-equation adapter, school-style congruence write-ups
+- Gaps: Coordinate proofs cover lengths, midpoints, parallels, perpendiculars and areas. Not yet: angle equalities (bisectors), circles and arcs, congruence/similarity write-ups, constructions; Newclid has one reviewed encoding
 
 | Question | Class | Feasibility | Status | Note |
 |---|---:|---|---|---|
-| PD-MATH-IX-001 | 9 | medium | UNSUPPORTED | Converse: rhombus from diagonals |
+| PD-MATH-IX-001 | 9 | medium | SOLVED_AND_TRACE_CHECKED | Converse: rhombus from diagonals |
 | PD-MATH-IX-002 | 9 | medium | UNSUPPORTED | Angle in semicircle |
 | PD-MATH-IX-003 | 9 | medium | UNSUPPORTED | Figure; incentre concurrency |
-| PD-MATH-IX-004 | 9 | medium | UNSUPPORTED | Midpoint theorem; coordinate check easy |
-| PD-MATH-IX-006 | 9 | medium | UNSUPPORTED | Figure; auxiliary parallelogram |
+| PD-MATH-IX-004 | 9 | medium | SOLVED_AND_TRACE_CHECKED | Midpoint theorem; coordinate check easy |
+| PD-MATH-IX-006 | 9 | medium | SOLVED_AND_TRACE_CHECKED | Figure; auxiliary parallelogram |
 | PD-MATH-IX-008 | 9 | medium | UNSUPPORTED | Figure; area equality |
-| PD-MATH-IX-009 | 9 | medium | UNSUPPORTED | Figure; Varignon via midpoint theorem |
+| PD-MATH-IX-009 | 9 | medium | SOLVED_AND_TRACE_CHECKED | Figure; Varignon via midpoint theorem |
 | PD-MATH-IX-012 | 9 | medium | UNSUPPORTED | Equal inscribed angles give equal arcs |
 | PD-MATH-IX-016 | 9 | medium | UNSUPPORTED | Isosceles base angles and angle sum |
 | PD-MATH-IX-017 | 9 | medium | UNSUPPORTED | Figure; trapezium midline |
 | PD-MATH-IX-018 | 9 | low | UNSUPPORTED | Figure; chord distances from centre |
-| PD-MATH-IX-019 | 9 | medium | UNSUPPORTED | Centroid area ratio; coordinate check easy |
-| PD-MATH-IX-025 | 9 | medium | UNSUPPORTED | Midpoint theorem on trapezium |
+| PD-MATH-IX-019 | 9 | medium | SOLVED_AND_TRACE_CHECKED | Centroid area ratio; coordinate check easy |
+| PD-MATH-IX-025 | 9 | medium | SOLVED_AND_TRACE_CHECKED | Midpoint theorem on trapezium |
 | PD-MATH-VII-001 | 7 | medium | UNSUPPORTED | Figure; ASA with vertically opposite angles |
 | PD-MATH-VII-002 | 7 | high | SOLVED_AND_TRACE_CHECKED | Solved: Newclid + coordinate replay |
 | PD-MATH-VII-003 | 7 | medium | UNSUPPORTED | Figure; RHS congruence, three parts |
@@ -73,10 +73,10 @@ Phases group engines that share implementation work, so they differ from the per
 | PD-MATH-X-012 | 10 | low | UNSUPPORTED | Construction with justification |
 | PD-MATH-X-013 | 10 | medium | UNSUPPORTED | Figure; cyclic AA similarity then length |
 | PD-MATH-X-014 | 10 | medium | UNSUPPORTED | Figure; tangent-chord AA similarity |
-| PD-MATH-X-017 | 10 | low | UNSUPPORTED | Basic proportionality theorem from area ratios |
+| PD-MATH-X-017 | 10 | low | SOLVED_AND_TRACE_CHECKED | Basic proportionality theorem from area ratios |
 | PD-MATH-X-018 | 10 | medium | UNSUPPORTED | Radius perpendicular to tangent |
 | PD-MATH-X-019 | 10 | medium | UNSUPPORTED | Quadrilateral angle sum |
-| PD-MATH-X-025 | 10 | medium | UNSUPPORTED | RHS congruence |
+| PD-MATH-X-025 | 10 | medium | SOLVED_AND_TRACE_CHECKED | RHS congruence |
 | PD-MATH-X-027 | 10 | low | UNSUPPORTED | Similarity scale argument |
 | PD-MATH-X-029 | 10 | low | UNSUPPORTED | Pythagoras theorem itself; checker must not assume it |
 
@@ -144,19 +144,6 @@ Phases group engines that share implementation work, so they differ from the per
 | PD-MATH-XII-040 | 12 | medium | UNSUPPORTED | Transpose algebra, noncommutative |
 | PD-MATH-XII-041 | 12 | high | UNSUPPORTED | 2x2 symbolic with half-angle |
 
-### Length/area relations proved by Pythagoras (`metric_geometry_coordinates`)
-
-- Existing code: newclid_probe.py independent_replay
-- Check: Symbolic coordinates with right angle at origin; identity in squared lengths
-- Gaps: Student presentation should use Pythagoras on named triangles, not raw coordinates
-
-| Question | Class | Feasibility | Status | Note |
-|---|---:|---|---|---|
-| PD-MATH-IX-007 | 9 | high | UNSUPPORTED | Right angle at B; squared lengths |
-| PD-MATH-IX-014 | 9 | high | UNSUPPORTED | Right angle at Q; squared lengths |
-| PD-MATH-IX-024 | 9 | high | UNSUPPORTED | British flag theorem |
-| PD-MATH-X-028 | 10 | high | UNSUPPORTED | Auxiliary altitude, squared lengths |
-
 ### Relation and function properties (`relation_function`)
 
 - Existing code: none
@@ -219,27 +206,6 @@ Phases group engines that share implementation work, so they differ from the per
 | PD-MATH-XI-023 | 11 | medium | UNSUPPORTED | Matching general-term coefficients |
 | PD-MATH-XI-024 | 11 | high | UNSUPPORTED | Consecutive coefficient ratios |
 
-### Relations under given conditions (`constrained_relation`)
-
-- Existing code: mathcore/strategies/identity.py (derive, conditional, difference, take_logs)
-- Check: Eliminate hypotheses (substitution, Groebner basis or parametrisation) and reduce target to zero; record non-zero divisors
-- Gaps: Sign/ordering reasoning and inequality givens (XI-006); prescribed componendo-dividendo with radicals (X-009)
-
-| Question | Class | Feasibility | Status | Note |
-|---|---:|---|---|---|
-| PD-MATH-IX-013 | 9 | high | SOLVED_AND_TRACE_CHECKED | Eliminate l, b, h |
-| PD-MATH-IX-015 | 9 | high | SOLVED_AND_TRACE_CHECKED | abc = 1 substitution |
-| PD-MATH-IX-021 | 9 | medium | INPUT_AMBIGUOUS | Source issue: the givens have no real solution with distinct a, b, c |
-| PD-MATH-VIII-001 | 8 | high | SOLVED_AND_TRACE_CHECKED | Symmetric-function identity with numeric constraints; givens have no real solution (proved over complex numbers) |
-| PD-MATH-VIII-002 | 8 | high | SOLVED_AND_TRACE_CHECKED | x + 1/x = 2 forces x = 1 |
-| PD-MATH-X-003 | 10 | high | SOLVED_AND_TRACE_CHECKED | Continued proportion y = xk, z = xk^2 |
-| PD-MATH-X-006 | 10 | medium | SOLVED_AND_TRACE_CHECKED | Equality case: (ay - bx)^2 = 0 over reals |
-| PD-MATH-X-009 | 10 | medium | UNSUPPORTED | Componendo-dividendo prescribed; radicals |
-| PD-MATH-X-010 | 10 | high | SOLVED_AND_TRACE_CHECKED | Cross multiplication |
-| PD-MATH-X-011 | 10 | high | SOLVED_AND_TRACE_CHECKED | Mensuration formulas, equal surface area |
-| PD-MATH-X-024 | 10 | medium | UNSUPPORTED | Figure; arc length plus trig lengths |
-| PD-MATH-X-026 | 10 | high | SOLVED_AND_TRACE_CHECKED | Equilateral area formula on side and diagonal |
-
 ### Derivatives, implicit differentiation, first principles, ODE verification (`differentiation`)
 
 - Existing code: mathcore/rules/calculus.py, mathcore/strategies/calculus.py (derivative_relation, evaluate, first_principles)
@@ -259,46 +225,40 @@ Phases group engines that share implementation work, so they differ from the per
 | PD-MATH-XII-035 | 12 | high | SOLVED_AND_TRACE_CHECKED | Verify ODE solution with two constants |
 | PD-MATH-XII-036 | 12 | medium | SOURCE_NEEDS_CORRECTION | Source issue: missing branches |
 
+### Relations under given conditions (`constrained_relation`)
+
+- Existing code: mathcore/strategies/identity.py (derive, conditional, difference, take_logs)
+- Check: Eliminate hypotheses (substitution, Groebner basis or parametrisation) and reduce target to zero; record non-zero divisors
+- Gaps: Inequality givens; componendo–dividendo is implemented as a prescribed method (X-009)
+
+| Question | Class | Feasibility | Status | Note |
+|---|---:|---|---|---|
+| PD-MATH-IX-013 | 9 | high | SOLVED_AND_TRACE_CHECKED | Eliminate l, b, h |
+| PD-MATH-IX-015 | 9 | high | SOLVED_AND_TRACE_CHECKED | abc = 1 substitution |
+| PD-MATH-IX-021 | 9 | medium | INPUT_AMBIGUOUS | Source issue: the givens have no real solution with distinct a, b, c |
+| PD-MATH-VIII-001 | 8 | high | SOLVED_AND_TRACE_CHECKED | Symmetric-function identity with numeric constraints; givens have no real solution (proved over complex numbers) |
+| PD-MATH-VIII-002 | 8 | high | SOLVED_AND_TRACE_CHECKED | x + 1/x = 2 forces x = 1 |
+| PD-MATH-X-003 | 10 | high | SOLVED_AND_TRACE_CHECKED | Continued proportion y = xk, z = xk^2 |
+| PD-MATH-X-006 | 10 | medium | SOLVED_AND_TRACE_CHECKED | Equality case: (ay - bx)^2 = 0 over reals |
+| PD-MATH-X-009 | 10 | medium | SOLVED_AND_TRACE_CHECKED | Componendo-dividendo prescribed; radicals |
+| PD-MATH-X-010 | 10 | high | SOLVED_AND_TRACE_CHECKED | Cross multiplication |
+| PD-MATH-X-011 | 10 | high | SOLVED_AND_TRACE_CHECKED | Mensuration formulas, equal surface area |
+| PD-MATH-X-024 | 10 | medium | UNSUPPORTED | Figure; arc length plus trig lengths |
+| PD-MATH-X-026 | 10 | high | SOLVED_AND_TRACE_CHECKED | Equilateral area formula on side and diagonal |
+
 ### Contradiction, irrationality and inequalities (`contradiction_inequality`)
 
-- Existing code: none
+- Existing code: mathcore/strategies/algebra_methods.py (one_real_roots, only_solution)
 - Check: Case analysis and certified inequalities
-- Gaps: Open-ended reasoning; lowest automation yield
+- Gaps: Sum of discriminants and 'only real solution' are implemented; irrationality and triangle inequalities are not
 
 | Question | Class | Feasibility | Status | Note |
 |---|---:|---|---|---|
 | PD-MATH-IX-010 | 9 | low | UNSUPPORTED | Irrationality of sqrt 2 then 3 - sqrt 2 |
 | PD-MATH-IX-011 | 9 | low | UNSUPPORTED | Figure; repeated triangle inequality |
 | PD-MATH-IX-023 | 9 | low | UNSUPPORTED | Triangle inequality in two triangles |
-| PD-MATH-XI-025 | 11 | medium | UNSUPPORTED | Sum of discriminants >= 0 |
-| PD-MATH-XI-030 | 11 | medium | UNSUPPORTED | x(x^2 + 8) = 0 over reals |
-
-### Inverse trigonometric identities (`inverse_trig_branch`)
-
-- Existing code: none
-- Check: Principal-branch interval tracking, then exact tan/cos evaluation
-- Gaps: Branch intervals must be proved, not assumed
-
-| Question | Class | Feasibility | Status | Note |
-|---|---:|---|---|---|
-| PD-MATH-XII-010 | 12 | medium | UNSUPPORTED | Exact sum with branch control |
-| PD-MATH-XII-011 | 12 | medium | UNSUPPORTED | Half-angle with x in (0, pi/4) |
-
-### AP/GP term and sum relations (`sequence_series`)
-
-- Existing code: mathcore/rules/sequences.py (AP and GP), mathcore/strategies/values.py
-- Check: Substitute general term/sum formulas and simplify the claimed relation
-- Gaps: AM/GM recovery needs ordering (XI-006)
-
-| Question | Class | Feasibility | Status | Note |
-|---|---:|---|---|---|
-| PD-MATH-X-021 | 10 | high | SOLVED_AND_TRACE_CHECKED | Solved |
-| PD-MATH-X-022 | 10 | high | SOLVED_AND_TRACE_CHECKED | Solved |
-| PD-MATH-X-023 | 10 | medium | SOLVED_AND_TRACE_CHECKED | Integer existence: x = 35 |
-| PD-MATH-XI-005 | 11 | high | SOLVED_AND_TRACE_CHECKED | 'in AP' condition |
-| PD-MATH-XI-006 | 11 | high | UNSUPPORTED | AM/GM to quadratic roots |
-| PD-MATH-XI-009 | 11 | medium | SOLVED_AND_TRACE_CHECKED | GP converse via perfect square |
-| PD-MATH-XI-013 | 11 | high | SOLVED_AND_TRACE_CHECKED | GP block sums |
+| PD-MATH-XI-025 | 11 | medium | SOLVED_AND_TRACE_CHECKED | Sum of discriminants >= 0 |
+| PD-MATH-XI-030 | 11 | medium | SOLVED_AND_TRACE_CHECKED | x(x^2 + 8) = 0 over reals |
 
 ### Exact algebraic, index, log and surd identities (`algebraic_identity`)
 
@@ -338,6 +298,30 @@ Phases group engines that share implementation work, so they differ from the per
 | PD-MATH-XII-019 | 12 | high | SOLVED_AND_TRACE_CHECKED | Derivative is a completed square plus positive |
 | PD-MATH-XII-022 | 12 | high | SOLVED_AND_TRACE_CHECKED | MC' < 0 for x >= 0 |
 
+### Inverse trigonometric identities (`inverse_trig_branch`)
+
+- Existing code: mathcore/rules/inverse_trig.py
+- Check: Principal-branch interval tracking, then exact tan/cos evaluation
+- Gaps: Branch conditions are proved for numbers and for one variable on a stated interval; several variables not yet
+
+| Question | Class | Feasibility | Status | Note |
+|---|---:|---|---|---|
+| PD-MATH-XII-010 | 12 | medium | SOLVED_AND_TRACE_CHECKED | Exact sum with branch control |
+| PD-MATH-XII-011 | 12 | medium | SOLVED_AND_TRACE_CHECKED | Half-angle with x in (0, pi/4) |
+
+### Length/area relations proved by Pythagoras (`metric_geometry_coordinates`)
+
+- Existing code: mathcore/parse.py (points, dist2/dot/cross/area), mathcore/figure.py (figure facts checked), mathcore/render.py
+- Check: Symbolic coordinates with right angle at origin; identity in squared lengths
+- Gaps: Answers use coordinates, not Pythagoras on named triangles
+
+| Question | Class | Feasibility | Status | Note |
+|---|---:|---|---|---|
+| PD-MATH-IX-007 | 9 | high | SOLVED_AND_TRACE_CHECKED | Right angle at B; squared lengths |
+| PD-MATH-IX-014 | 9 | high | SOLVED_AND_TRACE_CHECKED | Right angle at Q; squared lengths |
+| PD-MATH-IX-024 | 9 | high | SOLVED_AND_TRACE_CHECKED | British flag theorem |
+| PD-MATH-X-028 | 10 | high | SOLVED_AND_TRACE_CHECKED | Auxiliary altitude, squared lengths |
+
 ### Factor theorem, completing the square, discriminant (`polynomial_theorems`)
 
 - Existing code: mathcore/rules/polynomial.py, mathcore/strategies/polynomial.py, equal_roots givens
@@ -350,11 +334,27 @@ Phases group engines that share implementation work, so they differ from the per
 | PD-MATH-X-015 | 10 | high | SOLVED_AND_TRACE_CHECKED | Discriminant = 0 |
 | PD-MATH-X-030 | 10 | high | SOLVED_AND_TRACE_CHECKED | Solved |
 
+### AP/GP term and sum relations (`sequence_series`)
+
+- Existing code: mathcore/rules/sequences.py (AP and GP), mathcore/strategies/values.py
+- Check: Substitute general term/sum formulas and simplify the claimed relation
+- Gaps: XI-006 is solved by naming the larger number first (b + d, d >= 0)
+
+| Question | Class | Feasibility | Status | Note |
+|---|---:|---|---|---|
+| PD-MATH-X-021 | 10 | high | SOLVED_AND_TRACE_CHECKED | Solved |
+| PD-MATH-X-022 | 10 | high | SOLVED_AND_TRACE_CHECKED | Solved |
+| PD-MATH-X-023 | 10 | medium | SOLVED_AND_TRACE_CHECKED | Integer existence: x = 35 |
+| PD-MATH-XI-005 | 11 | high | SOLVED_AND_TRACE_CHECKED | 'in AP' condition |
+| PD-MATH-XI-006 | 11 | high | SOLVED_AND_TRACE_CHECKED | AM/GM to quadratic roots |
+| PD-MATH-XI-009 | 11 | medium | SOLVED_AND_TRACE_CHECKED | GP converse via perfect square |
+| PD-MATH-XI-013 | 11 | high | SOLVED_AND_TRACE_CHECKED | GP block sums |
+
 ### Trigonometric identities (`trig_identity`)
 
 - Existing code: mathcore/rules/trig.py, mathcore/rules/trig_compound.py, mathcore/strategies/equations.py, mathcore/equality.py (angle basis)
 - Check: Permitted-rule rewrite search, exact equality, domain replay
-- Gaps: Special-angle products that need the multiply-by-2-sin trick (e.g. sin 20° sin 40° sin 60° sin 80°); trig equations are solved on a stated interval only (no general solution yet)
+- Gaps: Special-angle products that need the multiply-by-2-sin trick (e.g. sin 20° sin 40° sin 60° sin 80°). General solutions are implemented (mathcore/strategies/general.py).
 
 | Question | Class | Feasibility | Status | Note |
 |---|---:|---|---|---|

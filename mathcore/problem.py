@@ -11,10 +11,10 @@ from dataclasses import dataclass, field
 import sympy as s
 
 from .equality import Theory, denominator_factors, normal
-from .parse import Condition, Context, parse_with_conditions, variable_conditions
+from .parse import Condition, Context, geometry_value, parse_with_conditions, variable_conditions
 from .spec import Spec, hypothesis_kind
 
-EXPRESSION_FIELDS = ("lhs", "rhs", "polynomial", "factor", "low", "high", "function", "objective", "expr")
+EXPRESSION_FIELDS = ("lhs", "rhs", "polynomial", "factor", "low", "high", "function", "objective", "expr", "value")
 
 
 @dataclass
@@ -27,6 +27,7 @@ class Problem:
     introduced: list = field(default_factory=list)   # symbols the method introduced, e.g. k
     facts: list = field(default_factory=list)        # [(lhs, rhs)] proved in an earlier part of the question
     conditions: list = field(default_factory=list)   # [Condition]
+    intervals: dict = field(default_factory=dict)    # symbol -> (low, high), from the spec
     theory: Theory = Theory()
 
     @property
@@ -78,6 +79,8 @@ def build(spec: Spec) -> Problem:
     for name in EXPRESSION_FIELDS:
         if name in goal:
             problem.exprs[name] = parse(goal[name])
+    if "polynomials" in goal:
+        problem.exprs["polynomials"] = [parse(p) for p in goal["polynomials"]]
     if "in_ap" in goal:
         t1, t2, t3 = map(parse, goal["in_ap"])
         problem.exprs.update(lhs=t2 - t1, rhs=t3 - t2)
@@ -110,6 +113,12 @@ def build(spec: Spec) -> Problem:
         problem.hypotheses += equations
         problem.givens.append({"kind": kind, "text": h.get("quote", ""), "equations": equations})
 
+    for name, (low, high) in spec.intervals.items():
+        v, low, high = ctx.symbols[name], parse(low), parse(high)
+        problem.intervals[v] = (low, high)
+        problem.conditions += [Condition(v - low, ">0"), Condition(high - v, ">0")]
+    for p, q, r in spec.nondegenerate:  # a triangle in the figure has nonzero area
+        problem.conditions.append(Condition(s.expand(2*geometry_value("area", [ctx.points[n] for n in (p, q, r)])), "!=0"))
     problem.conditions += variable_conditions(ctx)
     problem.conditions = [c for c in dict.fromkeys(problem.conditions) if not c.expr.is_Number]
     # A condition on an integral's own variable (its integrand's denominator) is not a condition on the answer.
@@ -118,7 +127,9 @@ def build(spec: Spec) -> Problem:
     problem.conditions = [c for c in problem.conditions if not (c.expr.free_symbols & bound - free)]
     sequences = tuple((name, kind, a, step) for name, (kind, a, step) in ctx.sequences.items())
     definitions = tuple((name, v, x) for name, (v, x) in ctx.definitions.items())
-    base = Theory(sequences=sequences, hypotheses=tuple(l - r for l, r in problem.hypotheses), definitions=definitions)
+    points = tuple((name, x, y) for name, (x, y) in ctx.points.items())
+    base = Theory(sequences=sequences, hypotheses=tuple(l - r for l, r in problem.hypotheses), definitions=definitions,
+                  points=points)
     factors = set()
     for condition in problem.conditions:
         if condition.relation == ">=0":
@@ -127,11 +138,13 @@ def build(spec: Spec) -> Problem:
         factors |= {f for f, _ in s.factor_list(s.expand(numerator))[1]}
         factors |= set(denominator_factors(condition.expr, base))
     for expr in problem.exprs.values():
-        factors |= set(denominator_factors(expr, base))
+        for e in (expr if isinstance(expr, list) else [expr]):
+            factors |= set(denominator_factors(e, base))
     factors |= {v for v in problem.symbols if v.is_nonzero}  # declared positive or nonzero
     problem.theory = Theory(sequences=sequences, hypotheses=base.hypotheses,
                             domain=tuple(sorted((f for f in factors if not f.is_Number), key=str)),
-                            definitions=definitions)
+                            definitions=definitions, points=points,
+                            intervals=tuple((v, low, high) for v, (low, high) in problem.intervals.items()))
     return problem
 
 

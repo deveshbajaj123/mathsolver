@@ -73,3 +73,12 @@ static("simplify_exponents", "indices", "Simplify the index.", simplify_exponent
 static("log_laws", "logs", r"Use $\log(mn) = \log m + \log n$ and $\log m^k = k \log m$.", log_laws)
 static("log_prime_factors", "logs", "Write each logarithm in terms of the logs of primes.", log_prime_factors)
 static("rationalise", "surds", "Rationalise each denominator.", rationalise)
+
+
+def simplify_radicand(e: s.Expr) -> s.Expr:
+    """Expand under each square root; a perfect square then comes out using the declared signs."""
+    return e.replace(lambda p: p.is_Pow and p.exp == s.Rational(1, 2), lambda p: s.sqrt(s.factor(s.expand(p.base))))
+
+
+static("simplify_radicand", "surds", "Simplify under the root sign (a square root of a square of a nonnegative "
+       "quantity is that quantity).", simplify_radicand)

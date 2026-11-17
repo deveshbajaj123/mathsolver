@@ -21,7 +21,9 @@ from .rules import REGISTRY, build
 from .sampling import admissible_points, numerically_equal
 
 SEED = 20261112  # independent of the validation sample
-PROPERTY_RULES = ("average_with_reflection",)  # rules that quote a property of definite integrals
+PROPERTY_RULES = ("average_with_reflection",)
+INVERSE_TRIG_RULES = ("double_tan_inverse", "cos_inverse_to_tan_inverse", "sin_inverse_to_tan_inverse",
+                      "tan_inverse_sum", "inverse_of_cot", "half_angle_root")  # rules that quote a property of definite integrals
 
 
 def _implied(eq: s.Eq, problem: Problem, extra_nonzero: s.Expr = s.Integer(1), theory=None) -> bool:
@@ -37,7 +39,7 @@ def verify(problem: Problem, found: dict) -> dict:
     expand = theory.expand_definitions
     from .validate import relation_zeros
     points = admissible_points(problem.symbols, relation_zeros(problem), problem.conditions, count=10, seed=SEED,
-                               prefer=problem.solve_order)
+                               prefer=problem.solve_order, intervals=problem.intervals)
     checks = []
 
     def replay(step: Step) -> bool:
@@ -133,12 +135,35 @@ def verify(problem: Problem, found: dict) -> dict:
             wanted = problem.spec.goal["type"]
             check["passed"] = s.simplify(value - step.after) == 0 and bool(
                 value.is_negative if wanted == "max" else value.is_positive)
+        elif step.rule in INVERSE_TRIG_RULES:
+            # A branch identity: the replay proves the branch condition again; Groebner bases do not
+            # cover inverse functions, so the two sides are compared to 30 digits inside the interval.
+            check["replayed"] = replay(step)
+            check["numeric"] = numerically_equal(expand(step.before), expand(step.after), here)
+            check["passed"] = check["replayed"] and check["numeric"]
         elif step.relation == "claim":
             check["passed"] = exact_equal(step.after.lhs, step.after.rhs, base)
         elif step.relation == "roots":
             check["passed"] = _roots(problem, step)
         elif step.relation == "solution_set":
             check["passed"] = _solution_set(problem, found, step)
+        elif step.relation == "derived":
+            # An equation derived from the givens: the rule is replayed, and the result must follow
+            # from the givens (Groebner bases) and hold at sample points that satisfy them.
+            check["replayed"] = replay(step)
+            check["implied"] = _implied(step.after, problem)
+            check["numeric"] = numerically_equal(expand(step.after.lhs), expand(step.after.rhs), here)
+            check["passed"] = check["replayed"] and check["implied"] and check["numeric"]
+        elif step.relation == "factorisation":
+            check["passed"] = s.expand(step.after - step.before) == 0
+        elif step.relation == "family":
+            from .strategies.general import N
+            x, factor = problem.exprs["variable"], step.params["factor"]
+            check["passed"] = all(abs(complex(s.N(factor.xreplace({x: f.xreplace({N: k})}), 30))) < 1e-20
+                                  for f in step.after for k in range(-6, 7))
+        elif step.relation == "general_set":
+            from .strategies.general import check_families
+            check["passed"] = check_families(problem, found)
         else:
             check["replayed"] = replay(step)
             check["exact"] = exact_equal(step.before, step.after, theory)
@@ -253,6 +278,29 @@ def _justified(problem: Problem, found: dict) -> bool:
 
 def _goal(problem: Problem, found: dict) -> tuple[bool, str]:
     steps, kind = found.get("steps", []), problem.kind
+    if found.get("form") == "derived":
+        goal = s.Eq(problem.exprs["lhs"], problem.exprs["rhs"], evaluate=False)
+        ok = (bool(steps) and _chain_linked(steps) and steps[0].before == s.Eq(*problem.hypotheses[0], evaluate=False)
+              and steps[-1].after.lhs == goal.lhs and s.simplify(steps[-1].after.rhs - goal.rhs) == 0)
+        return ok, "Each equation follows from the given one, and the last is the goal."
+    if kind == "one_real_roots":
+        from .strategies.algebra_methods import discriminants, square_form
+        total = s.Add(*discriminants(problem))
+        ok = (bool(steps) and _chain_linked(steps) and steps[0].before == total and square_form(steps[-1].after)
+              and _justified(problem, found))
+        return ok, "The sum of the discriminants equals a square times a positive number, so it is not negative."
+    if kind == "only_solution":
+        x, value = problem.exprs["variable"], problem.exprs["value"]
+        polynomial = s.expand(problem.exprs["lhs"] - problem.exprs["rhs"])
+        premise = (found.get("premises") or [None])[0]
+        other = found.get("diagnostics", {}).get("other")
+        ok = (premise is not None and premise.before == polynomial and other is not None
+              and s.expand(polynomial.xreplace({x: value})) == 0
+              and s.expand(s.div(polynomial, other, x)[1]) == 0
+              and all(r == value for r in s.roots(s.Poly(s.cancel(polynomial/other), x)))
+              and (s.Poly(other, x).degree() == 0 and other != 0
+                   or (len(steps) == 2 and steps[0].before == other and steps[-1].relation == "implication")))
+        return ok, "The equation is (x - value)^k times a factor that is never zero."
     if kind in ("prove_identity", "prove_from_hypotheses"):
         lhs, rhs = problem.exprs["lhs"], problem.exprs["rhs"]
         form = found.get("form", "chain")
@@ -300,6 +348,12 @@ def _goal(problem: Problem, found: dict) -> tuple[bool, str]:
         ok = (bool(steps) and steps[-1].relation == "solution_set" and steps[-1].before == equation
               and (not rewriting or (rewriting[0].before == equation and _chain_linked(rewriting))))
         return ok, "Every kept value satisfies the original equation, and an independent solve finds no others."
+    if kind == "general_solution":
+        equation = s.Eq(problem.exprs["lhs"], problem.exprs["rhs"], evaluate=False)
+        rewriting = [st for st in steps if st.relation in ("equivalence", "implication")]
+        ok = (bool(steps) and steps[-1].relation == "general_set" and steps[-1].before == equation
+              and (not rewriting or (rewriting[0].before == equation and _chain_linked(rewriting))))
+        return ok, "Every family satisfies the original equation, and they give all its solutions in one period."
     if kind == "find_value":
         ok = (_chain_linked(steps) and bool(steps)
               and steps[0].before == s.Eq(problem.exprs["lhs"], problem.exprs["rhs"], evaluate=False)

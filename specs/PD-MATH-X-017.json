@@ -1,0 +1,72 @@
+{
+  "id": "PD-MATH-X-017",
+  "variables": {
+    "c": [
+      "positive"
+    ],
+    "p": [
+      "real"
+    ],
+    "q": [
+      "positive"
+    ],
+    "t": [
+      "positive"
+    ],
+    "u": [
+      "positive"
+    ]
+  },
+  "points": {
+    "B": [
+      "0",
+      "0"
+    ],
+    "C": [
+      "c",
+      "0"
+    ],
+    "A": [
+      "p",
+      "q"
+    ],
+    "D": [
+      "p - t*p",
+      "q - t*q"
+    ],
+    "E": [
+      "p + u*(c - p)",
+      "q - u*q"
+    ]
+  },
+  "figure": [
+    [
+      "on_line",
+      "D",
+      "A",
+      "B"
+    ],
+    [
+      "on_line",
+      "E",
+      "A",
+      "C"
+    ]
+  ],
+  "hypotheses": [
+    {
+      "lhs": "cross(D,E,B,C)",
+      "rhs": "0",
+      "quote": "a line parallel to BC meets AB at D and AC at E"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "dist2(A,D)*dist2(E,C)",
+    "rhs": "dist2(A,E)*dist2(D,B)"
+  },
+  "quotes": {
+    "goal": "If a line is drawn parallel to one side of a triangle to intersect the other two sides in distinct points, then prove that other two sides are divided in the same ratio."
+  },
+  "note": "D = A + t(B - A) and E = A + u(C - A). AD/DB = AE/EC is shown as AD²·EC² = AE²·DB² (lengths are positive)."
+}

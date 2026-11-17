@@ -29,6 +29,10 @@ def rule_set(problem: Problem, exprs: list, extra: tuple = ()) -> list:
             topics.append("trig_compound")  # several or non-plain angles
     if problem.ctx.sequences:
         topics.append("sequence")
+    if problem.ctx.points:
+        topics.append("geometry")
+    if any(e.has(s.asin, s.acos, s.atan, s.acot) for e in exprs):
+        topics.append("inverse_trig")
     if any(_has_real_power(e) for e in exprs):
         topics.append("indices")
     if any(e.has(s.log) for e in exprs):
@@ -86,6 +90,8 @@ def derive(problem: Problem) -> tuple[list, list, dict]:
             equation = new
             return True
 
+        if problem.ctx.points:
+            apply("use_coordinates")  # a given about the figure, written in coordinates
         for name in names("sequence"):
             apply(name)
         if not equation.lhs.is_Symbol and not equation.lhs.is_Number:

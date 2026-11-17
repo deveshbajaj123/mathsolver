@@ -1,0 +1,28 @@
+{
+  "id": "PD-MATH-XI-006",
+  "variables": {
+    "b": [
+      "positive"
+    ],
+    "d": [
+      "nonnegative"
+    ]
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "parts": [
+      {
+        "lhs": "b + d",
+        "rhs": "((b + d) + b)/2 + sqrt((((b + d) + b)/2)**2 - (b + d)*b)"
+      },
+      {
+        "lhs": "b",
+        "rhs": "((b + d) + b)/2 - sqrt((((b + d) + b)/2)**2 - (b + d)*b)"
+      }
+    ]
+  },
+  "quotes": {
+    "goal": "If A and G be the AM and GM between two positive numbers, then prove that the numbers are A ± √(A² − G²)"
+  },
+  "note": "Call the numbers b + d and b with d ≥ 0 (b + d is the larger). Then A = ((b + d) + b)/2 and G² = (b + d)b are written in directly, so A ± √(A² − G²) is the right side of each part."
+}

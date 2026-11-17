@@ -1,0 +1,59 @@
+{
+  "id": "PD-MATH-X-025",
+  "variables": {
+    "p": [
+      "positive"
+    ],
+    "r": [
+      "positive"
+    ]
+  },
+  "points": {
+    "O": [
+      "0",
+      "0"
+    ],
+    "P": [
+      "p",
+      "0"
+    ],
+    "T": [
+      "r**2/p",
+      "r*sqrt(p**2 - r**2)/p"
+    ],
+    "U": [
+      "r**2/p",
+      "-r*sqrt(p**2 - r**2)/p"
+    ]
+  },
+  "figure": [
+    [
+      "equal_length",
+      "O",
+      "T",
+      "O",
+      "U"
+    ],
+    [
+      "right_angle",
+      "O",
+      "T",
+      "P"
+    ],
+    [
+      "right_angle",
+      "O",
+      "U",
+      "P"
+    ]
+  ],
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "dist2(P,T)",
+    "rhs": "dist2(P,U)"
+  },
+  "quotes": {
+    "goal": "Prove that the lengths of tangents drawn from an external point to a circle are equal."
+  },
+  "note": "Centre O at the origin and the external point P = (p, 0), p > r. T and U are the points of contact: OT = OU = r and OT ⊥ PT, OU ⊥ PU (checked). Equal squared lengths give PT = PU."
+}

@@ -1,0 +1,75 @@
+{
+  "id": "PD-MATH-IX-024",
+  "variables": {
+    "a": [
+      "positive"
+    ],
+    "b": [
+      "positive"
+    ],
+    "x": [
+      "real"
+    ],
+    "y": [
+      "real"
+    ]
+  },
+  "points": {
+    "A": [
+      "0",
+      "0"
+    ],
+    "B": [
+      "a",
+      "0"
+    ],
+    "C": [
+      "a",
+      "b"
+    ],
+    "D": [
+      "0",
+      "b"
+    ],
+    "O": [
+      "x",
+      "y"
+    ]
+  },
+  "figure": [
+    [
+      "right_angle",
+      "D",
+      "A",
+      "B"
+    ],
+    [
+      "right_angle",
+      "A",
+      "B",
+      "C"
+    ],
+    [
+      "right_angle",
+      "B",
+      "C",
+      "D"
+    ],
+    [
+      "equal_length",
+      "A",
+      "B",
+      "D",
+      "C"
+    ]
+  ],
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "dist2(O,A)+dist2(O,C)",
+    "rhs": "dist2(O,B)+dist2(O,D)"
+  },
+  "quotes": {
+    "goal": "If O is any point in the interior of a rectangle ABCD. Prove that OA² + OC² = OB² + OD²"
+  },
+  "note": "A at the origin, AB along the x-axis and AD along the y-axis; O = (x, y). The identity holds for any O."
+}

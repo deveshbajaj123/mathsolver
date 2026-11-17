@@ -1,0 +1,119 @@
+{
+  "id": "PD-MATH-IX-004",
+  "variables": {
+    "a": [
+      "positive"
+    ]
+  },
+  "points": {
+    "A": [
+      "0",
+      "0"
+    ],
+    "B": [
+      "2*a",
+      "0"
+    ],
+    "C": [
+      "2*a",
+      "2*a"
+    ],
+    "D": [
+      "0",
+      "2*a"
+    ],
+    "P": [
+      "a",
+      "0"
+    ],
+    "Q": [
+      "2*a",
+      "a"
+    ],
+    "R": [
+      "a",
+      "2*a"
+    ],
+    "S": [
+      "0",
+      "a"
+    ]
+  },
+  "figure": [
+    [
+      "right_angle",
+      "D",
+      "A",
+      "B"
+    ],
+    [
+      "right_angle",
+      "A",
+      "B",
+      "C"
+    ],
+    [
+      "equal_length",
+      "A",
+      "B",
+      "B",
+      "C"
+    ],
+    [
+      "equal_length",
+      "B",
+      "C",
+      "C",
+      "D"
+    ],
+    [
+      "midpoint",
+      "P",
+      "A",
+      "B"
+    ],
+    [
+      "midpoint",
+      "Q",
+      "B",
+      "C"
+    ],
+    [
+      "midpoint",
+      "R",
+      "C",
+      "D"
+    ],
+    [
+      "midpoint",
+      "S",
+      "D",
+      "A"
+    ]
+  ],
+  "goal": {
+    "kind": "prove_identity",
+    "parts": [
+      {
+        "lhs": "dist2(P,Q)",
+        "rhs": "dist2(Q,R)"
+      },
+      {
+        "lhs": "dist2(Q,R)",
+        "rhs": "dist2(R,S)"
+      },
+      {
+        "lhs": "dist2(R,S)",
+        "rhs": "dist2(S,P)"
+      },
+      {
+        "lhs": "dot(Q,P,Q,R)",
+        "rhs": "0"
+      }
+    ]
+  },
+  "quotes": {
+    "goal": "Show that quadrilateral formed by joining the mid points of the pairs of adjacent sides of a square is also a square."
+  },
+  "note": "Square of side 2a. Four equal sides and a right angle at Q (the dot product of QP and QR is 0) make PQRS a square."
+}

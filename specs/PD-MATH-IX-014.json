@@ -1,0 +1,68 @@
+{
+  "id": "PD-MATH-IX-014",
+  "variables": {
+    "p": [
+      "positive"
+    ],
+    "r": [
+      "positive"
+    ],
+    "m": [
+      "positive"
+    ],
+    "n": [
+      "positive"
+    ]
+  },
+  "points": {
+    "Q": [
+      "0",
+      "0"
+    ],
+    "P": [
+      "0",
+      "p"
+    ],
+    "R": [
+      "r",
+      "0"
+    ],
+    "M": [
+      "m",
+      "0"
+    ],
+    "N": [
+      "0",
+      "n"
+    ]
+  },
+  "figure": [
+    [
+      "right_angle",
+      "P",
+      "Q",
+      "R"
+    ],
+    [
+      "on_line",
+      "M",
+      "Q",
+      "R"
+    ],
+    [
+      "on_line",
+      "N",
+      "P",
+      "Q"
+    ]
+  ],
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "dist2(P,M)+dist2(R,N)",
+    "rhs": "dist2(P,R)+dist2(M,N)"
+  },
+  "quotes": {
+    "goal": "M and N are points on sides QR and PQ respectively of ΔPQR, right angled at Q. Prove that PM² + RN² = PR² + MN²."
+  },
+  "note": "Q at the origin, QR along the x-axis and QP along the y-axis."
+}
