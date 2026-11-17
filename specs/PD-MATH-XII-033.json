@@ -1,0 +1,16 @@
+{
+  "id": "PD-MATH-XII-033",
+  "variables": {
+    "x": [
+      "real"
+    ]
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "integral(x/(1+sin(x)), x, pi/4, 3*pi/4)",
+    "rhs": "(sqrt(2)-1)*pi"
+  },
+  "quotes": {
+    "goal": "∫ from π/4 to 3π/4 of x/(1 + sin x) dx = (√2 - 1)π"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "PD-MATH-VIII-001",
+  "variables": {
+    "a": [
+      "complex"
+    ],
+    "b": [
+      "complex"
+    ],
+    "c": [
+      "complex"
+    ]
+  },
+  "hypotheses": [
+    {
+      "lhs": "a+b+c",
+      "rhs": "5",
+      "quote": "a + b + c = 5"
+    },
+    {
+      "lhs": "a*b+b*c+c*a",
+      "rhs": "10",
+      "quote": "ab + bc + ca = 10"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "a**3+b**3+c**3-3*a*b*c",
+    "rhs": "-25"
+  },
+  "quotes": {
+    "goal": "a³ + b³ + c³ - 3abc = -25"
+  },
+  "note": "No real a, b, c satisfy both givens (they force a²+b²+c² = 5 < 10 = ab+bc+ca), so the variables are taken as complex and the result is an algebraic identity."
+}

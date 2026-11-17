@@ -1,0 +1,12 @@
+{
+  "id": "PD-MATH-VII-002",
+  "goal": {
+    "kind": "geometry_jgex",
+    "figure_asset_id": "IMG-1c994300cc53caa15324",
+    "jgex": "p q r = iso_triangle0 p q r; s = midpoint s p q; t = midpoint t p r ? cong r s q t"
+  },
+  "quotes": {
+    "goal": "PQR is an isosceles triangle. S and T are the midpoints of PQ and PR respectively. Prove that RS = QT."
+  },
+  "note": "Figure checked: P is the apex, so PQ = PR."
+}

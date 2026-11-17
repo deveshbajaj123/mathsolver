@@ -1,0 +1,16 @@
+{
+  "id": "PD-MATH-XI-015",
+  "variables": {
+    "x": [
+      "real"
+    ]
+  },
+  "goal": {
+    "kind": "first_principles",
+    "function": "x**2*sin(x)",
+    "variable": "x"
+  },
+  "quotes": {
+    "goal": "Find the derivative of f(x) from the first principle, where f(x) = x² sin x"
+  }
+}

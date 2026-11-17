@@ -1,0 +1,29 @@
+{
+  "id": "PD-MATH-XII-034",
+  "variables": {
+    "x": [
+      "nonnegative"
+    ]
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "parts": [
+      {
+        "lhs": "integral(x**2/4, x, 0, 4)",
+        "rhs": "16/3"
+      },
+      {
+        "lhs": "integral(2*sqrt(x)-x**2/4, x, 0, 4)",
+        "rhs": "16/3"
+      },
+      {
+        "lhs": "integral(4-2*sqrt(x), x, 0, 4)",
+        "rhs": "16/3"
+      }
+    ]
+  },
+  "quotes": {
+    "goal": "the curves y² = 4x and x² = 4y divide the area of the square bounded by x = 0, x = 4, y = 0 and y = 4 into three equal parts"
+  },
+  "note": "The curves meet at (0, 0) and (4, 4). The three regions: below y = x²/4; between y = x²/4 and y = 2√x; above y = 2√x. Each area is shown to be 16/3, a third of the square's 16."
+}

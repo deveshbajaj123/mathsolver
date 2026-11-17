@@ -1,0 +1,20 @@
+{
+  "id": "EX-004",
+  "variables": {
+    "a": [
+      "real"
+    ],
+    "b": [
+      "real"
+    ]
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "(a+b)**2",
+    "rhs": "a**2+b**2"
+  },
+  "quotes": {
+    "goal": "(a + b)^2 = a^2 + b^2"
+  },
+  "note": "Deliberately false: the pipeline must reject it."
+}

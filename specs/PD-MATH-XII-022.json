@@ -1,0 +1,24 @@
+{
+  "id": "PD-MATH-XII-022",
+  "variables": {
+    "x": [
+      "positive"
+    ]
+  },
+  "definitions": {
+    "C": {
+      "of": "x",
+      "expr": "sqrt(6*x+5)+2500"
+    }
+  },
+  "goal": {
+    "kind": "monotonic",
+    "function": "diff(C(x), x)",
+    "variable": "x",
+    "direction": "decreasing"
+  },
+  "quotes": {
+    "goal": "Show that the marginal cost decreases as the output x increases."
+  },
+  "note": "Marginal cost MC = C'(x); x > 0 is the output."
+}

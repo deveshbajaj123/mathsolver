@@ -1,0 +1,27 @@
+{
+  "id": "PD-MATH-X-011",
+  "variables": {
+    "r": [
+      "positive"
+    ],
+    "R": [
+      "positive"
+    ]
+  },
+  "hypotheses": [
+    {
+      "lhs": "4*pi*r**2",
+      "rhs": "3*pi*R**2",
+      "quote": "A solid sphere and hemisphere have the same total surface area."
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "(4*pi*r**3/3)/(2*pi*R**3/3)",
+    "rhs": "3*sqrt(3)/4"
+  },
+  "quotes": {
+    "goal": "the ratio of their volume is 3√3/4"
+  },
+  "note": "Sphere radius r, hemisphere radius R; total surface areas 4πr² and 3πR², volumes 4πr³/3 and 2πR³/3."
+}

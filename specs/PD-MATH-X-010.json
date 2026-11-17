@@ -1,0 +1,34 @@
+{
+  "id": "PD-MATH-X-010",
+  "variables": {
+    "p": [
+      "real"
+    ],
+    "q": [
+      "real",
+      "nonzero"
+    ],
+    "r": [
+      "real"
+    ],
+    "s": [
+      "real",
+      "nonzero"
+    ]
+  },
+  "hypotheses": [
+    {
+      "lhs": "(3*p+4*q)/(3*r+4*s)",
+      "rhs": "(3*p-4*q)/(3*r-4*s)",
+      "quote": "(3p + 4q)/(3r + 4s) = (3p - 4q)/(3r - 4s)"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "p/q",
+    "rhs": "r/s"
+  },
+  "quotes": {
+    "goal": "p/q = r/s"
+  }
+}

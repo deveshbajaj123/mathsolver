@@ -1,0 +1,43 @@
+{
+  "id": "PD-MATH-XII-035",
+  "variables": {
+    "x": [
+      "real",
+      "nonzero"
+    ],
+    "y": [
+      "real"
+    ],
+    "a": [
+      "real"
+    ],
+    "b": [
+      "real"
+    ]
+  },
+  "functions": {
+    "y": {
+      "of": "x",
+      "derivatives": [
+        "y1",
+        "y2"
+      ]
+    }
+  },
+  "hypotheses": [
+    {
+      "lhs": "x*y",
+      "rhs": "a*exp(x)+b*exp(-x)+x**2",
+      "quote": "xy = ae^x + be^(-x) + x²"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "x*y2+2*y1-x*y+x**2-2",
+    "rhs": "0"
+  },
+  "quotes": {
+    "goal": "x d²y/dx² + 2 dy/dx - xy + x² - 2 = 0"
+  },
+  "note": "Shown by differentiating the stated solution twice and substituting; y1, y2 denote dy/dx and d²y/dx²."
+}

@@ -1,0 +1,11 @@
+{
+  "id": "PD-MATH-IX-020",
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "1/(sqrt(2)+1)+1/(sqrt(3)+sqrt(2))+1/(2+sqrt(3))",
+    "rhs": "1"
+  },
+  "quotes": {
+    "goal": "1/(√2+1) + 1/(√3+√2) + 1/(2+√3) = 1"
+  }
+}

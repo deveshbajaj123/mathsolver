@@ -1,0 +1,1897 @@
+{
+  "bank_question_count": 135,
+  "status_counts": {
+    "UNSUPPORTED": 86,
+    "SOLVED_AND_TRACE_CHECKED": 46,
+    "INPUT_AMBIGUOUS": 1,
+    "SOURCE_NEEDS_CORRECTION": 2
+  },
+  "build_order": [
+    {
+      "phase": 1,
+      "name": "Symbolic core",
+      "engines": [
+        "constrained_relation",
+        "algebraic_identity",
+        "sequence_series",
+        "complex_algebra",
+        "metric_geometry_coordinates",
+        "analytic_coordinate",
+        "vector_algebra",
+        "determinant_matrix"
+      ],
+      "rationale": "One shared piece of work (safe parser with log/sqrt/symbols/vectors, a generic hypotheses-and-goal spec, elimination and exact-zero checks) serves eight engines. Mostly high-feasibility text-only questions.",
+      "open": 33,
+      "priority_score": 27.5
+    },
+    {
+      "phase": 2,
+      "name": "Calculus",
+      "engines": [
+        "differentiation",
+        "extremum_monotonicity",
+        "definite_integration"
+      ],
+      "rationale": "Reuses the phase 1 parser and spec; adds diff/limit/integrate with domain tracking.",
+      "open": 2,
+      "priority_score": 1.5
+    },
+    {
+      "phase": 3,
+      "name": "Discrete and logic",
+      "engines": [
+        "boolean_membership",
+        "probability_atoms",
+        "relation_function",
+        "induction",
+        "factorial_binomial"
+      ],
+      "rationale": "Small, decidable checkers with high feasibility; independent of each other.",
+      "open": 20,
+      "priority_score": 16.2
+    },
+    {
+      "phase": 4,
+      "name": "Trig extensions",
+      "engines": [
+        "trig_identity",
+        "inverse_trig_branch",
+        "polynomial_theorems"
+      ],
+      "rationale": "Extend existing code: constrained identities, special angles, branches, discriminant.",
+      "open": 2,
+      "priority_score": 1.0
+    },
+    {
+      "phase": 5,
+      "name": "Synthetic geometry",
+      "engines": [
+        "synthetic_geometry"
+      ],
+      "rationale": "Largest group but highest cost per question: figure encoding, Newclid adapter gaps and school-style write-ups. Needs the interpretation stage for figures.",
+      "open": 27,
+      "priority_score": 11.5
+    },
+    {
+      "phase": 6,
+      "name": "Open-ended",
+      "engines": [
+        "contradiction_inequality"
+      ],
+      "rationale": "Lowest automation yield; likely LLM-drafted with human review.",
+      "open": 5,
+      "priority_score": 1.3
+    }
+  ],
+  "priority_formula": "sum over unsolved questions of feasibility weight {\"high\": 1.0, \"medium\": 0.5, \"low\": 0.1}",
+  "engines": [
+    {
+      "engine": "synthetic_geometry",
+      "title": "Synthetic Euclidean proofs (congruence, circles, similarity, areas)",
+      "status": "partial",
+      "code": "newclid_probe.py, mathcore/strategies/geometry.py (one question)",
+      "check": "Newclid proof plus independent symbolic-coordinate check of the conclusion",
+      "gaps": "Figure-to-JGEX encoding, length-equation adapter, school-style congruence write-ups",
+      "questions": 28,
+      "solved": 1,
+      "open": 27,
+      "open_by_feasibility": {
+        "medium": 22,
+        "low": 5
+      },
+      "figure_required": 13,
+      "classes": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "priority_score": 11.5,
+      "question_ids": [
+        "PD-MATH-IX-001",
+        "PD-MATH-IX-002",
+        "PD-MATH-IX-003",
+        "PD-MATH-IX-004",
+        "PD-MATH-IX-006",
+        "PD-MATH-IX-008",
+        "PD-MATH-IX-009",
+        "PD-MATH-IX-012",
+        "PD-MATH-IX-016",
+        "PD-MATH-IX-017",
+        "PD-MATH-IX-018",
+        "PD-MATH-IX-019",
+        "PD-MATH-IX-025",
+        "PD-MATH-VII-001",
+        "PD-MATH-VII-002",
+        "PD-MATH-VII-003",
+        "PD-MATH-VIII-003",
+        "PD-MATH-VIII-004",
+        "PD-MATH-X-008",
+        "PD-MATH-X-012",
+        "PD-MATH-X-013",
+        "PD-MATH-X-014",
+        "PD-MATH-X-017",
+        "PD-MATH-X-018",
+        "PD-MATH-X-019",
+        "PD-MATH-X-025",
+        "PD-MATH-X-027",
+        "PD-MATH-X-029"
+      ]
+    },
+    {
+      "engine": "analytic_coordinate",
+      "title": "Coordinate and 3D analytic geometry",
+      "status": "external",
+      "code": "../coordinate_solver_generalisation_v2/engine_v1.py",
+      "check": "Distance, section, area and line formulas with exact arithmetic",
+      "gaps": "Not yet wired into this pipeline; symbolic-parameter coordinates",
+      "questions": 8,
+      "solved": 0,
+      "open": 8,
+      "open_by_feasibility": {
+        "high": 6,
+        "medium": 2
+      },
+      "figure_required": 0,
+      "classes": [
+        9,
+        10,
+        11,
+        12
+      ],
+      "priority_score": 7.0,
+      "question_ids": [
+        "PD-MATH-IX-022",
+        "PD-MATH-X-016",
+        "PD-MATH-X-020",
+        "PD-MATH-XI-012",
+        "PD-MATH-XI-016",
+        "PD-MATH-XI-017",
+        "PD-MATH-XI-027",
+        "PD-MATH-XII-031"
+      ]
+    },
+    {
+      "engine": "vector_algebra",
+      "title": "Vector identities",
+      "status": "missing",
+      "code": null,
+      "check": "Generic 3D components, dot/cross product identities",
+      "gaps": "Either/or conclusions need case output",
+      "questions": 8,
+      "solved": 0,
+      "open": 8,
+      "open_by_feasibility": {
+        "high": 5,
+        "medium": 3
+      },
+      "figure_required": 0,
+      "classes": [
+        12
+      ],
+      "priority_score": 6.5,
+      "question_ids": [
+        "PD-MATH-XII-023",
+        "PD-MATH-XII-024",
+        "PD-MATH-XII-025",
+        "PD-MATH-XII-026",
+        "PD-MATH-XII-027",
+        "PD-MATH-XII-028",
+        "PD-MATH-XII-029",
+        "PD-MATH-XII-030"
+      ]
+    },
+    {
+      "engine": "boolean_membership",
+      "title": "Set identities, logic and counterexamples",
+      "status": "missing",
+      "code": null,
+      "check": "Per-element membership truth tables (decides these quantifier-free set statements); finite counterexample search",
+      "gaps": "Power-set argument (XI-026) is not per-element",
+      "questions": 6,
+      "solved": 0,
+      "open": 6,
+      "open_by_feasibility": {
+        "high": 5,
+        "low": 1
+      },
+      "figure_required": 0,
+      "classes": [
+        11
+      ],
+      "priority_score": 5.1,
+      "question_ids": [
+        "PD-MATH-XI-001",
+        "PD-MATH-XI-007",
+        "PD-MATH-XI-014",
+        "PD-MATH-XI-021",
+        "PD-MATH-XI-026",
+        "PD-MATH-XI-031"
+      ]
+    },
+    {
+      "engine": "determinant_matrix",
+      "title": "Determinant and matrix identities",
+      "status": "missing",
+      "code": null,
+      "check": "Symbolic determinant expansion and factor comparison; transpose algebra with noncommutative symbols",
+      "gaps": "Students expect row/column operations, so the trace must record them",
+      "questions": 6,
+      "solved": 0,
+      "open": 6,
+      "open_by_feasibility": {
+        "high": 3,
+        "medium": 3
+      },
+      "figure_required": 0,
+      "classes": [
+        12
+      ],
+      "priority_score": 4.5,
+      "question_ids": [
+        "PD-MATH-XII-012",
+        "PD-MATH-XII-013",
+        "PD-MATH-XII-014",
+        "PD-MATH-XII-015",
+        "PD-MATH-XII-040",
+        "PD-MATH-XII-041"
+      ]
+    },
+    {
+      "engine": "metric_geometry_coordinates",
+      "title": "Length/area relations proved by Pythagoras",
+      "status": "partial",
+      "code": "newclid_probe.py independent_replay",
+      "check": "Symbolic coordinates with right angle at origin; identity in squared lengths",
+      "gaps": "Student presentation should use Pythagoras on named triangles, not raw coordinates",
+      "questions": 4,
+      "solved": 0,
+      "open": 4,
+      "open_by_feasibility": {
+        "high": 4
+      },
+      "figure_required": 0,
+      "classes": [
+        9,
+        10
+      ],
+      "priority_score": 4.0,
+      "question_ids": [
+        "PD-MATH-IX-007",
+        "PD-MATH-IX-014",
+        "PD-MATH-IX-024",
+        "PD-MATH-X-028"
+      ]
+    },
+    {
+      "engine": "relation_function",
+      "title": "Relation and function properties",
+      "status": "missing",
+      "code": null,
+      "check": "Reflexive/symmetric/transitive by symbolic rewriting; injective/surjective by solving for preimages",
+      "gaps": "Geometric relation XII-008 needs counterexample by construction",
+      "questions": 5,
+      "solved": 0,
+      "open": 5,
+      "open_by_feasibility": {
+        "high": 3,
+        "medium": 1,
+        "low": 1
+      },
+      "figure_required": 0,
+      "classes": [
+        12
+      ],
+      "priority_score": 3.6,
+      "question_ids": [
+        "PD-MATH-XII-005",
+        "PD-MATH-XII-006",
+        "PD-MATH-XII-007",
+        "PD-MATH-XII-008",
+        "PD-MATH-XII-009"
+      ]
+    },
+    {
+      "engine": "complex_algebra",
+      "title": "Complex-number identities",
+      "status": "missing",
+      "code": null,
+      "check": "Split into real/imaginary parts with real symbols; omega reduction via 1+w+w^2=0",
+      "gaps": "None beyond parser",
+      "questions": 3,
+      "solved": 0,
+      "open": 3,
+      "open_by_feasibility": {
+        "high": 3
+      },
+      "figure_required": 0,
+      "classes": [
+        11
+      ],
+      "priority_score": 3.0,
+      "question_ids": [
+        "PD-MATH-XI-008",
+        "PD-MATH-XI-019",
+        "PD-MATH-XI-022"
+      ]
+    },
+    {
+      "engine": "probability_atoms",
+      "title": "Probability from axioms",
+      "status": "missing",
+      "code": null,
+      "check": "Express events over Venn atoms with non-negative atom probabilities; linear/polynomial identity",
+      "gaps": "Independence is a product constraint",
+      "questions": 3,
+      "solved": 0,
+      "open": 3,
+      "open_by_feasibility": {
+        "high": 3
+      },
+      "figure_required": 0,
+      "classes": [
+        12
+      ],
+      "priority_score": 3.0,
+      "question_ids": [
+        "PD-MATH-XII-037",
+        "PD-MATH-XII-038",
+        "PD-MATH-XII-039"
+      ]
+    },
+    {
+      "engine": "induction",
+      "title": "Mathematical induction",
+      "status": "missing",
+      "code": null,
+      "check": "Base case evaluation and symbolic step P(k) => P(k+1) (sum or divisibility quotient)",
+      "gaps": "None beyond parser",
+      "questions": 3,
+      "solved": 0,
+      "open": 3,
+      "open_by_feasibility": {
+        "medium": 1,
+        "high": 2
+      },
+      "figure_required": 0,
+      "classes": [
+        11
+      ],
+      "priority_score": 2.5,
+      "question_ids": [
+        "PD-MATH-XI-018",
+        "PD-MATH-XI-028",
+        "PD-MATH-XI-029"
+      ]
+    },
+    {
+      "engine": "factorial_binomial",
+      "title": "Factorial and binomial-coefficient identities",
+      "status": "missing",
+      "code": null,
+      "check": "Symbolic factorial ratios and general-term exponent matching",
+      "gaps": "Products like 1.3.5...(2n-1) need a double-factorial encoding",
+      "questions": 3,
+      "solved": 0,
+      "open": 3,
+      "open_by_feasibility": {
+        "medium": 2,
+        "high": 1
+      },
+      "figure_required": 0,
+      "classes": [
+        11
+      ],
+      "priority_score": 2.0,
+      "question_ids": [
+        "PD-MATH-XI-011",
+        "PD-MATH-XI-023",
+        "PD-MATH-XI-024"
+      ]
+    },
+    {
+      "engine": "constrained_relation",
+      "title": "Relations under given conditions",
+      "status": "implemented",
+      "code": "mathcore/strategies/identity.py (derive, conditional, difference, take_logs)",
+      "check": "Eliminate hypotheses (substitution, Groebner basis or parametrisation) and reduce target to zero; record non-zero divisors",
+      "gaps": "Sign/ordering reasoning and inequality givens (XI-006); prescribed componendo-dividendo with radicals (X-009)",
+      "questions": 12,
+      "solved": 9,
+      "open": 3,
+      "open_by_feasibility": {
+        "medium": 3
+      },
+      "figure_required": 1,
+      "classes": [
+        8,
+        9,
+        10
+      ],
+      "priority_score": 1.5,
+      "question_ids": [
+        "PD-MATH-IX-013",
+        "PD-MATH-IX-015",
+        "PD-MATH-IX-021",
+        "PD-MATH-VIII-001",
+        "PD-MATH-VIII-002",
+        "PD-MATH-X-003",
+        "PD-MATH-X-006",
+        "PD-MATH-X-009",
+        "PD-MATH-X-010",
+        "PD-MATH-X-011",
+        "PD-MATH-X-024",
+        "PD-MATH-X-026"
+      ]
+    },
+    {
+      "engine": "differentiation",
+      "title": "Derivatives, implicit differentiation, first principles, ODE verification",
+      "status": "implemented",
+      "code": "mathcore/rules/calculus.py, mathcore/strategies/calculus.py (derivative_relation, evaluate, first_principles)",
+      "check": "SymPy diff/limit and substitution back into the stated relation, with domain",
+      "gaps": "Two curves at once (XII-020, orthogonal curves); first principles covers roots, products with trig and polynomials",
+      "questions": 10,
+      "solved": 8,
+      "open": 2,
+      "open_by_feasibility": {
+        "high": 1,
+        "medium": 1
+      },
+      "figure_required": 0,
+      "classes": [
+        11,
+        12
+      ],
+      "priority_score": 1.5,
+      "question_ids": [
+        "PD-MATH-XI-015",
+        "PD-MATH-XI-020",
+        "PD-MATH-XII-001",
+        "PD-MATH-XII-002",
+        "PD-MATH-XII-003",
+        "PD-MATH-XII-004",
+        "PD-MATH-XII-020",
+        "PD-MATH-XII-021",
+        "PD-MATH-XII-035",
+        "PD-MATH-XII-036"
+      ]
+    },
+    {
+      "engine": "contradiction_inequality",
+      "title": "Contradiction, irrationality and inequalities",
+      "status": "missing",
+      "code": null,
+      "check": "Case analysis and certified inequalities",
+      "gaps": "Open-ended reasoning; lowest automation yield",
+      "questions": 5,
+      "solved": 0,
+      "open": 5,
+      "open_by_feasibility": {
+        "low": 3,
+        "medium": 2
+      },
+      "figure_required": 1,
+      "classes": [
+        9,
+        11
+      ],
+      "priority_score": 1.3,
+      "question_ids": [
+        "PD-MATH-IX-010",
+        "PD-MATH-IX-011",
+        "PD-MATH-IX-023",
+        "PD-MATH-XI-025",
+        "PD-MATH-XI-030"
+      ]
+    },
+    {
+      "engine": "inverse_trig_branch",
+      "title": "Inverse trigonometric identities",
+      "status": "missing",
+      "code": null,
+      "check": "Principal-branch interval tracking, then exact tan/cos evaluation",
+      "gaps": "Branch intervals must be proved, not assumed",
+      "questions": 2,
+      "solved": 0,
+      "open": 2,
+      "open_by_feasibility": {
+        "medium": 2
+      },
+      "figure_required": 0,
+      "classes": [
+        12
+      ],
+      "priority_score": 1.0,
+      "question_ids": [
+        "PD-MATH-XII-010",
+        "PD-MATH-XII-011"
+      ]
+    },
+    {
+      "engine": "sequence_series",
+      "title": "AP/GP term and sum relations",
+      "status": "implemented",
+      "code": "mathcore/rules/sequences.py (AP and GP), mathcore/strategies/values.py",
+      "check": "Substitute general term/sum formulas and simplify the claimed relation",
+      "gaps": "AM/GM recovery needs ordering (XI-006)",
+      "questions": 7,
+      "solved": 6,
+      "open": 1,
+      "open_by_feasibility": {
+        "high": 1
+      },
+      "figure_required": 0,
+      "classes": [
+        10,
+        11
+      ],
+      "priority_score": 1.0,
+      "question_ids": [
+        "PD-MATH-X-021",
+        "PD-MATH-X-022",
+        "PD-MATH-X-023",
+        "PD-MATH-XI-005",
+        "PD-MATH-XI-006",
+        "PD-MATH-XI-009",
+        "PD-MATH-XI-013"
+      ]
+    },
+    {
+      "engine": "algebraic_identity",
+      "title": "Exact algebraic, index, log and surd identities",
+      "status": "implemented",
+      "code": "mathcore/rules/indices_logs.py, mathcore/rules/algebra.py",
+      "check": "Exact simplification of LHS - RHS with recorded domain (positivity for logs/indices)",
+      "gaps": "Radical equations; nested surds",
+      "questions": 3,
+      "solved": 3,
+      "open": 0,
+      "open_by_feasibility": {},
+      "figure_required": 0,
+      "classes": [
+        8,
+        9
+      ],
+      "priority_score": 0,
+      "question_ids": [
+        "PD-MATH-IX-005",
+        "PD-MATH-IX-020",
+        "PD-MATH-VIII-005"
+      ]
+    },
+    {
+      "engine": "definite_integration",
+      "title": "Definite integrals and areas",
+      "status": "implemented",
+      "code": "mathcore/rules/calculus.py, mathcore/strategies/calculus.py (definite_integral)",
+      "check": "Exact integration, reflection property, region bounds",
+      "gaps": "Antiderivatives from school substitutions and SymPy's step-by-step integrator; integration by parts not yet",
+      "questions": 3,
+      "solved": 3,
+      "open": 0,
+      "open_by_feasibility": {},
+      "figure_required": 0,
+      "classes": [
+        12
+      ],
+      "priority_score": 0,
+      "question_ids": [
+        "PD-MATH-XII-032",
+        "PD-MATH-XII-033",
+        "PD-MATH-XII-034"
+      ]
+    },
+    {
+      "engine": "extremum_monotonicity",
+      "title": "Maxima/minima and monotonicity",
+      "status": "implemented",
+      "code": "mathcore/strategies/calculus.py (monotonic, extremum)",
+      "check": "Critical points, second-derivative or sign test on the stated domain",
+      "gaps": "Exactly one critical point in the domain; closed-interval endpoint comparisons not yet",
+      "questions": 5,
+      "solved": 5,
+      "open": 0,
+      "open_by_feasibility": {},
+      "figure_required": 0,
+      "classes": [
+        12
+      ],
+      "priority_score": 0,
+      "question_ids": [
+        "PD-MATH-XII-016",
+        "PD-MATH-XII-017",
+        "PD-MATH-XII-018",
+        "PD-MATH-XII-019",
+        "PD-MATH-XII-022"
+      ]
+    },
+    {
+      "engine": "polynomial_theorems",
+      "title": "Factor theorem, completing the square, discriminant",
+      "status": "implemented",
+      "code": "mathcore/rules/polynomial.py, mathcore/strategies/polynomial.py, equal_roots givens",
+      "check": "Remainder evaluation, expand-back, discriminant identity",
+      "gaps": "Higher-degree factorisation beyond the factor theorem",
+      "questions": 3,
+      "solved": 3,
+      "open": 0,
+      "open_by_feasibility": {},
+      "figure_required": 0,
+      "classes": [
+        10
+      ],
+      "priority_score": 0,
+      "question_ids": [
+        "PD-MATH-X-007",
+        "PD-MATH-X-015",
+        "PD-MATH-X-030"
+      ]
+    },
+    {
+      "engine": "trig_identity",
+      "title": "Trigonometric identities",
+      "status": "implemented",
+      "code": "mathcore/rules/trig.py, mathcore/rules/trig_compound.py, mathcore/strategies/equations.py, mathcore/equality.py (angle basis)",
+      "check": "Permitted-rule rewrite search, exact equality, domain replay",
+      "gaps": "Special-angle products that need the multiply-by-2-sin trick (e.g. sin 20° sin 40° sin 60° sin 80°); trig equations are solved on a stated interval only (no general solution yet)",
+      "questions": 8,
+      "solved": 8,
+      "open": 0,
+      "open_by_feasibility": {},
+      "figure_required": 0,
+      "classes": [
+        10,
+        11
+      ],
+      "priority_score": 0,
+      "question_ids": [
+        "PD-MATH-X-001",
+        "PD-MATH-X-002",
+        "PD-MATH-X-004",
+        "PD-MATH-X-005",
+        "PD-MATH-XI-002",
+        "PD-MATH-XI-003",
+        "PD-MATH-XI-004",
+        "PD-MATH-XI-010"
+      ]
+    }
+  ],
+  "questions": {
+    "PD-MATH-IX-001": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Converse: rhombus from diagonals",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Quadrilaterals",
+      "figure_required": false
+    },
+    "PD-MATH-IX-002": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Angle in semicircle",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Circles",
+      "figure_required": false
+    },
+    "PD-MATH-IX-003": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Figure; incentre concurrency",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Triangles",
+      "figure_required": true
+    },
+    "PD-MATH-IX-004": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Midpoint theorem; coordinate check easy",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Quadrilaterals",
+      "figure_required": false
+    },
+    "PD-MATH-IX-005": {
+      "engine": "algebraic_identity",
+      "feasibility": "high",
+      "note": "Exact log identity",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 9,
+      "topic": "Indices and Logarithms",
+      "figure_required": false
+    },
+    "PD-MATH-IX-006": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Figure; auxiliary parallelogram",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Quadrilaterals",
+      "figure_required": true
+    },
+    "PD-MATH-IX-007": {
+      "engine": "metric_geometry_coordinates",
+      "feasibility": "high",
+      "note": "Right angle at B; squared lengths",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Triangles",
+      "figure_required": false
+    },
+    "PD-MATH-IX-008": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Figure; area equality",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Areas of Parallelograms and Triangles",
+      "figure_required": true
+    },
+    "PD-MATH-IX-009": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Figure; Varignon via midpoint theorem",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Quadrilaterals",
+      "figure_required": true
+    },
+    "PD-MATH-IX-010": {
+      "engine": "contradiction_inequality",
+      "feasibility": "low",
+      "note": "Irrationality of sqrt 2 then 3 - sqrt 2",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Number Systems",
+      "figure_required": false
+    },
+    "PD-MATH-IX-011": {
+      "engine": "contradiction_inequality",
+      "feasibility": "low",
+      "note": "Figure; repeated triangle inequality",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Triangles",
+      "figure_required": true
+    },
+    "PD-MATH-IX-012": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Equal inscribed angles give equal arcs",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Circles",
+      "figure_required": false
+    },
+    "PD-MATH-IX-013": {
+      "engine": "constrained_relation",
+      "feasibility": "high",
+      "note": "Eliminate l, b, h",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 9,
+      "topic": "Surface Areas and Volumes",
+      "figure_required": false
+    },
+    "PD-MATH-IX-014": {
+      "engine": "metric_geometry_coordinates",
+      "feasibility": "high",
+      "note": "Right angle at Q; squared lengths",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Triangles",
+      "figure_required": false
+    },
+    "PD-MATH-IX-015": {
+      "engine": "constrained_relation",
+      "feasibility": "high",
+      "note": "abc = 1 substitution",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 9,
+      "topic": "Algebraic Identities and Factorisation",
+      "figure_required": false
+    },
+    "PD-MATH-IX-016": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Isosceles base angles and angle sum",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Triangles",
+      "figure_required": false
+    },
+    "PD-MATH-IX-017": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Figure; trapezium midline",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Quadrilaterals",
+      "figure_required": true
+    },
+    "PD-MATH-IX-018": {
+      "engine": "synthetic_geometry",
+      "feasibility": "low",
+      "note": "Figure; chord distances from centre",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Circles",
+      "figure_required": true
+    },
+    "PD-MATH-IX-019": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Centroid area ratio; coordinate check easy",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Triangles",
+      "figure_required": false
+    },
+    "PD-MATH-IX-020": {
+      "engine": "algebraic_identity",
+      "feasibility": "high",
+      "note": "Surd rationalisation, telescoping",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 9,
+      "topic": "Number Systems",
+      "figure_required": false
+    },
+    "PD-MATH-IX-021": {
+      "engine": "constrained_relation",
+      "feasibility": "medium",
+      "note": "Source issue: the givens have no real solution with distinct a, b, c",
+      "status": "INPUT_AMBIGUOUS",
+      "class": 9,
+      "topic": "Indices and Logarithms",
+      "figure_required": false
+    },
+    "PD-MATH-IX-022": {
+      "engine": "analytic_coordinate",
+      "feasibility": "high",
+      "note": "Collinearity with symbolic a, b",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Coordinate Geometry",
+      "figure_required": false
+    },
+    "PD-MATH-IX-023": {
+      "engine": "contradiction_inequality",
+      "feasibility": "low",
+      "note": "Triangle inequality in two triangles",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Quadrilaterals",
+      "figure_required": false
+    },
+    "PD-MATH-IX-024": {
+      "engine": "metric_geometry_coordinates",
+      "feasibility": "high",
+      "note": "British flag theorem",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Quadrilaterals",
+      "figure_required": false
+    },
+    "PD-MATH-IX-025": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Midpoint theorem on trapezium",
+      "status": "UNSUPPORTED",
+      "class": 9,
+      "topic": "Quadrilaterals",
+      "figure_required": false
+    },
+    "PD-MATH-VII-001": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Figure; ASA with vertically opposite angles",
+      "status": "UNSUPPORTED",
+      "class": 7,
+      "topic": "Congruence of Triangles",
+      "figure_required": true
+    },
+    "PD-MATH-VII-002": {
+      "engine": "synthetic_geometry",
+      "feasibility": "high",
+      "note": "Solved: Newclid + coordinate replay",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 7,
+      "topic": "Congruence of Triangles",
+      "figure_required": true
+    },
+    "PD-MATH-VII-003": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Figure; RHS congruence, three parts",
+      "status": "UNSUPPORTED",
+      "class": 7,
+      "topic": "Congruence of Triangles",
+      "figure_required": true
+    },
+    "PD-MATH-VIII-001": {
+      "engine": "constrained_relation",
+      "feasibility": "high",
+      "note": "Symmetric-function identity with numeric constraints; givens have no real solution (proved over complex numbers)",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 8,
+      "topic": "Algebraic Expressions and Identities",
+      "figure_required": false
+    },
+    "PD-MATH-VIII-002": {
+      "engine": "constrained_relation",
+      "feasibility": "high",
+      "note": "x + 1/x = 2 forces x = 1",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 8,
+      "topic": "Algebraic Expressions and Identities",
+      "figure_required": false
+    },
+    "PD-MATH-VIII-003": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Figure; parallelogram angle bisectors",
+      "status": "UNSUPPORTED",
+      "class": 8,
+      "topic": "Understanding Quadrilaterals",
+      "figure_required": true
+    },
+    "PD-MATH-VIII-004": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Angle chasing only",
+      "status": "UNSUPPORTED",
+      "class": 8,
+      "topic": "Understanding Quadrilaterals",
+      "figure_required": false
+    },
+    "PD-MATH-VIII-005": {
+      "engine": "algebraic_identity",
+      "feasibility": "high",
+      "note": "Index laws",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 8,
+      "topic": "Exponents and Powers",
+      "figure_required": false
+    },
+    "PD-MATH-X-001": {
+      "engine": "trig_identity",
+      "feasibility": "high",
+      "note": "Solved",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Trigonometry",
+      "figure_required": false
+    },
+    "PD-MATH-X-002": {
+      "engine": "trig_identity",
+      "feasibility": "high",
+      "note": "Solved",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Trigonometry",
+      "figure_required": false
+    },
+    "PD-MATH-X-003": {
+      "engine": "constrained_relation",
+      "feasibility": "high",
+      "note": "Continued proportion y = xk, z = xk^2",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Ratio and Proportion",
+      "figure_required": false
+    },
+    "PD-MATH-X-004": {
+      "engine": "trig_identity",
+      "feasibility": "high",
+      "note": "Solved",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Trigonometry",
+      "figure_required": false
+    },
+    "PD-MATH-X-005": {
+      "engine": "trig_identity",
+      "feasibility": "high",
+      "note": "Solved",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Trigonometry",
+      "figure_required": false
+    },
+    "PD-MATH-X-006": {
+      "engine": "constrained_relation",
+      "feasibility": "medium",
+      "note": "Equality case: (ay - bx)^2 = 0 over reals",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Ratio and Proportion",
+      "figure_required": false
+    },
+    "PD-MATH-X-007": {
+      "engine": "polynomial_theorems",
+      "feasibility": "high",
+      "note": "Solved",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Factorisation and Remainder Theorem",
+      "figure_required": false
+    },
+    "PD-MATH-X-008": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Figure; intersecting chords AP.PB = CP.PD",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Circles",
+      "figure_required": true
+    },
+    "PD-MATH-X-009": {
+      "engine": "constrained_relation",
+      "feasibility": "medium",
+      "note": "Componendo-dividendo prescribed; radicals",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Ratio and Proportion",
+      "figure_required": false
+    },
+    "PD-MATH-X-010": {
+      "engine": "constrained_relation",
+      "feasibility": "high",
+      "note": "Cross multiplication",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Ratio and Proportion",
+      "figure_required": false
+    },
+    "PD-MATH-X-011": {
+      "engine": "constrained_relation",
+      "feasibility": "high",
+      "note": "Mensuration formulas, equal surface area",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Mensuration",
+      "figure_required": false
+    },
+    "PD-MATH-X-012": {
+      "engine": "synthetic_geometry",
+      "feasibility": "low",
+      "note": "Construction with justification",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Constructions",
+      "figure_required": false
+    },
+    "PD-MATH-X-013": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Figure; cyclic AA similarity then length",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Similarity",
+      "figure_required": true
+    },
+    "PD-MATH-X-014": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Figure; tangent-chord AA similarity",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Circles",
+      "figure_required": true
+    },
+    "PD-MATH-X-015": {
+      "engine": "polynomial_theorems",
+      "feasibility": "high",
+      "note": "Discriminant = 0",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Quadratic Equations",
+      "figure_required": false
+    },
+    "PD-MATH-X-016": {
+      "engine": "analytic_coordinate",
+      "feasibility": "high",
+      "note": "Equidistant point with symbolic coordinates",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Coordinate Geometry",
+      "figure_required": false
+    },
+    "PD-MATH-X-017": {
+      "engine": "synthetic_geometry",
+      "feasibility": "low",
+      "note": "Basic proportionality theorem from area ratios",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Similarity",
+      "figure_required": false
+    },
+    "PD-MATH-X-018": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Radius perpendicular to tangent",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Circles",
+      "figure_required": false
+    },
+    "PD-MATH-X-019": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "Quadrilateral angle sum",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Circles",
+      "figure_required": false
+    },
+    "PD-MATH-X-020": {
+      "engine": "analytic_coordinate",
+      "feasibility": "high",
+      "note": "Numeric triangle areas",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Coordinate Geometry",
+      "figure_required": false
+    },
+    "PD-MATH-X-021": {
+      "engine": "sequence_series",
+      "feasibility": "high",
+      "note": "Solved",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Arithmetic Progression",
+      "figure_required": false
+    },
+    "PD-MATH-X-022": {
+      "engine": "sequence_series",
+      "feasibility": "high",
+      "note": "Solved",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Arithmetic Progression",
+      "figure_required": false
+    },
+    "PD-MATH-X-023": {
+      "engine": "sequence_series",
+      "feasibility": "medium",
+      "note": "Integer existence: x = 35",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Arithmetic Progression",
+      "figure_required": false
+    },
+    "PD-MATH-X-024": {
+      "engine": "constrained_relation",
+      "feasibility": "medium",
+      "note": "Figure; arc length plus trig lengths",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Mensuration",
+      "figure_required": true
+    },
+    "PD-MATH-X-025": {
+      "engine": "synthetic_geometry",
+      "feasibility": "medium",
+      "note": "RHS congruence",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Circles",
+      "figure_required": false
+    },
+    "PD-MATH-X-026": {
+      "engine": "constrained_relation",
+      "feasibility": "high",
+      "note": "Equilateral area formula on side and diagonal",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Similarity",
+      "figure_required": false
+    },
+    "PD-MATH-X-027": {
+      "engine": "synthetic_geometry",
+      "feasibility": "low",
+      "note": "Similarity scale argument",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Similarity",
+      "figure_required": false
+    },
+    "PD-MATH-X-028": {
+      "engine": "metric_geometry_coordinates",
+      "feasibility": "high",
+      "note": "Auxiliary altitude, squared lengths",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Similarity",
+      "figure_required": false
+    },
+    "PD-MATH-X-029": {
+      "engine": "synthetic_geometry",
+      "feasibility": "low",
+      "note": "Pythagoras theorem itself; checker must not assume it",
+      "status": "UNSUPPORTED",
+      "class": 10,
+      "topic": "Similarity",
+      "figure_required": false
+    },
+    "PD-MATH-X-030": {
+      "engine": "polynomial_theorems",
+      "feasibility": "high",
+      "note": "Solved",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 10,
+      "topic": "Quadratic Equations",
+      "figure_required": false
+    },
+    "PD-MATH-XI-001": {
+      "engine": "boolean_membership",
+      "feasibility": "high",
+      "note": "Element chasing",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Sets",
+      "figure_required": false
+    },
+    "PD-MATH-XI-002": {
+      "engine": "trig_identity",
+      "feasibility": "medium",
+      "note": "Constrained compound-angle identity",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 11,
+      "topic": "Trigonometric Functions",
+      "figure_required": false
+    },
+    "PD-MATH-XI-003": {
+      "engine": "trig_identity",
+      "feasibility": "medium",
+      "note": "Special-angle product",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 11,
+      "topic": "Trigonometric Functions",
+      "figure_required": false
+    },
+    "PD-MATH-XI-004": {
+      "engine": "trig_identity",
+      "feasibility": "medium",
+      "note": "Constrained sum-to-product",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 11,
+      "topic": "Trigonometric Functions",
+      "figure_required": false
+    },
+    "PD-MATH-XI-005": {
+      "engine": "sequence_series",
+      "feasibility": "high",
+      "note": "'in AP' condition",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 11,
+      "topic": "Sequences and Series",
+      "figure_required": false
+    },
+    "PD-MATH-XI-006": {
+      "engine": "sequence_series",
+      "feasibility": "high",
+      "note": "AM/GM to quadratic roots",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Sequences and Series",
+      "figure_required": false
+    },
+    "PD-MATH-XI-007": {
+      "engine": "boolean_membership",
+      "feasibility": "high",
+      "note": "Per-element implication",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Sets",
+      "figure_required": false
+    },
+    "PD-MATH-XI-008": {
+      "engine": "complex_algebra",
+      "feasibility": "high",
+      "note": "Conjugate multiplication",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Complex Numbers and Quadratic Equations",
+      "figure_required": false
+    },
+    "PD-MATH-XI-009": {
+      "engine": "sequence_series",
+      "feasibility": "medium",
+      "note": "GP converse via perfect square",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 11,
+      "topic": "Sequences and Series",
+      "figure_required": false
+    },
+    "PD-MATH-XI-010": {
+      "engine": "trig_identity",
+      "feasibility": "medium",
+      "note": "Telescoping tangent differences",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 11,
+      "topic": "Trigonometric Functions",
+      "figure_required": false
+    },
+    "PD-MATH-XI-011": {
+      "engine": "factorial_binomial",
+      "feasibility": "medium",
+      "note": "Odd products as double factorials",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Permutations and Combinations",
+      "figure_required": false
+    },
+    "PD-MATH-XI-012": {
+      "engine": "analytic_coordinate",
+      "feasibility": "medium",
+      "note": "Line through unit-circle points; half-angle",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Straight Lines",
+      "figure_required": false
+    },
+    "PD-MATH-XI-013": {
+      "engine": "sequence_series",
+      "feasibility": "high",
+      "note": "GP block sums",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 11,
+      "topic": "Sequences and Series",
+      "figure_required": false
+    },
+    "PD-MATH-XI-014": {
+      "engine": "boolean_membership",
+      "feasibility": "high",
+      "note": "Per-element implication",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Sets",
+      "figure_required": false
+    },
+    "PD-MATH-XI-015": {
+      "engine": "differentiation",
+      "feasibility": "medium",
+      "note": "First principles, product",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 11,
+      "topic": "Limits and Derivatives",
+      "figure_required": false
+    },
+    "PD-MATH-XI-016": {
+      "engine": "analytic_coordinate",
+      "feasibility": "medium",
+      "note": "Focal perpendicular product",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Conic Sections",
+      "figure_required": false
+    },
+    "PD-MATH-XI-017": {
+      "engine": "analytic_coordinate",
+      "feasibility": "high",
+      "note": "Intercept form distance",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Straight Lines",
+      "figure_required": false
+    },
+    "PD-MATH-XI-018": {
+      "engine": "induction",
+      "feasibility": "medium",
+      "note": "Divisibility of a^n - b^n",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Mathematical Induction",
+      "figure_required": false
+    },
+    "PD-MATH-XI-019": {
+      "engine": "complex_algebra",
+      "feasibility": "high",
+      "note": "Expand (x + iy)^3",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Complex Numbers and Quadratic Equations",
+      "figure_required": false
+    },
+    "PD-MATH-XI-020": {
+      "engine": "differentiation",
+      "feasibility": "medium",
+      "note": "First principles, rationalisation",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 11,
+      "topic": "Limits and Derivatives",
+      "figure_required": false
+    },
+    "PD-MATH-XI-021": {
+      "engine": "boolean_membership",
+      "feasibility": "high",
+      "note": "Truth table",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Mathematical Reasoning",
+      "figure_required": false
+    },
+    "PD-MATH-XI-022": {
+      "engine": "complex_algebra",
+      "feasibility": "high",
+      "note": "Omega reduction",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Complex Numbers and Quadratic Equations",
+      "figure_required": false
+    },
+    "PD-MATH-XI-023": {
+      "engine": "factorial_binomial",
+      "feasibility": "medium",
+      "note": "Matching general-term coefficients",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Binomial Theorem",
+      "figure_required": false
+    },
+    "PD-MATH-XI-024": {
+      "engine": "factorial_binomial",
+      "feasibility": "high",
+      "note": "Consecutive coefficient ratios",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Binomial Theorem",
+      "figure_required": false
+    },
+    "PD-MATH-XI-025": {
+      "engine": "contradiction_inequality",
+      "feasibility": "medium",
+      "note": "Sum of discriminants >= 0",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Complex Numbers and Quadratic Equations",
+      "figure_required": false
+    },
+    "PD-MATH-XI-026": {
+      "engine": "boolean_membership",
+      "feasibility": "low",
+      "note": "Power sets: needs singleton argument",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Sets",
+      "figure_required": false
+    },
+    "PD-MATH-XI-027": {
+      "engine": "analytic_coordinate",
+      "feasibility": "high",
+      "note": "Symbolic centroid averaging",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Introduction to Three-dimensional Geometry",
+      "figure_required": false
+    },
+    "PD-MATH-XI-028": {
+      "engine": "induction",
+      "feasibility": "high",
+      "note": "Telescoping rational sum",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Mathematical Induction",
+      "figure_required": false
+    },
+    "PD-MATH-XI-029": {
+      "engine": "induction",
+      "feasibility": "high",
+      "note": "Divisibility by 64",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Mathematical Induction",
+      "figure_required": false
+    },
+    "PD-MATH-XI-030": {
+      "engine": "contradiction_inequality",
+      "feasibility": "medium",
+      "note": "x(x^2 + 8) = 0 over reals",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Mathematical Reasoning",
+      "figure_required": false
+    },
+    "PD-MATH-XI-031": {
+      "engine": "boolean_membership",
+      "feasibility": "high",
+      "note": "Finite counterexample",
+      "status": "UNSUPPORTED",
+      "class": 11,
+      "topic": "Sets",
+      "figure_required": false
+    },
+    "PD-MATH-XII-001": {
+      "engine": "differentiation",
+      "feasibility": "high",
+      "note": "Implicit, second derivative",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 12,
+      "topic": "Continuity and Differentiability",
+      "figure_required": false
+    },
+    "PD-MATH-XII-002": {
+      "engine": "differentiation",
+      "feasibility": "high",
+      "note": "Logarithmic differentiation, x > 0",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 12,
+      "topic": "Continuity and Differentiability",
+      "figure_required": false
+    },
+    "PD-MATH-XII-003": {
+      "engine": "differentiation",
+      "feasibility": "high",
+      "note": "Implicit differentiation",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 12,
+      "topic": "Continuity and Differentiability",
+      "figure_required": false
+    },
+    "PD-MATH-XII-004": {
+      "engine": "differentiation",
+      "feasibility": "high",
+      "note": "Repeated differentiation",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 12,
+      "topic": "Continuity and Differentiability",
+      "figure_required": false
+    },
+    "PD-MATH-XII-005": {
+      "engine": "relation_function",
+      "feasibility": "high",
+      "note": "Affine bijection",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Relations and Functions",
+      "figure_required": false
+    },
+    "PD-MATH-XII-006": {
+      "engine": "relation_function",
+      "feasibility": "medium",
+      "note": "Invariant 1/a + 1/d = 1/b + 1/c",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Relations and Functions",
+      "figure_required": false
+    },
+    "PD-MATH-XII-007": {
+      "engine": "relation_function",
+      "feasibility": "high",
+      "note": "Congruence mod 4",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Relations and Functions",
+      "figure_required": false
+    },
+    "PD-MATH-XII-008": {
+      "engine": "relation_function",
+      "feasibility": "low",
+      "note": "Lines in a plane; geometric counterexamples",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Relations and Functions",
+      "figure_required": false
+    },
+    "PD-MATH-XII-009": {
+      "engine": "relation_function",
+      "feasibility": "high",
+      "note": "Rational bijection and inverse",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Relations and Functions",
+      "figure_required": false
+    },
+    "PD-MATH-XII-010": {
+      "engine": "inverse_trig_branch",
+      "feasibility": "medium",
+      "note": "Exact sum with branch control",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Inverse Trigonometric Functions",
+      "figure_required": false
+    },
+    "PD-MATH-XII-011": {
+      "engine": "inverse_trig_branch",
+      "feasibility": "medium",
+      "note": "Half-angle with x in (0, pi/4)",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Inverse Trigonometric Functions",
+      "figure_required": false
+    },
+    "PD-MATH-XII-012": {
+      "engine": "determinant_matrix",
+      "feasibility": "high",
+      "note": "Symmetric determinant factorisation",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Determinants",
+      "figure_required": false
+    },
+    "PD-MATH-XII-013": {
+      "engine": "determinant_matrix",
+      "feasibility": "high",
+      "note": "Rank-one perturbation",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Determinants",
+      "figure_required": false
+    },
+    "PD-MATH-XII-014": {
+      "engine": "determinant_matrix",
+      "feasibility": "medium",
+      "note": "GP terms; log column dependence",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Determinants",
+      "figure_required": false
+    },
+    "PD-MATH-XII-015": {
+      "engine": "determinant_matrix",
+      "feasibility": "medium",
+      "note": "Vandermonde factor; distinct variables",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Determinants",
+      "figure_required": false
+    },
+    "PD-MATH-XII-016": {
+      "engine": "extremum_monotonicity",
+      "feasibility": "medium",
+      "note": "Cylinder in sphere",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 12,
+      "topic": "Applications of Derivatives",
+      "figure_required": false
+    },
+    "PD-MATH-XII-017": {
+      "engine": "extremum_monotonicity",
+      "feasibility": "medium",
+      "note": "Fixed hypotenuse",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 12,
+      "topic": "Applications of Derivatives",
+      "figure_required": false
+    },
+    "PD-MATH-XII-018": {
+      "engine": "extremum_monotonicity",
+      "feasibility": "medium",
+      "note": "Half cylinder fixed volume",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 12,
+      "topic": "Applications of Derivatives",
+      "figure_required": false
+    },
+    "PD-MATH-XII-019": {
+      "engine": "extremum_monotonicity",
+      "feasibility": "high",
+      "note": "Derivative is a completed square plus positive",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 12,
+      "topic": "Applications of Derivatives",
+      "figure_required": false
+    },
+    "PD-MATH-XII-020": {
+      "engine": "differentiation",
+      "feasibility": "high",
+      "note": "Slopes at intersection",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Applications of Derivatives",
+      "figure_required": false
+    },
+    "PD-MATH-XII-021": {
+      "engine": "differentiation",
+      "feasibility": "high",
+      "note": "Marginal and average cost",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 12,
+      "topic": "Application of Calculus in Commerce and Economics",
+      "figure_required": false
+    },
+    "PD-MATH-XII-022": {
+      "engine": "extremum_monotonicity",
+      "feasibility": "high",
+      "note": "MC' < 0 for x >= 0",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 12,
+      "topic": "Application of Calculus in Commerce and Economics",
+      "figure_required": false
+    },
+    "PD-MATH-XII-023": {
+      "engine": "vector_algebra",
+      "feasibility": "high",
+      "note": "Affine combination",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Vector Algebra",
+      "figure_required": false
+    },
+    "PD-MATH-XII-024": {
+      "engine": "vector_algebra",
+      "feasibility": "high",
+      "note": "Squared norms",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Vector Algebra",
+      "figure_required": false
+    },
+    "PD-MATH-XII-025": {
+      "engine": "vector_algebra",
+      "feasibility": "high",
+      "note": "Equal direction cosines",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Vector Algebra",
+      "figure_required": false
+    },
+    "PD-MATH-XII-026": {
+      "engine": "vector_algebra",
+      "feasibility": "high",
+      "note": "Unit vectors; half angle",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Vector Algebra",
+      "figure_required": false
+    },
+    "PD-MATH-XII-027": {
+      "engine": "vector_algebra",
+      "feasibility": "medium",
+      "note": "Sine rule via cross products",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Vector Algebra",
+      "figure_required": false
+    },
+    "PD-MATH-XII-028": {
+      "engine": "vector_algebra",
+      "feasibility": "medium",
+      "note": "Either/or conclusion",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Vector Algebra",
+      "figure_required": false
+    },
+    "PD-MATH-XII-029": {
+      "engine": "vector_algebra",
+      "feasibility": "high",
+      "note": "Scalar triple product",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Vector Algebra",
+      "figure_required": false
+    },
+    "PD-MATH-XII-030": {
+      "engine": "vector_algebra",
+      "feasibility": "medium",
+      "note": "Source issue: needs a x b != 0",
+      "status": "SOURCE_NEEDS_CORRECTION",
+      "class": 12,
+      "topic": "Three-dimensional Geometry",
+      "figure_required": false
+    },
+    "PD-MATH-XII-031": {
+      "engine": "analytic_coordinate",
+      "feasibility": "high",
+      "note": "Inconsistent parametric equations",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Three-dimensional Geometry",
+      "figure_required": false
+    },
+    "PD-MATH-XII-032": {
+      "engine": "definite_integration",
+      "feasibility": "medium",
+      "note": "Reflection property then evaluation",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 12,
+      "topic": "Integrals",
+      "figure_required": false
+    },
+    "PD-MATH-XII-033": {
+      "engine": "definite_integration",
+      "feasibility": "medium",
+      "note": "Reflection symmetry",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 12,
+      "topic": "Integrals",
+      "figure_required": false
+    },
+    "PD-MATH-XII-034": {
+      "engine": "definite_integration",
+      "feasibility": "medium",
+      "note": "Region between two parabolas",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 12,
+      "topic": "Applications of Integrals",
+      "figure_required": false
+    },
+    "PD-MATH-XII-035": {
+      "engine": "differentiation",
+      "feasibility": "high",
+      "note": "Verify ODE solution with two constants",
+      "status": "SOLVED_AND_TRACE_CHECKED",
+      "class": 12,
+      "topic": "Differential Equations",
+      "figure_required": false
+    },
+    "PD-MATH-XII-036": {
+      "engine": "differentiation",
+      "feasibility": "medium",
+      "note": "Source issue: missing branches",
+      "status": "SOURCE_NEEDS_CORRECTION",
+      "class": 12,
+      "topic": "Differential Equations",
+      "figure_required": false
+    },
+    "PD-MATH-XII-037": {
+      "engine": "probability_atoms",
+      "feasibility": "high",
+      "note": "Complement independence",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Probability",
+      "figure_required": false
+    },
+    "PD-MATH-XII-038": {
+      "engine": "probability_atoms",
+      "feasibility": "high",
+      "note": "Total probability",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Probability",
+      "figure_required": false
+    },
+    "PD-MATH-XII-039": {
+      "engine": "probability_atoms",
+      "feasibility": "high",
+      "note": "Axiom bounds",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Probability",
+      "figure_required": false
+    },
+    "PD-MATH-XII-040": {
+      "engine": "determinant_matrix",
+      "feasibility": "medium",
+      "note": "Transpose algebra, noncommutative",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Matrices",
+      "figure_required": false
+    },
+    "PD-MATH-XII-041": {
+      "engine": "determinant_matrix",
+      "feasibility": "high",
+      "note": "2x2 symbolic with half-angle",
+      "status": "UNSUPPORTED",
+      "class": 12,
+      "topic": "Matrices",
+      "figure_required": false
+    }
+  }
+}

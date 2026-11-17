@@ -1,0 +1,12 @@
+{
+  "id": "PD-MATH-IX-005",
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "7*log(16/15)+5*log(25/24)+3*log(81/80)",
+    "rhs": "log(2)"
+  },
+  "quotes": {
+    "goal": "7 log 16/15 + 5 log 25/24 + 3 log 81/80 = log 2"
+  },
+  "note": "The base is not printed; the identity holds in any base, so natural log is used."
+}

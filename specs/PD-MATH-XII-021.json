@@ -1,0 +1,37 @@
+{
+  "id": "PD-MATH-XII-021",
+  "variables": {
+    "x": [
+      "positive"
+    ]
+  },
+  "definitions": {
+    "C": {
+      "of": "x",
+      "expr": "x**3/3+3*x**2-7*x+16"
+    }
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "parts": [
+      {
+        "kind": "evaluate",
+        "name": "MC",
+        "expr": "diff(C(x), x)"
+      },
+      {
+        "kind": "evaluate",
+        "name": "AC",
+        "expr": "C(x)/x"
+      },
+      {
+        "lhs": "diff(C(x)/x, x)",
+        "rhs": "(x*diff(C(x), x)-C(x))/x**2"
+      }
+    ]
+  },
+  "quotes": {
+    "goal": "(a) the marginal cost (MC) (b) the average cost (AC) (c) Prove that marginal average cost (MAC) = (x(MC) - C(x))/x²"
+  },
+  "note": "MC = C'(x), AC = C(x)/x, MAC = d(AC)/dx; x is the number of units, x > 0."
+}

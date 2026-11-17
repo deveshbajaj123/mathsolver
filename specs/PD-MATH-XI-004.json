@@ -1,0 +1,46 @@
+{
+  "id": "PD-MATH-XI-004",
+  "variables": {
+    "alpha": [
+      "real"
+    ],
+    "beta": [
+      "real"
+    ],
+    "a": [
+      "real"
+    ],
+    "b": [
+      "real"
+    ]
+  },
+  "hypotheses": [
+    {
+      "lhs": "sin(alpha)+sin(beta)",
+      "rhs": "a",
+      "quote": "sin α + sin β = a"
+    },
+    {
+      "lhs": "cos(alpha)+cos(beta)",
+      "rhs": "b",
+      "quote": "cos α + cos β = b"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "parts": [
+      {
+        "lhs": "cos(alpha-beta)",
+        "rhs": "(a**2+b**2-2)/2"
+      },
+      {
+        "lhs": "tan((alpha-beta)/2)**2",
+        "rhs": "(4-a**2-b**2)/(a**2+b**2)"
+      }
+    ]
+  },
+  "quotes": {
+    "goal": "i) cos(α-β) = (a²+b²-2)/2; ii) tan((α-β)/2) = ±√((4-a²-b²)/(a²+b²))"
+  },
+  "note": "Part ii's ± statement is equivalent to the squared form tan²((α-β)/2) = (4-a²-b²)/(a²+b²), which is what is proved."
+}

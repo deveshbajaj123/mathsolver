@@ -1,0 +1,17 @@
+{
+  "id": "PD-MATH-XI-020",
+  "variables": {
+    "x": [
+      "positive"
+    ]
+  },
+  "goal": {
+    "kind": "first_principles",
+    "function": "sqrt(3*x+4)",
+    "variable": "x"
+  },
+  "quotes": {
+    "goal": "Using the first principle, find the derivative of √(3x + 4)."
+  },
+  "note": "x > 0 keeps 3x + 4 positive, so the square root is defined near x."
+}

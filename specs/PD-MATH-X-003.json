@@ -1,0 +1,37 @@
+{
+  "id": "PD-MATH-X-003",
+  "variables": {
+    "x": [
+      "real",
+      "nonzero"
+    ],
+    "y": [
+      "real",
+      "nonzero"
+    ],
+    "z": [
+      "real",
+      "nonzero"
+    ]
+  },
+  "hypotheses": [
+    {
+      "kind": "in_gp",
+      "terms": [
+        "x",
+        "y",
+        "z"
+      ],
+      "quote": "x, y, z are in continued proportion"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "(x+y)**2/(y+z)**2",
+    "rhs": "x/z"
+  },
+  "quotes": {
+    "goal": "(x+y)²/(y+z)² = x/z"
+  },
+  "note": "Continued proportion x:y = y:z, i.e. y² = xz."
+}

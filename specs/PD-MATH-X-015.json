@@ -1,0 +1,33 @@
+{
+  "id": "PD-MATH-X-015",
+  "variables": {
+    "m": [
+      "real"
+    ],
+    "c": [
+      "real"
+    ],
+    "a": [
+      "real"
+    ],
+    "x": [
+      "real"
+    ]
+  },
+  "hypotheses": [
+    {
+      "kind": "equal_roots",
+      "polynomial": "(1+m**2)*x**2+2*m*c*x+c**2-a**2",
+      "variable": "x",
+      "quote": "the equation (1 + m²)x² + 2mcx + c² - a² = 0 has equal roots"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "c**2",
+    "rhs": "a**2*(1+m**2)"
+  },
+  "quotes": {
+    "goal": "c² = a²(1 + m²)"
+  }
+}

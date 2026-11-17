@@ -1,0 +1,27 @@
+{
+  "id": "PD-MATH-X-026",
+  "variables": {
+    "a": [
+      "positive"
+    ],
+    "d": [
+      "positive"
+    ]
+  },
+  "hypotheses": [
+    {
+      "lhs": "d**2",
+      "rhs": "2*a**2",
+      "quote": "the diagonal of the square (Pythagoras)"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "sqrt(3)/4*a**2",
+    "rhs": "(sqrt(3)/4*d**2)/2"
+  },
+  "quotes": {
+    "goal": "the area of an equilateral triangle described on one side of the square is equal to half the area of the equilateral triangle described on one of its diagonal"
+  },
+  "note": "Square side a, diagonal d; equilateral triangle on side t has area (√3/4)t²."
+}

@@ -1,0 +1,36 @@
+{
+  "id": "PD-MATH-XI-005",
+  "variables": {
+    "a": [
+      "real"
+    ],
+    "b": [
+      "real"
+    ],
+    "c": [
+      "real"
+    ]
+  },
+  "hypotheses": [
+    {
+      "kind": "in_ap",
+      "terms": [
+        "a**2",
+        "b**2",
+        "c**2"
+      ],
+      "quote": "a², b², c² are in A.P."
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "in_ap": [
+      "1/(b+c)",
+      "1/(c+a)",
+      "1/(a+b)"
+    ]
+  },
+  "quotes": {
+    "goal": "1/(b + c), 1/(c + a), 1/(a + b) are in A.P."
+  }
+}

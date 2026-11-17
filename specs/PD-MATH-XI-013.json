@@ -1,0 +1,32 @@
+{
+  "id": "PD-MATH-XI-013",
+  "variables": {
+    "a": [
+      "real",
+      "nonzero"
+    ],
+    "r": [
+      "real"
+    ],
+    "n": [
+      "integer",
+      "positive"
+    ]
+  },
+  "sequences": {
+    "G": {
+      "type": "gp",
+      "first": "a",
+      "ratio": "r"
+    }
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "sum(G, n)*(sum(G, 3*n)-sum(G, 2*n))",
+    "rhs": "(sum(G, 2*n)-sum(G, n))**2"
+  },
+  "quotes": {
+    "goal": "S₁(S₃ - S₂) = (S₂ - S₁)²"
+  },
+  "note": "S₁, S₂, S₃ are the sums of n, 2n, 3n terms; ratio r ≠ 1."
+}

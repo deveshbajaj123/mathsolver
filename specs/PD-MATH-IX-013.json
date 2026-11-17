@@ -1,0 +1,55 @@
+{
+  "id": "PD-MATH-IX-013",
+  "variables": {
+    "l": [
+      "positive"
+    ],
+    "b": [
+      "positive"
+    ],
+    "h": [
+      "positive"
+    ],
+    "x": [
+      "positive"
+    ],
+    "y": [
+      "positive"
+    ],
+    "z": [
+      "positive"
+    ],
+    "V": [
+      "positive"
+    ]
+  },
+  "hypotheses": [
+    {
+      "lhs": "x",
+      "rhs": "l*b",
+      "quote": "The area of three adjacent faces of a cuboid are x, y and z"
+    },
+    {
+      "lhs": "y",
+      "rhs": "b*h"
+    },
+    {
+      "lhs": "z",
+      "rhs": "h*l"
+    },
+    {
+      "lhs": "V",
+      "rhs": "l*b*h",
+      "quote": "if the volume is V"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "V**2",
+    "rhs": "x*y*z"
+  },
+  "quotes": {
+    "goal": "V² = xyz"
+  },
+  "note": "Length l, breadth b and height h introduced for the cuboid."
+}

@@ -1,0 +1,36 @@
+{
+  "id": "PD-MATH-XII-001",
+  "variables": {
+    "x": [
+      "real"
+    ],
+    "y": [
+      "real"
+    ]
+  },
+  "functions": {
+    "y": {
+      "of": "x",
+      "derivatives": [
+        "y1",
+        "y2"
+      ]
+    }
+  },
+  "hypotheses": [
+    {
+      "lhs": "exp(y)*(x+1)",
+      "rhs": "1",
+      "quote": "e^y(x + 1) = 1"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "y2",
+    "rhs": "y1**2"
+  },
+  "quotes": {
+    "goal": "d²y/dx² = (dy/dx)²"
+  },
+  "note": "y1, y2 denote dy/dx and d²y/dx²."
+}

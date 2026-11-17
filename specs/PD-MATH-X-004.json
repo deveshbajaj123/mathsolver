@@ -1,0 +1,17 @@
+{
+  "id": "PD-MATH-X-004",
+  "variables": {
+    "A": [
+      "real"
+    ]
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "sec(A)**2*csc(A)**2",
+    "rhs": "tan(A)**2+cot(A)**2+2"
+  },
+  "quotes": {
+    "goal": "sec^2 A . cosec^2 A = tan^2 A + cot^2 A + 2"
+  },
+  "note": "Cosec written csc."
+}

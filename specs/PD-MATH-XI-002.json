@@ -1,0 +1,39 @@
+{
+  "id": "PD-MATH-XI-002",
+  "variables": {
+    "A": [
+      "real"
+    ],
+    "B": [
+      "real"
+    ],
+    "x": [
+      "real",
+      "nonzero"
+    ],
+    "y": [
+      "real",
+      "nonzero"
+    ]
+  },
+  "hypotheses": [
+    {
+      "lhs": "tan(A)-tan(B)",
+      "rhs": "x",
+      "quote": "tan A - tan B = x"
+    },
+    {
+      "lhs": "cot(B)-cot(A)",
+      "rhs": "y",
+      "quote": "cot B - cot A = y"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "cot(A-B)",
+    "rhs": "1/x+1/y"
+  },
+  "quotes": {
+    "goal": "cot (A - B) = 1/x + 1/y"
+  }
+}

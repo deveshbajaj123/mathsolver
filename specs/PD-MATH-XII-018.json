@@ -1,0 +1,40 @@
+{
+  "id": "PD-MATH-XII-018",
+  "variables": {
+    "r": [
+      "positive"
+    ],
+    "L": [
+      "positive"
+    ],
+    "V": [
+      "positive"
+    ]
+  },
+  "hypotheses": [
+    {
+      "lhs": "V",
+      "rhs": "pi*r**2*L/2",
+      "quote": "A given quantity of metal is to be cast into a half cylinder"
+    }
+  ],
+  "goal": {
+    "kind": "extremum",
+    "objective": "pi*r**2+pi*r*L+2*r*L",
+    "variable": "r",
+    "type": "min",
+    "eliminate": [
+      "L"
+    ],
+    "claims": [
+      {
+        "lhs": "L/(2*r)",
+        "rhs": "pi/(pi+2)"
+      }
+    ]
+  },
+  "quotes": {
+    "goal": "the total surface area is minimum when the ratio of the length of the cylinder to the diameter of its semi-circular ends is π : (π + 2)"
+  },
+  "note": "Radius r, length L, fixed volume V = πr²L/2. Surface: two semicircular ends πr², curved surface πrL, rectangular base 2rL."
+}

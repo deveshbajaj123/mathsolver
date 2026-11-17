@@ -1,0 +1,16 @@
+{
+  "id": "EX-001",
+  "variables": {
+    "x": [
+      "real"
+    ]
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "(sin(x)+cos(x))**2",
+    "rhs": "1+sin(2*x)"
+  },
+  "quotes": {
+    "goal": "(sin x + cos x)^2 = 1 + sin 2x"
+  }
+}
