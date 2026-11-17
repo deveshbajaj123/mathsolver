@@ -1,0 +1,17 @@
+{
+  "id": "PD-MATH-X-005",
+  "variables": {
+    "A": [
+      "real"
+    ]
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "(1+sin(A))/(1-sin(A))-(1-sin(A))/(1+sin(A))",
+    "rhs": "4*tan(A)*sec(A)"
+  },
+  "quotes": {
+    "goal": "(1 + sin θ)/(1 - sin θ) - (1 - sin θ)/(1 + sin θ) = 4 tan θ sec θ"
+  },
+  "note": "θ renamed A."
+}

@@ -1,0 +1,16 @@
+{
+  "id": "PD-MATH-XI-010",
+  "variables": {
+    "x": [
+      "real"
+    ]
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "sin(x)/cos(3*x)+sin(3*x)/cos(9*x)+sin(9*x)/cos(27*x)",
+    "rhs": "(tan(27*x)-tan(x))/2"
+  },
+  "quotes": {
+    "goal": "sin x/cos 3x + sin 3x/cos 9x + sin 9x/cos 27x = 1/2 (tan 27x - tan x)"
+  }
+}

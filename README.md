@@ -6,18 +6,30 @@ A Python foundation for solving mathematics questions, checking the working, and
 
 ## What works today
 
-The program reads an existing JSON question bank and looks up prepared mathematical inputs in `formalizations.json`. It runs the saved method, records the checks, and renders accepted results using Python templates.
+Milestones 1 (core), 2 (algebra), 3 (trigonometry) and 4 (presentation, awaiting a teacher's review) of [`BUILD_PLAN.md`](BUILD_PLAN.md) are done, and calculus has been added. Every question goes through one general path in the `mathcore` package:
 
-- **Trigonometry:** searches a limited library of algebraic and trig transformations using SymPy.
-- **Algebra:** implements factor-theorem and completing-the-square methods.
-- **Arithmetic progressions:** checks selected term and sum relationships.
-- **Geometry:** uses Newclid/Yuclid, with a complete production checking route for one isosceles-triangle midpoint question.
+```text
+specs/<id>.json → validate (numeric truth check, domain, plain-words restatement)
+→ select strategy → rewrite search over named rules → independent verifier → template renderer
+```
+
+- **Input format:** one JSON spec per question: variables with domains, given conditions, AP/GP definitions, goal, prescribed method, source quotes. No solution steps. Given conditions may be equations, "in AP/GP", equal ratios (the k-method) or "equal roots". Goals may be an equality, "in AP/GP", several parts (a later part may use an earlier part's proved result), "find a value" with constraints, or "solve an equation" on an interval. Angles may be written in degrees (`20*deg`).
+- **Rules and search:** named algebra, index, log, surd, symmetric-function, AP/GP and trig rules (compound, double, triple and half angles, sum-to-product and back, tan P − tan Q, special values, angle reduction), each with the reason a student would write. One best-first search works between the two sides, which may meet in the middle. It handles any variables and angles. The trig rules are generalised from `automatic_trig_solver.py`.
+- **Strategies:** `identity`; `conditional` (process each given condition, cross-multiplying, factorising and using the zero-product rule, then solve for a variable, power or log and substitute, or use the givens directly); `difference` (LHS − RHS = 0); `take_logs`; `find_value` (solve, keep admissible roots); `solve_equation` (rewrite by equivalences into basic factors, use the general-solution formulae on the interval, reject values where the original is undefined or false); `polynomial` (factor theorem, completing the square); and `geometry` (the existing Newclid route for one question).
+- **Verifier:** each step is replayed from the rule registry and checked exactly and numerically (50 digits at fresh admissible points). The exact check is ideal or radical membership, with surds, logs and real powers in normal form, and every angle written through base angles (so sin(A−B), cos 27x and cos(α/2) relate to sin A, cos x and cos α). Closed-form numbers such as cos 20°·cos 40°·cos 80° are compared by minimal polynomial. New denominators need a nonvanishing certificate. Derived facts must follow from the givens. The trace must prove exactly the stated goal.
+- **Presentation:** answers show the question's own expressions as written and school notation (sin A, cosec A, 20°). Large simplifications are split into checked stages (simplify each fraction, common denominator, expand, factorise, cancel), and when a proof meets in the middle both sides are taken to the same factorised form. Each answer records its "large jumps" (none at present). The search budget is a number of states, so results do not depend on machine speed.
+- **Step honesty:** a plain algebra step (expand, cancel, simplify) is refused if it only holds through surd arithmetic, index laws or log laws, so those appear as their own named steps.
+
+46 bank questions are solved with no per-question code (9 after Milestone 1, 26 after Milestone 2, 30 after Milestone 3, 46 with calculus).
+
+- **Calculus:** relations between y and its derivatives (implicit and logarithmic differentiation, by differentiating the given relation with the chain rule); finding a value (marginal cost); first principles (rationalise, or split a product and use sum-to-product, then lim sin θ/θ = 1); monotonicity (sign of f′); maxima and minima (eliminate a variable with the givens, unique critical point, second-derivative test, claims checked at the optimum); definite integrals (school substitutions, the reflection property, change of variable for proving that property).
+- **Calculus checks:** differentiation replayed exactly; integral evaluations checked by differentiating the antiderivative back and by checking there is no pole between the limits, plus quadrature; limits checked by SymPy and numerically at small h; a property of an unspecified f is checked on several test functions and may not be proved by quoting such a property; the closing "simplify" may only rewrite a closed-form number. Generated variants and false controls test transfer (see Results).
 
 Current execution makes **no LLM API calls**. AI helped prepare inputs, develop code, and interpret results. Total AI savings have not been measured against an LLM-only workflow.
 
 ## What we need to build
 
-The current lookup of prepared inputs must expand into this workflow:
+Inputs are still written by hand into `specs/`. The full workflow is:
 
 ```text
 New question and any figure
@@ -31,22 +43,29 @@ New question and any figure
 
 ### TODO
 
-- [ ] **Map the bank:** group questions by mathematical method, identify missing capabilities, and prioritise reusable methods.
+- [x] **Map the bank:** group questions by mathematical method, identify missing capabilities, and prioritise reusable methods. See [`BANK_MAP.md`](BANK_MAP.md); assignments are curated and should be re-checked as engines are built.
 - [ ] **Interpret new questions:** convert text and figures into givens, expressions, domains, goals, and any prescribed method.
-- [ ] **Validate interpretation:** check notation, assumptions, figure relationships, and missing information; request clarification when needed.
-- [ ] **Select methods automatically:** route structured problems to suitable solvers and try alternatives within a defined budget.
-- [ ] **Expand trigonometry:** add more identity transformations, compound/double angles, substitutions, and equation-solving methods.
-- [ ] **Expand algebra:** add broader factorisation, equations, simultaneous equations, rational expressions, radicals, and inequalities.
+- [ ] **Validate interpretation:** check notation, assumptions, figure relationships, and missing information; request clarification when needed. *Partly done: `mathcore/validate.py` checks parsing, declared domains, satisfiable conditions and the claim's truth, and restates the spec in words. Figure relationships are not checked.*
+- [ ] **Select methods automatically:** route structured problems to suitable solvers and try alternatives within a defined budget. *Partly done: `mathcore/strategies` routes by goal kind and prescribed method.*
+- [ ] **Expand trigonometry:** add more identity transformations, compound/double angles, substitutions, and equation-solving methods. *Milestone 3 done: compound/double/triple/half angles, sum-to-product and back, special angles in degrees, given conditions with trig ratios, and equations on an interval. Not yet: inverse trig (XII-010, XII-011), general solutions, and special-angle products needing the multiply-by-2-sin method.*
+- [ ] **Expand algebra:** add broader factorisation, equations, simultaneous equations, rational expressions, radicals, and inequalities. *Milestone 2 done: identities with indices, logs and surds; conditions in AP/GP, equal ratios and equal roots; symmetric functions; find-a-value. Not yet: inequalities, sign/ordering reasoning (XI-006), componendo–dividendo with radicals (X-009).*
 - [ ] **Generalise geometry:** support new encodings, resolve adapter gaps, add suitable independent checks, and render arbitrary supported proofs.
 - [ ] **Strengthen verification:** preserve domains, reject extra roots, handle branches and cases, and check completeness where required.
-- [ ] **Improve explanations:** show manageable steps and their reasons, including explicit conditions.
-- [ ] **Measure progress:** use separate development and evaluation questions; record coverage, correctness, readability, runtime, and actual LLM tokens.
+- [ ] **Improve explanations:** show manageable steps and their reasons, including explicit conditions. *Milestone 4 done in code (`mathcore/notation.py`, `refine.py`, `presentation.py`); `results/readability_review.md` is a 10-answer sheet for a teacher to score. Not done: the teacher's review itself.*
+- [ ] **Measure progress:** use separate development and evaluation questions; record coverage, correctness, readability, runtime, and actual LLM tokens. *Partly done: `evaluation/` has a fixed development/evaluation split, generated variants and false controls. Readability review and real token counts wait for the agents.*
 
 Covering most methods in the bank is the development target. It is not a guarantee that every possible question will be solved.
 
 ## How answers are checked
 
-Trig steps are checked against permitted rules, exact symbolic equality, and domain conditions, then replayed. Algebra/AP routes use method-specific checks such as expanding factors back, checking polynomial remainders, or simplifying symbolic relations.
+Before solving, `mathcore/validate.py` tests the claim at random points that satisfy the given conditions and the domain. A false claim is reported as `COUNTEREXAMPLE`, with the point. After solving, `mathcore/verify.py` checks every step, without calling the search:
+
+1. Rebuild the named rule from the registry and replay it.
+2. Confirm equality exactly: reduce modulo sin²+cos²=1, the surd relations and the given conditions, or use radical membership limited to the domain. Logs and real powers are put in a normal form first, and angles are written through base angles.
+3. Confirm equality numerically, at 50 digits on fresh points.
+4. Require a certificate that every new denominator cannot vanish where the original expression is defined.
+
+A derived condition ("from the givens, a = …") must follow from the givens. Taking a positive root also needs both sides positive. The trace must then prove exactly the spec's goal. Substitutions and uses of a given must come from a derived condition or a stated given, and a factorisation must expand back and contain the factor. A "no real roots" claim is confirmed by a root count, and a prescribed method must appear in the trace. For an equation, each kept value must satisfy the original and each rejected one must not. No root can be missed: every rewriting step is checked as an equivalence (or an implication from the original), and each basic factor's roots come from the general-solution formula and are cross-checked by SymPy. A one-call SymPy solve is deliberately not trusted: `solveset` misses two roots of 2cos²x − cos x − 1 = 0 on [0, 2π).
 
 The current geometry check independently verifies one conclusion with symbolic coordinates. It does **not** replay every Newclid deduction. Its student explanation uses a separate prepared template.
 
@@ -56,27 +75,44 @@ The current geometry check independently verifies one conclusion with symbolic c
 
 | Experiment | Saved result |
 |---|---|
-| Main bank: 135 questions | 9 accepted, 124 unsupported, 2 source issues |
-| Five additional trig identities | 3 solved and checked, 1 inconclusive, 1 unsupported |
+| Main bank: 135 questions | 46 accepted, 86 unsupported, 3 source issues (development split 37 solved, evaluation split 9) |
+| Calculus | 16 of 18 calculus questions solved: XI-015, XI-020, XII-001 to 004, XII-016 to 019, XII-021, XII-022, XII-032 to 035. Not solved: XII-020 (two curves at once), XII-036 (source issue). |
+| Source issues found by validation | IX-021: the givens have no real solution with distinct a, b, c, so the claim is vacuous. VIII-001: no real a, b, c satisfy the givens, so it is proved over complex numbers with a warning. |
+| Generated variants (`evaluation/variants.py`) | 65/65 expected-solvable cases solved, including 9 new calculus questions. They include 14 new questions of the Milestone 2 types and 12 of the Milestone 3 types (compound, double, triple and half angles, sum-to-product, telescoping, and six trig equations including one with an extraneous root) |
+| False controls (`evaluation/variants.py`) | 26/26 rejected (23 `COUNTEREXAMPLE`, 3 `INCONCLUSIVE`); 0 false accepts |
+| Known gap | sin 20°·sin 40°·sin 60°·sin 80° = 3/16 (search budget runs out; needs the multiply-by-2-sin method). The earlier gap sin 2A = 2 sin A cos A is solved. |
+| Five additional trig identities (old solver) | 3 solved and checked, 1 inconclusive, 1 unsupported; the new core also solves the inconclusive T4 |
 | Five additional geometry encodings | Newclid proved 3; 2 hit an unimplemented length-equation adapter |
 | Existing independent checker for those five new geometry cases | None supported; no additions to the production solved count |
-| Last recorded automated test suite | 10 tests passed |
+| Presentation (`metrics.json`) | 0 of 46 answers have a large jump (a simplify step that, as shown, starts from 12 or more operations and loses 6 or more) |
+| Last recorded automated test suite | 36 tests passed (`test_mathcore`, `test_pipeline`) |
 
-These small selected tests do not establish a general accuracy percentage. No complete-answer marking-scheme evaluation or equivalent LLM-only benchmark has been completed.
+The variants were generated from question types that are already supported, so they test robustness, not coverage. Milestone 2's targets were chosen from the whole bank, so 6 of them are in the evaluation split; that split is not a clean held-out test for this milestone. These small selected tests do not establish a general accuracy percentage. No complete-answer marking-scheme evaluation or equivalent LLM-only benchmark has been completed.
 
 ## Code and data
 
 | File | Role |
 |---|---|
-| `pipeline.py` | Reads the bank, parses inputs, dispatches methods, records traces, and renders answers. |
-| `automatic_trig_solver.py` | Trig rules, search, equality/domain checks, and standalone examples. |
-| `newclid_probe.py` | Original geometry proof attempt and its specific independent conclusion check. |
+| `pipeline.py` | Bank driver: spec → validate → strategy → verify → render. `--spec FILE` solves one spec without the bank. |
+| `mathcore/spec.py`, `parse.py`, `problem.py` | Input format, safe parser, source-level domain conditions. |
+| `mathcore/validate.py`, `sampling.py` | Pre-solve checks: claim truth at admissible points, consistency, plain-words restatement. |
+| `mathcore/rules/` | Named rule library (algebra, trig, AP, polynomial) with a registry the verifier replays from. |
+| `mathcore/engine.py`, `equality.py` | Rewrite search; exact equality and domain certificates. |
+| `mathcore/strategies/` | `identity`, `conditional`, `polynomial`, `geometry`; selection by goal and prescribed method. |
+| `mathcore/verify.py`, `render.py` | Independent trace checker; school-style answer templates. |
+| `specs/` | One problem spec per supported bank question. |
+| `evaluation/` | Development/evaluation split, generated variants, false controls; `python -m evaluation.run_eval` writes `results/eval_report.json`. |
+| `automatic_trig_solver.py` | Original single-angle trig search; kept as a standalone demo. |
+| `newclid_probe.py` | Geometry proof attempt and its specific independent conclusion check (used by the `geometry` strategy). |
 | `repair_yuclid_windows.py` | Repairs the missing Boost runtime for the tested Windows Yuclid executable. |
-| `formalizations.json` | Prepared question inputs and method names. |
-| `usage_walkthrough.py` | Shows actual inputs and outputs at each stage. |
-| `generalisation_check.py` | Runs the five-plus-five transfer experiment and false controls. |
-| `test_pipeline.py` | Automated tests for implemented behaviour. |
+| `legacy_pipeline.py`, `formalizations.json` | The previous per-method pipeline and its inputs, kept so the two experiment scripts below still reproduce. |
+| `usage_walkthrough.py` | Shows actual inputs and outputs at each stage (legacy pipeline). |
+| `generalisation_check.py` | Runs the five-plus-five transfer experiment and false controls (legacy pipeline). Its saved manifest records hashes of the old file name, so `--report-only` needs a fresh run. |
+| `evaluation/review_sheet.py` | Writes `results/readability_review.md`, a fixed stratified sample with a rubric for a teacher. |
+| `test_mathcore.py`, `test_pipeline.py` | Unit tests for the core; bank integration tests. |
 | `profiles.json` | Draft class/method metadata; currently not enforced. |
+| `method_map.json` | Curated assignment of every bank question to a reusable engine, with feasibility and build order. |
+| `bank_map.py` | Validates `method_map.json` against the bank and latest results; writes `BANK_MAP.md` and `results/bank_map.json`. |
 
 The bank and figure workflows expect matching data **outside the code checkout**:
 
@@ -98,11 +134,14 @@ Tested with Python 3.12, SymPy 1.13.3, Newclid 3.0.1, and py-yuclid 3.0.0 on Win
 py -3.12 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements-geometry.txt
 .\.venv\Scripts\python.exe pipeline.py
-.\.venv\Scripts\python.exe -m unittest -v test_pipeline
+.\.venv\Scripts\python.exe -m evaluation.run_eval
+.\.venv\Scripts\python.exe -m unittest -v test_mathcore test_pipeline
 ```
+
+**To run your own question papers, see [`RUNNING.md`](RUNNING.md)**: the command, the spec format, and what each status means. To try one question, write a spec in the same format as `specs/` and run `pipeline.py --spec path\to\spec.json`.
 
 If the tested Windows Yuclid executable fails to load its Boost DLLs, run `repair_yuclid_windows.py` with the same Python. It checksum-verifies a pinned Boost package, retains the original executable, patches its DLL import names, and tests startup. It requires network access on first download, Windows `tar`, and compatible installed Microsoft C++ runtime libraries. This workaround targets the tested wheel.
 
 For a bank-free trig demonstration, install `requirements.txt` and run `automatic_trig_solver.py`. Run `usage_walkthrough.py` or `generalisation_check.py` for the documented experiments.
 
-Generated bank outputs are `results/per_question_results.json`, `results/metrics.json`, and `results/sample_answers.md`. Detailed experiment inputs, traces, proofs, and errors are saved under `results/usage_walkthrough/` and `results/generalisation_check/`.
+Generated bank outputs are `results/per_question_results.json`, `results/metrics.json`, and `results/sample_answers.md`. Run `bank_map.py` after `pipeline.py` to refresh `BANK_MAP.md` and `results/bank_map.json`. Detailed experiment inputs, traces, proofs, and errors are saved under `results/usage_walkthrough/` and `results/generalisation_check/`.

@@ -1,0 +1,36 @@
+{
+  "id": "PD-MATH-XII-004",
+  "variables": {
+    "x": [
+      "real"
+    ],
+    "y": [
+      "positive"
+    ]
+  },
+  "functions": {
+    "y": {
+      "of": "x",
+      "derivatives": [
+        "y1",
+        "y2"
+      ],
+      "notation": "subscript"
+    }
+  },
+  "hypotheses": [
+    {
+      "lhs": "log(y)",
+      "rhs": "atan(x)",
+      "quote": "log y = tan⁻¹ x"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "(1+x**2)*y2+(2*x-1)*y1",
+    "rhs": "0"
+  },
+  "quotes": {
+    "goal": "(1 + x²)y₂ + (2x - 1)y₁ = 0"
+  }
+}

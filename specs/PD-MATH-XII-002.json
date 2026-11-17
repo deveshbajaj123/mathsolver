@@ -1,0 +1,37 @@
+{
+  "id": "PD-MATH-XII-002",
+  "variables": {
+    "x": [
+      "positive"
+    ],
+    "y": [
+      "real",
+      "nonzero"
+    ]
+  },
+  "functions": {
+    "y": {
+      "of": "x",
+      "derivatives": [
+        "y1",
+        "y2"
+      ]
+    }
+  },
+  "hypotheses": [
+    {
+      "lhs": "y",
+      "rhs": "x**x",
+      "quote": "y = x^x"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "y2-y1**2/y-y/x",
+    "rhs": "0"
+  },
+  "quotes": {
+    "goal": "d²y/dx² - (1/y)(dy/dx)² - y/x = 0"
+  },
+  "note": "x > 0 so x^x is defined; y1, y2 denote dy/dx and d²y/dx²."
+}

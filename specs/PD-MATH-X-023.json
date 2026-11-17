@@ -1,0 +1,28 @@
+{
+  "id": "PD-MATH-X-023",
+  "variables": {
+    "X": [
+      "integer",
+      "positive"
+    ]
+  },
+  "sequences": {
+    "N": {
+      "type": "ap",
+      "first": "1",
+      "difference": "1"
+    }
+  },
+  "goal": {
+    "kind": "find_value",
+    "variable": "X",
+    "lhs": "sum(N, X-1)",
+    "rhs": "sum(N, 49)-sum(N, X)",
+    "low": "1",
+    "high": "49"
+  },
+  "quotes": {
+    "goal": "there exists a value of X such that sum of numbers of houses preceding the house numbered X is equal to sum of the numbers of houses following X"
+  },
+  "note": "House numbers 1..49 form the AP N; the sum after X is S_49 - S_X."
+}

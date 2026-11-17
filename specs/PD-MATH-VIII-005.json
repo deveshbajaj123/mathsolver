@@ -1,0 +1,26 @@
+{
+  "id": "PD-MATH-VIII-005",
+  "variables": {
+    "x": [
+      "positive"
+    ],
+    "a": [
+      "real"
+    ],
+    "b": [
+      "real"
+    ],
+    "c": [
+      "real"
+    ]
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "(x**(a+b))**(a-b)*(x**(b+c))**(b-c)*(x**(c+a))**(c-a)",
+    "rhs": "1"
+  },
+  "quotes": {
+    "goal": "(x^{a+b})^{a-b} × (x^{b+c})^{b-c} × (x^{c+a})^{c-a} = 1"
+  },
+  "note": "x taken positive so real indices are defined."
+}

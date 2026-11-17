@@ -1,0 +1,38 @@
+{
+  "id": "PD-MATH-X-022",
+  "variables": {
+    "n": [
+      "integer",
+      "positive"
+    ]
+  },
+  "sequences": {
+    "P": {
+      "type": "ap",
+      "first": "1",
+      "difference": "1",
+      "sum_label": "S_1"
+    },
+    "Q": {
+      "type": "ap",
+      "first": "1",
+      "difference": "2",
+      "sum_label": "S_2"
+    },
+    "R": {
+      "type": "ap",
+      "first": "1",
+      "difference": "3",
+      "sum_label": "S_3"
+    }
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "sum(P, n) + sum(R, n)",
+    "rhs": "2*sum(Q, n)"
+  },
+  "quotes": {
+    "sequences": "The first term of each A.P. is 1 and their common differences are 1, 2 and 3 respectively.",
+    "goal": "S_1 + S_3 = 2S_2"
+  }
+}

@@ -74,7 +74,7 @@ def worker(case):
               "llm_api_calls": 0, "llm_api_tokens": 0, "counted_in_production_metrics": False}
     try:
         if "lhs" in case:
-            from pipeline import trig
+            from legacy_pipeline import trig
             bank = json.loads((HERE.parent/"proofs_derivations_core_json"/"mathematics_core.json").read_text(encoding="utf-8"))
             q = dict(next(q for q in bank["questions"] if q["id"] == "PD-MATH-X-001"))
             q.update(id=case["id"], question_text_original=case["lhs"]+" = "+case["rhs"], question_text_cleaned=case["description"])
@@ -84,7 +84,7 @@ def worker(case):
                           domain_conditions=outcome["domain_conditions"],
                           independently_checked=outcome["status"] == "SOLVED_AND_TRACE_CHECKED")
             if outcome["status"] == "SOLVED_AND_TRACE_CHECKED":
-                from pipeline import render_answer
+                from legacy_pipeline import render_answer
                 result["rendered_answer"] = render_answer(outcome)
         else:
             from newclid.api import GeometricSolverBuilder
@@ -116,7 +116,7 @@ def worker(case):
 def run(report_only=False):
     OUT.mkdir(parents=True, exist_ok=True)
     cases = TRIG+GEOMETRY+CONTROLS
-    frozen_files = ("pipeline.py", "automatic_trig_solver.py", "newclid_probe.py", "formalizations.json")
+    frozen_files = ("legacy_pipeline.py", "automatic_trig_solver.py", "newclid_probe.py", "formalizations.json")
     hashes = {n: hashlib.sha256((HERE/n).read_bytes()).hexdigest() for n in frozen_files}
     if report_only:
         manifest = json.loads((OUT/"manifest.json").read_text(encoding="utf-8"))
@@ -143,7 +143,7 @@ def run(report_only=False):
         (OUT/f"{case['id']}.json").write_text(json.dumps(outcome,ensure_ascii=False,indent=2),encoding="utf-8")
         print(json.dumps({k:outcome[k] for k in ("id","status","seconds","error") if k in outcome}),flush=True)
     unchanged = hashes == {n: hashlib.sha256((HERE/n).read_bytes()).hexdigest() for n in frozen_files}
-    from pipeline import classify_unsolved
+    from legacy_pipeline import classify_unsolved
     bank = {q['id']:q for q in json.loads((HERE.parent/"proofs_derivations_core_json"/"mathematics_core.json").read_text(encoding="utf-8"))['questions']}
     production_specs = json.loads((HERE/"formalizations.json").read_text(encoding="utf-8"))
     for case, outcome in zip(cases, outcomes):

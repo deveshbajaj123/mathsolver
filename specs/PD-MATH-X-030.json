@@ -1,0 +1,18 @@
+{
+  "id": "PD-MATH-X-030",
+  "variables": {
+    "x": [
+      "real"
+    ]
+  },
+  "prescribed_method": "completing_square",
+  "goal": {
+    "kind": "show_no_real_roots",
+    "polynomial": "x**2-8*x+18",
+    "variable": "x"
+  },
+  "quotes": {
+    "goal": "Using completing the square method, show that the equation x^2 - 8x + 18 = 0 has no solution."
+  },
+  "note": "'No solution' read as no real solution."
+}

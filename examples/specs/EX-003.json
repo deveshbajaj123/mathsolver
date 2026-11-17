@@ -1,0 +1,35 @@
+{
+  "id": "EX-003",
+  "variables": {
+    "x": [
+      "real"
+    ],
+    "y": [
+      "real"
+    ]
+  },
+  "functions": {
+    "y": {
+      "of": "x",
+      "derivatives": [
+        "y1"
+      ]
+    }
+  },
+  "hypotheses": [
+    {
+      "lhs": "y",
+      "rhs": "log(x**2+1)",
+      "quote": "y = log(x^2 + 1)"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "(x**2+1)*y1",
+    "rhs": "2*x"
+  },
+  "quotes": {
+    "goal": "(x^2 + 1) dy/dx = 2x"
+  },
+  "note": "y1 denotes dy/dx."
+}

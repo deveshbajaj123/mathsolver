@@ -1,0 +1,17 @@
+{
+  "id": "PD-MATH-X-002",
+  "variables": {
+    "A": [
+      "real"
+    ]
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "sec(A)**4*(1-sin(A)**4)-2*tan(A)**2",
+    "rhs": "1"
+  },
+  "quotes": {
+    "goal": "sec⁴A(1 - sin⁴A) - 2tan²A = 1"
+  },
+  "note": "Unicode superscripts written as powers."
+}

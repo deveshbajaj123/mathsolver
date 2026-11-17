@@ -1,0 +1,32 @@
+{
+  "id": "PD-MATH-IX-015",
+  "variables": {
+    "a": [
+      "real",
+      "nonzero"
+    ],
+    "b": [
+      "real",
+      "nonzero"
+    ],
+    "c": [
+      "real",
+      "nonzero"
+    ]
+  },
+  "hypotheses": [
+    {
+      "lhs": "a*b*c",
+      "rhs": "1",
+      "quote": "abc = 1"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "1/(1+a+b**-1)+1/(1+b+c**-1)+1/(1+c+a**-1)",
+    "rhs": "1"
+  },
+  "quotes": {
+    "goal": "1/(1+a+b⁻¹) + 1/(1+b+c⁻¹) + 1/(1+c+a⁻¹) = 1"
+  }
+}

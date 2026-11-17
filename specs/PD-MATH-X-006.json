@@ -1,0 +1,34 @@
+{
+  "id": "PD-MATH-X-006",
+  "variables": {
+    "a": [
+      "real"
+    ],
+    "b": [
+      "real",
+      "nonzero"
+    ],
+    "x": [
+      "real"
+    ],
+    "y": [
+      "real",
+      "nonzero"
+    ]
+  },
+  "hypotheses": [
+    {
+      "lhs": "(a**2+b**2)*(x**2+y**2)",
+      "rhs": "(a*x+b*y)**2",
+      "quote": "(a² + b²)(x² + y²) = (ax + by)²"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "x/y",
+    "rhs": "a/b"
+  },
+  "quotes": {
+    "goal": "x/y = a/b"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "PD-MATH-X-001",
+  "variables": {
+    "A": [
+      "real"
+    ]
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "(sin(A)+csc(A))**2+(cos(A)+sec(A))**2",
+    "rhs": "5+sec(A)**2*csc(A)**2"
+  },
+  "quotes": {
+    "goal": "(sin A + cosec A)^2 + (cos A + sec A)^2 = 5 + sec^2 A cosec^2 A"
+  },
+  "note": "Cosec written csc."
+}

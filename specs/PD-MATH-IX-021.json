@@ -1,0 +1,43 @@
+{
+  "id": "PD-MATH-IX-021",
+  "variables": {
+    "a": [
+      "positive"
+    ],
+    "b": [
+      "positive"
+    ],
+    "c": [
+      "positive"
+    ]
+  },
+  "hypotheses": [
+    {
+      "kind": "equal_ratios",
+      "ratios": [
+        [
+          "log(a)",
+          "b-c"
+        ],
+        [
+          "log(b)",
+          "c-a"
+        ],
+        [
+          "log(c)",
+          "a-b"
+        ]
+      ],
+      "quote": "log a/(b-c) = log b/(c-a) = log c/(a-b)"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "a**a*b**b*c**c",
+    "rhs": "1"
+  },
+  "quotes": {
+    "goal": "aᵃ.bᵇ.cᶜ = 1"
+  },
+  "note": "a, b, c positive so the logarithms are defined. Source issue: no real a, b, c satisfy the givens. With each ratio equal to k, any ordering of distinct a, b, c forces a sign contradiction (e.g. a > b > c, k > 0 gives a > 1, c > 1 but b < 1); a = b = c = 1 makes the denominators zero. The claim is therefore vacuous, and validation correctly finds no admissible values."
+}

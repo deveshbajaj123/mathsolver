@@ -1,0 +1,37 @@
+{
+  "id": "PD-MATH-XII-003",
+  "variables": {
+    "x": [
+      "real",
+      "nonzero"
+    ],
+    "y": [
+      "real",
+      "nonzero"
+    ]
+  },
+  "functions": {
+    "y": {
+      "of": "x",
+      "derivatives": [
+        "y1"
+      ]
+    }
+  },
+  "hypotheses": [
+    {
+      "lhs": "x*y",
+      "rhs": "exp(x-y)",
+      "quote": "xy = e^(x-y)"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "y1",
+    "rhs": "y*(x-1)/(x*(y+1))"
+  },
+  "quotes": {
+    "goal": "dy/dx = y(x-1)/(x(y+1))"
+  },
+  "note": "y1 denotes dy/dx."
+}

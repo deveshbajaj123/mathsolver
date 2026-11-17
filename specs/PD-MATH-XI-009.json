@@ -1,0 +1,40 @@
+{
+  "id": "PD-MATH-XI-009",
+  "variables": {
+    "a": [
+      "real",
+      "nonzero"
+    ],
+    "b": [
+      "real",
+      "nonzero"
+    ],
+    "c": [
+      "real",
+      "nonzero"
+    ]
+  },
+  "hypotheses": [
+    {
+      "kind": "in_gp",
+      "terms": [
+        "a**2+b**2",
+        "a*b+b*c",
+        "b**2+c**2"
+      ],
+      "quote": "a² + b², ab + bc and b² + c² are in G.P."
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "in_gp": [
+      "a",
+      "b",
+      "c"
+    ]
+  },
+  "quotes": {
+    "goal": "a, b, c are also in GP"
+  },
+  "note": "Terms of a GP are nonzero."
+}

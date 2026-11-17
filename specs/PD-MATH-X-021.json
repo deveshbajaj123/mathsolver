@@ -1,0 +1,34 @@
+{
+  "id": "PD-MATH-X-021",
+  "variables": {
+    "a": [
+      "real"
+    ],
+    "d": [
+      "real"
+    ]
+  },
+  "sequences": {
+    "T": {
+      "type": "ap",
+      "first": "a",
+      "difference": "d"
+    }
+  },
+  "hypotheses": [
+    {
+      "lhs": "term(T, 4)",
+      "rhs": "0",
+      "quote": "The 4th term of an A.P. is zero."
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "lhs": "term(T, 25)",
+    "rhs": "3*term(T, 11)"
+  },
+  "quotes": {
+    "goal": "the 25th term of the A.P. is three times its 11th term"
+  },
+  "note": "First term a and common difference d introduced as names."
+}

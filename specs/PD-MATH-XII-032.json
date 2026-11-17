@@ -1,0 +1,31 @@
+{
+  "id": "PD-MATH-XII-032",
+  "variables": {
+    "x": [
+      "real"
+    ],
+    "a": [
+      "positive"
+    ]
+  },
+  "abstract": [
+    "f"
+  ],
+  "goal": {
+    "kind": "prove_identity",
+    "parts": [
+      {
+        "lhs": "integral(f(x), x, 0, a)",
+        "rhs": "integral(f(a-x), x, 0, a)"
+      },
+      {
+        "lhs": "integral(x*sin(x)/(1+cos(x)**2), x, 0, pi)",
+        "rhs": "pi**2/4"
+      }
+    ]
+  },
+  "quotes": {
+    "goal": "Prove that ∫₀ᵃ f(x) dx = ∫₀ᵃ f(a-x) dx, hence evaluate ∫₀^π x sin x/(1 + cos² x) dx."
+  },
+  "note": "f is any function integrable on [0, a]. The value π²/4 is the known answer of the evaluation; validation checks it numerically."
+}

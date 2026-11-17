@@ -1,0 +1,17 @@
+{
+  "id": "PD-MATH-XII-019",
+  "variables": {
+    "x": [
+      "real"
+    ]
+  },
+  "goal": {
+    "kind": "monotonic",
+    "function": "x**3-3*x**2+6*x-100",
+    "variable": "x",
+    "direction": "increasing"
+  },
+  "quotes": {
+    "goal": "Show that the function f(x) = x³ - 3x² + 6x - 100 is increasing on R."
+  }
+}

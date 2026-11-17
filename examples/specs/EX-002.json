@@ -1,0 +1,17 @@
+{
+  "id": "EX-002",
+  "variables": {
+    "x": [
+      "real"
+    ]
+  },
+  "goal": {
+    "kind": "monotonic",
+    "function": "x**3+3*x+5",
+    "variable": "x",
+    "direction": "increasing"
+  },
+  "quotes": {
+    "goal": "f(x) = x^3 + 3x + 5 is increasing on R"
+  }
+}

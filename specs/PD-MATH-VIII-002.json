@@ -1,0 +1,33 @@
+{
+  "id": "PD-MATH-VIII-002",
+  "variables": {
+    "x": [
+      "real",
+      "nonzero"
+    ]
+  },
+  "hypotheses": [
+    {
+      "lhs": "x+1/x",
+      "rhs": "2",
+      "quote": "x + 1/x = 2"
+    }
+  ],
+  "goal": {
+    "kind": "prove_from_hypotheses",
+    "parts": [
+      {
+        "lhs": "x**2+1/x**2",
+        "rhs": "x**3+1/x**3"
+      },
+      {
+        "lhs": "x**3+1/x**3",
+        "rhs": "x**4+1/x**4"
+      }
+    ]
+  },
+  "quotes": {
+    "goal": "x² + 1/x² = x³ + 1/x³ = x⁴ + 1/x⁴"
+  },
+  "note": "The chained equality is split into two parts."
+}

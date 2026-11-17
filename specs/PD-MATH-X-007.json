@@ -1,0 +1,18 @@
+{
+  "id": "PD-MATH-X-007",
+  "variables": {
+    "x": [
+      "real"
+    ]
+  },
+  "prescribed_method": "factor_theorem",
+  "goal": {
+    "kind": "factor_theorem",
+    "polynomial": "3*x**3+2*x**2-3*x-2",
+    "factor": "3*x+2",
+    "variable": "x"
+  },
+  "quotes": {
+    "goal": "Using factor theorem show that (3x + 2) is a factor of 3x^3 + 2x^2 - 3x - 2. Hence, factorise the expression completely."
+  }
+}

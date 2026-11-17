@@ -1,0 +1,40 @@
+{
+  "id": "PD-MATH-XII-017",
+  "variables": {
+    "a": [
+      "positive"
+    ],
+    "b": [
+      "positive"
+    ],
+    "c": [
+      "positive"
+    ]
+  },
+  "hypotheses": [
+    {
+      "lhs": "a**2+b**2",
+      "rhs": "c**2",
+      "quote": "a right-angled triangle of given hypotenuse"
+    }
+  ],
+  "goal": {
+    "kind": "extremum",
+    "objective": "a*b/2",
+    "variable": "a",
+    "type": "max",
+    "eliminate": [
+      "b"
+    ],
+    "claims": [
+      {
+        "lhs": "a",
+        "rhs": "b"
+      }
+    ]
+  },
+  "quotes": {
+    "goal": "the area of a right-angled triangle of given hypotenuse is maximum when the triangle is isosceles"
+  },
+  "note": "Legs a, b and fixed hypotenuse c; isosceles means a = b at the maximum."
+}

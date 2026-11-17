@@ -12,7 +12,7 @@ from pathlib import Path
 import sympy as sp
 
 from automatic_trig_solver import domain_safe, exact_equal
-from pipeline import (HERE, isosceles_midpoint_geometry, parse_math,
+from legacy_pipeline import (HERE, isosceles_midpoint_geometry, parse_math,
                       render_answer, source_domain_factors, trig)
 
 OUT = HERE / "results" / "usage_walkthrough"

@@ -1,0 +1,44 @@
+{
+  "id": "PD-MATH-XII-016",
+  "variables": {
+    "h": [
+      "positive"
+    ],
+    "r": [
+      "positive"
+    ],
+    "R": [
+      "positive"
+    ]
+  },
+  "hypotheses": [
+    {
+      "lhs": "r**2+(h/2)**2",
+      "rhs": "R**2",
+      "quote": "a cylinder inscribed in a sphere of radius R (radius, half-height and R form a right triangle)"
+    }
+  ],
+  "goal": {
+    "kind": "extremum",
+    "objective": "pi*r**2*h",
+    "variable": "h",
+    "type": "max",
+    "eliminate": [
+      "r"
+    ],
+    "claims": [
+      {
+        "lhs": "h",
+        "rhs": "2*R/sqrt(3)"
+      },
+      {
+        "lhs": "pi*r**2*h",
+        "rhs": "4*pi*R**3/(3*sqrt(3))"
+      }
+    ]
+  },
+  "quotes": {
+    "goal": "Show that the height of a cylinder of maximum volume that can be inscribed in a sphere of radius R is 2R/√3. Find the volume of the largest cylinder."
+  },
+  "note": "Cylinder radius r and height h; the maximum volume 4πR³/(3√3) is stated as a claim so it is checked."
+}

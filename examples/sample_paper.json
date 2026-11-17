@@ -1,0 +1,44 @@
+{
+  "questions": [
+    {
+      "id": "EX-001",
+      "topic": "trigonometry",
+      "class": "XII",
+      "task_kind": "proof",
+      "question_text_original": "Prove that (sin x + cos x)^2 = 1 + sin 2x.",
+      "question_text_cleaned": "Prove that (sin x + cos x)^2 = 1 + sin 2x."
+    },
+    {
+      "id": "EX-002",
+      "topic": "calculus",
+      "class": "XII",
+      "task_kind": "proof",
+      "question_text_original": "Show that f(x) = x^3 + 3x + 5 is increasing on R.",
+      "question_text_cleaned": "Show that f(x) = x^3 + 3x + 5 is increasing on R."
+    },
+    {
+      "id": "EX-003",
+      "topic": "calculus",
+      "class": "XII",
+      "task_kind": "proof",
+      "question_text_original": "If y = log(x^2 + 1), show that (x^2 + 1) dy/dx = 2x.",
+      "question_text_cleaned": "If y = log(x^2 + 1), show that (x^2 + 1) dy/dx = 2x."
+    },
+    {
+      "id": "EX-004",
+      "topic": "algebra",
+      "class": "XII",
+      "task_kind": "proof",
+      "question_text_original": "Prove that (a + b)^2 = a^2 + b^2.",
+      "question_text_cleaned": "Prove that (a + b)^2 = a^2 + b^2."
+    },
+    {
+      "id": "EX-005",
+      "topic": "calculus",
+      "class": "XII",
+      "task_kind": "proof",
+      "question_text_original": "Find the area enclosed by y = x^2 and y = x.",
+      "question_text_cleaned": "Find the area enclosed by y = x^2 and y = x."
+    }
+  ]
+}
