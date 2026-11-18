@@ -7,31 +7,31 @@ PD-MATH-VIII-002,SOLVED_AND_TRACE_CHECKED,conditional,
 PD-MATH-VIII-003,UNSUPPORTED,,The supplied figure has no verified symbolic geometry encoding or Newclid replay.
 PD-MATH-VIII-004,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-VIII-005,SOLVED_AND_TRACE_CHECKED,identity,
-PD-MATH-IX-001,UNSUPPORTED,,No spec has been written for this question yet.
+PD-MATH-IX-001,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-IX-002,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-IX-003,UNSUPPORTED,,The supplied figure has no verified symbolic geometry encoding or Newclid replay.
-PD-MATH-IX-004,UNSUPPORTED,,No spec has been written for this question yet.
+PD-MATH-IX-004,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-IX-005,SOLVED_AND_TRACE_CHECKED,identity,
-PD-MATH-IX-006,UNSUPPORTED,,The supplied figure has no verified symbolic geometry encoding or Newclid replay.
-PD-MATH-IX-007,UNSUPPORTED,,No spec has been written for this question yet.
+PD-MATH-IX-006,SOLVED_AND_TRACE_CHECKED,identity,
+PD-MATH-IX-007,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-IX-008,UNSUPPORTED,,The supplied figure has no verified symbolic geometry encoding or Newclid replay.
-PD-MATH-IX-009,UNSUPPORTED,,The supplied figure has no verified symbolic geometry encoding or Newclid replay.
+PD-MATH-IX-009,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-IX-010,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-IX-011,UNSUPPORTED,,The supplied figure has no verified symbolic geometry encoding or Newclid replay.
 PD-MATH-IX-012,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-IX-013,SOLVED_AND_TRACE_CHECKED,conditional,
-PD-MATH-IX-014,UNSUPPORTED,,No spec has been written for this question yet.
+PD-MATH-IX-014,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-IX-015,SOLVED_AND_TRACE_CHECKED,conditional,
 PD-MATH-IX-016,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-IX-017,UNSUPPORTED,,The supplied figure has no verified symbolic geometry encoding or Newclid replay.
 PD-MATH-IX-018,UNSUPPORTED,,The supplied figure has no verified symbolic geometry encoding or Newclid replay.
-PD-MATH-IX-019,UNSUPPORTED,,No spec has been written for this question yet.
+PD-MATH-IX-019,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-IX-020,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-IX-021,INPUT_AMBIGUOUS,,"Found only 0 values satisfying the givens and the domain; the givens may be contradictory, or the spec may be misread."
 PD-MATH-IX-022,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-IX-023,UNSUPPORTED,,No spec has been written for this question yet.
-PD-MATH-IX-024,UNSUPPORTED,,No spec has been written for this question yet.
-PD-MATH-IX-025,UNSUPPORTED,,No spec has been written for this question yet.
+PD-MATH-IX-024,SOLVED_AND_TRACE_CHECKED,identity,
+PD-MATH-IX-025,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-X-001,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-X-002,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-X-003,SOLVED_AND_TRACE_CHECKED,conditional,
@@ -40,7 +40,7 @@ PD-MATH-X-005,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-X-006,SOLVED_AND_TRACE_CHECKED,conditional,
 PD-MATH-X-007,SOLVED_AND_TRACE_CHECKED,polynomial,
 PD-MATH-X-008,UNSUPPORTED,,The supplied figure has no verified symbolic geometry encoding or Newclid replay.
-PD-MATH-X-009,UNSUPPORTED,,No spec has been written for this question yet.
+PD-MATH-X-009,SOLVED_AND_TRACE_CHECKED,componendo_dividendo,
 PD-MATH-X-010,SOLVED_AND_TRACE_CHECKED,conditional,
 PD-MATH-X-011,SOLVED_AND_TRACE_CHECKED,conditional,
 PD-MATH-X-012,UNSUPPORTED,,No spec has been written for this question yet.
@@ -48,7 +48,7 @@ PD-MATH-X-013,UNSUPPORTED,,The supplied figure has no verified symbolic geometry
 PD-MATH-X-014,UNSUPPORTED,,The supplied figure has no verified symbolic geometry encoding or Newclid replay.
 PD-MATH-X-015,SOLVED_AND_TRACE_CHECKED,conditional,
 PD-MATH-X-016,UNSUPPORTED,,No spec has been written for this question yet.
-PD-MATH-X-017,UNSUPPORTED,,No spec has been written for this question yet.
+PD-MATH-X-017,SOLVED_AND_TRACE_CHECKED,conditional,
 PD-MATH-X-018,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-X-019,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-X-020,UNSUPPORTED,,No spec has been written for this question yet.
@@ -56,10 +56,10 @@ PD-MATH-X-021,SOLVED_AND_TRACE_CHECKED,conditional,
 PD-MATH-X-022,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-X-023,SOLVED_AND_TRACE_CHECKED,find_value,
 PD-MATH-X-024,UNSUPPORTED,,The supplied figure has no verified symbolic geometry encoding or Newclid replay.
-PD-MATH-X-025,UNSUPPORTED,,No spec has been written for this question yet.
+PD-MATH-X-025,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-X-026,SOLVED_AND_TRACE_CHECKED,conditional,
 PD-MATH-X-027,UNSUPPORTED,,No spec has been written for this question yet.
-PD-MATH-X-028,UNSUPPORTED,,No spec has been written for this question yet.
+PD-MATH-X-028,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-X-029,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-X-030,SOLVED_AND_TRACE_CHECKED,polynomial,
 PD-MATH-XI-001,UNSUPPORTED,,No spec has been written for this question yet.
@@ -67,7 +67,7 @@ PD-MATH-XI-002,SOLVED_AND_TRACE_CHECKED,conditional,
 PD-MATH-XI-003,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-XI-004,SOLVED_AND_TRACE_CHECKED,conditional,
 PD-MATH-XI-005,SOLVED_AND_TRACE_CHECKED,difference,
-PD-MATH-XI-006,UNSUPPORTED,,No spec has been written for this question yet.
+PD-MATH-XI-006,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-XI-007,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-XI-008,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-XI-009,SOLVED_AND_TRACE_CHECKED,conditional,
@@ -86,12 +86,12 @@ PD-MATH-XI-021,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-XI-022,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-XI-023,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-XI-024,UNSUPPORTED,,No spec has been written for this question yet.
-PD-MATH-XI-025,UNSUPPORTED,,No spec has been written for this question yet.
+PD-MATH-XI-025,SOLVED_AND_TRACE_CHECKED,one_real_roots,
 PD-MATH-XI-026,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-XI-027,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-XI-028,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-XI-029,UNSUPPORTED,,No spec has been written for this question yet.
-PD-MATH-XI-030,UNSUPPORTED,,No spec has been written for this question yet.
+PD-MATH-XI-030,SOLVED_AND_TRACE_CHECKED,only_solution,
 PD-MATH-XI-031,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-XII-001,SOLVED_AND_TRACE_CHECKED,derivative_relation,
 PD-MATH-XII-002,SOLVED_AND_TRACE_CHECKED,derivative_relation,
@@ -102,8 +102,8 @@ PD-MATH-XII-006,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-XII-007,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-XII-008,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-XII-009,UNSUPPORTED,,No spec has been written for this question yet.
-PD-MATH-XII-010,UNSUPPORTED,,No spec has been written for this question yet.
-PD-MATH-XII-011,UNSUPPORTED,,No spec has been written for this question yet.
+PD-MATH-XII-010,SOLVED_AND_TRACE_CHECKED,identity,
+PD-MATH-XII-011,SOLVED_AND_TRACE_CHECKED,identity,
 PD-MATH-XII-012,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-XII-013,UNSUPPORTED,,No spec has been written for this question yet.
 PD-MATH-XII-014,UNSUPPORTED,,No spec has been written for this question yet.

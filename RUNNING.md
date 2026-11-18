@@ -67,7 +67,7 @@ An answer is only marked as a pass when the verifier accepts it; a wrong proof s
 
 ## 4. Writing specs (what to tell the Claude session)
 
-Point the session at this file, `mathcore/spec.py` (the schema, checked on load) and the 47 examples in `specs/`. Ask it to write one `<id>.json` per question, **transcribing** the question only, never adding steps. Then run the pipeline.
+Point the session at this file, `mathcore/spec.py` (the schema, checked on load) and the examples in `specs/`. Ask it to write one `<id>.json` per question, **transcribing** the question only, never adding steps. Then run the pipeline.
 
 Spec fields:
 
@@ -81,7 +81,11 @@ Spec fields:
 | `definitions` | `{"C": {"of": "x", "expr": "..."}}`: a named function C(x) |
 | `abstract` | Names of unspecified functions, e.g. `["f"]` for a property of integrals |
 | `sequences` | `{"a": {"type": "ap", "first": "a1", "difference": "d"}}` (or `gp` with `ratio`) |
-| `prescribed_method` | Only if the question says "using ...": `factor_theorem` or `completing_square` |
+| `prescribed_method` | Only if the question says "using ...": `factor_theorem`, `completing_square` or `componendo_dividendo` |
+| `intervals` | `{"x": ["0", "pi/4"]}`: x lies strictly between the two (needed for inverse trig and square roots whose sign depends on x) |
+| `points` | Coordinate geometry: `{"A": ["0", "0"], "B": ["2*a", "0"], ...}`, coordinates in declared variables |
+| `figure` | Required with `points`: what the question/figure states, e.g. `["midpoint", "D", "B", "C"]`, `["right_angle", "A", "B", "C"]` (angle at B), `["perpendicular", "A", "B", "C", "D"]`, `["parallel", ...]`, `["equal_length", "A", "B", "C", "D"]`, `["collinear", "P", "A", "B"]`, `["on_line", "P", "A", "B"]`. Each is checked against the coordinates; a wrong encoding is rejected |
+| `nondegenerate` | Optional: `[["A", "B", "C"]]`, triangles that must have nonzero area |
 | `quotes` | Source words for each field, e.g. `{"goal": "..."}`, so a reviewer can check the transcription |
 | `note` | Any interpretation made (e.g. "log base not printed; natural log used") |
 
@@ -99,9 +103,14 @@ Goal kinds:
 | `first_principles` | `function`, `variable` | Derivative from first principles |
 | `monotonic` | `function`, `variable`, `direction` | Increasing / decreasing |
 | `extremum` | `objective`, `variable`, `type` (`max`/`min`); optional `eliminate`, `claims` | Maxima and minima word problems |
-| `geometry_jgex` | `jgex`, `figure_asset_id` | Euclidean geometry (Newclid) |
+| `general_solution` | `variable`, `lhs`, `rhs` | All solutions of a trig equation, as families in an integer n |
+| `one_real_roots` | `variable`, `polynomials` (list of quadratics) | "At least one of these equations has real roots" |
+| `only_solution` | `variable`, `lhs`, `rhs`, `value` | "Show the only real solution is x = value" (by contradiction) |
+| `geometry_jgex` | `jgex`, `figure_asset_id` | Euclidean geometry (Newclid; one reviewed encoding only) |
 
-Expressions use SymPy syntax: `x**2`, `sqrt(2)`, `sin(x)`, `exp(x)`, `log(x)` (natural), `pi`, `diff(f, x)`, `integral(f, x, a, b)`.
+**Geometry by coordinates.** Most geometry proofs are written as `prove_identity` / `prove_from_hypotheses` with `points` and `figure`. Inside expressions, `dist2(A,B)` is AB², `dist(A,B)` is AB, `dot(A,B,C,D)` is the dot product of vectors AB and CD (0 means perpendicular), `cross(A,B,C,D)` is their cross product (0 means parallel), `area(A,B,C)` is the signed area of triangle ABC, and `xcoord(A)`, `ycoord(A)` are coordinates. Choose axes to make the coordinates simple (a right angle at the origin, a side along an axis), name the figure facts the coordinates encode, and say how the axes were chosen in `note`. Do not use coordinates to prove Pythagoras' theorem itself (the distance formula assumes it). Example: `specs/PD-MATH-IX-007.json`.
+
+Expressions use SymPy syntax: `x**2`, `sqrt(2)`, `sin(x)`, `exp(x)`, `log(x)` (natural), `pi`, `asin(x)`, `acos(x)`, `atan(x)`, `acot(x)`, `diff(f, x)`, `integral(f, x, a, b)`.
 
 Example (`examples/specs/EX-003.json`):
 
@@ -121,7 +130,7 @@ To check one spec quickly: `.\.venv\Scripts\python.exe pipeline.py --spec path\t
 
 ## 5. What is covered today
 
-Algebra (identities, conditional identities, AP/GP, factor theorem, polynomials, logs and indices), trigonometry (identities, compound angles, conditional identities, values, equations on an interval), calculus (implicit/log differentiation, first principles, monotonicity, maxima/minima, definite integrals and their properties) and one geometry route. On the main bank: 46 of 135 solved, 86 unsupported (mostly topics not built yet: vectors, matrices, statistics, coordinate geometry, integration by parts, area, differential equations), 3 source issues. See `README.md` and `BUILD_PLAN.md` for detail and known gaps.
+Algebra (identities, conditional identities, AP/GP, factor theorem, polynomials, logs and indices), trigonometry (identities, compound angles, conditional identities, values, equations on an interval), calculus (implicit/log differentiation, first principles, monotonicity, maxima/minima, definite integrals and their properties) inverse trig (with branch checks), general solutions of trig equations, componendo–dividendo, discriminant and contradiction arguments, and geometry by coordinates (lengths, midpoints, parallels, perpendiculars, areas). On the main bank: 64 of 135 solved, 68 unsupported (mostly topics not built yet: vectors, matrices, sets, probability, induction, complex numbers, angle/circle geometry, integration by parts), 3 source issues. See `README.md` and `BUILD_PLAN.md` for detail and known gaps.
 
 ## 6. Tests
 

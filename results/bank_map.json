@@ -1,8 +1,8 @@
 {
   "bank_question_count": 135,
   "status_counts": {
-    "UNSUPPORTED": 86,
-    "SOLVED_AND_TRACE_CHECKED": 46,
+    "UNSUPPORTED": 68,
+    "SOLVED_AND_TRACE_CHECKED": 64,
     "INPUT_AMBIGUOUS": 1,
     "SOURCE_NEEDS_CORRECTION": 2
   },
@@ -21,8 +21,8 @@
         "determinant_matrix"
       ],
       "rationale": "One shared piece of work (safe parser with log/sqrt/symbols/vectors, a generic hypotheses-and-goal spec, elimination and exact-zero checks) serves eight engines. Mostly high-feasibility text-only questions.",
-      "open": 33,
-      "priority_score": 27.5
+      "open": 27,
+      "priority_score": 22.0
     },
     {
       "phase": 2,
@@ -59,8 +59,8 @@
         "polynomial_theorems"
       ],
       "rationale": "Extend existing code: constrained identities, special angles, branches, discriminant.",
-      "open": 2,
-      "priority_score": 1.0
+      "open": 0,
+      "priority_score": 0
     },
     {
       "phase": 5,
@@ -69,8 +69,8 @@
         "synthetic_geometry"
       ],
       "rationale": "Largest group but highest cost per question: figure encoding, Newclid adapter gaps and school-style write-ups. Needs the interpretation stage for figures.",
-      "open": 27,
-      "priority_score": 11.5
+      "open": 19,
+      "priority_score": 7.9
     },
     {
       "phase": 6,
@@ -79,8 +79,8 @@
         "contradiction_inequality"
       ],
       "rationale": "Lowest automation yield; likely LLM-drafted with human review.",
-      "open": 5,
-      "priority_score": 1.3
+      "open": 3,
+      "priority_score": 0.3
     }
   ],
   "priority_formula": "sum over unsolved questions of feasibility weight {\"high\": 1.0, \"medium\": 0.5, \"low\": 0.1}",
@@ -91,13 +91,13 @@
       "status": "partial",
       "code": "newclid_probe.py, mathcore/strategies/geometry.py (one question)",
       "check": "Newclid proof plus independent symbolic-coordinate check of the conclusion",
-      "gaps": "Figure-to-JGEX encoding, length-equation adapter, school-style congruence write-ups",
+      "gaps": "Coordinate proofs cover lengths, midpoints, parallels, perpendiculars and areas. Not yet: angle equalities (bisectors), circles and arcs, congruence/similarity write-ups, constructions; Newclid has one reviewed encoding",
       "questions": 28,
-      "solved": 1,
-      "open": 27,
+      "solved": 9,
+      "open": 19,
       "open_by_feasibility": {
-        "medium": 22,
-        "low": 5
+        "medium": 15,
+        "low": 4
       },
       "figure_required": 13,
       "classes": [
@@ -106,7 +106,7 @@
         9,
         10
       ],
-      "priority_score": 11.5,
+      "priority_score": 7.9,
       "question_ids": [
         "PD-MATH-IX-001",
         "PD-MATH-IX-002",
@@ -258,32 +258,6 @@
       ]
     },
     {
-      "engine": "metric_geometry_coordinates",
-      "title": "Length/area relations proved by Pythagoras",
-      "status": "partial",
-      "code": "newclid_probe.py independent_replay",
-      "check": "Symbolic coordinates with right angle at origin; identity in squared lengths",
-      "gaps": "Student presentation should use Pythagoras on named triangles, not raw coordinates",
-      "questions": 4,
-      "solved": 0,
-      "open": 4,
-      "open_by_feasibility": {
-        "high": 4
-      },
-      "figure_required": 0,
-      "classes": [
-        9,
-        10
-      ],
-      "priority_score": 4.0,
-      "question_ids": [
-        "PD-MATH-IX-007",
-        "PD-MATH-IX-014",
-        "PD-MATH-IX-024",
-        "PD-MATH-X-028"
-      ]
-    },
-    {
       "engine": "relation_function",
       "title": "Relation and function properties",
       "status": "missing",
@@ -410,41 +384,6 @@
       ]
     },
     {
-      "engine": "constrained_relation",
-      "title": "Relations under given conditions",
-      "status": "implemented",
-      "code": "mathcore/strategies/identity.py (derive, conditional, difference, take_logs)",
-      "check": "Eliminate hypotheses (substitution, Groebner basis or parametrisation) and reduce target to zero; record non-zero divisors",
-      "gaps": "Sign/ordering reasoning and inequality givens (XI-006); prescribed componendo-dividendo with radicals (X-009)",
-      "questions": 12,
-      "solved": 9,
-      "open": 3,
-      "open_by_feasibility": {
-        "medium": 3
-      },
-      "figure_required": 1,
-      "classes": [
-        8,
-        9,
-        10
-      ],
-      "priority_score": 1.5,
-      "question_ids": [
-        "PD-MATH-IX-013",
-        "PD-MATH-IX-015",
-        "PD-MATH-IX-021",
-        "PD-MATH-VIII-001",
-        "PD-MATH-VIII-002",
-        "PD-MATH-X-003",
-        "PD-MATH-X-006",
-        "PD-MATH-X-009",
-        "PD-MATH-X-010",
-        "PD-MATH-X-011",
-        "PD-MATH-X-024",
-        "PD-MATH-X-026"
-      ]
-    },
-    {
       "engine": "differentiation",
       "title": "Derivatives, implicit differentiation, first principles, ODE verification",
       "status": "implemented",
@@ -478,83 +417,65 @@
       ]
     },
     {
+      "engine": "constrained_relation",
+      "title": "Relations under given conditions",
+      "status": "implemented",
+      "code": "mathcore/strategies/identity.py (derive, conditional, difference, take_logs)",
+      "check": "Eliminate hypotheses (substitution, Groebner basis or parametrisation) and reduce target to zero; record non-zero divisors",
+      "gaps": "Inequality givens; componendo–dividendo is implemented as a prescribed method (X-009)",
+      "questions": 12,
+      "solved": 10,
+      "open": 2,
+      "open_by_feasibility": {
+        "medium": 2
+      },
+      "figure_required": 1,
+      "classes": [
+        8,
+        9,
+        10
+      ],
+      "priority_score": 1.0,
+      "question_ids": [
+        "PD-MATH-IX-013",
+        "PD-MATH-IX-015",
+        "PD-MATH-IX-021",
+        "PD-MATH-VIII-001",
+        "PD-MATH-VIII-002",
+        "PD-MATH-X-003",
+        "PD-MATH-X-006",
+        "PD-MATH-X-009",
+        "PD-MATH-X-010",
+        "PD-MATH-X-011",
+        "PD-MATH-X-024",
+        "PD-MATH-X-026"
+      ]
+    },
+    {
       "engine": "contradiction_inequality",
       "title": "Contradiction, irrationality and inequalities",
-      "status": "missing",
-      "code": null,
+      "status": "partial",
+      "code": "mathcore/strategies/algebra_methods.py (one_real_roots, only_solution)",
       "check": "Case analysis and certified inequalities",
-      "gaps": "Open-ended reasoning; lowest automation yield",
+      "gaps": "Sum of discriminants and 'only real solution' are implemented; irrationality and triangle inequalities are not",
       "questions": 5,
-      "solved": 0,
-      "open": 5,
+      "solved": 2,
+      "open": 3,
       "open_by_feasibility": {
-        "low": 3,
-        "medium": 2
+        "low": 3
       },
       "figure_required": 1,
       "classes": [
         9,
         11
       ],
-      "priority_score": 1.3,
+      "priority_score": 0.3,
       "question_ids": [
         "PD-MATH-IX-010",
         "PD-MATH-IX-011",
         "PD-MATH-IX-023",
         "PD-MATH-XI-025",
         "PD-MATH-XI-030"
-      ]
-    },
-    {
-      "engine": "inverse_trig_branch",
-      "title": "Inverse trigonometric identities",
-      "status": "missing",
-      "code": null,
-      "check": "Principal-branch interval tracking, then exact tan/cos evaluation",
-      "gaps": "Branch intervals must be proved, not assumed",
-      "questions": 2,
-      "solved": 0,
-      "open": 2,
-      "open_by_feasibility": {
-        "medium": 2
-      },
-      "figure_required": 0,
-      "classes": [
-        12
-      ],
-      "priority_score": 1.0,
-      "question_ids": [
-        "PD-MATH-XII-010",
-        "PD-MATH-XII-011"
-      ]
-    },
-    {
-      "engine": "sequence_series",
-      "title": "AP/GP term and sum relations",
-      "status": "implemented",
-      "code": "mathcore/rules/sequences.py (AP and GP), mathcore/strategies/values.py",
-      "check": "Substitute general term/sum formulas and simplify the claimed relation",
-      "gaps": "AM/GM recovery needs ordering (XI-006)",
-      "questions": 7,
-      "solved": 6,
-      "open": 1,
-      "open_by_feasibility": {
-        "high": 1
-      },
-      "figure_required": 0,
-      "classes": [
-        10,
-        11
-      ],
-      "priority_score": 1.0,
-      "question_ids": [
-        "PD-MATH-X-021",
-        "PD-MATH-X-022",
-        "PD-MATH-X-023",
-        "PD-MATH-XI-005",
-        "PD-MATH-XI-006",
-        "PD-MATH-XI-009",
-        "PD-MATH-XI-013"
       ]
     },
     {
@@ -627,6 +548,51 @@
       ]
     },
     {
+      "engine": "inverse_trig_branch",
+      "title": "Inverse trigonometric identities",
+      "status": "implemented",
+      "code": "mathcore/rules/inverse_trig.py",
+      "check": "Principal-branch interval tracking, then exact tan/cos evaluation",
+      "gaps": "Branch conditions are proved for numbers and for one variable on a stated interval; several variables not yet",
+      "questions": 2,
+      "solved": 2,
+      "open": 0,
+      "open_by_feasibility": {},
+      "figure_required": 0,
+      "classes": [
+        12
+      ],
+      "priority_score": 0,
+      "question_ids": [
+        "PD-MATH-XII-010",
+        "PD-MATH-XII-011"
+      ]
+    },
+    {
+      "engine": "metric_geometry_coordinates",
+      "title": "Length/area relations proved by Pythagoras",
+      "status": "implemented",
+      "code": "mathcore/parse.py (points, dist2/dot/cross/area), mathcore/figure.py (figure facts checked), mathcore/render.py",
+      "check": "Symbolic coordinates with right angle at origin; identity in squared lengths",
+      "gaps": "Answers use coordinates, not Pythagoras on named triangles",
+      "questions": 4,
+      "solved": 4,
+      "open": 0,
+      "open_by_feasibility": {},
+      "figure_required": 0,
+      "classes": [
+        9,
+        10
+      ],
+      "priority_score": 0,
+      "question_ids": [
+        "PD-MATH-IX-007",
+        "PD-MATH-IX-014",
+        "PD-MATH-IX-024",
+        "PD-MATH-X-028"
+      ]
+    },
+    {
       "engine": "polynomial_theorems",
       "title": "Factor theorem, completing the square, discriminant",
       "status": "implemented",
@@ -649,12 +615,39 @@
       ]
     },
     {
+      "engine": "sequence_series",
+      "title": "AP/GP term and sum relations",
+      "status": "implemented",
+      "code": "mathcore/rules/sequences.py (AP and GP), mathcore/strategies/values.py",
+      "check": "Substitute general term/sum formulas and simplify the claimed relation",
+      "gaps": "XI-006 is solved by naming the larger number first (b + d, d >= 0)",
+      "questions": 7,
+      "solved": 7,
+      "open": 0,
+      "open_by_feasibility": {},
+      "figure_required": 0,
+      "classes": [
+        10,
+        11
+      ],
+      "priority_score": 0,
+      "question_ids": [
+        "PD-MATH-X-021",
+        "PD-MATH-X-022",
+        "PD-MATH-X-023",
+        "PD-MATH-XI-005",
+        "PD-MATH-XI-006",
+        "PD-MATH-XI-009",
+        "PD-MATH-XI-013"
+      ]
+    },
+    {
       "engine": "trig_identity",
       "title": "Trigonometric identities",
       "status": "implemented",
       "code": "mathcore/rules/trig.py, mathcore/rules/trig_compound.py, mathcore/strategies/equations.py, mathcore/equality.py (angle basis)",
       "check": "Permitted-rule rewrite search, exact equality, domain replay",
-      "gaps": "Special-angle products that need the multiply-by-2-sin trick (e.g. sin 20° sin 40° sin 60° sin 80°); trig equations are solved on a stated interval only (no general solution yet)",
+      "gaps": "Special-angle products that need the multiply-by-2-sin trick (e.g. sin 20° sin 40° sin 60° sin 80°). General solutions are implemented (mathcore/strategies/general.py).",
       "questions": 8,
       "solved": 8,
       "open": 0,
@@ -682,7 +675,7 @@
       "engine": "synthetic_geometry",
       "feasibility": "medium",
       "note": "Converse: rhombus from diagonals",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 9,
       "topic": "Quadrilaterals",
       "figure_required": false
@@ -709,7 +702,7 @@
       "engine": "synthetic_geometry",
       "feasibility": "medium",
       "note": "Midpoint theorem; coordinate check easy",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 9,
       "topic": "Quadrilaterals",
       "figure_required": false
@@ -727,7 +720,7 @@
       "engine": "synthetic_geometry",
       "feasibility": "medium",
       "note": "Figure; auxiliary parallelogram",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 9,
       "topic": "Quadrilaterals",
       "figure_required": true
@@ -736,7 +729,7 @@
       "engine": "metric_geometry_coordinates",
       "feasibility": "high",
       "note": "Right angle at B; squared lengths",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 9,
       "topic": "Triangles",
       "figure_required": false
@@ -754,7 +747,7 @@
       "engine": "synthetic_geometry",
       "feasibility": "medium",
       "note": "Figure; Varignon via midpoint theorem",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 9,
       "topic": "Quadrilaterals",
       "figure_required": true
@@ -799,7 +792,7 @@
       "engine": "metric_geometry_coordinates",
       "feasibility": "high",
       "note": "Right angle at Q; squared lengths",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 9,
       "topic": "Triangles",
       "figure_required": false
@@ -844,7 +837,7 @@
       "engine": "synthetic_geometry",
       "feasibility": "medium",
       "note": "Centroid area ratio; coordinate check easy",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 9,
       "topic": "Triangles",
       "figure_required": false
@@ -889,7 +882,7 @@
       "engine": "metric_geometry_coordinates",
       "feasibility": "high",
       "note": "British flag theorem",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 9,
       "topic": "Quadrilaterals",
       "figure_required": false
@@ -898,7 +891,7 @@
       "engine": "synthetic_geometry",
       "feasibility": "medium",
       "note": "Midpoint theorem on trapezium",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 9,
       "topic": "Quadrilaterals",
       "figure_required": false
@@ -1051,7 +1044,7 @@
       "engine": "constrained_relation",
       "feasibility": "medium",
       "note": "Componendo-dividendo prescribed; radicals",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 10,
       "topic": "Ratio and Proportion",
       "figure_required": false
@@ -1123,7 +1116,7 @@
       "engine": "synthetic_geometry",
       "feasibility": "low",
       "note": "Basic proportionality theorem from area ratios",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 10,
       "topic": "Similarity",
       "figure_required": false
@@ -1195,7 +1188,7 @@
       "engine": "synthetic_geometry",
       "feasibility": "medium",
       "note": "RHS congruence",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 10,
       "topic": "Circles",
       "figure_required": false
@@ -1222,7 +1215,7 @@
       "engine": "metric_geometry_coordinates",
       "feasibility": "high",
       "note": "Auxiliary altitude, squared lengths",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 10,
       "topic": "Similarity",
       "figure_required": false
@@ -1294,7 +1287,7 @@
       "engine": "sequence_series",
       "feasibility": "high",
       "note": "AM/GM to quadratic roots",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 11,
       "topic": "Sequences and Series",
       "figure_required": false
@@ -1465,7 +1458,7 @@
       "engine": "contradiction_inequality",
       "feasibility": "medium",
       "note": "Sum of discriminants >= 0",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 11,
       "topic": "Complex Numbers and Quadratic Equations",
       "figure_required": false
@@ -1510,7 +1503,7 @@
       "engine": "contradiction_inequality",
       "feasibility": "medium",
       "note": "x(x^2 + 8) = 0 over reals",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 11,
       "topic": "Mathematical Reasoning",
       "figure_required": false
@@ -1609,7 +1602,7 @@
       "engine": "inverse_trig_branch",
       "feasibility": "medium",
       "note": "Exact sum with branch control",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 12,
       "topic": "Inverse Trigonometric Functions",
       "figure_required": false
@@ -1618,7 +1611,7 @@
       "engine": "inverse_trig_branch",
       "feasibility": "medium",
       "note": "Half-angle with x in (0, pi/4)",
-      "status": "UNSUPPORTED",
+      "status": "SOLVED_AND_TRACE_CHECKED",
       "class": 12,
       "topic": "Inverse Trigonometric Functions",
       "figure_required": false

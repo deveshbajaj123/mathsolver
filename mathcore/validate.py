@@ -52,7 +52,7 @@ def relation_zeros(problem: Problem) -> list:
 
 def _equality(problem: Problem) -> dict:
     points = admissible_points(problem.symbols, relation_zeros(problem), problem.conditions, count=16,
-                               prefer=problem.solve_order)
+                               prefer=problem.solve_order, intervals=problem.intervals)
     if len(points) < 4:
         return {"status": "INCONSISTENT",
                 "reason": (f"Found only {len(points)} values satisfying the givens and the domain; "
@@ -70,6 +70,11 @@ def _equality(problem: Problem) -> dict:
     def at(e, point):  # subs keeps an integral's own variable bound
         return e.subs(point) if e.has(s.Integral) else e.xreplace(point)
 
+    if problem.spec.figure:
+        from .figure import check
+        ok, reason = check(problem.spec, problem)
+        if not ok:
+            return {"status": "AMBIGUOUS", "reason": reason}
     for point in points:
         if not numerically_equal(lhs, rhs, [point]):
             return {"status": "FALSE_CLAIM", "reason": "The two sides differ at an admissible point.",
@@ -99,6 +104,11 @@ def _no_real_roots(problem: Problem) -> dict:
 def english(problem: Problem) -> str:
     """Plain-words restatement for comparison with the source question."""
     spec, parts = problem.spec, []
+    if spec.points:
+        from .figure import words
+        parts.append("Points: " + "; ".join(f"{n} = ({x}, {y})" for n, (x, y) in spec.points.items()) + ".")
+        if spec.figure:
+            parts.append("Figure: " + "; ".join(words(f) for f in spec.figure) + ".")
     if spec.variables:
         parts.append("Variables: " + "; ".join(f"{n} ({', '.join(a)})" for n, a in spec.variables.items()) + ".")
     for name, seq in spec.sequences.items():
@@ -128,6 +138,9 @@ def english(problem: Problem) -> str:
         "solve_equation": lambda: (f"Solve {goal['lhs']} = {goal['rhs']} for {goal['low']} <= {goal['variable']} "
                                    f"{'<' if goal.get('high_open') else '<='} {goal['high']}."),
         "evaluate": lambda: f"Find {goal.get('name') or 'the value of'} {goal['expr']}.",
+        "one_real_roots": lambda: f"Show at least one of {', '.join(p + ' = 0' for p in goal['polynomials'])} has real roots in {goal['variable']}.",
+        "only_solution": lambda: f"Show the only real solution of {goal['lhs']} = {goal['rhs']} is {goal['variable']} = {goal['value']}.",
+        "general_solution": lambda: f"Find the general solution of {goal['lhs']} = {goal['rhs']} in {goal['variable']}.",
         "first_principles": lambda: f"Find the derivative of {goal['function']} with respect to {goal['variable']} from first principles.",
         "monotonic": lambda: f"Show {goal['function']} is {goal['direction']} in {goal['variable']}.",
         "extremum": lambda: f"Find the {goal['type']}imum of {goal['objective']} over {goal['variable']}.",

@@ -1,0 +1,12 @@
+{
+  "id": "PD-MATH-XII-010",
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "2*atan(1/5) + acos(7/(5*sqrt(2))) + 2*atan(1/8)",
+    "rhs": "pi/4"
+  },
+  "quotes": {
+    "goal": "2 tan⁻¹(1/5) + cos⁻¹(7/(5√2)) + 2 tan⁻¹(1/8) = π/4"
+  },
+  "note": "Principal values throughout."
+}

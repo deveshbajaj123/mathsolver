@@ -1,0 +1,95 @@
+{
+  "id": "PD-MATH-IX-006",
+  "variables": {
+    "b": [
+      "positive"
+    ],
+    "p": [
+      "real"
+    ],
+    "q": [
+      "positive"
+    ],
+    "m": [
+      "positive"
+    ]
+  },
+  "points": {
+    "A": [
+      "0",
+      "0"
+    ],
+    "B": [
+      "b",
+      "0"
+    ],
+    "D": [
+      "p",
+      "q"
+    ],
+    "C": [
+      "b + p",
+      "q"
+    ],
+    "M": [
+      "m",
+      "0"
+    ],
+    "N": [
+      "b + p - m",
+      "q"
+    ]
+  },
+  "figure": [
+    [
+      "parallel",
+      "A",
+      "B",
+      "D",
+      "C"
+    ],
+    [
+      "parallel",
+      "A",
+      "D",
+      "B",
+      "C"
+    ],
+    [
+      "on_line",
+      "M",
+      "A",
+      "B"
+    ],
+    [
+      "on_line",
+      "N",
+      "C",
+      "D"
+    ],
+    [
+      "equal_length",
+      "A",
+      "M",
+      "C",
+      "N"
+    ]
+  ],
+  "goal": {
+    "kind": "prove_identity",
+    "parts": [
+      {
+        "lhs": "(xcoord(A) + xcoord(C))/2",
+        "rhs": "(xcoord(M) + xcoord(N))/2"
+      },
+      {
+        "lhs": "(ycoord(A) + ycoord(C))/2",
+        "rhs": "(ycoord(M) + ycoord(N))/2"
+      }
+    ]
+  },
+  "quotes": {
+    "goal": "In a parallelogram ABCD, points M and N have been taken on opposite sides AB and CD respectively such that AM = CN. Show that AC and MN bisect each other."
+  },
+  "note": "A at the origin, AB along the x-axis. The midpoints of AC and MN have the same coordinates, so the diagonals bisect each other."
+}

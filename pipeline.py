@@ -13,6 +13,7 @@ import hashlib
 import importlib.util
 import json
 import os
+import sys
 import time
 from collections import Counter
 from pathlib import Path
@@ -223,6 +224,8 @@ if __name__ == "__main__":
     parser.add_argument("--specs", type=Path, default=HERE/"specs", help="Folder of spec files (one JSON per question id).")
     parser.add_argument("--spec", type=Path, help="Solve one spec file without the bank.")
     args = parser.parse_args()
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")  # answers contain Δ, θ, √ even on a Windows console
     if args.spec:
         outcome = solve_spec(load(args.spec))
         print(outcome.get("answer") or json.dumps({k: outcome[k] for k in ("id", "status", "reason") if k in outcome}, indent=2))

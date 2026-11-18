@@ -1,0 +1,17 @@
+{
+  "id": "PD-MATH-XII-011",
+  "variables": {
+    "x": ["real"]
+  },
+  "intervals": {
+    "x": ["0", "pi/4"]
+  },
+  "goal": {
+    "kind": "prove_identity",
+    "lhs": "acot((sqrt(1+sin(x)) + sqrt(1-sin(x)))/(sqrt(1+sin(x)) - sqrt(1-sin(x))))",
+    "rhs": "x/2"
+  },
+  "quotes": {
+    "goal": "cot⁻¹[(√(1+sin x) + √(1−sin x))/(√(1+sin x) − √(1−sin x))] = x/2, x ∈ (0, π/4)"
+  }
+}

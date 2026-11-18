@@ -19,6 +19,17 @@ ADDITIVE = (ast.Add, ast.Sub)
 INVERSE = {"asin": r"\sin^{-1}", "acos": r"\cos^{-1}", "atan": r"\tan^{-1}", "acot": r"\cot^{-1}"}
 
 
+POINT_FUNCTIONS = {
+    "dist2": lambda p, q: f"{p}{q}^{{2}}",
+    "dist": lambda p, q: f"{p}{q}",
+    "dot": lambda a, b, c, d: rf"\overrightarrow{{{a}{b}}} \cdot \overrightarrow{{{c}{d}}}",
+    "cross": lambda a, b, c, d: rf"\overrightarrow{{{a}{b}}} \times \overrightarrow{{{c}{d}}}",
+    "area": lambda p, q, r: rf"\operatorname{{ar}}\left(\triangle {p}{q}{r}\right)",
+    "xcoord": lambda p: f"x_{{{p}}}",
+    "ycoord": lambda p: f"y_{{{p}}}",
+}
+
+
 def derivative_labels(spec) -> dict:
     """y1 -> dy/dx, y2 -> d^2y/dx^2 (or y_1, y_2 when the question writes them that way)."""
     labels = {}
@@ -82,6 +93,8 @@ def source_latex(source: str, labels: dict | None = None) -> str:
                 var = walk(node.args[1])
                 head = rf"\frac{{d}}{{d{var}}}" if order == "1" else rf"\frac{{d^{{{order}}}}}{{d{var}^{{{order}}}}}"
                 return rf"{head}\left({walk(node.args[0])}\right)"
+            if name in POINT_FUNCTIONS:
+                return POINT_FUNCTIONS[name](*(a.id for a in node.args))
             if name == "integral":
                 f, var, low, high = (walk(a) for a in node.args)
                 f = wrap(node.args[0], f)

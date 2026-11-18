@@ -1,0 +1,11 @@
+{
+  "id": "PD-MATH-X-009",
+  "variables": {"a": ["positive"], "b": ["positive"], "x": ["real"]},
+  "hypotheses": [
+    {"lhs": "x", "rhs": "(sqrt(a**2 + b**2) + sqrt(a**2 - b**2))/(sqrt(a**2 + b**2) - sqrt(a**2 - b**2))",
+     "quote": "x = (√(a² + b²) + √(a² − b²))/(√(a² + b²) − √(a² − b²))"}
+  ],
+  "goal": {"kind": "prove_from_hypotheses", "lhs": "b**2", "rhs": "2*a**2*x/(x**2 + 1)"},
+  "prescribed_method": "componendo_dividendo",
+  "quotes": {"goal": "Use componendo and dividendo to prove that b² = 2a²x/(x² + 1)"}
+}

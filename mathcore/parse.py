@@ -59,6 +59,7 @@ class Context:
     variable: s.Symbol | None = None               # the independent variable of y(x)
     definitions: dict = field(default_factory=dict)  # C -> (x, expression)
     abstract: dict = field(default_factory=dict)     # f -> an unspecified SymPy function
+    points: dict = field(default_factory=dict)       # A -> (x, y) coordinates
 
     @classmethod
     def from_spec(cls, spec: Spec) -> "Context":
@@ -77,11 +78,65 @@ class Context:
         for name, definition in spec.definitions.items():
             argument = symbols[definition["of"]]
             ctx.definitions[name] = (argument, parse(definition["expr"], ctx))
+        for name, (x, y) in spec.points.items():
+            ctx.points[name] = (parse(x, ctx), parse(y, ctx))
         for name, sequence in spec.sequences.items():
             sum_class(name).label = sequence.get("sum_label")  # e.g. "S_1" as printed in the question
             step = sequence["difference"] if sequence["type"] == "ap" else sequence["ratio"]
             ctx.sequences[name] = (sequence["type"], parse(sequence["first"], ctx), parse(step, ctx))
         return ctx
+
+
+# Coordinate geometry: each call names points declared in the spec and becomes algebra in their coordinates.
+GEOMETRY = {"dist2": 2, "dist": 2, "dot": 4, "cross": 4, "area": 3, "xcoord": 1, "ycoord": 1}
+
+
+GEOMETRY_LATEX = {
+    "dist2": lambda p, q: f"{p}{q}^{{2}}",
+    "dist": lambda p, q: f"{p}{q}",
+    "dot": lambda a, b, c, d: rf"\overrightarrow{{{a}{b}}} \cdot \overrightarrow{{{c}{d}}}",
+    "cross": lambda a, b, c, d: rf"\overrightarrow{{{a}{b}}} \times \overrightarrow{{{c}{d}}}",
+    "area": lambda p, q, r: rf"\operatorname{{ar}}\left(\triangle {p}{q}{r}\right)",
+    "xcoord": lambda p: f"x_{{{p}}}",
+    "ycoord": lambda p: f"y_{{{p}}}",
+}
+
+
+def geometry_class(name: str) -> type:
+    """AB^2, ar(ABC), ... as a named quantity of points; Theory.expand_definitions writes it in coordinates."""
+    key = f"geo_{name}"
+    if key not in _CLASSES:
+        def latex(self, printer):
+            return GEOMETRY_LATEX[name](*(a.name for a in self.args))
+        _CLASSES[key] = type(key, (s.Function,), {"nargs": GEOMETRY[name], "geometry": name, "_latex": latex,
+                                                  "is_real": True,
+                                                  # point names are labels, not variables of the problem
+                                                  "free_symbols": property(lambda self: set())})
+    return _CLASSES[key]
+
+
+def expand_geometry(e: s.Expr, points: dict) -> s.Expr:
+    for name in GEOMETRY:
+        cls = geometry_class(name)
+        if e.has(cls):
+            e = e.replace(cls, lambda *args, n=name: geometry_value(n, [points[a.name] for a in args]))
+    return e
+
+
+def geometry_value(name: str, points: list) -> s.Expr:
+    def vector(p, q):
+        return (q[0] - p[0], q[1] - p[1])
+    if name in ("xcoord", "ycoord"):
+        return points[0][0 if name == "xcoord" else 1]
+    if name in ("dist2", "dist"):
+        dx, dy = vector(*points)
+        squared = dx**2 + dy**2
+        return squared if name == "dist2" else s.sqrt(squared)
+    if name == "area":  # signed area of triangle PQR: positive when P, Q, R run anticlockwise
+        (ux, uy), (vx, vy) = vector(points[0], points[1]), vector(points[0], points[2])
+        return (ux*vy - uy*vx)/2
+    (ux, uy), (vx, vy) = vector(*points[:2]), vector(*points[2:])
+    return ux*vx + uy*vy if name == "dot" else ux*vy - uy*vx
 
 
 def term_formula(kind: str, a: s.Expr, step: s.Expr, k: s.Expr) -> s.Expr:
@@ -146,6 +201,11 @@ def parse_with_conditions(source: str, ctx: Context) -> tuple[s.Expr, list[Condi
             if name == "integral" and len(args) == 4 and isinstance(args[1], ast.Name):
                 variable = walk(args[1])
                 return s.Integral(walk(args[0]), (variable, walk(args[2]), walk(args[3])))
+            if name in GEOMETRY and all(isinstance(a, ast.Name) and a.id in ctx.points for a in args):
+                points = [ctx.points[a.id] for a in args]
+                if len(points) != GEOMETRY[name]:
+                    raise ValueError(f"{name} takes {GEOMETRY[name]} points")
+                return geometry_class(name)(*(s.Symbol(a.id) for a in args))
             if name in ctx.abstract and len(args) == 1:
                 return ctx.abstract[name](walk(args[0]))
             if name in ctx.definitions and len(args) == 1:

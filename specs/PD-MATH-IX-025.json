@@ -1,0 +1,81 @@
+{
+  "id": "PD-MATH-IX-025",
+  "variables": {
+    "a": [
+      "positive"
+    ],
+    "c": [
+      "positive"
+    ],
+    "d": [
+      "real"
+    ],
+    "h": [
+      "positive"
+    ]
+  },
+  "points": {
+    "A": [
+      "0",
+      "0"
+    ],
+    "B": [
+      "2*a",
+      "0"
+    ],
+    "D": [
+      "2*d",
+      "2*h"
+    ],
+    "C": [
+      "2*d + 2*c",
+      "2*h"
+    ],
+    "M": [
+      "d + c",
+      "h"
+    ],
+    "N": [
+      "a + d",
+      "h"
+    ]
+  },
+  "figure": [
+    [
+      "parallel",
+      "A",
+      "B",
+      "D",
+      "C"
+    ],
+    [
+      "midpoint",
+      "M",
+      "A",
+      "C"
+    ],
+    [
+      "midpoint",
+      "N",
+      "B",
+      "D"
+    ]
+  ],
+  "goal": {
+    "kind": "prove_identity",
+    "parts": [
+      {
+        "lhs": "cross(M,N,A,B)",
+        "rhs": "0"
+      },
+      {
+        "lhs": "dist2(M,N)",
+        "rhs": "((dist(A,B) - dist(D,C))/2)**2"
+      }
+    ]
+  },
+  "quotes": {
+    "goal": "Prove that the line segment joining the mid-points of the diagonals of a trapezium is parallel to the parallel sides of trapezium and is equal to half the difference of these sides."
+  },
+  "note": "AB ∥ DC with AB = 2a, DC = 2c. M, N are the midpoints of the diagonals AC, BD. A zero cross product means MN ∥ AB; MN² = ((AB - DC)/2)² gives MN = half the difference."
+}

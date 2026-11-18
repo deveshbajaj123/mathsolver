@@ -1,0 +1,108 @@
+{
+  "id": "PD-MATH-IX-009",
+  "variables": {
+    "b1": [
+      "real"
+    ],
+    "b2": [
+      "real"
+    ],
+    "c1": [
+      "real"
+    ],
+    "c2": [
+      "real"
+    ],
+    "d1": [
+      "real"
+    ],
+    "d2": [
+      "real"
+    ]
+  },
+  "points": {
+    "A": [
+      "0",
+      "0"
+    ],
+    "B": [
+      "2*b1",
+      "2*b2"
+    ],
+    "C": [
+      "2*c1",
+      "2*c2"
+    ],
+    "D": [
+      "2*d1",
+      "2*d2"
+    ],
+    "P": [
+      "b1",
+      "b2"
+    ],
+    "Q": [
+      "b1 + c1",
+      "b2 + c2"
+    ],
+    "R": [
+      "c1 + d1",
+      "c2 + d2"
+    ],
+    "S": [
+      "d1",
+      "d2"
+    ]
+  },
+  "figure": [
+    [
+      "midpoint",
+      "P",
+      "A",
+      "B"
+    ],
+    [
+      "midpoint",
+      "Q",
+      "B",
+      "C"
+    ],
+    [
+      "midpoint",
+      "R",
+      "C",
+      "D"
+    ],
+    [
+      "midpoint",
+      "S",
+      "D",
+      "A"
+    ]
+  ],
+  "goal": {
+    "kind": "prove_identity",
+    "parts": [
+      {
+        "lhs": "cross(S,R,A,C)",
+        "rhs": "0"
+      },
+      {
+        "lhs": "dist2(S,R)",
+        "rhs": "dist2(A,C)/4"
+      },
+      {
+        "lhs": "dist2(P,Q)",
+        "rhs": "dist2(S,R)"
+      },
+      {
+        "lhs": "cross(P,Q,S,R)",
+        "rhs": "0"
+      }
+    ]
+  },
+  "quotes": {
+    "goal": "ABCD is a quadrilateral in which P, Q, R and S are mid-points of AB, BC, CD and DA respectively. AC is its diagonal. Show that (a) SR ∥ AC, SR = 1/2 AC (b) PQ = SR (c) PQRS is a parallelogram"
+  },
+  "note": "Any quadrilateral, A at the origin. A zero cross product means parallel. (c) follows from PQ ∥ SR and PQ = SR."
+}

@@ -1,0 +1,75 @@
+{
+  "id": "PD-MATH-IX-001",
+  "variables": {
+    "p": [
+      "positive"
+    ],
+    "q": [
+      "positive"
+    ]
+  },
+  "points": {
+    "O": [
+      "0",
+      "0"
+    ],
+    "A": [
+      "p",
+      "0"
+    ],
+    "C": [
+      "-p",
+      "0"
+    ],
+    "B": [
+      "0",
+      "q"
+    ],
+    "D": [
+      "0",
+      "-q"
+    ]
+  },
+  "figure": [
+    [
+      "midpoint",
+      "O",
+      "A",
+      "C"
+    ],
+    [
+      "midpoint",
+      "O",
+      "B",
+      "D"
+    ],
+    [
+      "perpendicular",
+      "A",
+      "C",
+      "B",
+      "D"
+    ]
+  ],
+  "goal": {
+    "kind": "prove_identity",
+    "parts": [
+      {
+        "lhs": "dist2(A,B)",
+        "rhs": "dist2(B,C)"
+      },
+      {
+        "lhs": "dist2(B,C)",
+        "rhs": "dist2(C,D)"
+      },
+      {
+        "lhs": "dist2(C,D)",
+        "rhs": "dist2(D,A)"
+      }
+    ]
+  },
+  "quotes": {
+    "goal": "Show that if the diagonals of a quadrilateral bisect each other at right angles, then it is a rhombus."
+  },
+  "note": "The diagonals meet at O, taken as the origin, along the axes. Equal squared lengths give equal sides, so ABCD is a rhombus."
+}

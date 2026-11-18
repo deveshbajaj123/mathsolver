@@ -273,5 +273,59 @@ class EvaluationCaseTests(unittest.TestCase):
                 self.assertEqual(status == "SOLVED_AND_TRACE_CHECKED", expected, status)
 
 
+class ExpansionTests(unittest.TestCase):
+    """Geometry by coordinates, inverse trig, general solutions and the new algebra methods."""
+
+    def solve(self, data):
+        return solve_spec(from_json(data))["status"]
+
+    def test_coordinate_proof_checked(self):
+        data = {"id": "T", "variables": {"a": ["positive"], "c": ["positive"]},
+                "points": {"B": ["0", "0"], "A": ["0", "2*a"], "C": ["2*c", "0"], "D": ["c", "0"]},
+                "figure": [["right_angle", "A", "B", "C"], ["midpoint", "D", "B", "C"]],
+                "goal": {"kind": "prove_identity", "lhs": "dist2(A,D)", "rhs": "4*a**2 + c**2"}}
+        self.assertEqual(self.solve(data), "SOLVED_AND_TRACE_CHECKED")
+
+    def test_wrong_coordinates_rejected(self):
+        data = {"id": "T", "variables": {"a": ["positive"], "c": ["positive"]},
+                "points": {"B": ["0", "0"], "A": ["0", "2*a"], "C": ["2*c", "0"], "D": ["c + 1", "0"]},
+                "figure": [["midpoint", "D", "B", "C"]],
+                "goal": {"kind": "prove_identity", "lhs": "dist2(A,D)", "rhs": "dist2(A,D)"}}
+        self.assertEqual(self.solve(data), "INPUT_AMBIGUOUS")  # D is not the midpoint it claims to be
+
+    def test_coordinates_need_figure_facts(self):
+        with self.assertRaises(SpecError):
+            from_json({"id": "T", "points": {"A": ["0", "0"], "B": ["1", "0"], "C": ["0", "1"]},
+                       "goal": {"kind": "prove_identity", "lhs": "dist2(A,B)", "rhs": "1"}})
+
+    def test_inverse_trig_branch_respected(self):
+        theory = Theory()
+        rule = build("double_tan_inverse", theory)
+        self.assertEqual(rule.apply(2*s.atan(s.Rational(1, 5))), s.atan(s.Rational(5, 12)))
+        self.assertEqual(rule.apply(2*s.atan(2)), 2*s.atan(2))  # |x| > 1: the identity does not hold
+        false = {"id": "T", "goal": {"kind": "prove_identity", "lhs": "2*atan(2)", "rhs": "atan(-4/3)"}}
+        self.assertEqual(self.solve(false), "COUNTEREXAMPLE")
+
+    def test_general_solution_families_checked(self):
+        data = {"id": "T", "variables": {"x": ["real"]},
+                "goal": {"kind": "general_solution", "variable": "x", "lhs": "sin(2*x)", "rhs": "cos(x)"}}
+        self.assertEqual(self.solve(data), "SOLVED_AND_TRACE_CHECKED")
+
+    def test_only_solution_and_discriminants(self):
+        only = {"id": "T", "variables": {"x": ["real"]},
+                "goal": {"kind": "only_solution", "variable": "x", "lhs": "x**3 + 2*x", "rhs": "0", "value": "0"}}
+        self.assertEqual(self.solve(only), "SOLVED_AND_TRACE_CHECKED")
+        wrong = {"id": "T", "variables": {"x": ["real"]},
+                 "goal": {"kind": "only_solution", "variable": "x", "lhs": "x**3 - 4*x", "rhs": "0", "value": "0"}}
+        self.assertNotEqual(self.solve(wrong), "SOLVED_AND_TRACE_CHECKED")  # x = 2 is also a solution
+
+    def test_componendo_dividendo_prescribed(self):
+        data = {"id": "T", "variables": {"x": ["real"], "a": ["positive"], "b": ["positive"]},
+                "hypotheses": [{"lhs": "x", "rhs": "(a + b)/(a - b)"}],
+                "goal": {"kind": "prove_from_hypotheses", "lhs": "a", "rhs": "b*(x + 1)/(x - 1)"},
+                "prescribed_method": "componendo_dividendo"}
+        self.assertEqual(self.solve(data), "SOLVED_AND_TRACE_CHECKED")
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -12,7 +12,10 @@ PRECISION = 50
 TOLERANCE = s.Float("1e-30", PRECISION)
 
 
-def _random_value(symbol: s.Symbol, rng: random.Random) -> s.Expr:
+def _random_value(symbol: s.Symbol, rng: random.Random, interval=None) -> s.Expr:
+    if interval is not None:  # strictly inside the stated interval
+        low, high = interval
+        return low + (high - low)*s.Rational(rng.randint(1, 19), 20)
     if symbol.is_real is None:  # declared complex
         return s.Rational(rng.randint(-40, 40), rng.randint(1, 9)) + s.I*s.Rational(rng.randint(1, 40), rng.randint(1, 9))
     if symbol.is_integer:
@@ -35,7 +38,14 @@ def _solve_hypotheses(hypotheses: list, symbols: list, prefer: tuple = ()) -> li
         if not candidates:
             return []
         rank = lambda v: prefer.index(v) if v in prefer else len(prefer)
-        candidates.sort(key=lambda v: (rank(v), s.degree(numerator, v) if numerator.is_polynomial(v) else 99, v.name))
+        # A variable that is only a monomial factor (c in c*(t - u) = 0) would be solved as c = 0: try others first.
+        try:
+            factors = [f for f, _ in s.factor_list(numerator)[1] if not f.is_Symbol]
+        except (s.PolynomialError, NotImplementedError):
+            factors = [numerator]
+        inside = lambda v: 0 if any(f.has(v) for f in factors) else 1
+        candidates.sort(key=lambda v: (rank(v), inside(v), s.degree(numerator, v) if numerator.is_polynomial(v) else 99,
+                                       v.name))
         unknowns.append(candidates[0])
     if not unknowns:
         return [{}]
@@ -46,7 +56,9 @@ def _solve_hypotheses(hypotheses: list, symbols: list, prefer: tuple = ()) -> li
 
 
 def admissible_points(symbols: list, hypotheses: list, conditions: list[Condition],
-                      count: int = 12, seed: int = 0, tries: int = 400, prefer: tuple = ()) -> list[dict]:
+                      count: int = 12, seed: int = 0, tries: int = 400, prefer: tuple = (),
+                      intervals: dict | None = None) -> list[dict]:
+    intervals = intervals or {}
     rng = random.Random(seed)
     branches = _solve_hypotheses(hypotheses, symbols, prefer)
     points = []
@@ -54,7 +66,7 @@ def admissible_points(symbols: list, hypotheses: list, conditions: list[Conditio
         if not branches or len(points) >= count:
             break
         branch = rng.choice(branches)
-        point = {v: _random_value(v, rng) for v in symbols if v not in branch}
+        point = {v: _random_value(v, rng, intervals.get(v)) for v in symbols if v not in branch}
         try:
             for v, expr in branch.items():
                 point[v] = expr.xreplace(point)
@@ -66,6 +78,8 @@ def admissible_points(symbols: list, hypotheses: list, conditions: list[Conditio
         if any(v.is_integer and point[v].is_integer is not True for v in branch):
             continue
         if any(v.is_positive and values[v].real <= 0 for v in point):
+            continue
+        if any(v.is_nonnegative and values[v].real < 0 for v in point):
             continue
         if all(_holds(c, point) for c in conditions) and all(abs(complex(s.N(h.xreplace(point), 30))) < 1e-20
                                                               for h in hypotheses):
